@@ -1,0 +1,823 @@
+.div {
+  position: absolute;
+  top: 206px;
+  left: 206px;
+  border-radius: 50%;
+  border: 96px solid var(--orange);
+  box-sizing: border-box;
+  width: 1080px;
+  height: 1080px;
+  opacity: 0.05;
+}
+.circle,
+.ellipseIcon,
+.icon {
+  position: absolute;
+  left: 0;
+  width: 1492px;
+  height: 1492px;
+}
+.icon {
+  top: 187px;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0.03;
+}
+.circle,
+.ellipseIcon {
+  top: 0;
+}
+.ellipseIcon {
+  top: 434px;
+  left: 426px;
+  border-radius: 50%;
+  width: 640px;
+  height: 640px;
+  object-fit: cover;
+}
+.vectorIcon {
+  position: absolute;
+  top: 560px;
+  left: calc(50% - 383px);
+  width: 753px;
+  height: 420px;
+  opacity: 0.5;
+}
+.girlWearingAHatHoldingCreIcon {
+  position: absolute;
+  top: 187px;
+  left: 335px;
+  width: 924px;
+  height: 1234px;
+  object-fit: cover;
+}
+.lineIcon,
+.planeIcon {
+  position: absolute;
+  top: 578.03px;
+  left: 361.23px;
+  width: 717.28px;
+  height: 294.21px;
+}
+.planeIcon {
+  top: 630px;
+  left: 321px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+.background,
+.decoration {
+  position: absolute;
+  top: -187px;
+  left: 629px;
+  width: 1492px;
+  height: 1492px;
+}
+.background {
+  top: 0;
+  left: 0;
+  border-radius: 0 var(--br-5xs) var(--br-5xs) 0;
+  width: 1920px;
+  height: 120px;
+}
+.travel {
+  color: var(--orange);
+}
+.soultravel {
+  position: absolute;
+  top: 33px;
+  left: 160px;
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+}
+.destination {
+  position: relative;
+}
+.menu {
+  position: absolute;
+  top: 46px;
+  left: 676px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  font-size: var(--text-medium-1-size);
+  font-family: var(--text-medium-1);
+}
+.rectangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-5xs);
+  background-color: var(--orange);
+  width: 140px;
+  height: 48px;
+}
+.signIn {
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  font-size: var(--text-medium-1-size);
+  font-family: var(--text-medium-1);
+  color: var(--white);
+  text-align: left;
+}
+.button,
+.signUp {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+}
+.button {
+  top: 36px;
+  left: 1620px;
+  width: 140px;
+  height: 48px;
+}
+.signUp {
+  top: 46px;
+  left: 1520px;
+  font-size: var(--text-medium-1-size);
+  font-family: var(--text-medium-1);
+  color: var(--black);
+  text-align: left;
+  display: inline-block;
+}
+.rectangle1 {
+  position: absolute;
+  top: 81px;
+  left: 705px;
+  border-radius: var(--br-5xs);
+  background-color: var(--orange);
+  width: 43px;
+  height: 6px;
+}
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 120px;
+  font-size: 36px;
+  font-family: var(--font-oswald);
+}
+.packYourLuggage {
+  position: absolute;
+  top: 400px;
+  left: 0;
+  line-height: 40px;
+  display: inline-block;
+  width: 648px;
+  opacity: 0.5;
+}
+.letsGo {
+  margin: 0;
+}
+.the {
+  color: var(--black);
+}
+.letsGoTheContainer,
+.title {
+  position: absolute;
+  width: 920px;
+}
+.letsGoTheContainer {
+  top: 0;
+  left: 0;
+  font-size: var(--title-heading-1-size);
+  line-height: 128px;
+  font-family: var(--title-heading-1);
+  display: inline-block;
+}
+.title {
+  top: 200px;
+  left: 160px;
+  height: 520px;
+}
+.b,
+.icon1 {
+  position: relative;
+}
+.icon1 {
+  width: 60px;
+  height: 60px;
+}
+.b {
+  font-size: var(--text-text-1-size);
+  color: var(--black);
+}
+.hotline,
+.number {
+  display: flex;
+  justify-content: flex-start;
+}
+.number {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.hotline {
+  position: absolute;
+  top: 837px;
+  left: 1450px;
+  border-radius: var(--br-base);
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  width: 310px;
+  flex-direction: row;
+  padding: var(--padding-base);
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--gap-base);
+  font-size: var(--text-medium-1-size);
+  color: var(--orange);
+}
+.passportIcon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.flightTickets {
+  position: relative;
+  line-height: 40px;
+}
+.text {
+  position: absolute;
+  top: 0;
+  left: 583px;
+}
+.text,
+.text1,
+.text2 {
+  border-radius: var(--br-5xs);
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-base);
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-base);
+}
+.text1 {
+  position: absolute;
+  top: 56px;
+  left: 0;
+}
+.text2 {
+  top: 391px;
+  left: 681px;
+}
+.content,
+.text2,
+.text3 {
+  position: absolute;
+}
+.text3 {
+  top: 447px;
+  left: 104px;
+  border-radius: var(--br-5xs);
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-base);
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-base);
+}
+.content {
+  top: 277px;
+  left: 929px;
+  width: 900px;
+  height: 519px;
+}
+.vectorIcon1,
+.vectorIcon2,
+.vectorIcon3,
+.vectorIcon4 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon2,
+.vectorIcon3,
+.vectorIcon4 {
+  height: 56.25%;
+  width: 87.5%;
+  top: 26.56%;
+  right: 6.25%;
+  bottom: 17.19%;
+  left: 6.25%;
+}
+.vectorIcon3,
+.vectorIcon4 {
+  height: 21.88%;
+  width: 37.5%;
+  top: 20.31%;
+  right: 31.25%;
+  bottom: 57.81%;
+  left: 31.25%;
+}
+.vectorIcon4 {
+  height: 28.13%;
+  width: 43.75%;
+  top: 17.19%;
+  right: 28.13%;
+  bottom: 54.69%;
+  left: 28.13%;
+}
+.flight,
+.plane {
+  position: relative;
+  flex-shrink: 0;
+}
+.plane {
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+}
+.flight {
+  font-weight: 500;
+  display: inline-block;
+  width: 60px;
+}
+.div1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-21xl) 0 0 0;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-5xl);
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-base);
+  color: var(--orange);
+}
+.vectorIcon6,
+.vectorIcon7,
+.vectorIcon8,
+.vectorIcon9 {
+  position: absolute;
+  height: 78.12%;
+  width: 50%;
+  top: 15.63%;
+  right: 25%;
+  bottom: 6.25%;
+  left: 25%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon7,
+.vectorIcon8,
+.vectorIcon9 {
+  height: 9.38%;
+  top: 9.38%;
+  bottom: 81.25%;
+}
+.vectorIcon8,
+.vectorIcon9 {
+  height: 15.63%;
+  width: 56.25%;
+  top: 6.25%;
+  right: 21.87%;
+  bottom: 78.13%;
+  left: 21.88%;
+}
+.vectorIcon9 {
+  height: 25%;
+  width: 18.75%;
+  top: 68.75%;
+  right: 40.63%;
+  bottom: 6.25%;
+  left: 40.63%;
+}
+.vectorIcon10,
+.vectorIcon11,
+.vectorIcon12,
+.vectorIcon13,
+.vectorIcon14,
+.vectorIcon15,
+.vectorIcon16,
+.vectorIcon17,
+.vectorIcon18 {
+  position: absolute;
+  height: 6.25%;
+  width: 6.25%;
+  top: 53.13%;
+  right: 40.63%;
+  bottom: 40.63%;
+  left: 53.13%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon11,
+.vectorIcon12,
+.vectorIcon13,
+.vectorIcon14,
+.vectorIcon15,
+.vectorIcon16,
+.vectorIcon17,
+.vectorIcon18 {
+  top: 40.63%;
+  bottom: 53.13%;
+}
+.vectorIcon12,
+.vectorIcon13,
+.vectorIcon14,
+.vectorIcon15,
+.vectorIcon16,
+.vectorIcon17,
+.vectorIcon18 {
+  top: 28.13%;
+  bottom: 65.63%;
+}
+.vectorIcon13,
+.vectorIcon14,
+.vectorIcon15,
+.vectorIcon16,
+.vectorIcon17,
+.vectorIcon18 {
+  top: 53.13%;
+  right: 54.69%;
+  bottom: 40.63%;
+  left: 39.06%;
+}
+.vectorIcon14,
+.vectorIcon15,
+.vectorIcon16,
+.vectorIcon17,
+.vectorIcon18 {
+  top: 40.63%;
+  bottom: 53.13%;
+}
+.vectorIcon15,
+.vectorIcon16,
+.vectorIcon17,
+.vectorIcon18 {
+  top: 28.13%;
+  bottom: 65.63%;
+}
+.vectorIcon16,
+.vectorIcon17,
+.vectorIcon18 {
+  height: 25%;
+  width: 12.5%;
+  top: 65.62%;
+  right: 71.87%;
+  bottom: 9.38%;
+  left: 15.63%;
+}
+.vectorIcon17,
+.vectorIcon18 {
+  height: 31.25%;
+  width: 18.75%;
+  top: 62.5%;
+  right: 68.75%;
+  bottom: 6.25%;
+  left: 12.5%;
+}
+.vectorIcon18 {
+  height: 25%;
+  width: 12.5%;
+  top: 65.62%;
+  right: 15.62%;
+  bottom: 9.38%;
+  left: 71.88%;
+}
+.vectorIcon19,
+.vectorIcon20,
+.vectorIcon21,
+.vectorIcon22,
+.vectorIcon23 {
+  position: absolute;
+  height: 31.25%;
+  width: 18.75%;
+  top: 62.5%;
+  right: 12.5%;
+  bottom: 6.25%;
+  left: 68.75%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon20,
+.vectorIcon21,
+.vectorIcon22,
+.vectorIcon23 {
+  height: 6.25%;
+  width: 21.88%;
+  right: 9.38%;
+  bottom: 31.25%;
+}
+.vectorIcon21,
+.vectorIcon22,
+.vectorIcon23 {
+  right: 68.75%;
+  left: 9.38%;
+}
+.vectorIcon22,
+.vectorIcon23 {
+  width: 12.5%;
+  top: 87.5%;
+  right: 81.25%;
+  bottom: 6.25%;
+  left: 6.25%;
+}
+.vectorIcon23 {
+  right: 6.25%;
+  left: 81.25%;
+}
+.div2 {
+  position: absolute;
+  top: 0;
+  left: 156px;
+  background-color: var(--color-darkgray-100);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-5xl);
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-base);
+}
+.vectorIcon25,
+.vectorIcon26 {
+  position: absolute;
+  height: 26.56%;
+  width: 68.75%;
+  top: 21.88%;
+  right: 15.62%;
+  bottom: 51.56%;
+  left: 15.63%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon26 {
+  height: 32.81%;
+  width: 75%;
+  top: 18.75%;
+  right: 12.5%;
+  bottom: 48.44%;
+  left: 12.5%;
+}
+.vectorIcon27,
+.vectorIcon28,
+.vectorIcon29,
+.vectorIcon30,
+.vectorIcon31 {
+  position: absolute;
+  height: 15.63%;
+  width: 15.63%;
+  top: 53.13%;
+  right: 68.75%;
+  bottom: 31.25%;
+  left: 15.63%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon28,
+.vectorIcon29,
+.vectorIcon30,
+.vectorIcon31 {
+  right: 15.63%;
+  left: 68.75%;
+}
+.vectorIcon29,
+.vectorIcon30,
+.vectorIcon31 {
+  height: 6.25%;
+  width: 25%;
+  top: 59.38%;
+  right: 37.5%;
+  bottom: 34.38%;
+  left: 37.5%;
+}
+.vectorIcon30,
+.vectorIcon31 {
+  height: 35.94%;
+  width: 87.5%;
+  top: 43.75%;
+  right: 6.25%;
+  bottom: 20.31%;
+  left: 6.25%;
+}
+.vectorIcon31 {
+  height: 15.63%;
+  width: 81.25%;
+  top: 71.88%;
+  right: 9.38%;
+  bottom: 12.5%;
+  left: 9.38%;
+}
+.rent {
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  width: 60px;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+.div3 {
+  left: 312px;
+  background-color: var(--color-darkgray-100);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-5xl);
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-base);
+}
+.div3,
+.parisFrance,
+.tabs {
+  position: absolute;
+  top: 0;
+}
+.tabs {
+  left: 0;
+  width: 468px;
+  height: 80px;
+}
+.parisFrance {
+  left: 32px;
+  font-weight: 700;
+}
+.location,
+.vectorIcon32 {
+  position: absolute;
+  overflow: hidden;
+}
+.vectorIcon32 {
+  height: 83.84%;
+  width: 70.84%;
+  top: 8.1%;
+  right: 14.58%;
+  bottom: 8.06%;
+  left: 14.58%;
+  max-width: 100%;
+  max-height: 100%;
+}
+.location {
+  top: 1px;
+  left: 0;
+  width: 24px;
+  height: 24px;
+}
+.content2 {
+  position: relative;
+  width: 152px;
+  height: 27px;
+}
+.destination1,
+.form1 {
+  display: flex;
+  justify-content: flex-start;
+}
+.form1 {
+  border-radius: var(--br-base);
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-5xl);
+  color: var(--black);
+}
+.destination1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-5xs);
+}
+.line {
+  position: absolute;
+  top: 9.5px;
+  left: 255.5px;
+  border-right: 1px solid var(--gray);
+  box-sizing: border-box;
+  width: 1px;
+  height: 49px;
+}
+.vectorIcon33 {
+  position: absolute;
+  height: 91.67%;
+  width: 83.33%;
+  top: 4.17%;
+  right: 8.33%;
+  bottom: 4.17%;
+  left: 8.33%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.calendar,
+.july2021 {
+  position: relative;
+  flex-shrink: 0;
+}
+.calendar {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+.july2021 {
+  display: inline-block;
+  width: 160px;
+}
+.date,
+.date2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-5xs);
+}
+.date {
+  position: absolute;
+  top: 0;
+  left: 304px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.form,
+.search {
+  position: relative;
+}
+.form {
+  width: 552px;
+  height: 67px;
+}
+.search {
+  font-size: var(--text-medium-1-size);
+  font-weight: 500;
+  font-family: var(--text-medium-1);
+  color: var(--white);
+  text-align: left;
+}
+.button1,
+.content1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.button1 {
+  cursor: pointer;
+  border: 0;
+  padding: 8px;
+  background-color: var(--orange);
+  border-radius: var(--br-base);
+  width: 160px;
+  height: 64px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.content1 {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  border-radius: 0 var(--br-21xl) var(--br-21xl) var(--br-21xl);
+  background-color: var(--white);
+  padding: 32px 64px;
+  justify-content: flex-start;
+  gap: 40px;
+  color: var(--gray);
+}
+.bookingForm {
+  position: absolute;
+  top: 748px;
+  left: 150px;
+  box-shadow: var(--shadow);
+  width: 880px;
+  height: 211px;
+  font-size: var(--text-medium-1-size);
+}
+.travelAgency {
+  position: relative;
+  background-color: var(--white);
+  width: 100%;
+  height: 1080px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--text-text-1-size);
+  color: var(--black);
+  font-family: var(--text-medium-1);
+}

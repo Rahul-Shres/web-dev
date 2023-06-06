@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --text-medium-1: Poppins;
+  --title-heading-1: "Bebas Neue";
+  --font-oswald: Oswald;
+
+  /* font sizes */
+  --text-medium-1-size: 18px;
+  --text-text-1-size: 24px;
+  --title-heading-1-size: 120px;
+
+  /* Colors */
+  --white: #fff;
+  --orange: #f77a40;
+  --black: #2e2e2e;
+  --gray: #ababab;
+  --color-darkgray-100: rgba(171, 171, 171, 0.15);
+
+  /* Gaps */
+  --gap-5xs: 8px;
+  --gap-5xl: 24px;
+  --gap-base: 16px;
+
+  /* Paddings */
+  --padding-5xl: 24px;
+  --padding-base: 16px;
+
+  /* border radiuses */
+  --br-21xl: 40px;
+  --br-base: 16px;
+  --br-5xs: 8px;
+
+  /* Effects */
+  --shadow: 0px 24px 50px rgba(0, 0, 0, 0.1);
+}
