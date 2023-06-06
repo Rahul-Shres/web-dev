@@ -1,0 +1,7 @@
+The MainPage component represents the main page of the application.
+The code retrieves the 'todo' item from localStorage and parses it as JSON using conditional (ternary) operator.
+The history object is accessed from the useHistory hook to enable navigation.
+The handleAddTodo function handles the event when the user clicks on the "Add todo" button. It uses history.push() to navigate to the '/add' page.
+The component renders a Navbar component and a container for displaying todos.
+If there are todos (getTodo has a length greater than 0), the todos are mapped and rendered as individual div elements with a link to view details.
+If there are no todos, a message is displayed along with a button to add a new todo.

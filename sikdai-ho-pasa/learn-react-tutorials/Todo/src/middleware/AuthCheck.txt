@@ -1,0 +1,9 @@
+In this code, the comments explain the purpose and functionality of each part:
+
+The useHistory hook is imported from the 'react-router-dom' module. This hook allows accessing the history object, which provides navigation functionality.
+The AuthCheck component is created as a functional component.
+The useHistory hook is used to access the history object, which will be used for navigation.
+The code checks if the 'loggedIn' key is not present in the localStorage.
+If the key is not present, it means the user is not logged in.
+In that case, the code redirects the user to the login page using history.replace("/login").
+The replace() function replaces the current page with the specified path ("/login" in this case).

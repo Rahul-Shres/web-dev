@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <title>Document</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="menu">
+            <a href="#">The App</a>
+            <a href="#">Community</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+
+    <!-- Section 1 -->
+    <section class="section" id="s1">
+        <div class="img1"></div>
+        <article>
+            <h2>Everything starts with coffee</h2>
+            <p>Networking does not have to be intimidating. Meet inspiring people while you enjoy the best coffee in town.</p>
+            <a href="#">Start Connecting Now</a>
+        </article>
+    </section>
+    <!-- End Section 1 -->
+
+    <!-- Section 2 -->
+    <section class="section" id="s2">
+        <article>
+            <h2>Discover the Nº1 networking mobile App</h2>
+            <p>A community of more than 3M users is waiting for you to join. Check now who is around you and start building great relationships that might lead to a lot of opportunities.</p>
+            <a href="#">Join the community</a>
+        </article>
+        <div class="img2"></div>
+    </section>
+    <!-- End Section 2 -->
+
+    <!-- Section 3 -->
+    <section class="section" id="s3">
+        <div class="img3"></div>
+        <article>
+            <h2>Awesome design, exclusive features.</h2>
+            <p>Unlock for free easy-to-use features that make your next colleague or collaborator search easier and faster.</p>
+            <a href="#">Try the app</a>
+        </article>
+    </section>
+    <!-- End Section 3 -->
+
+    <!-- Footer -->
+    <footer>
+        <span>Copyright &copy; 2022</span>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+     <!-- Use ScrollReveal library to animate elements -->
+    <script>
+        ScrollReveal().reveal('#s1', {
+            delay: 75,
+            duration: 1500,
+            opacity: 0,
+            distance: "50%",
+            origin: "top",
+            reset: true
+        });
+
+        ScrollReveal().reveal('#s2', {
+            delay: 125,
+            duration: 1500,
+            opacity: 0,
+            distance: "50%",
+            origin: "right",
+            reset: true
+        });
+
+        ScrollReveal().reveal('#s3', {
+            delay: 175,
+            duration: 1500,
+            opacity: 0,
+            distance: "50%",
+            origin: "bottom",
+            reset: true
+        });
+    </script>
+</body>
+</html>

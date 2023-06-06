@@ -1,0 +1,8 @@
+This code is a React component for the Login page of an application. It handles the logic and rendering for the login form and related functionality. The code includes comments that describe the purpose and functionality of each section:
+
+The Navbar component is rendered at the top of the page.
+The main container div with the class name todo_container holds the login form and related content.
+If the user is already logged in (checked using localStorage.getItem('loggedIn')), it displays a message indicating they are logged in and provides a logout button. Clicking the logout button clears the login status and redirects the user to the home page.
+If the user is not logged in, it displays a login button. Clicking the login button triggers a login action: displays an alert, redirects the user to the home page, and sets the login status in the local storage.
+The code includes a link to a nested route (/login/showInfo), which is displayed as "Nested Route - Show Info".
+The nested route is defined using the Route component from react-router-dom. When the path matches /login/showInfo, it renders a div with the text "You are logged in".

@@ -1,0 +1,8 @@
+I have added comments to describe each part of the code:
+
+The AuthCheckBoolean function is responsible for checking the user's login status.
+The loggedIn variable is initialized as false by default.
+It checks if there is an item called 'loggedIn' in the localStorage.
+If the 'loggedIn' item exists, it means the user is logged in, so the loggedIn variable is set to true.
+Finally, the function returns the value of loggedIn to indicate the user's login status.
+By reading these comments, you can easily understand the purpose and functionality of 

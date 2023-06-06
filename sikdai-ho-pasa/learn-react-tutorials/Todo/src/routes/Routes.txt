@@ -1,0 +1,10 @@
+This code defines the routes for the application using the react-router-dom library. The comments have been updated to provide a clearer understanding of each section:
+
+The BrowserRouter component is used to handle routing in the application.
+The Switch component is used to render only the first matching route.
+The root path ("/") is redirected to the "/home" path using the Redirect component.
+The "/home" path is associated with the MainPage component.
+The "/add" path is a protected route, rendering the AddPage component.
+The "/login" path is associated with the Login component.
+The "/view/:id" path is associated with the Viewpage component, where ":id" is a dynamic parameter representing the ID.
+Any other paths that do not match the above routes are handled by the "path='*'" route, rendering the NotFound component.
