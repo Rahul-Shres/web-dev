@@ -4,6 +4,9 @@ const userRouter = require("./modules/users/users.routes");
 require("dotenv").config();
 
 const app = express();
+
+require("./models/users.model");
+
 mongoose
   .connect(process.env.mongo_connect, {})
   .then(() => {
