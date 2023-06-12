@@ -51,38 +51,40 @@
     font-weight: 600 !important;
     cursor: pointer;
     /* animation */
-    transition: 1s ease-in-out;
-    font-size: 1rem;
+    transition: 0.2s ease-in-out;
+    font-size: 1.2rem;
  }
  .nav_item a:hover {
     color:var(--primary-color);
  }
 
 
- .nav_right{
-      display: flex;
-      align-items: center;
-      column-gap: 1.5rem;
+ .nav-right {
+   display: flex;
+   align-items: center;
+   column-gap: 1.5rem;
  }
-
- .register_btn {
-    border-radius: none;
-    outline:none;
-    padding: 10px 20px;
-    color: #fff;
-    background: var(--primary-color);
-    border-radius: 5px;
-    font-family: var(--font-name);
-    font-size: 1.2rem;
-    font-weight: 500;
-    cursor: pointer;
+ 
+ .nav-right button {
+   border-radius: none;
+   outline: none;
+   padding: 10px 20px;
+   color: #fff;
+   background: var(--primary-color);
+   border-radius: 5px;
+   font-family: var(--font-name);
+   font-size: 1.2rem;
+   font-weight: 500;
+   cursor: pointer;
+   margin-left: 10px;
+   margin-right: 10px;
  }
-
- .mobile_header{
-    color: var(--header-color);
-    font-size: 1.3rem;
-    cursor: pointer;
-    /* display: none; */
+ 
+ .nav-right .mobile-menu {
+   margin-left: 10px;
+   color: var(--header-color);
+   font-size: 1.3rem;
+   cursor: pointer;
  }
 
  .sticky_header{

@@ -6,33 +6,38 @@ import "../../styles/hero.css";
 const Hero = () => {
   return (
     <section>
+      <div className="background"></div>
       <div className="container">
         <div className="hero-wrapper">
+          {/* Left section - content*/}
           <div className="hero-content">
-            <h2 className="section_title">
-              Exercise is the key to a
-              <span className="highlights"> Healthy</span> LifeStyle
+            <h2 className="section-title">
+              Become a<span className="highlights"> Ninja</span>
             </h2>
             <p>
-              Regular physical activity is one of the most important things you
-              can do for your health. Being physically active can improve your
-              brain health, help manage weight, reduce the risk of disease,
-              strengthen bones and muscles, and improve your ability to do
-              everyday activities.
+              Embark on an epic journey filled with adventure, friendship,{" "}
+              <br /> and the pursuit of dreams. Dive into the captivating world
+              of Naruto, <br />
+              where powerful ninjas rise to protect their villages and overcome{" "}
+              <br />
+              incredible challenges. weight, reduce the risk of disease,
+              strengthen <br />
+              bones and muscles, and improve your ability to do everyday
+              activities.
             </p>
 
             <div className="hero-btns">
-              <button className="register-btn">Get Started</button>
+              <button>Get Started</button>
               <button className="watch-btn">
                 <span>
                   <i class="fa-solid fa-play"></i>
-                </span>{" "}
+                </span>
                 Watch Video
               </button>
             </div>
           </div>
 
-          {/* images */}
+          {/* Right Section - images */}
           <div className="hero_img">
             <div className="hero_img_wrapper">
               <div className="box-01">

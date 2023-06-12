@@ -9,11 +9,7 @@ const Header = () => {
     },
     {
       path: "#",
-      display: "Schedule",
-    },
-    {
-      path: "#",
-      display: "Classes",
+      display: "Watch",
     },
     {
       path: "#",
@@ -46,8 +42,9 @@ const Header = () => {
           {/* nav right */}
 
           <div className="nav-right">
-            <button className="register_btn">Register</button>
-            <span className="mobile_menu">
+            <button >Register</button>
+            <button >Sign In</button>
+            <span className="mobile-menu">
               
               <i class="fa-solid fa-bars"></i>
             </span>

@@ -27,6 +27,7 @@
 
 body{
   font-family: var(--font-name);
+
 }
 
 h1,h2,h3{
@@ -53,7 +54,7 @@ ul{
 /* reusable class */
 
 .container{
-  width: 1140px;
+  width: 1400px;
   padding: 0px 15px;
   margin: auto;
 }
@@ -61,4 +62,17 @@ ul{
 .section_title{
   color: var(--heading-color);
   font-weight: 700;
+}
+
+button {
+  border-radius: none;
+  outline:none;
+  padding: 10px 20px;
+  color: #fff;
+  background: var(--primary-color);
+  border-radius: 5px;
+  font-family: var(--font-name);
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
 }
