@@ -1,4 +1,21 @@
-
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -99;
+    background-color: #e5e5f7;
+    opacity: 0.1;
+    background-image: repeating-radial-gradient(
+        circle at 0 0,
+        transparent 0,
+        #e5e5f7 36px
+      ),
+      repeating-linear-gradient(#444cf755, #444cf7);
+  }
+  
+  
 .hero-wrapper{
     height: 80vh;
  display:flex;
@@ -173,23 +190,7 @@ padding: 3px;
         width: 80%;
     }
 
-    .background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -99;
-        background-color: #e5e5f7;
-        opacity: 0.1;
-        background-image: repeating-radial-gradient(
-            circle at 0 0,
-            transparent 0,
-            #e5e5f7 36px
-          ),
-          repeating-linear-gradient(#444cf755, #444cf7);
-      }
-      
+    
       /* Rest of your CSS code */
       
     
