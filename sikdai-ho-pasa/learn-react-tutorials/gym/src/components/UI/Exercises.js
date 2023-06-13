@@ -6,6 +6,7 @@ import extended from '../../assets/img/extended.png'
 const Exercises = () => {
   return (
     <section>
+      <div className="background-02"></div>
       <div className="container exercise-container">
         <div className="exercise-top">
           <h2 className="section-title">
