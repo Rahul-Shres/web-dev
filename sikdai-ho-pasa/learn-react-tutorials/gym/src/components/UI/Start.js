@@ -4,7 +4,7 @@ import avatar02 from "../../assets/img/avatar02.png";
 
 const Start = () => {
   return (
-    <section>
+    <section id="start">
       <div className="container">
         <div className="start-wrapper">
           <div className="start-img">

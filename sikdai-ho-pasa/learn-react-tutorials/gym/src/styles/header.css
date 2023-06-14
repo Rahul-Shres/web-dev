@@ -86,8 +86,9 @@
    font-size: 1.3rem;
    cursor: pointer;
  }
+ /* making nav sticky */
 
- .sticky_header{
+ .sticky-header{
 
     width: 100%;
     position:sticky;

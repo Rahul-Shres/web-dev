@@ -1,11 +1,11 @@
 import React from "react";
 import "../../styles/exercises.css";
 import lunges from "../../assets/img/lunges.png";
-import yogaPose from '../../assets/img/yoga-pose.png'
-import extended from '../../assets/img/extended.png'
+import yogaPose from "../../assets/img/yoga-pose.png";
+import extended from "../../assets/img/extended.png";
 const Exercises = () => {
   return (
-    <section>
+    <section id="classes">
       <div className="background-02"></div>
       <div className="container exercise-container">
         <div className="exercise-top">
@@ -30,38 +30,37 @@ const Exercises = () => {
               <img src={extended} alt="" />
             </span>
             <div className="exercise_content">
-            <h4>Healthy Life</h4>
-            <p>
-              Embark on an epic journey filled with adventure, friendship,{" "}
-              incredible challenges.
-            </p>
-          </div>
+              <h4>Healthy Life</h4>
+              <p>
+                Embark on an epic journey filled with adventure, friendship,{" "}
+                incredible challenges.
+              </p>
+            </div>
           </div>
           <div className="exercise_item">
             <span className="exercise-icon">
               <img src={yogaPose} alt="" />
             </span>
             <div className="exercise_content">
-            <h4>Healthy Life</h4>
-            <p>
-              Embark on an epic journey filled with adventure, friendship,{" "}
-              incredible challenges.
-            </p>
-          </div>
+              <h4>Healthy Life</h4>
+              <p>
+                Embark on an epic journey filled with adventure, friendship,{" "}
+                incredible challenges.
+              </p>
+            </div>
           </div>
           <div className="exercise_item">
             <span className="exercise-icon">
               <img src={lunges} alt="" />
             </span>
             <div className="exercise_content">
-            <h4>Healthy Life</h4>
-            <p>
-              Embark on an epic journey filled with adventure, friendship,{" "}
-              incredible challenges.
-            </p>
+              <h4>Healthy Life</h4>
+              <p>
+                Embark on an epic journey filled with adventure, friendship,{" "}
+                incredible challenges.
+              </p>
+            </div>
           </div>
-          </div>
-          
         </div>
       </div>
     </section>
