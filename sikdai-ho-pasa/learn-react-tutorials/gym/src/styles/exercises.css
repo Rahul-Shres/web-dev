@@ -8,19 +8,22 @@ background-color: #e5e5f7;
 }
 
 .exercise-top h2{
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+    
 }
 
 .exercise-top p{
     color: var(--heading-color);
-    font-size: 1rem;
-    line-height: 28px;
+    font-size: 1.5rem;
+    line-height: 30px;
 }
 
 /* container */
 
 .exercise_wrapper{
+    width: 1400px;
+    margin: auto;
     background-color: purple;
     border-radius: 0.5rem;
     display: flex;
@@ -33,7 +36,7 @@ background-color: #e5e5f7;
     display: flex;
     align-items: center;
     column-gap: 1.2rem;
-    width: 33%;
+    width: 40%;
 }
 
 /* icon */

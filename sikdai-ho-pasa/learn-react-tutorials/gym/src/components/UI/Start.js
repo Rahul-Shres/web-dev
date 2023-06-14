@@ -25,7 +25,7 @@ const Start = () => {
               activities.
             </p>
 
-            <button className="register-btn">Register</button>
+            <button >Register</button>
           </div>
         </div>
       </div>

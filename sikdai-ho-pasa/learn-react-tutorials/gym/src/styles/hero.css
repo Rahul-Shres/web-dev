@@ -17,7 +17,7 @@
   
   
 .hero-wrapper{
-    height: 80vh;
+height: 80vh;
  display:flex;
  justify-content: space-between;
  padding-top: 50px;
@@ -29,15 +29,20 @@
  padding-right: 60px;
  line-height: 60px;
  margin-bottom:  20px;
- margin-top: 150px;
 }
 
 .highlights{
     color: var(--primary-color);
 }
+.hero-content{
+    margin-top: 200px;
+}
 
+.hero-content h2{
+    font-size: 3rem;
+}
 .hero-content p {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(-headline-color);
     margin-bottom: 50px;
     line-height: 30px;
@@ -85,35 +90,16 @@
 
 /* decoration */
 
-.box-01{
-    width: 400px;
-    height: 400px;
-    border-radius: 100%;
-    border: 25px solid rgba(141,141,235,1);
-}
-.box-02{
-    width: 350px;
-    height: 350px;
-    border-radius: 100%;
-    border: 25px solid #b5a9f3;
-}
-.box-03{
-    width: 300px;
-    height: 300px;
-    border-radius: 100%;
-    border: 25px solid #d3cef2;
-}
-
 .hero_img_wrapper{
     position: relative;
     z-index: 1;
-    top: 8%;
+    top: -5%;
     right: 20%;
 }
 .box_img{
-    position: absolute;
-    top: -12%;
-    left: -30%;
+    position: relative;
+    top: -30%;
+    left: 3%;
     z-index: 10;
 }
 
@@ -124,8 +110,7 @@
 .heart-rate{
 width: 100px;
  position: absolute;
- top: 55%;
- left: -11%;
+ top: 60%;
  z-index: 10;
  box-shadow: -3px 3px 8px -1px #d4c3f2;
  text-align: center;
@@ -148,8 +133,8 @@ padding: 3px;
 
 .gym-location{
     position: absolute;
-    top: -2%;
-    right: -17%;
+    top: 7%;
+    right: -50%;
     z-index: 10;
     box-shadow: -3px 3px 8px -1px #d4c3f2;
     text-align: center;
@@ -159,8 +144,8 @@ padding: 3px;
    }
 
    .gym-location span{
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 25px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -173,8 +158,8 @@ padding: 3px;
 
     .dumble_icon{
         position: absolute;
-        top: -2%;
-        left: -5%;
+        top: 10%;
+        left: 10%;
         z-index: 10;
         display: flex;
         align-items: center;

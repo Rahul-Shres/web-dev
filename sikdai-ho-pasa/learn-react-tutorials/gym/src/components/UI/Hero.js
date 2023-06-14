@@ -79,21 +79,7 @@ const Hero = () => {
           {/* Right Section - images */}
           <div className="hero_img">
             <div className="hero_img_wrapper">
-              <motion.div
-                className="box-01"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.25 }}>
-                <motion.div
-                  className="box-02"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.5 }}>
-                  <motion.div
-                    className="box-03"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1 }}>
+              
                     <motion.div
                       className="box_img"
                       initial="initial"
@@ -105,9 +91,7 @@ const Hero = () => {
                       transition={{ delay: 2, repeat: Infinity }}>
                       <img src={heroImg} alt="" />
                     </motion.div>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
+                 
 
               <motion.div
                 className="heart-rate"

@@ -51,7 +51,7 @@ const Exercises = () => {
           </div>
           <div className="exercise_item">
             <span className="exercise-icon">
-              <img src={lunges} alt="" />
+              <img src={yogaPose} alt="" />
             </span>
             <div className="exercise_content">
               <h4>Healthy Life</h4>
