@@ -1,0 +1,61 @@
+.btn-container {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    height: 80px;
+  }
+  
+  .item-01 {
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 80px;
+    border-top-left-radius: 40px;
+    overflow: hidden;
+    margin-right: -15px; /* Add this line to remove the right margin */
+  }
+  
+  .item-02 {
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 80px;
+    overflow: hidden;
+    margin-right: -15px; /* Add this line to remove the right margin */
+  }
+  
+  .item-03 {
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 80px;
+    border-top-right-radius: 40px;
+    overflow: hidden;
+    margin-right: 0; /* Remove the right margin */
+  }
+
+  .item-01 > span,
+.item-02 > span,
+.item-03 > span {
+  margin-left: -15px; /* Adjust the margin as needed */
+}
+  .item-01 > h3,
+.item-02 > h3,
+.item-03 > h3 {
+    margin-left: -10px; /* Adjust the margin as needed */
+}
+
+
+  
+ 
+.item-01.active,
+.item-02.active,
+.item-03.active {
+  background-color: rgb(187, 204, 219);
+}
