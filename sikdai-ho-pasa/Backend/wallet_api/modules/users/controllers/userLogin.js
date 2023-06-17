@@ -23,6 +23,7 @@ const userLogin = async (req, res) => {
     // JWT
     const accessToken = jwt.sign(
       {
+        _id: getUser._id,
         email: getUser.email,
         password: getUser.password,
       },
