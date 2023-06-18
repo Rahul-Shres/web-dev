@@ -1,61 +1,157 @@
-.btn-container {
-    display: flex;
-    align-items: center;
-    width: 500px;
-    height: 80px;
-  }
-  
-  .item-01 {
-    background-color: aliceblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 180px;
-    height: 80px;
-    border-top-left-radius: 40px;
-    overflow: hidden;
-    margin-right: -15px; /* Add this line to remove the right margin */
-  }
-  
-  .item-02 {
-    background-color: aliceblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 80px;
-    overflow: hidden;
-    margin-right: -15px; /* Add this line to remove the right margin */
-  }
-  
-  .item-03 {
-    background-color: aliceblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 180px;
-    height: 80px;
-    border-top-right-radius: 40px;
-    overflow: hidden;
-    margin-right: 0; /* Remove the right margin */
-  }
+.container {
+  position: relative;
+}
 
-  .item-01 > span,
+.left-section {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 40vw; /* occupy 40% of viewport width */
+  height: 40vh; /* occupy 40% of viewport height */
+}
+
+.right-section {
+  position: absolute;
+  right: -200px; /* adjust the value as needed */
+  top: -300px; /* adjust the value as needed */
+  z-index: 0;
+  width: 55vw; /* occupy 60% of viewport width */
+  height: 100vh; /* occupy 100% of viewport height */
+}
+.title{
+  margin-top: 15%;
+  font-size: 3.5rem;
+  line-height: 130%;
+}
+
+.caption{
+  font-size: 1.5rem;
+  line-height: 130%;
+  color: #2E2E2E;
+  margin-bottom: 50px;
+}
+
+.title span{
+  color: var(--primary-color);
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  width: 510px;
+  margin: 0;
+  height: 80px;
+}
+
+.item-01 {
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 80px;
+  border-top-left-radius: 40px;
+  overflow: hidden;
+  margin-right: -15px;
+}
+
+.item-02 {
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 80px;
+  overflow: hidden;
+  margin-right: -15px;
+}
+
+.item-03 {
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 80px;
+  border-top-right-radius: 40px;
+  overflow: hidden;
+  margin-right: 0;
+}
+
+.item-01 > span,
 .item-02 > span,
 .item-03 > span {
-  margin-left: -15px; /* Adjust the margin as needed */
+  margin-left: -15px;
 }
-  .item-01 > h3,
+
+.item-01 > h3,
 .item-02 > h3,
 .item-03 > h3 {
-    margin-left: -10px; /* Adjust the margin as needed */
+  margin-left: -10px;
 }
 
-
-  
- 
 .item-01.active,
 .item-02.active,
 .item-03.active {
   background-color: rgb(187, 204, 219);
 }
+
+.right-section .box-1 {
+  height: 1300px;
+  width: 1300px;
+  border: 110px solid rgba(247, 122, 64, 0.05); /* Updated border with 20% opacity */
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section .box-2 {
+  height: 900px;
+  width: 900px;
+  border: 110px solid rgba(247, 122, 64, 0.05); /* Updated border with 20% opacity */
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section .box-2-children {
+  margin: auto;
+}
+
+.right-section .circle {
+  height: 500px;
+  width: 500px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.right-section .circle .line,.vector {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-51%, -50%);
+  width: 550px;
+}
+
+.right-section .circle .plane {
+  height: 45%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-150%, -35%);
+}
+.right-section .circle .girl {
+  height: 160%;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -55%);
+}
+
