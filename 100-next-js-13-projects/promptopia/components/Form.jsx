@@ -57,7 +57,6 @@ handleSubmit,
           </Link>
 
           <button
-          onClick={() => alert('dfgdfgfg')}
           type='submit'
           disabled={submitting}
           className='px-5 py-1.5 text-sm bg-primary-orange
