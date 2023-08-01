@@ -46,6 +46,7 @@ const Nav = () => {
             </button>
 
             <Link href="/profile">
+              {/* Profile Image */}
               <Image
                 src={session?.user.image}
                 width={37}
@@ -76,6 +77,7 @@ const Nav = () => {
       <div className="sm:hidden flex relative">
         {session?.user ? (
           <div className="flex">
+            {/* Profile Image */}
             <Image
               src={session?.user.image}
               width={37}

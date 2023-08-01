@@ -17,6 +17,7 @@ const handler = NextAuth({
   ],
   secret: process.env.NEXTAUTH_SECRET,
  
+  callbacks:{
     async session({ session }) {
       const sessionUser = await User.findOne({
         email: session.user.email,
@@ -48,6 +49,10 @@ const handler = NextAuth({
         console.log(error);
       }
     },
+
+  }
+
+   
   
 });
 
