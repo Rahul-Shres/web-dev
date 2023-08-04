@@ -69,6 +69,11 @@
   .main {
     padding: 0;
   }
+
+  .full-screen-mobile {
+    height: 100vh;
+    width: 100vw;
+  }
 }
 
 /* Tailwind Styles */
