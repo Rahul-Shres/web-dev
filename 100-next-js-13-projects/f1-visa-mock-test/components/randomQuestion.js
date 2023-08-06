@@ -55,7 +55,7 @@ const RandomQuestionApp = () => {
 
   // Function to start the timer for each question
   const startTimer = () => {
-    setTimer(25);
+    setTimer(15);
     setIsTimerActive(true);
   };
 
@@ -99,7 +99,7 @@ const RandomQuestionApp = () => {
       setQuizStarted(true);
       setCurrentQuestionIndex(0);
       setAllQuestionsAnswered(false);
-      setTimer(25);
+      setTimer(15);
       startTimer();
     } else {
       // If quiz is not started, start it
