@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { FormControl, FormGroup, Input, InputLabel, Typography, styled, Button } from '@mui/material';
 import { addUser } from '../service/api';
-
+import {useNavigate} from 'react-router-dom';
 // Apply CSS styling to the container using MUI styled component
 const Container = styled(FormGroup)`
   width: 50%;
@@ -14,6 +14,8 @@ const Container = styled(FormGroup)`
 
 // Define the AddUser component
 const AddUser = () => {
+
+
   // Define a state variable 'formData' to store user input (name, username, email, phone)
   const [formData, setFormData] = useState({
     name: '',
@@ -22,6 +24,8 @@ const AddUser = () => {
     phone: '',
   });
 
+
+  const navigate = useNavigate();
   // Function to handle changes in the input fields and update the 'formData' state
   function onValueChanged(e) {
     setFormData({
@@ -42,6 +46,8 @@ const AddUser = () => {
       // If an error occurs during the API call, log the error to the console
       console.log('Error while adding user:', error);
     }
+
+    navigate('/all');
   }
   
   // Render the AddUser component
