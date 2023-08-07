@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef} from 'react';
 import '../app/globals.css';
+import { useSpeechSynthesis } from 'react-speech-kit'; // Import the useSpeechSynthesis hook
 
 
 const RandomQuestionApp = () => {
@@ -55,7 +56,7 @@ const RandomQuestionApp = () => {
 
   // Function to start the timer for each question
   const startTimer = () => {
-    setTimer(15);
+    setTimer(10);
     setIsTimerActive(true);
   };
 
@@ -88,6 +89,7 @@ const RandomQuestionApp = () => {
 
   // Function to handle moving to the next question
   const nextQuestion = () => {
+    cancel();
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     startTimer(); // Start the timer again when moving to the next question manually
   };
@@ -99,7 +101,7 @@ const RandomQuestionApp = () => {
       setQuizStarted(true);
       setCurrentQuestionIndex(0);
       setAllQuestionsAnswered(false);
-      setTimer(15);
+      setTimer(10);
       startTimer();
     } else {
       // If quiz is not started, start it
@@ -123,30 +125,78 @@ const RandomQuestionApp = () => {
     loadQuestions();
   }, []);
 
+ // ... (Your existing code)
+
+  // State to manage whether the question is currently being read aloud
+  const [isReadingQuestion, setIsReadingQuestion] = useState(false);
+
+  // useSpeechSynthesis hook to access the speech synthesis functionality
+  const { speak, cancel } = useSpeechSynthesis();
+
+ // Ref to store the previous currentQuestionIndex
+ const prevCurrentQuestionIndexRef = useRef();
+
+ // Function to handle reading out the question
+ const readQuestion = () => {
+   const currentQuestion = getCurrentQuestion();
+   if (currentQuestion) {
+     speak({ text: currentQuestion });
+     setIsReadingQuestion(true);
+   }
+ };
+
+ // Automatically read the new question whenever currentQuestionIndex changes
+ useEffect(() => {
+   if (quizStarted) {
+     // Compare the current and previous question indexes
+     if (prevCurrentQuestionIndexRef.current !== currentQuestionIndex) {
+       // If the current index is different from the previous one, read the new question
+       readQuestion();
+       // Update the previous question index
+       prevCurrentQuestionIndexRef.current = currentQuestionIndex;
+     }
+   }
+ }, [currentQuestionIndex, quizStarted]);
+
+ // ... (Your existing code)
+
   return (
     <div>
-    {!quizStarted && (
-      <button onClick={startQuiz} className="blue_btn" >Start Mock Test</button>
-    )}
-    {quizStarted && (
-      <>
-      <section className={`w-full flex-center flex-col glassmorphism text-center ${quizStarted && window.innerWidth <= 640 ? 'full-screen-mobile' : ''}`}>
-        <h1 className="title_text">
-          {allQuestionsAnswered ? (
-            <>
-              <span className="text-black">Good </span>
-              <span className="blue_gradient text-center">Work</span>
-            </>
-          ) : (
-            <>
-              Begin the <span className="blue_gradient text-center">Mock Test</span>
-            </>
-          )}
-        </h1>
+      {!quizStarted && (
+        <button onClick={startQuiz} className="blue_btn">
+          Start Mock Test
+        </button>
+      )}
+      {quizStarted && (
+        <>
+          <section
+            className={`w-full flex-center flex-col glassmorphism text-center ${
+              quizStarted && window.innerWidth <= 640 ? 'full-screen-mobile' : ''
+            }`}
+          >
+            <h1 className="title_text">
+              {allQuestionsAnswered ? (
+                <>
+                  <span className="text-black">Good </span>
+                  <span className="blue_gradient text-center">Work</span>
+                </>
+              ) : (
+                <>
+                  Begin the <span className="blue_gradient text-center">Mock Test</span>
+                </>
+              )}
+            </h1>
 
-        {/* Display the current question */}
-        <h2 className={`questions ${questionTextClass} sm:${questionTextClass} md:${questionTextClass} lg:${questionTextClass} xl:${questionTextClass} 2xl:${mobileQuestionTextClass} my-5`}>{getCurrentQuestion()}</h2>
-        {/* Display the timer or "Practice makes man perfect" */}
+            {/* Display the current question */}
+            <h2
+              className={`questions ${questionTextClass} sm:${questionTextClass} md:${questionTextClass} lg:${questionTextClass} xl:${questionTextClass} 2xl:${mobileQuestionTextClass} my-5`}
+              onClick={readQuestion} // Call the readQuestion function on click
+              role="button" // Add role="button" for accessibility
+              tabIndex="0" // Add tabIndex="0" for accessibility
+            >
+              {getCurrentQuestion()}
+            </h2>
+              {/* Display the timer or "Practice makes man perfect" */}
         {allQuestionsAnswered ? (
           <p className='text-2xl font-medium text-gray-700 mb-8'>The more you practice, <br /> the more prepared you will be for the real thing,<br />  and the better your chances of <br /> getting your F1 visa.</p>
         ) : (
@@ -159,10 +209,10 @@ const RandomQuestionApp = () => {
         ) : (
           <button onClick={nextQuestion} className='blue_btn  my-5'>Next Question</button>
         )}
-      </section>
-      </>
-    )}
-  </div>
+          </section>
+        </>
+      )}
+    </div>
   );
 };
 
