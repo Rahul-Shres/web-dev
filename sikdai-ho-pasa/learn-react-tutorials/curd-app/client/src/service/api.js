@@ -35,8 +35,8 @@ export const getUsers = async () => {
 
 export const getUser = async (id) => {
     try {
-      const response = await axios.get(`${URL}/${id}`); // Make the API call
-      return response.data; // Return the first user object from the response data (assuming it's an array of users)
+      const response = await axios.get(`${URL}/edit/${id}`); // Update the URL to include "/user"
+      return response.data;
     } catch (error) {
       console.log('Error while calling getUser API', error);
     }

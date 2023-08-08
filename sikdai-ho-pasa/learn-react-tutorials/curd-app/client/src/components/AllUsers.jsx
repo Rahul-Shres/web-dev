@@ -11,6 +11,7 @@ const AllUsers = () => {
   const getAllUsers = async () => {
     let response = await getUsers();
     setUsers(response.data);
+    console.log(response.data);
   }
 
   const StyledTable = styled(Table)`
@@ -44,20 +45,20 @@ const TRow = styled(TableRow)`
         </THead>
     </TableHead>
     <TableBody>
-        {users.map((user) => (
-            <TRow key={user.id}>
-                <TableCell>{user._id}</TableCell> {/* change it to user.id to use JSON Server */}
-                <TableCell>{user.name}</TableCell>
-                <TableCell>{user.username}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.phone}</TableCell>
-                <TableCell>
-                    <Button color="primary" variant="contained" style={{marginRight:10}} component={Link} to={`/edit/${user._id}`} >Edit</Button> {/* change it to user.id to use JSON Server */}
-                    <Button color="secondary" variant="contained">Delete</Button> {/* change it to user.id to use JSON Server */}
-                </TableCell>
-            </TRow>
-        ))}
-    </TableBody>
+    {users.map((user) => (
+        <TRow key={user._id}>
+            <TableCell>{user._id}</TableCell>
+            <TableCell>{user.name}</TableCell>
+            <TableCell>{user.username}</TableCell>
+            <TableCell>{user.email}</TableCell>
+            <TableCell>{user.phone}</TableCell>
+            <TableCell>
+                <Button color="primary" variant="contained" style={{ marginRight: 10 }} component={Link} to={`/edit/${user._id}`} >Edit</Button>
+                <Button color="secondary" variant="contained">Delete</Button>
+            </TableCell>
+        </TRow>
+    ))}
+</TableBody>
 </StyledTable>
   )
 }

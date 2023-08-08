@@ -35,36 +35,37 @@ export const getUsers = async (req, res) => {
 
 // Get a user by id
 export const getUser = async (request, response) => {
-    try{
-        const user = await User.findById(request.params.id);
-        response.status(200).json(user);
-    }catch( error ){
-        response.status(404).json({ message: error.message })
-    }
+  try{
+      const user = await User.findById(request.params.id);
+      response.status(200).json(user);
+  }catch( error ){
+      response.status(404).json({ message: error.message })
+  }
 }
 
-// Save data of edited user in the database
-export const editUser = async (request, response) => {
-    try {
-      // Find the existing user in the database by its ID
-      const existingUser = await User.findById(request.params.id);
+
+// // Save data of edited user in the database
+// export const editUser = async (request, response) => {
+//     try {
+//       // Find the existing user in the database by its ID
+//       const existingUser = await User.findById(request.params.id);
   
-      if (!existingUser) {
-        return response.status(404).json({ message: 'User not found' });
-      }
+//       if (!existingUser) {
+//         return response.status(404).json({ message: 'User not found' });
+//       }
   
-      // Update the existing user with the new data from the request body
-      existingUser.name = request.body.name;
-      existingUser.username = request.body.username;
-      existingUser.email = request.body.email;
-      existingUser.phone = request.body.phone;
+//       // Update the existing user with the new data from the request body
+//       existingUser.name = request.body.name;
+//       existingUser.username = request.body.username;
+//       existingUser.email = request.body.email;
+//       existingUser.phone = request.body.phone;
   
-      // Save the updated user to the database
-      await existingUser.save();
+//       // Save the updated user to the database
+//       await existingUser.save();
   
-      response.status(200).json(existingUser);
-    } catch (error) {
-      response.status(409).json({ message: error.message });
-    }
-  };
+//       response.status(200).json(existingUser);
+//     } catch (error) {
+//       response.status(409).json({ message: error.message });
+//     }
+//   };
   
