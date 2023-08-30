@@ -25,6 +25,9 @@ app.get("/", (req,res) =>{
     res.send("Hello World")
 })
 
+const taskRouter = require('./routes/task');
+app.use('/tasks', taskRouter);
+
 
 app.listen('5000', () => {
     console.log("Server listening");
