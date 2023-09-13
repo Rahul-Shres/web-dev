@@ -3,18 +3,22 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
+// express.json accepts JSON files from Postman
+app.use(express.json());
 
-mongoose.connect( process.env.MONGO_URL , {
+const authRoute = require('./routes/auth');
+
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}) 
-
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log('MongoDB database connection established successfully');
+}).then(() => {
+    console.log('MongoDB database connection established successfully');
+}).catch((err) => {
+    console.error('Error connecting to MongoDB:', err);
 });
 
+app.use('/api/auth', authRoute);
 
 app.listen("3000", () => {
     console.log("Server running on port 3000");
-})
+});
