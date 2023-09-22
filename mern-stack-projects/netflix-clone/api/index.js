@@ -7,6 +7,8 @@ const app = express();
 app.use(express.json());
 
 const authRoute = require('./routes/auth');
+const userRoute = require('./routes/users');
+const movieRoute = require('./routes/movies');
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -19,6 +21,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
+app.use('/api/movies', userMovies);
 
 app.listen("3000", () => {
     console.log("Server running on port 3000");
