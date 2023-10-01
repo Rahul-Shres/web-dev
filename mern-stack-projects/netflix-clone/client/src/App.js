@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Register from './pages/register/REgister';
+import Watch from './pages/watch/Watch';
+import Login from './pages/login/Login'; // I assume Login is in a 'login' folder
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path='/register'>
+          <Register />
+        </Route>
+        <Route path='/watch'>
+          <Watch />
+        </Route>
+        <Route path='/login'>
+          <Login />
+        </Route>
+        {/* Add more routes as needed */}
+      </Switch>
+    </Router>
   );
 }
 
