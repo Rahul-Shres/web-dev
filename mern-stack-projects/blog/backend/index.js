@@ -62,7 +62,7 @@ app.post('/createBlog', async (req,res)=>{
   })
 })
 
-// Get All Blogs
+// Get All Blogs 
 app.get('/blog', async (req, res) => {
   try {
     const blogs = await Blog.find();
@@ -108,6 +108,34 @@ app.get('/blog/:id', async (req, res) => {
   }
 });
 
+//Update
+app.patch('/blog/:id', async (req, res) => {
+  const id = req.params.id;
+  const title = req.body.title;
+  const subtitle = req.body.subtitle;
+  const description = req.body.description
+  // const {title, subtitle, description} = req.body
+
+  await Blog.findByIdAndUpdate(id,{
+    title:title,
+    subtitle: subtitle,
+    description: description
+  });
+
+  res.status(200).json({
+    message: 'Blog updated successfully'
+  })
+})
+
+
+app.delete('/blog/:id', async (req,res)=>{
+  const id = req.params.id
+  // const {id} = req.params
+  await Blog.findByIdAndDelete(id)
+  res.status(200).json({
+    message: "Blog deleted Successfully"
+  })
+})
 
 // Start the Express server
 const port = process.env.PORT || 8000;
