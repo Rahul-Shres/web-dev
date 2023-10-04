@@ -1,9 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/AuthRoutes');
 const port = 4000;
 
 const app = express();
+const cookieParser = require('cookie-parser');
 app.use( 
     cors({
         origin: "http://localhost:4000",
@@ -22,6 +24,10 @@ connection.once('open', () => {
     console.log("Connected to database");
 });
 
+app.use(express.json());
+app.use(cookieParser());
+app.use('/',authRoutes)
 app.listen(port, () =>{
     console.log(`Server listening on port ${port}`);
 });
+ 

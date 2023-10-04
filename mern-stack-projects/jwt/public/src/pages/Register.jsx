@@ -1,5 +1,6 @@
 import React, { useState} from 'react'
 import { Link} from 'react-router-dom'
+import axios from 'axios';
 import {ToastContainer} from 'react-toastify'
 const Register = () => {
     const [values, setValues] = useState({
@@ -7,9 +8,20 @@ const Register = () => {
         password: '',
     })
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
-    };
+        try {
+          // Assuming 'values' is an object containing user registration data
+          const { data } = await axios.post("http://localhost:4000/register", values);
+      
+          // You can use 'data' here to handle the response from the server
+          console.log("Registration successful:", data);
+        } catch (err) {
+          // Handle errors, such as network issues or server errors
+          console.error("Error during registration:", err);
+        }
+      };
+      
   return (
     <div className='container'>
         <h2>Register Account</h2>
