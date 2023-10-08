@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -32,7 +33,7 @@ const Register = () => {
           if (email) generateError(email);
           else if (password) generateError(password);
         } else {
-          // Handle success
+          navigate('/');
         }
       }
     } catch (err) {

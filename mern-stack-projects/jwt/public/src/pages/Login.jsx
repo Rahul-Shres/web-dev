@@ -1,26 +1,46 @@
 import React, { useState} from 'react'
-import { Link} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {ToastContainer} from 'react-toastify'
 const Login = () => {
-    const [values, setValues] = useState({
-        email: '',
-        password: '',
-    })
+  const navigate = useNavigate();
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+  });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-          // Assuming 'values' is an object containing user registration data
-          const { data } = await axios.post("http://localhost:4000/register", values);
-      
-          // You can use 'data' here to handle the response from the server
-          console.log("Registration successful:", data);
-        } catch (err) {
-          // Handle errors, such as network issues or server errors
-          console.error("Error during registration:", err);
+  const generateError = (err) => { 
+    toast.error(err, {
+      position: "bottom-right",
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Assuming 'values' is an object containing user registration data
+      const { data } = await axios.post('http://localhost:4000/login', { ...values }, {
+        withCredentials: true,
+      });
+
+      // You can use 'data' here to handle the response from the server
+      console.log('Registration successful:', data);
+      if (data) {
+        if (data.errors) {
+          // Handle errors
+          const {email, password} = data.errors;
+          if (email) generateError(email);
+          else if (password) generateError(password);
+        } else {
+          navigate('/');
         }
-      };
+      }
+    } catch (err) {
+      // Handle errors, such as network issues or server errors
+      console.error('Error during registration:', err);
+    }
+  };
+
   return (
     <div className='container'>
         <h2>Login</h2>
