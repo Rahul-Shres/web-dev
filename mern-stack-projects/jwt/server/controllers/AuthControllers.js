@@ -10,7 +10,17 @@ const createToken = (id) => {
 }
 
 const handleErrors = (err) => {
+
     let errors = { email: '', password: '' };
+
+    if(err.message === "incorrect Email"){
+        errors.email = "That email is not registered. Please enter"
+
+    } 
+ 
+    if(err.message === "incorrect password"){
+        errors.password = "That password is not registered. Please enter"
+    }
 
     if (err.code === 11000) {
         errors.email = "Email is already registered";
@@ -27,12 +37,29 @@ const handleErrors = (err) => {
 
 module.exports.login = async (req, res, next) => {
     // Add login logic here
+    try {
+        const { email, password } = req.body;
+        const user = await UserModel.login({ email, password });
+        const token = createToken(user._id);
+
+        res.cookie("jwt", token, {
+            withCredentials: true,
+            httpOnly: false,
+            maxAge: maxAge * 1000,
+        });
+
+        res.status(200).json({ user: user._id, created: true });
+    } catch (e) {
+        console.log(e);
+        const errors = handleErrors(err);
+        res.json({ errors, created: false });
+    }
 };
 
 module.exports.register = async (req, res, next) => {
     try {
         const { email, password } = req.body;
-        const user = await UserModel.create({ email, password });
+        const user = await UserModel.create(email, password );
         const token = createToken(user._id);
 
         res.cookie("jwt", token, {
