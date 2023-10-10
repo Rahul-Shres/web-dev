@@ -1,7 +1,7 @@
 import React, { useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {ToastContainer} from 'react-toastify'
+import { ToastContainer, toast} from 'react-toastify';
 const Login = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({

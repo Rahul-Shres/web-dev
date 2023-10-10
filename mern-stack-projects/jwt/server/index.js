@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/AuthRoutes');
 const port = 4000;
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 const app = express();
 const cookieParser = require('cookie-parser');
 app.use( 
@@ -26,8 +29,8 @@ connection.once('open', () => {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use('/',authRoutes)
-app.listen(port, () =>{
+app.use('/', authRoutes);
+
+app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
- 
