@@ -2,9 +2,12 @@
 
 import React from 'react';
 import { Container, Typography, Paper } from '@mui/material';
+import Navbar from '../../component/Navbar/Navbar';
 
 const Contact = () => {
   return (
+    <>
+    <Navbar />
     <Container maxWidth="sm">
       <Paper elevation={3} style={{ padding: '16px', marginTop: '32px' }}>
         <Typography variant="h4" gutterBottom>
@@ -19,6 +22,8 @@ const Contact = () => {
         </ul>
       </Paper>
     </Container>
+    </>
+    
   );
 };
 

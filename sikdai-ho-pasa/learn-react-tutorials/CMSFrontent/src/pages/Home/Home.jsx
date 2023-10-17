@@ -2,9 +2,12 @@
 
 import React from 'react';
 import { Container, Typography, Button, Paper } from '@mui/material';
+import Navbar from '../../component/Navbar/Navbar';
 
 const Home = () => {
   return (
+    <>
+    <Navbar />
     <Container maxWidth="sm">
       <Paper elevation={8} style={{ padding: '16px', marginTop: '32px' }}>
         <Typography variant="h4" gutterBottom>
@@ -18,6 +21,8 @@ const Home = () => {
         </Button>
       </Paper>
     </Container>
+    </>
+    
   );
 };
 
