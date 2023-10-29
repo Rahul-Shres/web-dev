@@ -1,0 +1,58 @@
+/* Navbar.css */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .navbar-item {
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem;
+  }
+  
+  .navbar-burger {
+    cursor: pointer;
+    display: none;
+    flex-direction: column;
+    span {
+      background-color: #fff;
+      height: 2px;
+      margin: 2px 0;
+      width: 25px;
+    }
+  }
+  
+  /* Add responsive styles for mobile */
+  @media screen and (max-width: 768px) {
+    .navbar-burger {
+      display: flex;
+    }
+  
+    .navbar-menu {
+      display: none;
+      &.is-active {
+        display: block;
+      }
+  
+      .navbar-start {
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        width: 100%;
+      }
+  
+      .navbar-item {
+        padding: 1rem;
+      }
+    }
+  }
+  

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // Import axios for making API requests
-import Navbar from '../../component/NavBar/Navbar'; // Fix the path to Navbar
-import CreateBlog from '../CreateBlog/CreateBlog';
-
+import Navbar from '../component/Navbar/Navbar';
+import { Link } from 'react-router-dom';
 const Home = () => {
   const [blogs, setBlogs] = useState([]); // Fix the variable name
 
   // Define an async function to fetch blogs
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get('http://localhost:200/blogs');
-      setBlogs(response.data); // Fix the variable name and update state
+      const response = await axios.get('http://localhost:8000/blog'); // Use the correct backend URL
+      setBlogs(response.data.data); // Update state with the data received
     } catch (error) {
       console.error('Error fetching blogs:', error);
     }
@@ -22,15 +21,14 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
-      <CreateBlog />
+     <Navbar />
       <div className="card" style={{ width: '18rem' }}>
         {blogs.map((blog) => (
           <div key={blog._id}>
             <h2>{blog.title}</h2> {/* Display the title */}
             <h3>{blog.subtitle}</h3> {/* Display the subtitle */}
             <p>{blog.description}</p> {/* Display the description */}
-            <a href='#' className=''>Go somewhere</a>
+            <Link to="/blogs">View Blogs</Link>
           </div>
         ))}
       </div>

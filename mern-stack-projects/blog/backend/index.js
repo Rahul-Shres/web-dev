@@ -1,15 +1,22 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const cors = require('cors'); // Import the cors module
 
 // Load environment variables from .env file
 dotenv.config();
 
 // Create an Express app
 const app = express();
-app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
+// Configure CORS options
+const corsOptions = {
+  origin: 'http://localhost:3000', // Replace with your frontend's URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Specify the HTTP methods you want to allow
+};
 
 app.use(express.static('public'));
 // Connect to MongoDB using Mongoose
@@ -30,18 +37,6 @@ dbConnection.once('open', () => {
 });
 
 
-//GET API
-app.get("/", (req, res) => {
-  
-  
-  // Now, render the 'home' view
-  res.render('home');
-});
-app.get("/about", (req, res) => {
-  
-  // Now, render the 'home' view
-  res.render('about');
-});
 
 
 app.post('/createBlog', async (req,res)=>{
