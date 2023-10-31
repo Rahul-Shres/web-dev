@@ -6,19 +6,13 @@ const cors = require('cors'); // Import the cors middleware
 //dotenv
 dotenv.config();
 const app = express();
+app.use(cors());
 
 // Use the built-in express.json() middleware to parse JSON requests
 app.use(express.json());
 
-// Configure CORS
-const corsOptions = {
-  origin: 'http://localhost:5173/',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-};
 
-// Cors
-app.use(cors(corsOptions));
+
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,

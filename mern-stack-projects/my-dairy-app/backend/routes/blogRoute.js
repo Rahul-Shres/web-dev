@@ -87,6 +87,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get a single blog by ID
+router.get('/:id', async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+
+    if (!blog) {
+      // If the blog with the specified ID was not found, return a 404 Not Found response
+      return res.status(404).json({ message: 'Blog not found' });
+    }
+
+    // If the blog is found, return a 200 OK response with the blog data
+    res.status(200).json(blog);
+  } catch (err) {
+    // Handle any other errors by logging them and returning a 500 Internal Server Error
+    console.error(err);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
 
 // Delete blog
 router.delete('/:id', async (req, res) => {
