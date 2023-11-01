@@ -37,13 +37,29 @@ const BlogUI = () => {
     }
   };
 
+  const updateBlog = async (updatedBlog) => {
+    try {
+      const response = await axios.patch(`http://localhost:8000/blogers/${updatedBlog._id}`, updatedBlog);
+      setBlogs(blogs.map(blog => (blog._id === updatedBlog._id ? updatedBlog : blog)));
+    } catch (error) {
+      console.error('Error updating blog:', error);
+    }
+  };
+  
+  
+
   return (
     <div>
       <h1>Blog App</h1>
       <BlogForm onSubmit={createBlog} />
       <ul>
         {blogs.map((blog) => (
-          <Blog key={blog._id} blog={blog} onDelete={deleteBlog} />
+          <Blog
+            key={blog._id}
+            blog={blog}
+            onDelete={deleteBlog}
+            onUpdate={updateBlog}
+          />
         ))}
       </ul>
     </div>
