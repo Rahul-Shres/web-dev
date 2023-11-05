@@ -4,7 +4,8 @@ const Schema = mongoose.Schema; // Corrected the Schema declaration
 const userSchema = new Schema({
     userEmail: {
         type: String,
-        required: [true, "Please enter a valid email address"]
+        required: [true, "Please enter a valid email address"],
+        unique: true,
     },
     userPhoneNumber: {
         type: Number,
@@ -18,6 +19,9 @@ const userSchema = new Schema({
         type: String, // Corrected the 'trye' typo
         enum: ["customer", "admin"],
         default: "customer"
+    },
+    otp:{
+        type: Number
     }
 });
 

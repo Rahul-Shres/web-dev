@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const User = require('../model/userModel');
 const dotenv = require('dotenv').config();
 
 
@@ -13,3 +14,4 @@ connection.once('open', () => {
   console.log('MongoDB database connection established successfully');
 });
 }
+
