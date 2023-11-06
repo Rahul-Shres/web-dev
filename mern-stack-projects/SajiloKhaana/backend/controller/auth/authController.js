@@ -138,9 +138,46 @@ exports.verifyOtp = async (req, res) => {
         });
     } else {
       userExists[0].otp = undefined;
+      userExists[0].isOtpVerified = true;
       await userExists[0].save();
         res.status(200).json({
             message: "OTP is correct"
         });
     }
 }
+
+
+exports.resetPassword = async (req, res) => {
+  const { email, newPassword, confirmPassword } = req.body;
+  if (!email || !newPassword || !confirmPassword) {
+      return res.status(400).json({
+          message: "Please provide email, new password, and confirmed password"
+      });
+  }
+  if (newPassword !== confirmPassword) {
+      return res.status(400).json({
+          message: "New password does not match confirm password"
+      });
+  }
+
+  const userExist = await User.find({ userEmail: email });
+  if (userExist.length === 0) {
+      return res.status(400).json({
+          message: "User is not registered"
+      });
+  }
+
+  if(userExists[0].isOtpVerified !== true){
+    return res.status(403).json({
+        message: "You cannot perform this action"
+    })
+  }
+
+  userExist[0].userPassword = bcrypt.hashSync(newPassword, 10);
+  userExist[0].isOtpVerified = false;
+  await userExist[0].save();
+
+  res.status(200).json({
+      message: "Password changed successfully"
+  });
+};

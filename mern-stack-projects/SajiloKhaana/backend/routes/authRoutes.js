@@ -1,4 +1,4 @@
-const { registerUser, loginUser, forgotPassword, verifyOtp} = require('../controller/auth/authController');
+const { registerUser, loginUser, forgotPassword, verifyOtp, resetPassword} = require('../controller/auth/authController');
 
 const router = require("express").Router();
 
@@ -11,5 +11,6 @@ router.post("/login", loginUser);
 // Add a forward slash before "forgotPassword" and define it as POST
 router.post("/forgotPassword", forgotPassword);
 router.post("/verifyOtp", verifyOtp);
+router.post("/resetPassword", resetPassword);
 
 module.exports = router;
