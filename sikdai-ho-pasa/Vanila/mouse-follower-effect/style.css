@@ -1,0 +1,37 @@
+/* This is a comment. It's like a note for the grown-ups to understand the code better. */
+
+/* The '*' selector applies these styles to everything on the web page. */
+* {
+    margin: 0;         /* No space around things */
+    padding: 0;        /* No extra space inside things */
+    box-sizing: border-box; /* This helps with sizing things properly */
+}
+
+/* These styles are for the whole web page. */
+body {
+    overflow-x: hidden;   /* Don't let things go too far to the sides */
+    overflow-y: hidden;   /* Don't let things go too far up and down */
+}
+
+/* These styles are for both the HTML and the body elements. */
+html, body {
+    width: 100%;   /* Make everything as wide as the screen */
+    height: 100%;  /* Make everything as tall as the screen */
+}
+
+/* This is for an element with the ID 'background'. */
+#background {
+    width: 100%;            /* Make it as wide as the screen */
+    height: 100%;           /* Make it as tall as the screen */
+    background-color: black; /* Set the background color to black */
+}
+
+/* This is for an element with the ID 'circle'. */
+#circle {
+    position: absolute;      /* It's like saying, "Stay in one spot on the screen." */
+    transform: translate(-50%, -50%); /* Move the circle to the center of its parent element */
+    width: 60px;             /* Make it 60 pixels wide */
+    height: 60px;            /* Make it 60 pixels tall */
+    border-radius: 50%;     /* Make it a round circle */
+    border: 1.2px solid #fff; /* Put a white border around it */
+}
