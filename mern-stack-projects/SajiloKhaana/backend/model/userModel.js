@@ -27,6 +27,8 @@ const userSchema = new Schema({
         type: Boolean,
         default: false
     }
+},{
+    timeseries: true,
 });
 
 const User = mongoose.model("User", userSchema);

@@ -5,7 +5,8 @@ const User = require('./model/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 dotenv.config();
-const authRoutes = require('./routes/authRoutes');
+const authRoute = require('./routes/authRoutes');
+const productRoute = require('./routes/productRoute');
 // Database connection
 connectDatabase();
 
@@ -20,7 +21,8 @@ app.get('/', async (req, res) => {
 
 
 // Register user API
-app.use('', authRoutes)
+app.use('/api', authRoute)
+app.use('/api', productRoute)
 
 
 const port = process.env.PORT || 8000;

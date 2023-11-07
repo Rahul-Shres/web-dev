@@ -68,7 +68,7 @@ exports.loginUser = async (req, res) => {
 
         if (isMatched) {
             // Generate a token for authentication
-            const token = jwt.sign({ id: userFound._id }, "this is a secret key", { expiresIn: "30d" });
+            const token = jwt.sign({ id: userFound._id }, process.env.SECRET_KEY, { expiresIn: "30d" });
 
             res.status(200).json({
                 message: "User logged in successfully",
