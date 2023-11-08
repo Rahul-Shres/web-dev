@@ -3,12 +3,12 @@ const bcrypt = require("bcrypt");
 
 const adminSeeder = async () => {
   // Check if an admin user exists
-  const adminExists = await User.findOne({ userEmail: "ppxn@example.com" });
+  const adminExists = await User.findOne({ userEmail: "admin@gmail.com" });
 
   if (!adminExists) {
     // Create the admin user
     await User.create({
-      userEmail: "pxn@example.com",
+      userEmail: "admin@gmail.com",
       userPassword: bcrypt.hashSync('admin', 10), // Fixed the bcrypt.hashSync argument
       userPhoneNumber: "123456",
       userName: "admin",

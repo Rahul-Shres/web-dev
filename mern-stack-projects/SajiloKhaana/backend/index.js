@@ -13,7 +13,8 @@ connectDatabase();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Use express.urlencoded() with options
-
+// static exposes the code to hackers
+app.use(express.static('/uploads'));
 app.get('/', async (req, res) => {
   res.status(200).send('Hello, World!');
 });
