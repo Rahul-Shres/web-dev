@@ -28,7 +28,7 @@
         }
     
         try {
-            const decoded = await promisify(jwt.verify)(token, "this is a secret key");
+            const decoded = await promisify(jwt.verify)(token, process.env.SECRET_KEY);
             const user = await User.findOne({ _id: decoded.id });
     
             if (!user) {
