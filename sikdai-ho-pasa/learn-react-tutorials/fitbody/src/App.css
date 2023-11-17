@@ -38,4 +38,14 @@ ul{
 }
 
 
-5:43
+/* reusable */
+.container {
+  width: 1140px;
+  padding: 0 15 px;
+  margin: auto;
+}
+
+.section__title{
+  color: var(--heading-color);
+  font-weight: 700px;
+}
