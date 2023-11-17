@@ -1,4 +1,5 @@
 const { registerUser, loginUser, forgotPassword, verifyOtp, resetPassword} = require('../controller/auth/authController');
+const catchAsync = require('../services/catchAsync');
 
 const router = require("express").Router();
 
@@ -9,8 +10,8 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 
 // Add a forward slash before "forgotPassword" and define it as POST
-router.post("/forgotPassword", forgotPassword);
-router.post("/verifyOtp", verifyOtp);
-router.post("/resetPassword", resetPassword);
+router.post("/forgotPassword", catchAsync(forgotPassword));
+router.post("/verifyOtp", catchAsync(verifyOtp));
+router.post("/resetPassword", catchAsync(resetPassword));
 
 module.exports = router;
