@@ -13,7 +13,9 @@ const userSchema = new Schema({
     },
     userPassword: {
         type: String,
-        required: [true, "Please enter a valid password"]
+        required: [true, "Please enter a valid password"],
+        select: false,
+    
     },
     role: {
         type: String, // Corrected the 'trye' typo
