@@ -13,6 +13,7 @@ dotenv.config();
 const authRoute = require('./routes/authRoutes');
 const productRoute = require('./routes/productRoute');
 const adminUserRoute = require('./routes/adminUsersRoute');
+const userReviewRoute = require('./routes/userReviewRoute');
 // Database connection
 connectDatabase();
 
@@ -32,6 +33,7 @@ app.get('/', async (req, res) => {
 app.use('/api', authRoute);
 app.use('/api', productRoute);
 app.use('/api', adminUserRoute);
+app.use('/api', userReviewRoute);
 
 // Server setup
 const port = process.env.PORT || 8000;

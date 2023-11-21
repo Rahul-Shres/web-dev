@@ -25,6 +25,7 @@ const productSchema = new Schema({
     productImage:{
         type: String,
     },
+    // reviews : [reviewSchema]
 },{
     timeseries: true,
 })

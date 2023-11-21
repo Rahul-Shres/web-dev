@@ -41,3 +41,21 @@ exports.deleteUser = async (req,res) => {
         })
     }
 }
+
+exports.addProductReview = async(req,res) => {
+    const productId = req.params.id
+    const {rating,message} = req.body
+    const userId = req.user.id
+    const review = {
+        userId,
+        rating,
+        message,
+
+    }
+    const product = await Product.findById(productId)
+    product.reviews.push(review)
+    await product.save()
+    res.json({
+        message: "Review done"
+    })
+}
