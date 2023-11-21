@@ -1,7 +1,10 @@
 const User = require('../../../model/userModel');
 // o index ma jaile ni admin hunxa
 exports.getUsers = async(req,res) => {
-    const users = await User.find().select(["+otp","isOtpVerified", "-__v"])
+    const userId = req.user.id; // Assuming user ID is retrieved from the request
+
+    // const users = await User.find().select(["+otp","isOtpVerified"])
+    const users = await User.find({_id: {$ne: userId}})
     if(users.length > 1) {
         return res.status(200).json({
             message: "Users fetched successfully",
@@ -14,5 +17,27 @@ exports.getUsers = async(req,res) => {
             message: "Users not found",
             data: []
         });
+    }
+}
+
+
+exports.deleteUser = async (req,res) => {
+    const userId = req.user.id; // Assuming user ID is retrieved from the request
+    if(!userId){
+        return res.status(404).json({
+            message: "Plrease provide id",
+        })
+    }
+
+    const user= await User.findById(userId)
+    if(!user){
+        return res.status(404).json({ 
+            message: "User not found",
+        })
+    } else {
+        await User.findByIdAndDelete(userId)
+        res.status(200).json({
+            message: "User deleted",
+        })
     }
 }
