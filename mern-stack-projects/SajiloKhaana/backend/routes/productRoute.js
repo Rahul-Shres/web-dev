@@ -7,9 +7,7 @@ const { multer, storage } = require('../middleware/multerConfig');
 const catchAsync = require('../services/catchAsync');
 const upload = multer({ storage: storage });
 
-router.route('/products')
-    .post(isAuthenticated, restrictTo("admin"), upload.single('productImage'), catchAsync(createProduct))
-    .get(catchAsync(getProducts));
+router.route('/products').get(catchAsync(getProducts)).post(isAuthenticated, restrictTo("admin"), upload.single('productImage'), catchAsync(createProduct));
 
 router.route('/products/:id')
     .get(catchAsync(getProduct))

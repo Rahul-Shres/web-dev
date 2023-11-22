@@ -1,29 +1,27 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema 
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-// userId,productId,rating(Number),message
 const reviewSchema = new Schema({
- userId : {
-    type : Schema.Types.ObjectId,
-    ref : "User",
-    required : [true,"A review must belong to user"] 
- },
- productId : {
-    type : Schema.Types.ObjectId,
-    ref : "Product",
-    required : [true,"A review must be of product"]
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: [true, "A review must belong to a user"]
+    },
+    productId: {
+        type: Schema.Types.ObjectId,
+        ref: "Product",
+        required: [true, "A review must be for a product"]
+    },
+    rating: {
+        type: Number,
+        default: 3 // Default rating set to 3 if not specified
+    },
+    message: {
+        type: String,
+        required: [true, "Message cannot be empty"]
+    }
+});
 
- },
- rating : {
-    type : Number,
-    default : 3
- },
- message : {
-    type : String,
-    required : true
- }
+const Review = mongoose.model("Review", reviewSchema);
 
-})
-
-const Review = mongoose.model("Review",reviewSchema)
-module.exports = Review
+module.exports = Review;
