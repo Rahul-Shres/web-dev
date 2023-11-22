@@ -8,12 +8,7 @@ const reviewSchema = new Schema({
     ref : "User",
     required : [true,"A review must belong to user"] 
  },
- productId : {
-    type : Schema.Types.ObjectId,
-    ref : "Product",
-    required : [true,"A review must be of product"]
 
- },
  rating : {
     type : Number,
     default : 3
@@ -25,5 +20,8 @@ const reviewSchema = new Schema({
 
 })
 
-const Review = mongoose.model("Review",reviewSchema)
-module.exports = Review
+const NextWayReview = mongoose.model("NextWayReview",reviewSchema)
+module.exports = {
+    NextWayReview ,
+    reviewSchema
+}

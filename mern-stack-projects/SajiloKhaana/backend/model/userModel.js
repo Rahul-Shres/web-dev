@@ -1,37 +1,43 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema; // Corrected the Schema declaration
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const userSchema = new Schema({
-    userEmail: {
-        type: String,
-        required: [true, "Please enter a valid email address"],
-        unique: true,
+const userSchema  =  new Schema({
+    userEmail : {
+        type : String,
+        required : [true,'userEmail must be provided'],
+  
     },
-    userPhoneNumber: {
-        type: Number,
-        required: [true, "Please enter a valid phone number"]
+    userPhoneNumber : {
+        type : Number,
+        required : [true,"PhoneNumber must be provided"]
     },
-    userPassword: {
-        type: String,
-        required: [true, "Please enter a valid password"],
-       
-    
+    userName : {
+        type : String,
+        required  : [true,"UserName must be provided"]
     },
-    role: {
-        type: String, // Corrected the 'trye' typo
-        enum: ["customer", "admin"],
-        default: "customer"
+    userPassword : {
+        type : String,
+        required : [true,"Password must be provided"],
+        minlength : 8,
+        // select : false
     },
-    otp:{
-        type: Number
+    role : {
+        type : String,
+        enum : ["customer","admin"],
+        default : "customer",
     },
-    isOtpVerified:{
-        type: Boolean,
-        default: false
+    otp : {
+        type : Number,
+        select : false
+    },
+    isOtpVerified : {
+        type : Boolean,
+        default : false,
+        select : false
     }
 },{
-    timeseries: true,
-});
+    timestamps : true
+})
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const User = mongoose.model("User",userSchema)
+module.exports = User

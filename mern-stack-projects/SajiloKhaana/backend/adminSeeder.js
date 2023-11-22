@@ -1,23 +1,27 @@
-const User = require("./model/userModel");
-const bcrypt = require("bcrypt");
+const User = require("./model/userModel")
+const bcrypt = require("bcryptjs")
 
-const adminSeeder = async () => {
-  // Check if an admin user exists
-  const adminExists = await User.findOne({ userEmail: "admin@gmail.com" });
+const adminSeeder = async()=>{
+     // admin seeding
 
-  if (!adminExists) {
-    // Create the admin user
+ // check whether admin exists or not
+ const isAdminExists = await User.findOne({userEmail : "admin@gmail.com"})
+ 
+ if(!isAdminExists){
     await User.create({
-      userEmail: "admin@gmail.com",
-      userPassword: bcrypt.hashSync('admin', 10), // Fixed the bcrypt.hashSync argument
-      userPhoneNumber: "123456",
-      userName: "admin",
-      role: "admin",
-    });
-    console.log("Admin seeded successfully");
-  } else {
-    console.log("Admin already seeded");
-  }
-};
+        userEmail : "admin@gmail.com",
+        userPassword : bcrypt.hashSync("admin",10),
+        userPhoneNumber : "98123232",
+        userName : "admin",
+        role : "admin"
+    
+     })
+    
+     console.log("Admin seeded successfully")
+ }else{
+    console.log("Admin already seeded")
+ }
 
-module.exports = adminSeeder;
+}
+
+module.exports = adminSeeder

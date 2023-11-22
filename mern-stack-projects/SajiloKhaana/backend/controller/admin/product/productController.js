@@ -1,159 +1,116 @@
-const Product = require('../../../model/productModel');
-const fs = require("fs");
-const handleAsync = require('../../../services/catchAsync'); // Replace with the correct path to your higher-order function.
-
-exports.createProduct = handleAsync(async (req, res) => {
-    const file = req.file;
-    let filePath = "";
-
-    if (file) {
-        filePath = req.file.filename;
-    }
-
-    const { productName, productDescription, productPrice, productStatus, productStockQty } = req.body;
-
-    if (!productName || !productDescription || !productPrice || !productStatus || !productStockQty) {
-        return res.status(400).json({
-            message: "Please provide productName, productDescription, productPrice, productStatus, productStockQty"
-        });
-    }
-
-    await Product.create({
-        productName,
-        productDescription,
-        productPrice,
-        productStatus,
-        productStockQty,
-        productImage: "BACKEND_URL" + filePath,
-    });
-
-    console.log("Product created successfully");
-
-    res.status(200).json({
-        message: "Product created successfully"
-    });
-});
-
-exports.getProducts = handleAsync(async (req, res) => {
-    const products = await Product.find();
-    if (products.length === 0) {
-        return res.status(404).json({
-            message: "Products not found",
-            products: [],
-        });
-    } else {
-        res.status(200).json({
-            message: "Products fetched successfully",
-            products: products,
-        });
-    }
-});
-
-exports.getProduct = handleAsync(async (req, res) => {
-    try{
-        const { id } = req.params;
-    if (!id) {
-        return res.status(404).json({
-            message: "Id not found, please provide product id",
-        });
-    }
-
-    const product = await Product.find({ _id: id });
-    if (product.length === 0) {
-        return res.status(404).json({
-            message: "Product not found",
-            product: [],
-        });
-    } else {
-        res.status(200).json({
-            message: "Product fetched successfully",
-            product: product,
-        });
-    }
-    } catch(err){
-        res.status(500).json({
-            message: err.message,
-        });
-    }
-});
+const Product = require("../../../model/productModel")
+const fs = require("fs")
 
 
-exports.deleteProduct = async(req,res) => {
-    const {id} = req.params
-    if(!id){
-        return res.status(404).json({ 
-            message: "Id not found, please provide product id",
-        })
-    }
+exports.createProduct = async (req,res)=>{
 
-    await Product.findByIdAndDelete(id)
-    res.status(200).json({
-        message: "Product deleted successfully",
-    })
+        const file = req.file
+        let filePath
+         if(!file){
+          filePath ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1dQPM88-Vq0f-YM8xILMQdKktXgKBMN6XH9cCBleA&s"
+         }else{
+          filePath = req.file.filename
+         }
+          const {productName,productDescription,productPrice,productStatus,productStockQty} = req.body
+          if(!productName || !productDescription || !productPrice || !productStatus || !productStockQty){
+              return res.status(400).json({
+                  message : "Please provide productName,productDescription,productPrice,productStatus,productStockQty"
+              })
+          }
+          // insert into the Product collection/table
+         await Product.create({
+              productName ,
+              productDescription ,
+              productPrice,
+              productStatus,
+              productStockQty,
+              productImage : process.env.BACKEND_URL +  filePath
+      
+          })
+          res.status(200).json({
+              message : "Product Created Successfully"
+          })
+ 
+
 }
 
 
-exports.editProduct = async (req, res) => {
-    const { id } = req.params;
-    const { productName, productDescription, productPrice, productStatus, productStockQty } = req.body;
 
-    if (!productName || !productDescription || !productPrice || !productStatus || !productStockQty) {
+exports.deleteProduct =  async(req,res)=>{
+    const {id} = req.params
+    if(!id){
         return res.status(400).json({
-            message: "Please provide productName, productDescription, productPrice, productStatus, productStockQty"
-        });
+            message : "Please provide id"
+        })
     }
-
-    try {
-        const oldData = await Product.findById(id);
-
-        if (!oldData) {
-            return res.status(404).json({
-                message: "No data found with that id"
-            });
-        }
-
-        let filePath = "";
-
-        if (req.file && req.file.filename) {
-            const oldProductImage = oldData.productImage;
-            const lengthToCut = process.env.BACKEND_URL.length;
-            const finalFilePathAfterCut = oldProductImage.slice(lengthToCut);
-
-            // Remove file from upload folder
-            fs.unlink(finalFilePathAfterCut, (err) => {
-                if (err) {
-                    console.log("Error deleting file", err);
-                } else {
-                    console.log("File deleted successfully");
+    const oldData = await Product.findById(id)
+    if(!oldData){
+        return res.status(404).json({
+            message : "No data found with that id"
+        })
+    }
+ 
+    const oldProductImage = oldData.productImage // http://localhost:3000/1698943267271-bunImage.png"
+    const lengthToCut  = process.env.BACKEND_URL.length
+    const finalFilePathAfterCut = oldProductImage.slice(lengthToCut) 
+         // REMOVE FILE FROM UPLOADS FOLDER
+            fs.unlink("./uploads/" +  finalFilePathAfterCut,(err)=>{
+                if(err){
+                    console.log("error deleting file",err) 
+                }else{
+                    console.log("file deleted successfully")
                 }
-            });
+            })
+    await Product.findByIdAndDelete(id)
+    res.status(200).json({
 
-            filePath = req.file.filename;
-        }
+        message : "Product delete successfully"
+    })
 
-        const updatedData = await Product.findByIdAndUpdate(
-            id,
-            {
-                productName,
-                productDescription,
-                productPrice,
-                productStatus,
-                productStockQty,
-                productImage: "BACKEND_URL" + filePath,
-            },
-            {
-                new: true,
-                runValidators: true
-            }
-        );
+}
 
-        res.status(200).json({
-            message: "Product updated successfully",
-            data: updatedData
-        });
-    } catch (err) {
-        res.status(500).json({
-            message: err.message,
-        });
+exports.editProduct = async(req,res)=>{
+
+    const {id} = req.params 
+      const {productName,productDescription,productPrice,productStatus,productStockQty} = req.body
+      if(!productName || !productDescription || !productPrice || !productStatus || !productStockQty || !id){
+        return res.status(400).json({
+            message : "Please provide productName,productDescription,productPrice,productStatus,productStockQty,id"
+        })
     }
+    const oldData = await Product.findById(id)
+    if(!oldData){
+        return res.status(404).json({
+            message : "No data found with that id"
+        })
+    }
+ 
+    const oldProductImage = oldData.productImage // http://localhost:3000/1698943267271-bunImage.png"
+    const lengthToCut  = process.env.BACKEND_URL.length
+    const finalFilePathAfterCut = oldProductImage.slice(lengthToCut) // 1698943267271-bunImage.png
+    if(req.file && req.file.filename){
+        // REMOVE FILE FROM UPLOADS FOLDER
+            fs.unlink("./uploads/" +  finalFilePathAfterCut,(err)=>{
+                if(err){
+                    console.log("error deleting file",err) 
+                }else{
+                    console.log("file deleted successfully")
+                }
+            })
+    }
+   const datas =  await Product.findByIdAndUpdate(id,{
+        productName ,
+        productDescription ,
+        productPrice,
+        productStatus,
+        productStockQty,
+        productImage : req.file && req.file.filename ? process.env.BACKEND_URL +  req.file.filename :  oldProductImage
+    },{
+        new : true,
+    
+    })
+    res.status(200).json({
+        messagee : "Product updated successfully",
+        data : datas
+    })
 }
