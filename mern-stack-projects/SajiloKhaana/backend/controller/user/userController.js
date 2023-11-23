@@ -1,4 +1,10 @@
-const Product = require("../../model/productModel");
+
+try {
+    const Product = require("../../model/productModel");
+    // Use Product model here
+} catch (error) {
+    console.error('Error importing Product model:', error);
+}
 const Review = require("../../model/reviewModel");
 
 // Create a review for a specific product
@@ -76,13 +82,31 @@ exports.getProductReview = async (req, res) => {
         });
     }
 };
-
 exports.addProductReview = async (req, res) => {
     try {
-        const { rating, message, productId } = req.body;
+        const { rating, message } = req.body;
+        const productId = req.params.id; // Extracting productId from req.params.id
+
         console.log('Received data:', { rating, message, productId });
 
-        // Rest of your code...
+        // Check if required fields are present in the request
+        if (!rating || !message || !productId) {
+            return res.status(400).json({
+                message: "Please provide rating, message, and product ID"
+            });
+        }
+
+        // Create a new review and associate it with the product
+        const newReview = await Review.create({
+            productId,
+            rating,
+            message
+        });
+
+        res.status(200).json({
+            message: 'Review added successfully',
+            review: newReview // Optionally, return the newly created review
+        });
     } catch (error) {
         console.error('Error in addProductReview:', error);
         res.status(500).json({

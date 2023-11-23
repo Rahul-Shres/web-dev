@@ -1,27 +1,27 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose")
+const Schema = mongoose.Schema 
 
-// Define the schema for NextWayReview
+// userId,productId,rating(Number),message
 const reviewSchema = new Schema({
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: [true, "A review must belong to a user"]
-    },
-    rating: {
-        type: Number,
-        default: 3 // Default rating set to 3 if not specified
-    },
-    message: {
-        type: String,
-        required: true // Message is a required field
-    }
-});
+ userId : {
+    type : Schema.Types.ObjectId,
+    ref : "User",
+    required : [true,"A review must belong to user"] 
+ },
 
-// Create NextWayReview model based on the defined schema
-const NextWayReview = mongoose.model("NextWayReview", reviewSchema);
+ rating : {
+    type : Number,
+    default : 3
+ },
+ message : {
+    type : String,
+    required : true
+ }
 
+})
+
+const NextWayReview = mongoose.model("NextWayReview",reviewSchema)
 module.exports = {
-    NextWayReview,
-    reviewSchema // Exporting the schema separately might be helpful for potential future usages or referencing
-};
+    NextWayReview ,
+    reviewSchema
+}
