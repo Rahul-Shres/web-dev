@@ -13,12 +13,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Render the home page with some example blog data
-app.get('/', (req, res) => {
-  const blogData = [
-    { title: 'Title 1', content: 'Content 1', author: 'Author 1', publishedDate: 'Date 1' },
-    { title: 'Title 2', content: 'Content 2', author: 'Author 2', publishedDate: 'Date 2' },
-    // Add more blog objects as needed
-  ];
+app.get('/', async (req, res) => {
+ //Table bata data nikalna paryo
+  const allBlogs = await blogs.findAll() // array ma data return garxa
+  // blogs vanne table bata sabai data dey vaneko
+  console.log(allBlogs);
+  const blogData = allBlogs.map(blog => ({
+    id: blog.dataValues.id,
+    title: blog.dataValues.title,
+    subtitle: blog.dataValues.subTitle,
+    content: blog.dataValues.content,
+    author: blog.dataValues.author, // Assuming there's an 'author' property in the blog data
+    publishedDate: blog.dataValues.createdAt // Assuming createdAt is in the desired format, otherwise, format it accordingly
+  }));
 
   res.render('blogs', { blogs: blogData });
 });
@@ -33,7 +40,7 @@ app.get("/createBlog", (req, res) => {
   res.render("createBlog");
 });
 
-// Create Blog Post Route
+// Table ma blog kasari halne
 app.post("/createBlog", async (req, res) => {
   const { title, subtitle, content } = req.body;
 
@@ -53,6 +60,28 @@ app.post("/createBlog", async (req, res) => {
     res.status(500).send("Error creating blog");
   }
 });
+
+//Table bata single blog kasari nikalne
+
+// single blog page 
+app.get("/single/:id",async(req,res)=>{
+  const id = req.params.id
+  // second approach
+  // const {id} = req.params 
+  // id ko data magnu/find garnu paryo hamro table bata
+  const blog =  await blogs.findAll({
+      where : {
+          id : id
+      }
+  })
+  // second finding approach
+  // const blog = await blogs.findByPk(id)
+    console.log(blog)
+      res.render("singleBlog",{blog:blog})
+  })
+  
+
+
 
 // Listen on port 8000
 app.listen(8000, () => {

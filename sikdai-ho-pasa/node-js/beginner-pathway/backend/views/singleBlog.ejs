@@ -104,27 +104,20 @@
     </header>
 
     <div class="main-content">
-        
-        <% blogs.forEach((blog) => { %>
+       
             <div class="blog-card">
-                <h1 class="blog-title"><%= blog.title %></h1>
-                <h2 class="blog-title"><%= blog.subtitle %></h2>
-                <p class="blog-content"><%= blog.content %></p>
-                    
-                <p class="blog-meta">Author: <%= blog.author %> | Published: <%= blog.publishedDate %></p>
-                <!-- ... other blog details ... -->
-                <% console.log("Blog ID:", blog.id); %>
-                <a href="/single/<%= blog.id %>">View Blog</a>
+                <h1 class="blog-title"><%- blog[0].title  %></h1>
+                <h2 class="blog-title"><%- blog[0].subTitle  %></h2>
+                <p class="blog-content"><%- blog[0].content %></p>
+                <p class="blog-meta">Author: <%= blog[0].author %> | Published on <%- blog[0].createdAt.toISOString().slice(0,10) %></p>
+                
             </div>
-           
-        <% }); %>         
-        </div>
         
+    </div>
 
-    <a href="/form" class="create-blog-link">Create Blog</a>
 
     <footer>
-        <p>&copy; 2023 Our Awesome Blog</p>
+        <p>&copy; <%= new Date().getFullYear() %> Our Awesome Blog</p>
     </footer>
 </body>
 </html>
