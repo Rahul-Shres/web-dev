@@ -35,7 +35,7 @@
 .logo h2{
     color: var(--header-color);
     font-weight: 700 !important;
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 /* menu */
@@ -43,7 +43,7 @@
  .menu{
     display: flex;
     align-items: center;
-    column-gap: 2.7rem;
+    column-gap: 1.7rem;
  }
 
  .nav_item a {
@@ -66,11 +66,12 @@
  }
  
  .nav-right button {
-   border-radius: none;
-   outline: none;
+  outline: none;
+  border: none; /* Add this line */
+  border-radius: 5px;
    padding: 10px 20px;
    color: #fff;
-   background: var(--primary-color);
+   background: var(--bg-gradient);
    border-radius: 5px;
    font-family: var(--font-name);
    font-size: 1.2rem;
