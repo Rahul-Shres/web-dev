@@ -1,0 +1,20 @@
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        footer {
+            background-color: #00FF00;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+ 

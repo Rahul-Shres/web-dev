@@ -7,7 +7,8 @@ const app = express();
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
-
+// nodejs lai  file access garna dey vaneko hae yo code lay 
+app.use(express.static("public/"))
 // Middleware to handle incoming data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

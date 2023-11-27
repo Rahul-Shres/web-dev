@@ -3,116 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Edit Blog Form</title>
-  <style>
-    /* This part styles how things look on the webpage */
-
-    /* Styles for the whole webpage body */
-    body {
-      /* Makes things centered vertically and horizontally */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      /* Sets the height of the body to cover the whole screen */
-      height: 100vh;
-
-      /* Removes any extra space around the body */
-      margin: 0;
-
-      /* Creates a gradient background from your main color to a darker shade */
-      background: linear-gradient(to bottom right, #8E2DE2, #4A00E0);
-
-      /* Sets the font for the text on the page */
-      font-family: 'Poppins', sans-serif;
-    }
-    
-
-    /* Styles for the container holding the form */
-    .card {
-      /* Defines the width of the container */
-      width: 400px;
-
-      /* Adds some padding inside the container */
-      padding: 20px;
-
-      /* Makes the corners of the container round */
-      border-radius: 15px;
-
-      /* Sets the background color of the container */
-      background-color: #ffffff;
-
-      /* Adds a shadow effect around the container */
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Styles for the form sections */
-    .form-group {
-      /* Adds space between different sections of the form */
-      margin-bottom: 15px;
-    }
-
-    /* Styles for the labels in the form */
-    .form-group label {
-      /* Makes the labels bold and adds some space below them */
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    /* Styles for the text input and textarea */
-    .form-group input[type="text"],
-    .form-group textarea {
-      /* Makes the text fields take the full width */
-      width: calc(100% - 16px); /* Consider the padding and border width */
-
-      /* Adds some padding and rounded corners to the text fields */
-      padding: 8px;
-      border-radius: 5px;
-
-      /* Adds a border around the text fields */
-      border: 1px solid #ccc;
-
-      /* Helps to include padding and border in the total width of the text fields */
-      box-sizing: border-box;
-    }
-
-    /* Styles for the textarea specifically */
-    .form-group textarea {
-      /* Allows the textarea to be resized vertically */
-      resize: vertical;
-
-      /* Sets a fixed height for the textarea */
-      height: 100px;
-    }
-
-    /* Styles for the submit button */
-    .form-group button {
-      /* Adds padding and rounded corners to the button */
-      padding: 10px 20px;
-      border-radius: 5px;
-
-      /* Sets the background color of the button */
-      background-color: #6C1C9E;
-
-      /* Sets the text color of the button */
-      color: #ffffff;
-
-      /* Sets the font size of the button text */
-      font-size: 16px;
-
-      /* Changes the cursor to a pointer when hovering over the button */
-      cursor: pointer;
-
-      /* Adds a smooth transition effect for the background color change */
-      transition: background-color 0.3s ease;
-    }
-
-    /* Styles for the submit button when hovered over */
-    .form-group button:hover {
-      /* Changes the background color of the button when hovered over */
-      background-color: #4A00E0;
-    }
-  </style>
+  <link rel="stylesheet" href="css/editBlog.css">
 </head>
 <body>
   <div class="card">
@@ -141,6 +32,7 @@
         <button type="submit"><a href="/single/<%- blog[0].id %>">Cancel</a> </button>
       </div>
     </form>
+    <%- include("components/footer")  %>
   </div>
   
 </body>
