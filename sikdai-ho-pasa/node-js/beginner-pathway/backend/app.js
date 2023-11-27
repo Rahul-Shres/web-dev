@@ -14,17 +14,20 @@ app.use(express.urlencoded({ extended: true }));
 
 // Render the home page with some example blog data
 app.get('/', async (req, res) => {
-  const allBlogs = await blogs.findAll();
+ //Table bata data nikalna paryo
+  const allBlogs = await blogs.findAll() // array ma data return garxa
+  // blogs vanne table bata sabai data dey vaneko
+  console.log(allBlogs);
   const blogData = allBlogs.map(blog => ({
     id: blog.dataValues.id,
     title: blog.dataValues.title,
     subtitle: blog.dataValues.subTitle,
     content: blog.dataValues.content,
-    author: blog.dataValues.author,
-    publishedDate: blog.dataValues.createdAt
+    author: blog.dataValues.author, // Assuming there's an 'author' property in the blog data
+    publishedDate: blog.dataValues.createdAt // Assuming createdAt is in the desired format, otherwise, format it accordingly
   }));
 
-  res.status(200).json(blogData); // Sending JSON data
+  res.render('blogs', { blogs: blogData });
 });
 
 // Render the blog creation form
@@ -37,49 +40,62 @@ app.get("/createBlog", (req, res) => {
   res.render("createBlog");
 });
 
-// Create a new blog
+// Table ma blog kasari halne
 app.post("/createBlog", async (req, res) => {
   const { title, subtitle, content } = req.body;
 
   try {
+    // Create a new blog using the 'blogs' model
     const newBlog = await blogs.create({
       title: title,
       subTitle: subtitle,
       content: content
     });
 
-    console.log("New blog created:", newBlog);
+    console.log("New blog created:", newBlog); // Optional: log the created blog
 
-    res.redirect("/");
+    res.redirect("/"); // Redirect to the home page after successful creation
   } catch (error) {
     console.error("Error creating blog:", error);
     res.status(500).send("Error creating blog");
   }
 });
 
-// Get a single blog
-app.get("/single/:id", async (req, res) => {
-  const id = req.params.id;
-  const blog = await blogs.findAll({
-    where: {
-      id: id
-    }
-  });
+//Table bata single blog kasari nikalne
 
-  res.status(200).json(blog); // Sending JSON data
-});
+// single blog page 
+app.get("/single/:id",async(req,res)=>{
+  const id = req.params.id
+  // second approach
+  // const {id} = req.params 
+  // id ko data magnu/find garnu paryo hamro table bata
+  const blog =  await blogs.findAll({
+      where : {
+          id : id
+      }
+  })
+  // second finding approach
+  // const blog = await blogs.findByPk(id)
+    console.log(blog)
+      res.render("singleBlog",{blog:blog})
+  })
 
-// Delete a blog
+
+  // Delete a blog
 app.get('/delete/:id', async (req, res) => {
   const id = req.params.id;
 
-  await blogs.destroy({
-    where: {
-      id: id
-    }
-  });
-
-  res.status(200).json({ message: 'Blog deleted successfully' }); // Sending JSON response
+  try {
+    await blogs.destroy({
+      where: {
+        id: id
+      }
+    });
+    res.redirect('/'); // Redirect to the home page after deletion
+  } catch (error) {
+    console.error("Error deleting blog:", error);
+    res.status(500).json({ error: 'Error deleting blog' });
+  }
 });
 
 // Edit a blog
@@ -99,19 +115,28 @@ app.post("/updateBlog/:id", async (req, res) => {
   const id = req.params.id;
   const { title, subTitle, content } = req.body;
 
-  await blogs.update({
-    title: title,
-    subTitle: subTitle,
-    content: content
-  },
+  try {
+    await blogs.update({
+      title: title,
+      subTitle: subTitle,
+      content: content
+    },
     {
       where: {
         id: id,
       }
     });
 
-  res.status(200).json({ message: 'Blog updated successfully' }); // Sending JSON response
+    res.redirect("/single/" + id); // Redirect to the single blog page after update
+  } catch (error) {
+    console.error("Error updating blog:", error);
+    res.status(500).json({ error: 'Error updating blog' });
+  }
 });
+
+  
+
+
 
 // Listen on port 8000
 app.listen(8000, () => {
