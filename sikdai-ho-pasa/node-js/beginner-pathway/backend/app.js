@@ -1,7 +1,8 @@
 // Import necessary modules
 const express = require('express');
-const { blogs } = require('./model/index');
+const { blogs, users } = require('./model/index');
 const app = express();
+const bcrypt = require('bcryptjs');
 
 // Database connection (already present in the require("./model/index"); line)
 
@@ -136,7 +137,32 @@ app.post("/updateBlog/:id", async (req, res) => {
 });
 
   
+// Render the blog creation form
+app.get('/register', (req, res) => {
+  res.render('register.ejs');
+});
 
+app.post('/register', async (req, res) => {
+  console.log(req.body);
+  const { username, email, password } = req.body;
+  try {
+    if (!username || !email || !password) {
+      return res.status(400).json({ message: 'Please provide username, email, and password' });
+    }
+    
+    const createUser = await users.create({
+      username: username,
+      email: email,
+      password: bcrypt.hashSync(password,8)
+    });
+    
+    // Handle success (e.g., send a response)
+    res.status(201).redirect('/');
+  } catch (error) {
+    // Handle error (e.g., send an error response)
+    res.status(500).json({ message: 'Error creating user', error: error.message });
+  }
+});
 
 
 // Listen on port 8000

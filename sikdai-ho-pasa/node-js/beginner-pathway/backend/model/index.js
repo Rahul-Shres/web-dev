@@ -32,6 +32,7 @@ db.sequelize = sequelize; // Keeps the connection to the database ready to use.
 
 // This line connects the blog model to our database.
 db.blogs = require("./blogModel.js")(sequelize, DataTypes);
+db.users = require("./userModel.js")(sequelize, DataTypes);
 
 // This part syncs our models with the database to make sure they match.
 db.sequelize.sync({ force: false }).then(() => {
