@@ -3,6 +3,9 @@ const express = require('express');
 const { blogs, users } = require('./model/index');
 const app = express();
 const bcrypt = require('bcryptjs');
+const { renderCreateBlog, getBlogData, renderForm, createNewBlog, fillSinglePageForm, deleteBlog, editBlog, updateBlog } = require('./controller/blogController');
+const { renderRegister, registerNewUser, Renderlogin, login } = require('./controller/userController');
+
 
 // Database connection (already present in the require("./model/index"); line)
 
@@ -15,188 +18,41 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Render the home page with some example blog data
-app.get('/', async (req, res) => {
-  const username = req.query.username || ''; // Get the username from query parameter or set as empty string if not present
- //Table bata data nikalna paryo
-  const allBlogs = await blogs.findAll() // array ma data return garxa
-  // blogs vanne table bata sabai data dey vaneko
-  console.log(allBlogs);
-  const blogData = allBlogs.map(blog => ({
-    id: blog.dataValues.id,
-    title: blog.dataValues.title,
-    subtitle: blog.dataValues.subTitle,
-    content: blog.dataValues.content,
-    author: blog.dataValues.author, // Assuming there's an 'author' property in the blog data
-    publishedDate: blog.dataValues.createdAt // Assuming createdAt is in the desired format, otherwise, format it accordingly
-  }));
-
-  res.render('blogs', { blogs: blogData, username: username });
-});
+app.get('/', getBlogData);
 
 // Render the blog creation form
-app.get('/form', (req, res) => {
-  res.render('form.ejs');
-});
+app.get('/form', renderForm);
 
 // Render the create blog form
-app.get("/createBlog", (req, res) => {
-  res.render("createBlog");
-});
+app.get("/createBlog", renderCreateBlog);
 
 // Table ma blog kasari halne
-app.post("/createBlog", async (req, res) => {
-  const { title, subtitle, content } = req.body;
-
-  try {
-    // Create a new blog using the 'blogs' model
-    const newBlog = await blogs.create({
-      title: title,
-      subTitle: subtitle,
-      content: content
-    });
-
-    console.log("New blog created:", newBlog); // Optional: log the created blog
-
-    res.redirect("/"); // Redirect to the home page after successful creation
-  } catch (error) {
-    console.error("Error creating blog:", error);
-    res.status(500).send("Error creating blog");
-  }
-});
+app.post("/createBlog", createNewBlog );
 
 //Table bata single blog kasari nikalne
 
 // single blog page 
-app.get("/single/:id",async(req,res)=>{
-  const id = req.params.id
-  // second approach
-  // const {id} = req.params 
-  // id ko data magnu/find garnu paryo hamro table bata
-  const blog =  await blogs.findAll({
-      where : {
-          id : id
-      }
-  })
-  // second finding approach
-  // const blog = await blogs.findByPk(id)
-    console.log(blog)
-      res.render("singleBlog",{blog:blog})
-  })
+app.get("/single/:id", fillSinglePageForm)
 
 
   // Delete a blog
-app.get('/delete/:id', async (req, res) => {
-  const id = req.params.id;
-
-  try {
-    await blogs.destroy({
-      where: {
-        id: id
-      }
-    });
-    res.redirect('/'); // Redirect to the home page after deletion
-  } catch (error) {
-    console.error("Error deleting blog:", error);
-    res.status(500).json({ error: 'Error deleting blog' });
-  }
-});
+app.get('/delete/:id', deleteBlog);
 
 // Edit a blog
-app.get('/edit/:id', async (req, res) => {
-  const id = req.params.id;
-  const blog = await blogs.findAll({
-    where: {
-      id: id
-    }
-  });
-
-  res.render('editBlog', { blog: blog });
-});
+app.get('/edit/:id', editBlog);
 
 // Update a blog
-app.post("/updateBlog/:id", async (req, res) => {
-  const id = req.params.id;
-  const { title, subTitle, content } = req.body;
-
-  try {
-    await blogs.update({
-      title: title,
-      subTitle: subTitle,
-      content: content
-    },
-    {
-      where: {
-        id: id,
-      }
-    });
-
-    res.redirect("/single/" + id); // Redirect to the single blog page after update
-  } catch (error) {
-    console.error("Error updating blog:", error);
-    res.status(500).json({ error: 'Error updating blog' });
-  }
-});
+app.post("/updateBlog/:id", updateBlog);
 
   
 // Render the blog creation form
-app.get('/register', (req, res) => {
-  res.render('register.ejs');
-});
+app.get('/register', renderRegister);
 
-app.post('/register', async (req, res) => {
-  console.log(req.body);
-  const { username, email, password } = req.body;
-  try {
-    if (!username || !email || !password) {
-      return res.status(400).json({ message: 'Please provide username, email, and password' });
-    }
-    
-    const createUser = await users.create({
-      username: username,
-      email: email,
-      password: bcrypt.hashSync(password,8)
-    });
-    
-    // Handle success (e.g., send a response)
-    res.status(201).redirect('/login');
-  } catch (error) {
-    // Handle error (e.g., send an error response)
-    res.status(500).json({ message: 'Error creating user', error: error.message });
-  }
-});
+app.post('/register', registerNewUser);
 
-app.get('/login', (req, res) => {
-    res.render('login.ejs');
-  });
+app.get('/login', Renderlogin);
 
-app.post('/login', async (req, res) => {
-  console.log(req.body);
-  const { email, password } = req.body;
-
-  try {
-    const user = await users.findOne({
-      where: { email: email }
-    });
-
-    if (user) {
-      const isMatch = await bcrypt.compare(password, user.password);
-
-      if (isMatch) {
-        const username = user.username; // Fetch the username from the user object
-
-        // Redirect to the homepage with the username as a query parameter
-        res.redirect(`/?username=${encodeURIComponent(username)}`);
-      } else {
-        res.status(401).json({ message: "Invalid Email and Password" });
-      }
-    } else {
-      res.status(401).json({ message: "Invalid Email and Password" });
-    }
-  } catch (error) {
-    console.error("Error during login:", error);
-    res.status(500).json({ message: "Error during login" });
-  }
-});
+app.post('/login', login);
 
 
 
