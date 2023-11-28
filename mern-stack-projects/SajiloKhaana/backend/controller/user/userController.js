@@ -1,10 +1,7 @@
 
-try {
-    const Product = require("../../model/productModel");
-    // Use Product model here
-} catch (error) {
-    console.error('Error importing Product model:', error);
-}
+
+
+const Product = require("../../model/productModel");
 const Review = require("../../model/reviewModel");
 
 // Create a review for a specific product

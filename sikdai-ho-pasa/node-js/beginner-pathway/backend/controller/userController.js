@@ -89,4 +89,3 @@ exports.registerNewUser = async (req, res) => {
 //     }
 //   }
 // });
-
