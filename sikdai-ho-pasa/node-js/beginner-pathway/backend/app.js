@@ -157,10 +157,34 @@ app.post('/register', async (req, res) => {
     });
     
     // Handle success (e.g., send a response)
-    res.status(201).redirect('/');
+    res.status(201).redirect('/login');
   } catch (error) {
     // Handle error (e.g., send an error response)
     res.status(500).json({ message: 'Error creating user', error: error.message });
+  }
+});
+
+// Render the blog creation form
+app.get('/login', (req, res) => {
+  res.render('login.ejs');
+});
+app.post('/login', async (req, res) => {
+  console.log(req.body);
+  const { email, password } = req.body;
+  
+  // check if email exists or not
+  const emailExist = await users.findAll({ 
+    where: { email: email } 
+  });
+  
+  if (emailExist.length > 0) {
+    const isMatch = await bcrypt.compare(password, emailExist[0].password);
+    console.log(isMatch); // Now it will log the comparison result
+    if(isMatch) {
+      res.send("logged in successfully");
+    }else{
+      res.send("Invalid Email and Password");
+    }
   }
 });
 
