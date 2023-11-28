@@ -9,9 +9,12 @@
   <div class="navbar">
     <div class="menu">
       <input type="text" class="search-bar" placeholder="Search...">
-      <button class="btn btn-register"><a href="/register">Register</a></button>
-      <button class="btn btn-login"><a href="/login">Login</a></button>
-      
+      <% if (username) { %>
+        <span>Welcome, <%= username %></span>
+      <% } else { %>
+        <button class="btn btn-register"><a href="/register">Register</a></button>
+        <button class="btn btn-login"><a href="/login">Login</a></button>
+      <% } %>
     </div>
   </div>
 </body>

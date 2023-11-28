@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Render the home page with some example blog data
 app.get('/', async (req, res) => {
+  const username = req.query.username || ''; // Get the username from query parameter or set as empty string if not present
  //Table bata data nikalna paryo
   const allBlogs = await blogs.findAll() // array ma data return garxa
   // blogs vanne table bata sabai data dey vaneko
@@ -29,7 +30,7 @@ app.get('/', async (req, res) => {
     publishedDate: blog.dataValues.createdAt // Assuming createdAt is in the desired format, otherwise, format it accordingly
   }));
 
-  res.render('blogs', { blogs: blogData });
+  res.render('blogs', { blogs: blogData, username: username });
 });
 
 // Render the blog creation form
@@ -164,29 +165,66 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// Render the blog creation form
 app.get('/login', (req, res) => {
-  res.render('login.ejs');
-});
+    res.render('login.ejs');
+  });
+
 app.post('/login', async (req, res) => {
   console.log(req.body);
   const { email, password } = req.body;
-  
-  // check if email exists or not
-  const emailExist = await users.findAll({ 
-    where: { email: email } 
-  });
-  
-  if (emailExist.length > 0) {
-    const isMatch = await bcrypt.compare(password, emailExist[0].password);
-    console.log(isMatch); // Now it will log the comparison result
-    if(isMatch) {
-      res.send("logged in successfully");
-    }else{
-      res.send("Invalid Email and Password");
+
+  try {
+    const user = await users.findOne({
+      where: { email: email }
+    });
+
+    if (user) {
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (isMatch) {
+        const username = user.username; // Fetch the username from the user object
+
+        // Redirect to the homepage with the username as a query parameter
+        res.redirect(`/?username=${encodeURIComponent(username)}`);
+      } else {
+        res.status(401).json({ message: "Invalid Email and Password" });
+      }
+    } else {
+      res.status(401).json({ message: "Invalid Email and Password" });
     }
+  } catch (error) {
+    console.error("Error during login:", error);
+    res.status(500).json({ message: "Error during login" });
   }
 });
+
+
+
+// // Render the blog creation form
+// 
+// app.post('/login', async (req, res) => {
+//   console.log(req.body);
+//   const { email, password } = req.body;
+  
+//   // check if email exists or not
+//   const emailExist = await users.findAll({ 
+//     where: { email: email } 
+//   });
+  
+//   if (emailExist.length > 0) {
+//     const isMatch = await bcrypt.compare(password, emailExist[0].password);
+//     console.log(isMatch); // Now it will log the comparison result
+//     if(isMatch) {
+//        // Assuming "username" is a field in your User model
+//        const username = user.username; // Fetch the username from the user object
+      
+//       // Sending both the username and a success message
+//       res.json({ message: "logged in successfully", username: username });
+//     }else{
+//       res.send("Invalid Email and Password");
+//     }
+//   }
+// });
 
 
 // Listen on port 8000
