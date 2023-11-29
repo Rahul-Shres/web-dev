@@ -1,60 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@200;300;400;500&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200;300;400;500;600;700&display=swap');
-*{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@200;300;400;500&display=swap');
+
+* {
     margin: 0;
-    padding:0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-html,body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Oswald', sans-serif;
+body {
+    font-family: 'Montserrat', sans-serif;
 }
 
-h1{
+h1 {
     font-family: 'Encode Sans Condensed', sans-serif;
 }
 
-.container {
+.flexbox {
     display: flex;
+    flex-wrap: wrap; /* Corrected property */
     justify-content: center;
-    align-items: center;
-    height: 100%;
+    align-content: start;
+    height: 1000px;
+    width: 1000px;
+    background-color:rgb(255, 231, 122)
 }
 
-.main {
-    width: 20%;
-    height: 20%;
-    background-color: aqua;
-    border-radius: 8%;
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+    .flexbox {
+        width: 100%;
+        flex-direction: column;
+    }
 }
-.main-1 {
-    width: 20%;
-    height: 20%;
-    background-image: url(https://plus.unsplash.com/premium_photo-1700801992428-6db75bbffa7f?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    border-radius: 8%;
+
+.car {
+    width: 150px;
+    height: 150px; /* Adjusted to use viewport height */
+    margin: 10px; /* Added some spacing between cars */
 }
-.flexbox{
-    
-}
-.car1{
-    /* position: relative; */
-    width: 20%;
-    height: 20%;
+
+.car1 {
+    /* flex-grow: 3; */
     background-color: rgb(129, 32, 32);
 }
-.car2{
-    
-    width: 20%;
-    height: 20%;
+
+.car2 {
+    flex-basis: 2000px;
     background-color: black;
 }
-.car3{
-    position: absolute;
-    top: 50%;
-    width: 20%;
-    left: 20%;
-    height: 20%;
+
+.car3 {
+    flex-shrink: 0;
     background-color: rgb(55, 53, 156);
 }
