@@ -3,8 +3,12 @@ const express = require('express');
 const { blogs, users } = require('./model/index');
 const app = express();
 const bcrypt = require('bcryptjs');
+//routes herre
+const blogRoute = require("./routes/blogRoute")
+const userRoute = require("./routes/userRoute");
 const { renderCreateBlog, getBlogData, renderForm, createNewBlog, fillSinglePageForm, deleteBlog, editBlog, updateBlog } = require('./controller/blogController');
 const { renderRegister, registerNewUser, Renderlogin, login } = require('./controller/userController');
+
 
 
 // Database connection (already present in the require("./model/index"); line)
@@ -24,36 +28,9 @@ app.get('/', getBlogData);
 app.get('/form', renderForm);
 
 // Render the create blog form
-app.get("/createBlog", renderCreateBlog);
-
-// Table ma blog kasari halne
-app.post("/createBlog", createNewBlog );
-
+app.use('', blogRoute) // localhost :8000 + /createBlog is joined
+app.use('', userRoute) // localhost :8000 + /createBlog is joined
 //Table bata single blog kasari nikalne
-
-// single blog page 
-app.get("/single/:id", fillSinglePageForm)
-
-
-  // Delete a blog
-app.get('/delete/:id', deleteBlog);
-
-// Edit a blog
-app.get('/edit/:id', editBlog);
-
-// Update a blog
-app.post("/updateBlog/:id", updateBlog);
-
-  
-// Render the blog creation form
-app.get('/register', renderRegister);
-
-app.post('/register', registerNewUser);
-
-app.get('/login', Renderlogin);
-
-app.post('/login', login);
-
 
 
 // // Render the blog creation form
