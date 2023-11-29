@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT, // The password can be longer and is sensitive information.
         allowNull: false, // Every user must have a password. It can't be left empty.
       },
+  
     });
   
     // Finally, we've established a structure (User model) adhering to these rules.

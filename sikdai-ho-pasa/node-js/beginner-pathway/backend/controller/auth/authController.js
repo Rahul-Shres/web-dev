@@ -1,5 +1,5 @@
 // Importing necessary modules and the 'users' model from a different file or module
-const { users } = require('../model/index');
+const { users } = require('../../model/index');
 const bcrypt = require('bcryptjs');
 
 // Function to render the registration form
@@ -9,29 +9,40 @@ exports.renderRegister = (req, res) => {
 
 // Function to register a new user
 exports.registerNewUser = async (req, res) => {
-  console.log(req.body); // Logging the request body
+  const { username, email, password, confirmpassword } = req.body;
 
-  const { username, email, password } = req.body; // Extracting user details from the request body
   try {
-    // Checking if username, email, and password are provided
-    if (!username || !email || !password) {
-      return res.status(400).json({ message: 'Please provide username, email, and password' });
+    // Check if username, email, password, and confirmpassword are provided
+    if (!username || !email || !password || !confirmpassword) {
+      return res.status(400).json({ message: 'Please provide username, email, password, and confirm password' });
     }
-    
-    // Creating a new user in the database
-    const createUser = await users.create({
+
+    // Check if password and confirm password match
+    if (password !== confirmpassword) {
+      return res.status(400).json({ message: 'Passwords do not match' });
+    }
+
+    // Hash the password before storing it
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create user in the database
+    await users.create({
       username: username,
       email: email,
-      password: bcrypt.hashSync(password, 8) // Hashing the password before storing it
+      password: hashedPassword,
+      confirmpassword: confirmpassword // Include confirmpassword in database creation
     });
-    
-    // Redirecting to the login page after successful registration
-    res.status(201).redirect('/login');
+
+    res.status(201).redirect("/login");
   } catch (error) {
-    // Handling errors during user creation
+    console.error('Error creating user:', error);
     res.status(500).json({ message: 'Error creating user', error: error.message });
   }
-}
+};
+
+
+
+
 
 // Function to render the login form
 exports.Renderlogin = async (req, res) => {

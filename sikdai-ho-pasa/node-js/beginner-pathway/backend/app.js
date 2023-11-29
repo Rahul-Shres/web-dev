@@ -5,9 +5,9 @@ const app = express();
 const bcrypt = require('bcryptjs');
 //routes herre
 const blogRoute = require("./routes/blogRoute")
-const userRoute = require("./routes/userRoute");
-const { renderCreateBlog, getBlogData, renderForm, createNewBlog, fillSinglePageForm, deleteBlog, editBlog, updateBlog } = require('./controller/blogController');
-const { renderRegister, registerNewUser, Renderlogin, login } = require('./controller/userController');
+const authRoute = require("./routes/authRoute");
+const { renderCreateBlog, getBlogData, renderForm, createNewBlog, fillSinglePageForm, deleteBlog, editBlog, updateBlog } = require('./controller/blog/blogController');
+const { renderRegister, registerNewUser, Renderlogin, login } = require('./controller/auth/authController');
 
 
 
@@ -29,7 +29,7 @@ app.get('/form', renderForm);
 
 // Render the create blog form
 app.use('', blogRoute) // localhost :8000 + /createBlog is joined
-app.use('', userRoute) // localhost :8000 + /createBlog is joined
+app.use('', authRoute) // localhost :8000 + /createBlog is joined
 //Table bata single blog kasari nikalne
 
 

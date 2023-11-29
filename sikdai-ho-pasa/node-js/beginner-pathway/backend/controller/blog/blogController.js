@@ -1,5 +1,5 @@
 // Importing the 'blogs' model from a different file or module
-const { blogs } = require("../model");
+const { blogs } = require("../../model");
 
 // Function to render a form for creating a new blog
 exports.renderCreateBlog = (req, res) => {
