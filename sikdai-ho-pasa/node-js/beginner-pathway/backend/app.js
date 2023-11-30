@@ -1,13 +1,11 @@
 // Import necessary modules
 const express = require('express');
-const { blogs, users } = require('./model/index');
 const app = express();
-const bcrypt = require('bcryptjs');
+
 //routes herre
 const blogRoute = require("./routes/blogRoute")
 const authRoute = require("./routes/authRoute");
-const { renderCreateBlog, getBlogData, renderForm, createNewBlog, fillSinglePageForm, deleteBlog, editBlog, updateBlog } = require('./controller/blog/blogController');
-const { renderRegister, registerNewUser, Renderlogin, login } = require('./controller/auth/authController');
+const {  getBlogData, renderForm} = require('./controller/blog/blogController');
 
 
 

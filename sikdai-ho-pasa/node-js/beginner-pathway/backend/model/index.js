@@ -34,8 +34,12 @@ db.sequelize = sequelize; // Keeps the connection to the database ready to use.
 db.blogs = require("./blogModel.js")(sequelize, DataTypes);
 db.users = require("./userModel.js")(sequelize, DataTypes);
 
+//Relationships
+db.users.hasMany(db.blogs)
+db.users.belongsTo(db.users)
+
 // This part syncs our models with the database to make sure they match.
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
   console.log("yes re-sync done"); // Confirms when everything is set up and ready to work.
 });
 

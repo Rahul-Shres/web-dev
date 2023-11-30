@@ -1,14 +1,10 @@
-//Rest Full Api
-
-const { renderCreateBlog, createNewBlog, fillSinglePageForm, deleteBlog, editBlog, updateBlog } = require('../controller/blog/blogController');
+const { renderRegister, registerNewUser, Renderlogin, login } = require('../controller/auth/authController');
 
 const router = require('express').Router();
 
-router.route('/createBlog').get(renderCreateBlog).post(createNewBlog)
-router.route('/single/:id').get(fillSinglePageForm)
-router.route('/delete/:id').get(deleteBlog)
-router.route('/edit/:id').get(editBlog)
-router.route('/updateBlog/:id').post(updateBlog)
+
+router.route('/register').get(renderRegister).post(registerNewUser)
+router.route('/login').get(Renderlogin).post(login)
 
 
 module.exports = router;

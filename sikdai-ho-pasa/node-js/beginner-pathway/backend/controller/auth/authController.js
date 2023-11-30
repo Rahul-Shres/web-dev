@@ -10,6 +10,7 @@ exports.renderRegister = (req, res) => {
 // Function to register a new user
 exports.registerNewUser = async (req, res) => {
   const { username, email, password, confirmpassword } = req.body;
+  console.log(username, email, password, confirmpassword);
 
   try {
     // Check if username, email, password, and confirmpassword are provided
@@ -54,7 +55,10 @@ exports.login = async (req, res) => {
   console.log(req.body); // Logging the request body
   
   const { email, password } = req.body; // Extracting email and password from the request
-  
+  if(!email || !password) {
+    return res.send("Email and password must be provided")
+  }
+
   try {
     // Finding a user in the database based on the provided email
     const user = await users.findOne({
