@@ -77,15 +77,25 @@ exports.login = async (req, res) => {
         const userId = user.id
               // Jwt here
         
-          const token = jwt.sign({id: userId }, process.env.SECRETKEY, {
-            expiresIn: "30d"
-          });
+              const token = jwt.sign({ id: userId }, process.env.SECRETKEY, {
+                expiresIn: "30d"
+              });
+              
         
           console.log(token);
         
       
-
-        res.cookie("token", token) // browser ma application tab vitra cokkie vanne ma basxa
+          // cookie jhola ho chau chau token ho
+           // browser ma application tab vitra cokkie vanne ma basxa
+           const cookieOptions = {
+            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
+            httpOnly: true,
+            // Other options like secure, sameSite, etc. can be added if needed
+          };
+          
+          res.cookie("token", token, cookieOptions);
+          
+         
         // Redirecting to the homepage with the username as a query parameter after successful login
         res.redirect(`/?username=${encodeURIComponent(username)}`);
       } else {

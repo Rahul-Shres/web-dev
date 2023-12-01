@@ -34,6 +34,8 @@ exports.renderForm = (req, res) => {
 
 // Function to create a new blog in the database
 exports.createNewBlog = async (req, res) => {
+  const userId = req.user[0].id
+  console.log(userId, ">...>..>>.>...>..>>..>>>>");
   const { title, subtitle, content } = req.body; // Extracting blog details from the request
   
   try {
@@ -41,7 +43,8 @@ exports.createNewBlog = async (req, res) => {
     const newBlog = await blogs.create({
       title: title,
       subTitle: subtitle,
-      content: content
+      content: content,
+      userId: userId
     });
 
     // Logging the newly created blog (optional)

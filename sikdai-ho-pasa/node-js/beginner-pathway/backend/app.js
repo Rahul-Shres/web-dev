@@ -6,7 +6,7 @@ const app = express();
 const blogRoute = require("./routes/blogRoute")
 const authRoute = require("./routes/authRoute");
 const {  getBlogData, renderForm} = require('./controller/blog/blogController');
-
+const cookieParser = require('cookie-parser');
 
 
 // Database connection (already present in the require("./model/index"); line)
@@ -17,6 +17,7 @@ app.set('view engine', 'ejs');
 app.use(express.static("public/"))
 // Middleware to handle incoming data
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 // Render the home page with some example blog data
