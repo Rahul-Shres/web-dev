@@ -39,7 +39,7 @@ db.users.hasMany(db.blogs)
 db.users.belongsTo(db.users)
 
 // This part syncs our models with the database to make sure they match.
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
   console.log("yes re-sync done"); // Confirms when everything is set up and ready to work.
 });
 

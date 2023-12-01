@@ -1,7 +1,9 @@
 // Importing necessary modules and the 'users' model from a different file or module
 const { users } = require('../../model/index');
 const bcrypt = require('bcryptjs');
-
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config()
 // Function to render the registration form
 exports.renderRegister = (req, res) => {
   res.render('register.ejs'); // Displaying a form to register a new user
@@ -66,12 +68,24 @@ exports.login = async (req, res) => {
     });
 
     if (user) {
+      const userPassword = user.password    
       // Comparing the provided password with the hashed password stored in the database
-      const isMatch = await bcrypt.compare(password, user.password);
+      const isMatch = await bcrypt.compare(password, userPassword);
 
       if (isMatch) {
         const username = user.username; // Fetching the username from the user object
+        const userId = user.id
+              // Jwt here
+        
+          const token = jwt.sign({id: userId }, process.env.SECRETKEY, {
+            expiresIn: "30d"
+          });
+        
+          console.log(token);
+        
+      
 
+        res.cookie("token", token) // browser ma application tab vitra cokkie vanne ma basxa
         // Redirecting to the homepage with the username as a query parameter after successful login
         res.redirect(`/?username=${encodeURIComponent(username)}`);
       } else {
