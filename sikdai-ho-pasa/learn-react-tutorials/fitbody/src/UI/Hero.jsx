@@ -16,14 +16,15 @@ const Hero = () => {
               {/* Your paragraph content */}
             </p>
             <div className="hero__btns">
-              <button className="register__btn">Get Started</button>
-              <button className="watch__btn">
-                <span>
-                  <i className="ri-play-fill"></i>
-                </span>
-                Watch Video
-              </button>
-            </div>
+  <button className="register__btn">Get Started</button>
+  <button className="watch__btn">
+    <span class="icon">
+      <i class="fas fa-play"></i> 
+    </span>
+    Watch Video
+  </button>
+</div>
+
           </div>
 
           <div className="hero__img-wrapper">
@@ -36,18 +37,19 @@ const Hero = () => {
                 </div>
               </div>
               <div className="heart__rate">
-                <h5>Heart Rate</h5>
-                <span><i className="ri-heart-pulse-fill"></i></span>
-                <h5>2567 BPM</h5>
-              </div>
-              <div className="gym__location">
-                <h5>Gym Location</h5>
-                <span><i className="ri-map-pin-2-fill"></i></span>
-                <h5>Find the best gym</h5>
-              </div>
-              <div className="dumble__icon">
-                <img className="dumble__img" src={dumbleImg} alt='' />
-              </div>
+  <h5>Heart Rate</h5>
+  <span><i class="fas fa-heartbeat"></i></span>
+  <h5>2567 BPM</h5>
+</div>
+<div className="gym__location">
+  <h5>Gym Location</h5>
+  <span><i class="fas fa-map-marker-alt"></i></span>
+  <h5>Find the best gym</h5>
+</div>
+<div className="dumble__icon">
+  <img className="dumble__img" src={dumbleImg} alt='' />
+</div>
+
             </div>
           </div>
         </div>
