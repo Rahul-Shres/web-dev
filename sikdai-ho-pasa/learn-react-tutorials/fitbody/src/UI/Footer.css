@@ -1,0 +1,57 @@
+/* Footer.css */
+.footer {
+    background-color:var(--primary-color);
+    color: #fff;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    flex: 1;
+    margin-right: 20px;
+}
+
+h3 {
+    font-family: var(--default-font); 
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+p {
+    margin: 5px 0;
+    font-family: var(--default-font); 
+}
+
+.newsletter-form {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+input[type="email"] {
+    padding: 8px;
+    flex: 1;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff8c00;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff4f4f;
+}
