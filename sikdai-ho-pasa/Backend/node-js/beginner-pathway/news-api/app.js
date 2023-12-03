@@ -1,27 +1,24 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const { getAllNews, renderCreateNews, createNews } = require('./controller/newsController');
 dotenv.config();
 
 const app = express();
 
+// telling the nodejs to set view-engine to ejs
 app.set('view engine', 'ejs');
+// nodejs lai  file access garna dey vaneko hae yo code lay 
 app.use(express.static("public/")); // giving excess to public folder for ejs
+// form bata data aairaxa parse gara or handle gar vaneko ho
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.get('/', (req, res) => {
-    res.render("newsfeed/newsfeed.ejs"); // Rendering the newsfeed.ejs file in the newsfeed directory
-});
+app.get('/', getAllNews );
 
-app.get('/createNews', (req, res) => {
-    res.render("createNews/createNews.ejs");
-});
+app.get('/createNews', renderCreateNews );
 
 
-app.post('/createNews', (req, res) => {
-    console.log(req.body);
-    res.redirect('/');
-})
+app.post('/createNews',  createNews)
 
 app.listen(process.env.PORT, () => {
     console.log('listening on port ' + process.env.PORT);
