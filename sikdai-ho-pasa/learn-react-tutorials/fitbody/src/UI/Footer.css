@@ -3,7 +3,7 @@
     background-color:var(--primary-color);
     color: #fff;
     padding: 40px 20px;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--default-font); 
 }
 
 .footer-container {

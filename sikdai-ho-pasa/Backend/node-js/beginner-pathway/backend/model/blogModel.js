@@ -1,3 +1,4 @@
+// blogModel.js
 module.exports = (sequelize, DataTypes) => {
   const Blog = sequelize.define("blog", {
     title: {
@@ -13,14 +14,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     userId: {
-      type: DataTypes.INTEGER, // Assuming userId is an integer (change the type if it's different)
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   });
 
   // Define the association between Users and Blogs
   Blog.associate = (models) => {
-    Blog.belongsTo(models.User, { foreignKey: 'userId' }); // Assuming your User model is named 'User'
+    Blog.belongsTo(models.user, { foreignKey: 'userId' }); // Ensure 'user' matches your User model name
   };
 
   return Blog;

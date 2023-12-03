@@ -1,5 +1,5 @@
 // Importing the 'blogs' model from a different file or module
-const { blogs } = require("../../model");
+const { blogs, users } = require("../../model");
 
 // Function to render a form for creating a new blog
 exports.renderCreateBlog = (req, res) => {
@@ -11,7 +11,20 @@ exports.getBlogData = async (req, res) => {
   const username = req.query.username || ''; // Getting the username from the URL or setting it as empty if not available
   
   // Retrieving all blogs from the database
-  const allBlogs = await blogs.findAll();
+  const allBlogs = await blogs.findAll({
+    include: [
+      {
+        model: users, // Assuming 'users' is the correct model name for users
+        as: 'user', // Assuming the alias for the user association is 'user'
+
+      
+      },
+    ],
+  });
+
+  console.log(allBlogs);
+  console.log("All Blogs:", allBlogs);
+ //
 
   // Mapping the retrieved blogs' data to a simpler format
   const blogData = allBlogs.map(blog => ({
@@ -44,7 +57,8 @@ exports.createNewBlog = async (req, res) => {
       title: title,
       subTitle: subtitle,
       content: content,
-      userId: userId
+      userId : req.userId,
+
     });
 
     // Logging the newly created blog (optional)

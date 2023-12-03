@@ -19,7 +19,10 @@
                 <h1 class="blog-title"><%= blog.title %></h1>
                 <h2 class="blog-title"><%= blog.subtitle %></h2>
                 <p class="blog-content"><%= blog.content %></p>
-                <p class="blog-meta">Author: <%= blog.author %> | Published: <%= blog.publishedDate %></p>
+                <p class="blog-meta">Author: <%= blog.user ? blog.user.username : 'Unknown' %></p>
+
+
+
                 <!-- ... other blog details ... -->
                 <% console.log("Blog ID:", blog.id); %>
                 <a href="/single/<%= blog.id %>">View Blog</a>

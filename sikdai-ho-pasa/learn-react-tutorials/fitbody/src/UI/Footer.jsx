@@ -5,6 +5,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-container">
+                
                 <div className="footer-column">
                     <h3>Contact Us</h3>
                     <p>123 Example Street</p>
@@ -12,6 +13,7 @@ const Footer = () => {
                     <p>Email: info@example.com</p>
                     <p>Phone: +1 234 567 890</p>
                 </div>
+
                 <div className="footer-column">
                     <h3>Newsletter</h3>
                     <p>Subscribe to our newsletter for updates.</p>
