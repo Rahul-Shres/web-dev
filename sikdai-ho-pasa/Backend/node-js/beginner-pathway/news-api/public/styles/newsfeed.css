@@ -1,0 +1,85 @@
+/* newsfeed.css */
+
+/* General styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.news-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 5px;
+    max-width: 400px;
+}
+
+.news-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.meta-title {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.description {
+    margin-bottom: 15px;
+}
+
+.author {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-button,
+.delete-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff8c00;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #ff6f00;
+}
+
+
+footer {
+    background-color: #333; /* Dark background for the footer */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
