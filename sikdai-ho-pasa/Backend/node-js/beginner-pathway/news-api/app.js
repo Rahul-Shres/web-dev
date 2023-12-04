@@ -17,11 +17,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 
-
-
 app.get('/', getAllNews );
 app.get('/createNews', renderCreateNews );
 app.post('/createNews', createNews);
+
   
 
 app.listen(process.env.PORT, () => {

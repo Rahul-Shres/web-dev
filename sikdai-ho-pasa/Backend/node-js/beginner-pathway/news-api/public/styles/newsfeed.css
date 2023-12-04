@@ -19,7 +19,9 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Ensure a minimum height of the main content area */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .news-card {
@@ -27,8 +29,10 @@ main {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 5px;
+    margin: 15px; /* Increased margin for better separation */
     max-width: 400px;
+    width: 100%; /* Take full width of the container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .news-title {
@@ -55,6 +59,7 @@ main {
 .button-group {
     display: flex;
     justify-content: space-between;
+    margin-top: 15px; /* Add space between card content and buttons */
 }
 
 .edit-button,
@@ -73,9 +78,8 @@ main {
     background-color: #ff6f00;
 }
 
-
 footer {
-    background-color: #333; /* Dark background for the footer */
+    background-color: #333;
     color: #fff;
     text-align: center;
     padding: 10px;

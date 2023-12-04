@@ -19,19 +19,20 @@
 <body>
     
     <main>
-        <article class="news-card">
-            <div class="news-details">
-                <h2 class="news-title">News 1</h2>
-                <p class="meta-title">Meta Title</p>
-                <p class="description">This is a sample news 1 post.</p>
-                <p class="author">Author: John Doe</p>
-            </div>
-            <div class="button-group">
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
-            </div>
-        </article>
-        <!-- More articles can be added here -->
+        <% news.forEach((singleNews) => { %>
+            <article class="news-card">
+                <div class="news-details">
+                    <h2 class="news-title"><%- singleNews.title %></h2>
+                    <p class="meta-title"><%- singleNews.subtitle %></p>
+                    <p class="description"><%- singleNews.content %></p>
+                    <p class="author">Author: John Doe</p>
+                </div>
+                <div class="button-group">
+                    <button class="edit-button">Edit</button>
+                    <button class="delete-button">Delete</button>
+                </div>
+            </article>
+        <% }) %>
     </main>
     <footer>
         <p>&copy; 2023 YourNewsFeed</p>

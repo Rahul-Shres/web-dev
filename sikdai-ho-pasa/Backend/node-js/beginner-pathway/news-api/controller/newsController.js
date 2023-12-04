@@ -1,8 +1,13 @@
 const { news, sequelize } = require('../model/index') // indec bata import garna parxa model ani kaam garxa
 
 
-exports.getAllNews = (req, res) => {
-    res.render("newsfeed/newsfeed.ejs"); // Rendering the newsfeed.ejs file in the newsfeed directory
+exports.getAllNews = async(req, res) => {
+  //Database bata nikalna find
+const allNews = await news.findAll()
+console.log(allNews)
+// Rendering the newsfeed.ejs file in the newsfeed directory
+// Ejs file lai news vanne namm ma allNews ko data pathako
+    res.render("newsfeed/newsfeed.ejs", {news: allNews}); 
 }
 
 
