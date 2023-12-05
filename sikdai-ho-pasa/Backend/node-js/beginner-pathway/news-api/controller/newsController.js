@@ -22,6 +22,7 @@ exports.createNews = async (req, res) => {
 
     // Create a new News instance using the create method
     await news.create({
+      id:id,
       title,
       subtitle,
       content,
@@ -32,3 +33,10 @@ exports.createNews = async (req, res) => {
    
 }
 
+exports.getSingleNews = (req, res) => {
+  // Assuming you're retrieving the news ID from the request parameters
+  const { id } = req.params;
+
+  // Here, construct the correct path for the view based on your file structure
+  res.render('singleBlog/singleBlog.ejs', { id }); // Assuming you're passing the ID to the view
+};
