@@ -18,7 +18,10 @@
 </head>
 <body>
     
-    <main>
+    <h3> <%- singleNews[0].title %> </h3>
+    <h4> <%- singleNews[0].subtitle %> </h4>
+    <p>  <%- singleNews[0].content %></p>
+    <button class="delete-button" ><a href="/delete/<%- singleNews[0].id %>">Delete</a></button>
         Hello
     <footer>
         <p>&copy; 2023 YourNewsFeed</p>

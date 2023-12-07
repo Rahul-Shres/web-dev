@@ -33,10 +33,34 @@ exports.createNews = async (req, res) => {
    
 }
 
-exports.getSingleNews = (req, res) => {
+exports.getSingleNews = async (req, res) => {
   // Assuming you're retrieving the news ID from the request parameters
   const { id } = req.params;
+  // id ko data magnu/find garnu paryo hamro table bata
+  const singleNews = await news.findAll({
+    where: {
+      id:id,
+    }
+  })
 
+  console.log("singleNews", singleNews);
   // Here, construct the correct path for the view based on your file structure
-  res.render('singleBlog/singleBlog.ejs', { id }); // Assuming you're passing the ID to the view
+  res.render('singleBlog/singleBlog.ejs', {  singleNews}); // Assuming you're passing the ID to the view
+};
+
+
+exports.deleteNews = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // 'news' is your Sequelize model for news
+    await news.destroy({
+      where: { id: id },
+    });
+    res.redirect("/");
+  } catch (error) {
+    console.error("Error deleting news:", error);
+    // Handle the error appropriately (send an error response, redirect, etc.)
+    res.status(500).send("Error deleting news");
+  }
 };
