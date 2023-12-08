@@ -64,3 +64,33 @@ exports.deleteNews = async (req, res) => {
     res.status(500).send("Error deleting news");
   }
 };
+
+
+exports.getEditNews = async (req,res) =>{
+
+  const id = req.params.id;
+  console.log(id);
+  // find news of the id
+  const prefill = await news.findAll({
+    where: { id: id}
+  })
+  res.render("editNews/editNews.ejs", {prefill});
+}
+
+exports.editedNews = async (req,res) =>{
+  const id = req.params.id;
+  console.log(id);
+  const editedNews = req.body
+  const {title, subtitle, content} = req.body;
+  await news.update({
+    title,
+    subtitle,
+    content
+  },{
+    where: {
+      id : id,
+    }
+  })
+  console.log(editedNews);
+  res.redirect("/" )
+}
