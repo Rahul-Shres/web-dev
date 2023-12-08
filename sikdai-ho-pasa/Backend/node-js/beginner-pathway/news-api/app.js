@@ -1,10 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const { getAllNews, renderCreateNews, createNews, getSingleNews, deleteNews, getEditNews, editBlog, editNews, editedNews } = require('./controller/newsController');
+const { getRegister, register  } = require('./controller/userController');
 
 dotenv.config();
-
 const app = express();
+//Form bata ako data lai bhuj hai vaneko
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 // Connect to the database
 require('./model/index') // index hunxa parxa yar not model
 
@@ -24,6 +27,8 @@ app.get('/single/:id', getSingleNews)
 app.get('/delete/:id', deleteNews);
 app.get('/editNews/:id', getEditNews);
 app.post('/editNews/:id', editedNews);
+app.get('/register', getRegister);
+app.post('/register', register);
 
 app.listen(process.env.PORT, () => {
     console.log('listening on port ' + process.env.PORT);

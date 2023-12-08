@@ -94,3 +94,4 @@ exports.editedNews = async (req,res) =>{
   console.log(editedNews);
   res.redirect("/" )
 }
+
