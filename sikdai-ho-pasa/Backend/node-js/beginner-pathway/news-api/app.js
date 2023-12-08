@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const { getAllNews, renderCreateNews, createNews, getSingleNews, deleteNews, getEditNews, editBlog, editNews, editedNews } = require('./controller/newsController');
-const { getRegister, register  } = require('./controller/userController');
+const { getRegister, register, getLogin, login  } = require('./controller/userController');
 
 dotenv.config();
 const app = express();
@@ -29,6 +29,8 @@ app.get('/editNews/:id', getEditNews);
 app.post('/editNews/:id', editedNews);
 app.get('/register', getRegister);
 app.post('/register', register);
+app.get('/login', getLogin);
+app.post('/login', login);
 
 app.listen(process.env.PORT, () => {
     console.log('listening on port ' + process.env.PORT);
