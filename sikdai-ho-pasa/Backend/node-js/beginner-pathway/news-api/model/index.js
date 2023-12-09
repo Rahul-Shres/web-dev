@@ -34,6 +34,11 @@ db.sequelize = sequelize;
 db.news = require("./newsModel.js")(sequelize, DataTypes);
 db.users = require("./userModel.js")(sequelize, DataTypes);
 
+// relationship
+//Foreign key ko colums chayo 
+//user le jati ni blog halna paunu parxa
+db.users.hasMany(db.news)
+db.news.belongsTo(db.users)
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log("yes re-sync done");
