@@ -9,18 +9,24 @@ exports.getRegister = async (req, res) => {
 exports.register = async (req,res) =>{
     const body = req.body;
     console.log(body);
-    const {username, email, password} = body;
-    if(!username || !email || !password){
+    const {username, email, password, confirmpassword} = body;
+    if(!username || !email || !password || !confirmpassword){
         return res.send("Username, email and password is required")
     }
-    const him = await users.create({
+
+    if(password.toLowerCase() !== confirmpassword.toLowerCase()){
+        return res.send("Password and confirm password must be same")
+    }
+
+
+    const newUser = await users.create({
         username: username,
         email: email,
         password: bcrypt.hashSync(password,8)
     })
- console.log(him);
+ console.log(newUser);
 
- res.send("User created successfully");
+ res.redirect("/login");
 
 }
 
@@ -42,7 +48,7 @@ exports.login = async (req, res) => {
        // password check garne aaba
        const isMatched = bcrypt.compareSync(password, userExists[0].password) 
        if(isMatched){
-        res.send("user logged in successfully")
+        res.redirect("/")
        } else{
         res.send("user logged in failed")
        }

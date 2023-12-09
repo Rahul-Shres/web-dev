@@ -1,7 +1,5 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const { getAllNews, renderCreateNews, createNews, getSingleNews, deleteNews, getEditNews, editBlog, editNews, editedNews } = require('./controller/newsController');
-const { getRegister, register, getLogin, login  } = require('./controller/userController');
 
 dotenv.config();
 const app = express();
@@ -19,18 +17,13 @@ app.use(express.static("public/")); // giving excess to public folder for ejs
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+// Routes here
 
-app.get('/', getAllNews );
-app.get('/createNews', renderCreateNews );
-app.post('/createNews', createNews);
-app.get('/single/:id', getSingleNews)
-app.get('/delete/:id', deleteNews);
-app.get('/editNews/:id', getEditNews);
-app.post('/editNews/:id', editedNews);
-app.get('/register', getRegister);
-app.post('/register', register);
-app.get('/login', getLogin);
-app.post('/login', login);
+const newsRouter = require('./routes/newsRoute.js');
+const authRouter = require('./routes/authRoute.js');
+app.use('', newsRouter);
+app.use('', authRouter);
+
 
 app.listen(process.env.PORT, () => {
     console.log('listening on port ' + process.env.PORT);

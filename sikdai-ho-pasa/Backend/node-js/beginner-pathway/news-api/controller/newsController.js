@@ -22,7 +22,7 @@ exports.createNews = async (req, res) => {
 
     // Create a new News instance using the create method
     await news.create({
-      id:id,
+      // id,
       title,
       subtitle,
       content,
