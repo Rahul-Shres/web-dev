@@ -17,15 +17,17 @@ exports.renderCreateNews =  (req, res) => {
 
 
 exports.createNews = async (req, res) => {
+    console.log(req.user[0].id, "<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     const { title, subtitle, content } = req.body;
     console.log(title, subtitle, content);
-
+    const userId = req.user[0].id;
     // Create a new News instance using the create method
     await news.create({
       // id,
       title,
       subtitle,
       content,
+      userId: userId
     });
 
   

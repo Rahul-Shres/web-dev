@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { getAllNews, renderCreateNews, createNews, getSingleNews, deleteNews, getEditNews, editedNews } = require('../controller/newsController');
+const { isAuthenticated } = require('../middleware/isAuthenticated');
 
 router.route('/').get(getAllNews);
-router.route('/createNews').get(renderCreateNews).post(createNews);
+router.route('/createNews').get(renderCreateNews).post(isAuthenticated,createNews);
 router.route('/single/:id').get(getSingleNews);
 router.route("/delete/:id").get(deleteNews);
 router.route('/editNews/:id').get(getEditNews).post(editedNews);

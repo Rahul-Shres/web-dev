@@ -1,11 +1,15 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 dotenv.config();
 const app = express();
 //Form bata ako data lai bhuj hai vaneko
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+// cookies haru khana lai
+app.use(cookieParser())
 // Connect to the database
 require('./model/index') // index hunxa parxa yar not model
 
