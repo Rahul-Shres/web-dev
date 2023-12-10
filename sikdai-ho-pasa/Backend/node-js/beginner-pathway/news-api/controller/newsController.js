@@ -47,6 +47,9 @@ exports.getSingleNews = async (req, res) => {
   const singleNews = await news.findAll({
     where: {
       id:id,
+    },
+    include: {
+      model: users
     }
   })
 

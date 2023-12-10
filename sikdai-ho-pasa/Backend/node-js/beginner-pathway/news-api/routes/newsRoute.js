@@ -4,9 +4,9 @@ const { isAuthenticated } = require('../middleware/isAuthenticated');
 
 router.route('/').get(getAllNews);
 router.route('/createNews').get(renderCreateNews).post(isAuthenticated,createNews);
-router.route('/single/:id').get(getSingleNews);
-router.route("/delete/:id").get(deleteNews);
-router.route('/editNews/:id').get(getEditNews).post(editedNews);
+router.route('/single/:id').get(isAuthenticated,getSingleNews);
+router.route("/delete/:id").get(isAuthenticated,deleteNews);
+router.route('/editNews/:id').get(isAuthenticated,getEditNews).post(isAuthenticated,editedNews);
 
 module.exports = router;
 
