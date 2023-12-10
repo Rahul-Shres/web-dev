@@ -1,9 +1,13 @@
-const { news, sequelize } = require('../model/index') // indec bata import garna parxa model ani kaam garxa
+const { news, sequelize, users } = require('../model/index') // indec bata import garna parxa model ani kaam garxa
 
 
 exports.getAllNews = async(req, res) => {
   //Database bata nikalna find
-const allNews = await news.findAll()
+const allNews = await news.findAll({
+  include: {
+    model: users
+  }
+})
 console.log(allNews)
 // Rendering the newsfeed.ejs file in the newsfeed directory
 // Ejs file lai news vanne namm ma allNews ko data pathako
@@ -17,9 +21,10 @@ exports.renderCreateNews =  (req, res) => {
 
 
 exports.createNews = async (req, res) => {
-    console.log(req.user[0].id, "<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    console.log(req.user[0].id, "From Create News <<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     const { title, subtitle, content } = req.body;
     console.log(title, subtitle, content);
+    console.log("req.id from createNews", req.id);
     const userId = req.user[0].id;
     // Create a new News instance using the create method
     await news.create({

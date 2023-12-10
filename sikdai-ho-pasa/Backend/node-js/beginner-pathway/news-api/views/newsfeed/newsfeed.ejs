@@ -25,7 +25,9 @@
                     <h2 class="news-title"><%- singleNews.title %></h2>
                     <p class="meta-title"><%- singleNews.subtitle %></p>
                     <p class="description"><%- singleNews.content %></p>
-                    <p class="author">Author: John Doe</p>
+                    <!-- user hai -->
+                    <p class="author">Author: <%- singleNews.user.username %></p>
+                    <p class="author">Email: <%- singleNews.user.email %></p>
                 </div>
                 <button class="edit-button"><a href="/single/<%- singleNews.id %>">Read More</a></button>
                 <div class="button-group">
