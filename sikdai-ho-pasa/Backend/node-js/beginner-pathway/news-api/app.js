@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-
+const jwt = require('jsonwebtoken');
 dotenv.config();
 const app = express();
 //Form bata ako data lai bhuj hai vaneko

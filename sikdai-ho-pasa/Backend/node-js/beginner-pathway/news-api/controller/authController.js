@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
 const { users } = require('../model');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv').config();
 
 
 exports.getRegister = async (req, res) => {
@@ -48,6 +50,13 @@ exports.login = async (req, res) => {
        // password check garne aaba
        const isMatched = bcrypt.compareSync(password, userExists[0].password) 
        if(isMatched){
+        const token = jwt.sign({id: userExists[0].id}, process.env.SECRETKEY,{
+            expiresIn: "30d"
+        })
+        console.log("token", token)
+        res.cookie('token', token),{
+            secure: true,
+        }
         res.redirect("/")
        } else{
         res.send("user logged in failed")
