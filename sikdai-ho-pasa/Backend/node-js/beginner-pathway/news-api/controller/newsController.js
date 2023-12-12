@@ -105,3 +105,26 @@ exports.editedNews = async (req,res) =>{
   res.redirect("/" )
 }
 
+exports.getMyBlogs = async (req, res) => {
+  try {
+    // get this user blogs
+    const userId = req.userId;
+    console.log(userId, "From myblog...");
+
+    // find blogs of this user
+    const myNews = await news.findAll({
+      where: {
+        userId: userId
+      },
+      include: [{
+        model: users, // Assuming 'users' is your user model
+        attributes: ['username', 'email'] // Fetch only necessary attributes
+      }]
+    });
+
+    res.render('myblogs/myblogs.ejs', { myNews: myNews });
+  } catch (error) {
+    console.error("Error retrieving user blogs:", error);
+    res.status(500).send('Error retrieving user blogs');
+  }
+};

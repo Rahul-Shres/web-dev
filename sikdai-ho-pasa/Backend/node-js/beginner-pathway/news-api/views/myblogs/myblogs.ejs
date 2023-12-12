@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Page</title>
+<body>
+  <header>
+    <h1>Edit News Article</h1>
+  </header>
+
+  <% myNews.forEach((mine) => { %>
+    <article class="news-card">
+      <div class="news-details">
+        <h2 class="news-title"><%- mine.title %></h2>
+        <p class="meta-title"><%- mine.subtitle %></p>
+        <p class="description"><%- mine.content %></p>
+        
+        <% if (mine.user) { %>
+          <p class="author">Author: <%- mine.user.username %></p>
+          <p class="author">Email: <%- mine.user.email %></p>
+        <% } else { %>
+          <!-- Handle the case where user data is not available -->
+          <p class="author">Author: Not available</p>
+          <p class="author">Email: Not available</p>
+        <% } %>
+        
+      </div>
+      <button class="edit-button"><a href="/single/<%- mine.id %>">Read More</a></button>
+    </article>
+  <% }) %>
+  
+  
+
+</body>
+</html>

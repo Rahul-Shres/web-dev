@@ -30,6 +30,7 @@ exports.isAuthenticated = async (req, res, next) => {
     } else {
         // Assuming you want to set the found user in the request object
         req.user = userExist; // Set the user ID found in the request object
+        req.userId = userExist[0].id
         next(); // Continue with the next middleware
     }
     
