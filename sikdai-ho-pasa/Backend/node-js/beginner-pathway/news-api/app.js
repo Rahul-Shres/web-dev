@@ -17,6 +17,7 @@ require('./model/index') // index hunxa parxa yar not model
 app.set('view engine', 'ejs');
 // nodejs lai  file access garna dey vaneko hae yo code lay 
 app.use(express.static("public/")); // giving excess to public folder for ejs
+app.use(express.static("uploads/")); // giving excess to public folder for ejs
 // form bata data aairaxa parse gara or handle gar vaneko ho
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
