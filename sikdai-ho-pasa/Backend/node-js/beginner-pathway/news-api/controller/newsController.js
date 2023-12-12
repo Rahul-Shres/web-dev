@@ -105,7 +105,7 @@ exports.editedNews = async (req,res) =>{
   res.redirect("/" )
 }
 
-exports.getMyBlogs = async (req, res) => {
+exports.getMyNews = async (req, res) => {
   try {
     // get this user blogs
     const userId = req.userId;
@@ -122,7 +122,7 @@ exports.getMyBlogs = async (req, res) => {
       }]
     });
 
-    res.render('myblogs/myblogs.ejs', { myNews: myNews });
+    res.render('myNews/myNews.ejs', { myNews: myNews });
   } catch (error) {
     console.error("Error retrieving user blogs:", error);
     res.status(500).send('Error retrieving user blogs');
