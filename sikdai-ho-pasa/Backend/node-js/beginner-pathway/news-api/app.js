@@ -10,6 +10,13 @@ app.use(express.urlencoded({extended: true}));
 
 // cookies haru khana lai
 app.use(cookieParser())
+
+// Everytime use hunxa yo
+// login xa ki nai track gareko
+app.use((req,res,next)=>{
+    res.locals.currentUser = req.cookies.token
+    next()
+})
 // Connect to the database
 require('./model/index') // index hunxa parxa yar not model
 

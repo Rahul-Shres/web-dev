@@ -12,11 +12,17 @@
     <a href="#">YourLogo</a>
   </div>
   <ul class="nav-links">
-    <li><a href="#">Home</a></li>
+    <% if(currentUser){ %>
+      <li><a href="#">Home</a></li>
     <li><a href="/createNews">Create News</a></li>
     <li><a href="/myblogs">My blogs</a></li>
-    <li><a href="/register">Register</a></li>
+    <li><a href="/logout">Log out</a></li>
+    <% } else{ %>
+      <li><a href="/register">Register</a></li>
     <li><a href="/login">Login</a></li>
+    <% } %>
+    
+    
   </ul>
 </nav>
 

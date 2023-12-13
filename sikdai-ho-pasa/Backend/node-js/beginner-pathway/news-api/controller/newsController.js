@@ -1,5 +1,7 @@
 const { news, sequelize, users } = require('../model/index') // indec bata import garna parxa model ani kaam garxa
-
+const dotenv = require('dotenv');
+dotenv.config();
+const fs = require('fs'); // fs-filesystem
 
 exports.getAllNews = async(req, res) => {
   //Database bata nikalna find
@@ -21,8 +23,15 @@ exports.renderCreateNews =  (req, res) => {
 
 
 exports.createNews = async (req, res) => {
+
+
     console.log(req.user[0].id, "From Create News <<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
+    console.log(req.file.filename, "From Create News <<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    const fileName = req.file.filename
     const { title, subtitle, content } = req.body;
+
+
     console.log(title, subtitle, content);
     console.log("req.id from createNews", req.id);
     const userId = req.user[0].id;
@@ -32,7 +41,8 @@ exports.createNews = async (req, res) => {
       title,
       subtitle,
       content,
-      userId: userId
+      userId: userId,
+      image: process.env.WEBSITE +fileName
     });
 
   
@@ -87,23 +97,50 @@ exports.getEditNews = async (req,res) =>{
   res.render("editNews/editNews.ejs", {prefill});
 }
 
-exports.editedNews = async (req,res) =>{
-  const id = req.params.id;
-  console.log(id);
-  const editedNews = req.body
-  const {title, subtitle, content} = req.body;
-  await news.update({
-    title,
-    subtitle,
-    content
-  },{
-    where: {
-      id : id,
+exports.editedNews = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { title, subtitle, content } = req.body;
+
+    const oldData = await news.findByPk(id);
+    let oldImage = oldData.image;
+    let newImage;
+
+    if (req.file) {
+      newImage = process.env.WEBSITE + req.file.filename;
+      console.log("New File URL: " + newImage);
     }
-  })
-  console.log(editedNews);
-  res.redirect("/" )
-}
+
+    await news.update({
+      title,
+      subtitle,
+      content,
+      image: newImage || oldImage // Use newImage if available, otherwise keep the oldImage
+    }, {
+      where: { id }
+    });
+
+    if (oldImage.startsWith("http://localhost:8000/")) {
+      const lengthOfUnwanted = "http://localhost:8000/".length;
+      const fileNameInUploadsFolder = oldImage.slice(lengthOfUnwanted);
+
+      fs.unlink("uploads/" + fileNameInUploadsFolder, (err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Deleted old image");
+        }
+      });
+    }
+
+    console.log("Edited News Details:", req.body);
+    res.redirect("/");
+  } catch (error) {
+    console.error("Error editing news:", error);
+    res.status(500).send('Error editing news');
+  }
+};
+
 
 exports.getMyNews = async (req, res) => {
   try {
