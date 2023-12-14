@@ -13,8 +13,13 @@ app.use(cookieParser())
 
 // Everytime use hunxa yo
 // login xa ki nai track gareko
-app.use((req,res,next)=>{
+app.use( async (req,res,next)=>{
     res.locals.currentUser = req.cookies.token
+    const token = req.cookies.token
+    if(token){
+        const decryptedResult = await decodedToken(token, process.env.SECRETKEY)
+        res.locals.currentUserId = decryptedResult.id
+    }
     next()
 })
 // Connect to the database
@@ -33,6 +38,7 @@ app.use(express.urlencoded({extended: true}));
 
 const newsRouter = require('./routes/newsRoute.js');
 const authRouter = require('./routes/authRoute.js');
+const { decodedToken } = require('./services/decodeToken.js');
 app.use('', newsRouter);
 app.use('', authRouter);
 

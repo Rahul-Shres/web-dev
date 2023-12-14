@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const dotenv = require('dotenv');
 const { users } = require('../model');
+const { decodedToken } = require('../services/decodeToken');
 dotenv.config();
 
 exports.isAuthenticated = async (req, res, next) => {
@@ -15,7 +16,7 @@ exports.isAuthenticated = async (req, res, next) => {
   try {
     // Verify token if it is legitimate
     const verifyAsync = promisify(jwt.verify);
-    const decryptedResult = await verifyAsync(token, process.env.SECRETKEY);
+    const decryptedResult = await decodedToken(token, process.env.SECRETKEY);
     console.log(decryptedResult);
     
     // Check if user exists or not
