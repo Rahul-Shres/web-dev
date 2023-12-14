@@ -99,16 +99,20 @@ exports.checkForgorPassword = async (req, res) => {
     if(emailExists.length === 0){
         res.send("User with that email does not exits")
     } else{
+        const generateOtp = Math.floor(10000* Math.random(9000))
         //sending bulk email notification
         for(var i = 0; i < allUsers.length; i++){
             await  sendEmail({
                 email : allUsers[i].email,
                 subject : "This is bulk gmail",
-                otp : 1234
+                otp : generateOtp
             })
+            emailExists[0].otp = generateOtp
+            emailExists[0].otpGeneratedTime = new Date();
+            await emailExists[0].save()
         }
         //OTP pathaune
-        // tyo email ma otp pathauney
+        // tyo email ma otp pathauneyb
      
 
     res.send("Email sent successfully")

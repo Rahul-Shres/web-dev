@@ -12,7 +12,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull:false
       },
-      
+      otp:{
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      otpGeneratedTime :{
+        type: DataTypes.DATE, // Change the data type to DataTypes.DATE
+        allowNull: true
+      }
     
     });
     return User;
