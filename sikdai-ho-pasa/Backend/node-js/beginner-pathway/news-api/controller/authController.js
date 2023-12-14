@@ -83,12 +83,13 @@ exports.getForgotPassword = async (req, res) => {
 }
 
 exports.checkForgorPassword = async (req, res) => {
+
     const email = req.body.email;
     // if email exists or not
     if(!email){
         return res.send("PLease provide email")
     }
-
+    const allUsers = await users.findAll()
     //if email exists or not
     const emailExists = await users.findAll({
         where: {
@@ -98,13 +99,17 @@ exports.checkForgorPassword = async (req, res) => {
     if(emailExists.length === 0){
         res.send("User with that email does not exits")
     } else{
+        //sending bulk email notification
+        for(var i = 0; i < allUsers.length; i++){
+            await  sendEmail({
+                email : allUsers[i].email,
+                subject : "This is bulk gmail",
+                otp : 1234
+            })
+        }
         //OTP pathaune
         // tyo email ma otp pathauney
-      await  sendEmail({
-        email : email,
-        subject : "Forgot Password OTP",
-        otp : 1234
-    })
+     
 
     res.send("Email sent successfully")
     }
