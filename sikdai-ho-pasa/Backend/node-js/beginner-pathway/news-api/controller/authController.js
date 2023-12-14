@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const { users } = require('../model');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
-
+const sendEmail = require('../services/sendEmail');
 
 exports.getRegister = async (req, res) => {
     res.render("register/register.ejs") 
@@ -75,3 +75,37 @@ exports.getLogout = (req,res) => {
     res.clearCookie('token');
     res.redirect('/login');
   }
+
+
+
+exports.getForgotPassword = async (req, res) => {
+    res.render("forgotPassword/forgotPassword.ejs")
+}
+
+exports.checkForgorPassword = async (req, res) => {
+    const email = req.body.email;
+    // if email exists or not
+    if(!email){
+        return res.send("PLease provide email")
+    }
+
+    //if email exists or not
+    const emailExists = await users.findAll({
+        where: {
+            email: email
+        }
+    })
+    if(emailExists.length === 0){
+        res.send("User with that email does not exits")
+    } else{
+        //OTP pathaune
+        // tyo email ma otp pathauney
+      await  sendEmail({
+        email : email,
+        subject : "Forgot Password OTP",
+        otp : 1234
+    })
+
+    res.send("Email sent successfully")
+    }
+}
