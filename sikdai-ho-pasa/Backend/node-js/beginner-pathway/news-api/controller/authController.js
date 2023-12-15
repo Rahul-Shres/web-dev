@@ -193,6 +193,30 @@ exports.handlePasswordChange = async (req, res) => {
         return res.status(400).send("New password and Confirm password need to match");
     }
 
+     // Finding user data based on email and OTP
+     const userData = await users.findOne({
+        where: {
+            email: email,
+            otp: otp
+        }
+    });
+
+
+    if (userData.length === 0) {
+        return res.send("Don't try to do this");
+    }
+
+    const otpGeneratedTime = userData.otpGeneratedTime;
+    const currentTime = Date.now();
+
+    // Check if the time limit for password change (2 minutes) has exceeded
+    const timeElapsed = currentTime - otpGeneratedTime;
+    const timeLimit = 1 * 60 * 1000; // 2 minutes in milliseconds
+
+    if (timeElapsed >= timeLimit) {
+        return res.redirect("/forgotPassword");
+    }
+
     try {
         const hashedNewPassword = bcrypt.hashSync(newPassword, 8);
 
