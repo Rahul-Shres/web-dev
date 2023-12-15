@@ -153,10 +153,10 @@ exports.handleOTP = async (req, res) => {
 
         // Checking if OTP is valid within a 2-minute (120000 milliseconds) window
         if (currentTime - otpGeneratedTime <= 120000) {
-            userData.otp = null;
-            userData.otpGeneratedTime = null;
-            await userData.save();
-            return res.redirect("/passwordChangeForm");
+            // userData.otp = null;
+            // userData.otpGeneratedTime = null;
+            // await userData.save();
+            return res.redirect(`/passwordChangeForm?email=${email}&otp=${otp}`);
         } else {
             return res.send("OTP expired");
         }
@@ -169,5 +169,47 @@ exports.handleOTP = async (req, res) => {
 
 
 exports.renderGetPasswordForm = (req,res) =>{
-    res.render("passwordChangeForm/passwordChangeForm.ejs")
+    const otp = req.query.otp;
+    const email = req.query.email;
+    console.log(otp,email, "from renderGetPAsswordForm")
+    if(!email || !otp){
+        return res.send("Email and OTP must be provided")
+    }
+    res.render("passwordChangeForm/passwordChangeForm.ejs",{otp,email})
 }
+
+exports.handlePasswordChange = async (req, res) => {
+    const otp = req.params.otp;
+    const email = req.params.email;
+    console.log("from handlePasswordChange", otp, email)
+    const newPassword = req.body.newPassword;
+    const confirmPassword = req.body.confirmPassword;
+
+    if (!newPassword || !confirmPassword || !email || !otp) {
+        return res.status(400).send("New Password and Confirm Password are required");
+    }
+
+    if (newPassword !== confirmPassword) {
+        return res.status(400).send("New password and Confirm password need to match");
+    }
+
+    try {
+        const hashedNewPassword = bcrypt.hashSync(newPassword, 8);
+
+        await users.update(
+            {
+                password: hashedNewPassword
+            },
+            {
+                where: {
+                    email: email
+                }
+            }
+        );
+
+        res.redirect('/login');
+    } catch (error) {
+        console.error("Error occurred: ", error);
+        res.status(500).send("Internal Server Error");
+    }
+};
