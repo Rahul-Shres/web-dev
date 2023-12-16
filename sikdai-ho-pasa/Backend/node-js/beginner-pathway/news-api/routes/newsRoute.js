@@ -3,13 +3,14 @@ const { getAllNews, renderCreateNews, createNews, getSingleNews, deleteNews, get
 const { isAuthenticated } = require('../middleware/isAuthenticated');
 const {multer, storage} = require('../middleware/multerConfig');
 const { isValidUser } = require('../middleware/validUser');
+const catchError = require('../services/catchError');
 const upload = multer({ storage: storage})
 router.route('/').get(getAllNews);
-router.route('/createNews').get(isAuthenticated,renderCreateNews).post(isAuthenticated,upload.single("image"),createNews);
-router.route('/single/:id').get(getSingleNews);
-router.route("/delete/:id").get(isAuthenticated,deleteNews);
-router.route('/editNews/:id').get(isAuthenticated,getEditNews).post(isAuthenticated,isValidUser,upload.single("image"),editedNews);
-router.route('/myblogs').get(isAuthenticated, getMyNews)
+router.route('/createNews').get(catchError(isAuthenticated),catchError(renderCreateNews)).post(isAuthenticated,upload.single("image"),createNews);
+router.route('/single/:id').get(catchError(getSingleNews));
+router.route("/delete/:id").get(catchError(isAuthenticated),catchError(deleteNews));
+router.route('/editNews/:id').get(catchError(isAuthenticated),catchError(getEditNews)).post(isAuthenticated,isValidUser,upload.single("image"),editedNews);
+router.route('/myblogs').get(catchError(isAuthenticated), catchError(getMyNews))
 module.exports = router;
 
 

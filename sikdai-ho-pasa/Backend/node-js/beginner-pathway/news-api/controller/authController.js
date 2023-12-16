@@ -1,7 +1,3 @@
-
-
-
-
 const bcrypt = require('bcryptjs');
 const { users } = require('../model');
 const jwt = require('jsonwebtoken');
@@ -31,13 +27,14 @@ exports.register = async (req,res) =>{
         password: bcrypt.hashSync(password,8)
     })
  console.log(newUser);
-
+ req.flash("success","Logged In Successfully")
  res.redirect("/login");
 
 }
 
 exports.getLogin = async (req, res) => {
-    res.render("login/login.ejs")
+    const error =  req.flash("error")
+    res.render("login/login.ejs",{error })
 }
 
 exports.login = async (req, res) => {
@@ -61,9 +58,11 @@ exports.login = async (req, res) => {
         res.cookie('token', token),{
             secure: true,
         }
+        req.flash("success","Logged In Successfully")
         res.redirect("/")
        } else{
-        res.send("user logged in failed")
+        req.flash("error","Invalid Password")
+        res.redirect("/login")
        }
     }else{
 

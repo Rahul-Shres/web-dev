@@ -4,6 +4,13 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 dotenv.config();
 const app = express();
+
+
+// require express-session and connect-flash
+const session = require("express-session")
+const flash = require("connect-flash")
+
+
 //Form bata ako data lai bhuj hai vaneko
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -24,6 +31,14 @@ app.use( async (req,res,next)=>{
 })
 // Connect to the database
 require('./model/index') // index hunxa parxa yar not model
+
+app.use(session({
+    secret : "helloworld",
+    resave : false,
+    saveUninitialized : false
+}))
+
+app.use(flash())
 
 // telling the nodejs to set view-engine to ejs
 app.set('view engine', 'ejs');

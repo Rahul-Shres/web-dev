@@ -3,7 +3,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 const fs = require('fs'); // fs-filesystem
 
+
+
 exports.getAllNews = async(req, res) => {
+  const success = req.flash("success")
   //Database bata nikalna find
 const allNews = await news.findAll({
   include: {
@@ -13,7 +16,7 @@ const allNews = await news.findAll({
 console.log(allNews)
 // Rendering the newsfeed.ejs file in the newsfeed directory
 // Ejs file lai news vanne namm ma allNews ko data pathako
-    res.render("newsfeed/newsfeed.ejs", {news: allNews}); 
+    res.render("newsfeed/newsfeed.ejs", {news: allNews,success}); 
 }
 
 
