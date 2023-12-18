@@ -6,6 +6,10 @@ const userSchema = new Schema({
         type: String,
         required:[true,'userEmail must be a valid email']
     },
+    userName:{
+        type: String,
+        required:[true,'username must be a valid email']
+    },
     userPhoneNumber : {
         type : Number,
         required:[true,'userPhoneNumber must be a valid']
@@ -16,7 +20,8 @@ const userSchema = new Schema({
     },
     role:{
         type: String,
-        enum: ["customer", "admin"]
+        enum: ["customer", "admin"],
+        default : "customer",
     }
        
     
