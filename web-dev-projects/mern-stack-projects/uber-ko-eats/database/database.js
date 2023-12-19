@@ -1,11 +1,33 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const User = require('../model/userModel');
 dotenv.config();
 
 exports.connectDatabase = async () => {
     try {
         await mongoose.connect(process.env.MONGOURI);
         console.log('Connected to MongoDB');
+
+        // admin seeding
+
+        // check if admin exists or nor
+        const isAdminExists = await User.findOne({ userEmail: 'admin@gmail.com'})
+        if(isAdminExists) {
+            console.log('Admin user already exists');
+            return;
+        } else{
+            await User.create({
+                userEmail: 'admin@gmail.com',
+                userPassword: 'admin123',
+                userPhoneNumber: '123789456',
+                userName : 'Admin',
+                role: 'admin'
+               
+            })
+    
+            console.log('Admin user created');
+        }
+        
     } catch (error) {
         console.error('Error connecting to MongoDB:', error.message);
         // You might want to handle the error in a specific way or throw it further.

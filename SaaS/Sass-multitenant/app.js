@@ -34,6 +34,11 @@ app.get("/",(req,res)=>{
 var userProfile ;
 let GoogleStrategy = require("passport-google-oauth").OAuth2Strategy
 
+
+// todo Initialize Google OAuth with client ID, client secret, and callback URL.
+// todo GoogleStrategy constructor configures the strategy.
+// todo The callback function handles the retrieved user profile data.
+
 passport.use( new GoogleStrategy({
     clientID : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
@@ -49,25 +54,18 @@ function(accessToken,refreshToken,profile,done){
 }
 ))
 
+// todo /auth/google: Initiates the Google authentication process.
+// todo /auth/google/callback: Handles the callback from Google after authentication.
+// todo The passport.authenticate method manages the authentication process.
 app.get("/auth/google",passport.authenticate("google",{scope : ['profile','email']}) )
 
 app.get("/auth/google/callback",passport.authenticate("google",{
     failureRedirect : "http://localhost:9000"
 }),
 function(req,res){
-    // check if google lay deko email already table ma exists xa ki nae vanerw  
-    // const users =  await users.findAll({
-        // where : {
-            const userEmail = userProfile.emails[0].value; // Accessing first email
-            
-        // }
-    // /
-
-    // xa 
-     // token generate garney ; jwt.sign
-
-    // xainw 
-     // users.create({})
+    
+            const userEmail = userProfile.emails[0].value; // Accessing first email     
+       
  res.send("Logged in successfully")
 }
 )

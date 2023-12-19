@@ -13,14 +13,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes here
-const authRoute = require('./routes/authRoute')
+const authRoute = require('./routes/authRoute');
+const productRoute = require('./routes/productRoute');
+
+
 app.get('/', (req, res) => {
     console.log("Welcome to my site!");
 });
 
 // register user api
 app.use('/',authRoute)
-
+app.use('/',productRoute);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
