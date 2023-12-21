@@ -19,6 +19,7 @@ app.use(express.static("./uploads"))
 // Routes here
 const authRoute = require('./routes/authRoute');
 const productRoute = require('./routes/productRoute');
+const adminUsersRoute = require('./routes/adminUsersRoute');
 
 
 app.get('/', (req, res) => {
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 // register user api
 app.use('/',authRoute)
 app.use('/',productRoute);
+app.use('/', adminUsersRoute);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
