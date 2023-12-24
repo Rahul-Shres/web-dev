@@ -17,9 +17,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./uploads"))
 
 // Routes here
-const authRoute = require('./routes/authRoute');
-const productRoute = require('./routes/productRoute');
-const adminUsersRoute = require('./routes/adminUsersRoute');
+const authRoute = require('./routes/auth/authRoute');
+const productRoute = require('./routes/admin/productRoute');
+const adminUsersRoute = require('./routes/admin/adminUsersRoute');
+const userReviewRoute = require('./routes/user/userReviewRoute');
+const profileRoute = require("./routes/user/profileRoute")
+const cartRoute = require("./routes/user/cartRoute")
+
 
 
 app.get('/', (req, res) => {
@@ -27,9 +31,12 @@ app.get('/', (req, res) => {
 });
 
 // register user api
-app.use('/',authRoute)
-app.use('/',productRoute);
-app.use('/', adminUsersRoute);
+app.use("/api/auth",authRoute)
+app.use("/api/products",productRoute)
+app.use("/api/admin",adminUsersRoute)
+app.use("/api/reviews",userReviewRoute)
+app.use("/api/profile",profileRoute)
+app.use("/api/cart",cartRoute)
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

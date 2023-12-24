@@ -1,5 +1,5 @@
-const { registerUser, loginUser, forgotPassword, verifyOTP, resetPassword } = require('../controller/auth/authController');
-const catchAsync = require('../services/catchAsync');
+const { registerUser, loginUser, forgotPassword, verifyOTP, resetPassword } = require('../../controller/auth/authController');
+const catchAsync = require('../../services/catchAsync');
 const router = require('express').Router(); // Ensure to invoke Router as a function
 
 router.route("/register").post(catchAsync(registerUser))

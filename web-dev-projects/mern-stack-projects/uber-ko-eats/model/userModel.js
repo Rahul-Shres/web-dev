@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     userEmail : {
         type: String,
-        required:[true,'userEmail must be a valid email']
+        required:[true,'userEmail must be a valid email'],
+        unique: true
     },
     userName:{
         type: String,
@@ -29,7 +30,8 @@ const userSchema = new Schema({
     isOtpVerified : {
         type: Boolean,
         default: false
-    }
+    },
+    cart: [{type : Schema.Types.ObjectId, ref : "Product"}]
        
     
 
