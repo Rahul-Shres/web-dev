@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const orderSchema = new Schema({
     user : {type:mongoose.Schema.Types.ObjectId, ref:'User'},
+    // When you store references to multiple objects within an array in a document, it often signifies a one-to-many relationship
     items : [{
         quantity  : {type:Number,required:true},
         product : {type:mongoose.Schema.Types.ObjectId,ref:"Product",required : true}
