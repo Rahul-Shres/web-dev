@@ -3,7 +3,7 @@ const fs = require("fs")
 
 
 exports.createProduct = async (req,res)=>{
-
+        // image comes in req.file
         const file = req.file
         let filePath
          if(!file){

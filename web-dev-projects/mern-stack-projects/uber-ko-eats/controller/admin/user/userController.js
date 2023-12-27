@@ -2,6 +2,7 @@ const User = require("../../../model/userModel")
 
 exports.getUsers = async(req,res)=>{
     const userId = req.params.id 
+    // it is mean to see all the users beside admin himself so {$ne : userId}
     const users = await User.find({_id : {$ne : userId}}).select(["+otp","+isOtpVerified"])
     if(users.length > 1){
        return res.status(200).json({

@@ -71,6 +71,11 @@ exports.createOrganization = async (req, res, next) => {
     // you're updating the currentOrgNumber field (or property) of the user object and then using 
     // await user.save(); to store that updated currentOrgNumber value in the user table within your database.
   await user.save();
+  //  save the newly created organizationNumber to the currentOrgNumber field in the user table in the database. 
+
+
+  // The line req.organizationNumber = organizationNumber; in the provided code snippet is setting a property 
+  // named organizationNumber on the req (request) object.
   req.organizationNumber = organizationNumber;
   next();
 };

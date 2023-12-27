@@ -51,6 +51,7 @@ exports.getMyReviews = async(req,res)=>{
  
 
 exports.deleteReview = async(req,res)=>{
+    // there is also review Id
     const reviewId   = req.params.id 
     // check if that user created this review 
     const userId = req.user.id 

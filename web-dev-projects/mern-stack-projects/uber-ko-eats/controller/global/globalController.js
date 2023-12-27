@@ -37,6 +37,7 @@ exports.getProduct = async(req ,res)=>{
         })
     }
     const product = await Product.find({_id : id})
+    // notice we are using Review Model 
     const productReviews = await Review.find({productId :id }).populate("userId")
     if(product.length == 0){
         res.status(400).json({
