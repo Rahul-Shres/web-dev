@@ -74,26 +74,29 @@ app.get("/auth/google/callback", passport.authenticate("google", {
     failureRedirect: "http://localhost:9000"
 }), async function(req, res) {
     try {
+        // taking email value from userProfile
         const userGoogleEmail = userProfile.emails[0].value;
+        // checking if user already exists in the database
         const user = await users.findOne({
             where: {
                 email: userGoogleEmail
             }
         });
-
+        // if user xa vane, tyo user lai token deyou
         if (user) {
-            const token = generateToken(user);
-            res.cookie("token", token);
-            return res.redirect('/organization');
+            const token = generateToken(user); // token generate gara
+            res.cookie("token", token); // cookie ma tyo token pathau
+            return res.redirect('/organization'); // / cookie ma save gare si /organization tira pathau
         } else {
+        // if tyo user xaina vane naya user vanau,
             const newUser = await users.create({
-                email: userGoogleEmail,
-                googleId: userProfile.id,
-                username: userProfile.displayName
+                email: userGoogleEmail, // email ggoogle bata leeu
+                googleId: userProfile.id, // id google ko deyou
+                username: userProfile.displayName // username ni google id bata leeu
             });
-            const token = generateToken(newUser);
-            res.cookie("token", token);
-            return res.redirect('/organization');
+            const token = generateToken(newUser); // naya manxe lai token deyou
+            res.cookie("token", token); // token khali haat ma na deyou, cookie vanne thal ma denu
+            return res.redirect('/organization'); // organization tira pothau khande paxi
         }
     } catch (error) {
         // Handle database errors here
