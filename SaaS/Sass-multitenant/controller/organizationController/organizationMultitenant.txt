@@ -1,0 +1,15 @@
+Table Creation:
+
+The code dynamically creates tables for organizations (organization_${organizationNumber}) 
+and forums (forum_${organizationNumber}) based on the organizationNumber. This suggests a structure
+ where each tenant (organization) has its own segregated database tables.
+
+ 
+User Association:
+
+The users_org table maintains an association between users and their respective organizations.
+ It references the users table and uses userId and organizationNumber to establish this link.
+Isolation of Data:
+
+Data for each organization seems to be isolated in their dedicated tables (organization_${organizationNumber}). 
+This separation ensures that each tenant's data remains distinct from others.

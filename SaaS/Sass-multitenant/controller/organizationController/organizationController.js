@@ -1,6 +1,8 @@
 const { QueryTypes } = require("sequelize");
 const { sequelize, users } = require("../../model");
 
+
+
 exports.renderOrganizationForm = (req, res) => {
   res.render("addOrganization");
 };
