@@ -4,7 +4,7 @@ const { connectDatabase } = require('./database/database');
 dotenv.config();
 const app = express();
 const { registerUser, loginUser } = require('./controller/auth/authController');
-
+const {Server} =  require("socket.io")
 // DATABASE CONNECTION
 connectDatabase();
 
@@ -12,7 +12,7 @@ connectDatabase();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+app.set('view engine','ejs')
 // telling nodejs to give access to uploads folder 
 app.use(express.static("./uploads"))
 
@@ -27,6 +27,9 @@ const orderRoute = require("./routes/user/orderRoute")
 const adminOrdersRoute = require("./routes/admin/adminOrderRoute")
 const paymentRoute = require("./routes/user/paymentRoute")
 
+app.get("/chat",(req,res)=>{
+    res.render("home.ejs")
+})
 
 app.get('/', (req, res) => {
     console.log("Welcome to my site!");
@@ -45,6 +48,17 @@ app.use("/api/payment",paymentRoute)
 
 
 const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
-});
+
+
+//listen server 
+const server = app.listen(PORT,()=>{
+    console.log(`Server has started at PORT ${PORT} ` )
+})
+const io = new Server(server)
+
+io.on("connection",(socket)=>{
+    socket.on("hello",(data)=>{
+        console.log(data)
+    })
+
+})
