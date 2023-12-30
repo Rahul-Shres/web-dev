@@ -5,6 +5,7 @@ dotenv.config();
 const app = express();
 const { registerUser, loginUser } = require('./controller/auth/authController');
 const {Server} =  require("socket.io")
+const cors = require('cors');
 // DATABASE CONNECTION
 connectDatabase();
 
@@ -15,6 +16,11 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine','ejs')
 // telling nodejs to give access to uploads folder 
 app.use(express.static("./uploads"))
+
+// cors
+app.use(cors(
+    {origin : '*',}
+));
 
 // Routes here
 const authRoute = require('./routes/auth/authRoute');
