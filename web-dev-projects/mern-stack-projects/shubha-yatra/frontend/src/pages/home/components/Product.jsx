@@ -27,7 +27,9 @@ import { add } from "../../../store/cartSlice"
     useEffect(()=>{
       fetchProducts()
     },[])
-// yo chayo
+    // This function takes a product as an argument.
+    // It dispatches the add action from the Redux store, 
+    // passing the product as the payload to the add action creator.
     const addToCart = (product)=>{
       dispatch(add(product))
    }
