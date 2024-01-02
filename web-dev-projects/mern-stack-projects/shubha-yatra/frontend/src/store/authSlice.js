@@ -42,7 +42,7 @@ export function registerUser(data) {
             // Initiating the registration process by dispatching an action to set the status to "LOADING". 
             // This informs the UI components that a registration request is in progress, and they may show 
             // loading indicators.
-            const response = await axios.post("http://localhost:8000/api/auth/register", data);
+            const response = await  API.post("auth/register",data)
             
             // Updating the application state with the user data received from the server response
             dispatch(setUser(response.data.data));
@@ -67,7 +67,7 @@ export function loginUser(data) {
             // Initiating the login process by dispatching an action to set the status to "LOADING". 
             // This informs the UI components that a login request is in progress, and they may show 
             // loading indicators.
-            const response = await axios.post("http://localhost:8000/api/auth/login", data);
+            const response = await API.post("/auth/login",data)
             
             // Updating the application state with the authentication token received from the server response
             dispatch(setToken(response.data.data));

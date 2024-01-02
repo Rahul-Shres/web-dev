@@ -3,9 +3,12 @@ import {useState, useEffect} from "react";
 // yo chayo
 import {useDispatch} from "react-redux"
 import { add } from "../../../store/cartSlice"
+import {useNavigate} from 'react-router-dom'
 
   
   export default function Product() {
+    const navigate = useNavigate()
+
     const [products,setProducts] = useState([])
     // yo chayo
     const dispatch = useDispatch()
@@ -38,13 +41,13 @@ import { add } from "../../../store/cartSlice"
     return (
 <div className="relative w-full">
      
-     <div className="relative bg-white-50">
+     <div  className="relative bg-white-50">
          <div className="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">
          <h1 className="text-2xl font-bold text-yellow-900 md:text-3xl lg:w-10/12">Our Popular Foods</h1>
 
        <div className="flex flex-wrap justify-between">
        {products.map((product) => (
-       <div key={product._id} className="mx-auto overflow-hidden duration-300 transform bg-white rounded-lg shadow-md mt-11 w-80 dark:bg-slate-800 hover:scale-105 hover:shadow-lg">
+       <div onClick={()=>navigate(`/productdetails/${product._id}`)} key={product._id} className="mx-auto overflow-hidden duration-300 transform bg-white rounded-lg shadow-md mt-11 w-80 dark:bg-slate-800 hover:scale-105 hover:shadow-lg">
           <img className="object-cover object-center w-full h-48" src="https://images.unsplash.com/photo-1674296115670-8f0e92b1fddb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Product Image" />
           <div className="p-4">
             <h2 className="mb-2 text-lg font-medium text-gray-900 dark:text-white">{product.productName}</h2>

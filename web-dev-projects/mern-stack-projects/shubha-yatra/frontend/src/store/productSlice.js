@@ -1,51 +1,54 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import API from "../http";
 
-// Different states for your toy organizer
+
 const STATUSES = Object.freeze({
     SUCCESS : 'success',
     ERROR : 'error',
     LOADING : 'loading'
 })
 
-// Organizer for product-related toys
+
 const productSlice = createSlice({
     name : "product",
     initialState :{
-        data : [], // Your toy collection
-        status : STATUSES.SUCCESS // The current status of your toy collection
+        data : [],
+        status : STATUSES.SUCCESS,
+        selectedProduct : {}
     },
     reducers : {
        setProducts(state,action){
-        state.data = action.payload // Putting new toys into your collection
+        state.data = action.payload
        },
        setStatus(state,action){
-        state.status = action.payload // Changing the status of your collection
-       } 
+        state.status = action.payload
+       },
+       setselectedProduct(state,action){
+        state.selectedProduct = action.payload
+       }
     },
-        // Extra organizers for async actions (fetching toys)
     extraReducers : (builder) =>{
         builder
-        .addCase(fetchProducts.pending,(state,action)=>{
-            state.status = STATUSES.LOADING // When you're trying to get new toys
+        .addCase(fetchProducts.pending,(state)=>{
+            state.status = STATUSES.LOADING
         })
         .addCase(fetchProducts.fulfilled,(state,action)=>{
             state.data = action.payload 
-            state.status = STATUSES.SUCCESS // When you successfully get new toys
+            state.status = STATUSES.SUCCESS
         })
-        .addCase(fetchProducts.rejected,(state,action)=>{
-            state.status = STATUSES.ERROR // When there's an error getting new toys
-        }) 
+        .addCase(fetchProducts.rejected,(state)=>{
+            state.status = STATUSES.ERROR
+        })
     }
 
 })
 
-export const {setProducts,setStatus} = productSlice.actions  // These are tools to help you manage your toys
+export const {setProducts,setStatus,setselectedProduct} = productSlice.actions 
 
-export default productSlice.reducer  // This is your organizer for product-related toys
- 
+export default productSlice.reducer 
+
 export const fetchProducts = createAsyncThunk('products/fetch',async()=>{
-    const response = await axios.get("http://localhost:8000/api/products")
+    const response = await API.get("/products")
     const data = response.data.data 
     return data
 })
@@ -63,3 +66,17 @@ export const fetchProducts = createAsyncThunk('products/fetch',async()=>{
 //         }
 //     }
 // }
+
+export function fetchProductDetails(productId){
+    return async function fetchProductDetailsThunk(dispatch){
+        dispatch(setStatus(STATUSES.LOADING))
+        try {
+            const response = await API.get(`products/${productId}`)
+            dispatch(setselectedProduct(response.data.data))
+            dispatch(setStatus(STATUSES.SUCCESS))
+        } catch (error) {
+            console.log(error)
+            dispatch(setStatus(STATUSES.ERROR))
+        }
+    }
+}
