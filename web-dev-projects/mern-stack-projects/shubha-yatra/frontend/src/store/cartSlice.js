@@ -1,29 +1,76 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { APIAuthenticated } from "../http";
+import { STATUSES } from "../global/misc/statuses";
 
 
 
-// Organizer for cart-related toys
+
 const cartSlice = createSlice({
     name : "cart",
-    initialState :[], // Your cart starts empty
+    initialState :
+    {
+        items : [],
+        status : STATUSES.SUCCESS
+    },
     reducers : {
-        add(state,action){
-            state.push(action.payload)   // Adding new toys to your cart
+        setItems(state,action){
+            state.items = action.payload
         },
-        // Removing specific toys from your cart
-        remove(state,action){
-           return state.filter((item)=>item._id !== action.payload) // [1,2,3] ==> 3 ==>state = [1,2]
-            
+        setStatus(state,action){
+            state.status = action.payload
+        },
+        updateItems(state,action){
+            const index = state.items.findIndex(item=>item.product._id === action.payload.productId)
+            if(index !== -1){
+                state.items[index].quantity = action.payload.quantity
+            }
         }
     }
 })
-// By using object destructuring, the add and remove action creators are extracted 
-// from cartSlice.actions and can be directly accessed/exported for use elsewhere 
-// in your application, allowing you to dispatch these actions to update the cart state in the Redux store.
-export const {add,remove} = cartSlice.actions  // These are tools to help you manage your cart items
 
-export default cartSlice.reducer  // This is your organizer for cart-related toys
- 
+export const {setItems,setStatus,updateItems} = cartSlice.actions 
 
-// Slices are like specific organizers for each type of toy.
-// You have one organizer for your cart items and another for your product items.
+export default cartSlice.reducer 
+
+export function addToCart(productId){
+    return async function addToCartThunk(dispatch){
+        dispatch(setStatus(STATUSES.LOADING))
+        try {
+            const response = await APIAuthenticated.post(`/cart/${productId}`)
+            dispatch(setItems(response.data.data))
+            dispatch(setStatus(STATUSES.SUCCESS))
+        } catch (error) {
+            console.log(error)
+            dispatch(setStatus(STATUSES.ERROR))
+        }
+    }
+}
+
+export function fetchCartItems(){
+    return async function fetchCartItemsThunk(dispatch){
+        dispatch(setStatus(STATUSES.LOADING))
+        try {
+            const response = await APIAuthenticated.get(`/cart/`)
+
+            dispatch(setItems(response.data.data))
+            dispatch(setStatus(STATUSES.SUCCESS))
+        } catch (error) {
+            console.log(error)
+            dispatch(setStatus(STATUSES.ERROR))
+        }
+    }
+}
+
+export function udpateCartItem(productId,quantity){
+    return async function updateCartItemThunk(dispatch){
+        dispatch(setStatus(STATUSES.LOADING))
+        try {
+            const response = await APIAuthenticated.patch(`/cart/${productId}`,{quantity})
+            dispatch(updateItems({productId,quantity}))
+            dispatch(setStatus(STATUSES.SUCCESS))
+        } catch (error) {
+            console.log(error)
+            dispatch(setStatus(STATUSES.ERROR))
+        }
+    }
+}

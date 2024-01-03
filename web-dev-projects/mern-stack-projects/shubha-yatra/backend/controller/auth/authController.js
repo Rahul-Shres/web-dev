@@ -61,25 +61,70 @@ exports.loginUser = async (req, res) => {
         const passwordMatch = await bcrypt.compareSync(password, hashedPasswordFromDB);
 
         console.log("Password Match Result:", passwordMatch);
-        // generate token
-         // Generate a JWT token upon successful login
-        //  const token = jwt.sign({ email: email }, process.env.JWT_SECRET, { expiresIn: '100h' });
-         const token = jwt.sign({ id: user[0]._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+
+        const token = jwt.sign({ id: user[0]._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 
         if (!passwordMatch) {
             return res.status(401).json({ message: "Invalid credentials" });
         }
 
-         // Return the token as part of the login response
-         res.status(200).json({
-            message : "User logged in successfully",
-           data :  token
-        })
+        res.status(200).json({
+            message: "User logged in successfully",
+            data: user,
+            token: token
+        });
     } catch (err) {
         console.error('Error during login:', err);
-        res.status(500).json({ error: 'Login failed' });
+        res.status(400).json({ error: 'Login failed' });
     }
 }
+
+
+
+// exports.loginUser = async (req, res) => {
+//     const { email, password } = req.body;
+
+//     if (!email || !password) {
+//         return res.status(400).send("Please enter both email and password");
+//     }
+
+//     try {
+//         const user = await User.find({ userEmail: email });
+
+//         if (user.length === 0) {
+//             return res.status(404).json({ message: "User not found" });
+//         }
+
+//         const hashedPasswordFromDB = user[0].userPassword;
+//         console.log("Hashed Password from DB:", hashedPasswordFromDB);
+
+//         const passwordMatch = await bcrypt.compareSync(password, hashedPasswordFromDB);
+
+//         console.log("Password Match Result:", passwordMatch);
+//         // generate token
+//          // Generate a JWT token upon successful login
+//         //  const token = jwt.sign({ email: email }, process.env.JWT_SECRET, { expiresIn: '100h' });
+//          const token = jwt.sign({ id: user[0]._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+         
+//         if (!passwordMatch) {
+//             return res.status(401).json({ message: "Invalid credentials" });
+//         }
+
+//          // Return the token as part of the login response
+//          // Return the token as part of the login response and log it before sending
+// res.status(200).json({
+//     message: "User logged in successfully",
+//     data: user,
+//     token: token
+// }, () => {
+//     // Log the generated token to the console
+//     console.log("Generated Token:", token);
+// });
+//     } catch (err) {
+//         console.error('Error during login:', err);
+//         res.status(400).json({ error: 'Login failed' });
+//     }
+// }
 
 exports.forgotPassword = async (req, res) => {
     const { email } = req.body;

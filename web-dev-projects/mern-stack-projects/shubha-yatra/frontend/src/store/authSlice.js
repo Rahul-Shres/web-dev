@@ -1,84 +1,101 @@
-// Importing necessary modules and dependencies
 import { createSlice } from "@reduxjs/toolkit";
 import { STATUSES } from "../global/misc/statuses";
-import axios from "axios";
+import { API } from "../http/index";
+import Cookies from 'js-cookie';
 
-// Creating a Redux slice for authentication
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        data: [],            // Array to store user data
-        status: STATUSES.SUCCESS,   // Initial status set to SUCCESS
-        token: ""            // Token for authentication
+        data: [],
+        status: STATUSES.SUCCESS,
+        token: "" // This will store the token received from the server
     },
     reducers: {
-        // Reducer to set user data in the state
         setUser(state, action) {
             state.data = action.payload;
         },
-        // Reducer to set status in the state
         setStatus(state, action) {
             state.status = action.payload;
         },
-        // Reducer to set authentication token in the state
         setToken(state, action) {
-            state.token = action.payload;
+            state.token = action.payload; // Update the token value in the state
+        },
+        logOut(state, action) {
+            state.data = [];
+            state.token = null;
+            state.state = STATUSES.SUCCESS;
         }
-    },
+    }
 });
 
-// Exporting individual actions from the slice
-export const { setUser, setStatus, setToken } = authSlice.actions;
+export const { setUser, setStatus, setToken, logOut } = authSlice.actions;
 
-// Exporting the reducer function for the slice
 export default authSlice.reducer;
 
-// Async action to register a user
 export function registerUser(data) {
     return async function registerUserThunk(dispatch) {
         dispatch(setStatus(STATUSES.LOADING));
-
         try {
-            // Initiating the registration process by dispatching an action to set the status to "LOADING". 
-            // This informs the UI components that a registration request is in progress, and they may show 
-            // loading indicators.
-            const response = await  API.post("auth/register",data)
+            const response = await API.post("auth/register", data);
             
-            // Updating the application state with the user data received from the server response
-            dispatch(setUser(response.data.data));
-
-            // Setting the status to "SUCCESS" after a successful registration
             dispatch(setStatus(STATUSES.SUCCESS));
         } catch (error) {
             console.log(error);
-            
-            // In case of an error during registration, setting the status to "ERROR"
             dispatch(setStatus(STATUSES.ERROR));
         }
     };
 }
 
-// Async action to log in a user
 export function loginUser(data) {
     return async function loginUserThunk(dispatch) {
         dispatch(setStatus(STATUSES.LOADING));
-
         try {
-            // Initiating the login process by dispatching an action to set the status to "LOADING". 
-            // This informs the UI components that a login request is in progress, and they may show 
-            // loading indicators.
-            const response = await API.post("/auth/login",data)
-            
-            // Updating the application state with the authentication token received from the server response
-            dispatch(setToken(response.data.data));
+            const response = await API.post("/auth/login", data);
 
-            // Setting the status to "SUCCESS" after a successful login
+            // Set the token in cookies
+            Cookies.set('token', response.data.token);
+
+            dispatch(setUser(response.data.data));
+            dispatch(setToken(response.data.token));
             dispatch(setStatus(STATUSES.SUCCESS));
+            localStorage.setItem('token', response.data.token);
+            const token = localStorage.getItem('token');
+if (token) {
+  // Token is present in localStorage
+  console.log('Token exists in localStorage:', token);
+} else {
+  // Token is not present in localStorage
+  console.log('Token does not exist in localStorage');
+}
+
+            
         } catch (error) {
             console.log(error);
-            
-            // In case of an error during login, setting the status to "ERROR"
             dispatch(setStatus(STATUSES.ERROR));
         }
     };
 }
+
+
+// export function loginUser(data) {
+//     return async function loginUserThunk(dispatch) {
+//         dispatch(setStatus(STATUSES.LOADING));
+//         try {
+//             const response = await API.post("/auth/login", data);
+
+//             // Log the token received from the server
+//             console.log("Received Token:", response.data.token);
+
+//             // Dispatch the action to set the token in the Redux state
+//             dispatch(setUser(response.data.data));
+//             dispatch(setToken(response.data.token));
+//             dispatch(setStatus(STATUSES.SUCCESS));
+
+//             // Store the token in localStorage for persistence
+//             localStorage.setItem('token', response.data.token);
+//         } catch (error) {
+//             console.log(error);
+//             dispatch(setStatus(STATUSES.ERROR));
+//         }
+//     };
+// }
