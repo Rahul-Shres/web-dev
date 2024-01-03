@@ -19,7 +19,8 @@ app.set("view engine","ejs")
  app.use(passport.session())
 
  app.use(express.static("public/"))
-
+ app.use(express.static("uploads/"))
+ 
  app.use(express.json())
  app.use(express.urlencoded({extended:true}))
 

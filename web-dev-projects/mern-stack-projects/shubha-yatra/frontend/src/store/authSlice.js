@@ -60,13 +60,13 @@ export function loginUser(data) {
             dispatch(setStatus(STATUSES.SUCCESS));
             localStorage.setItem('token', response.data.token);
             const token = localStorage.getItem('token');
-if (token) {
-  // Token is present in localStorage
-  console.log('Token exists in localStorage:', token);
-} else {
-  // Token is not present in localStorage
-  console.log('Token does not exist in localStorage');
-}
+                if (token) {
+                // Token is present in localStorage
+                console.log('Token exists in localStorage:', token);
+                } else {
+                // Token is not present in localStorage
+                console.log('Token does not exist in localStorage');
+                }
 
             
         } catch (error) {
