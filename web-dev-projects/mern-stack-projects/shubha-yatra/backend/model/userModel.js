@@ -35,7 +35,13 @@ const userSchema = new Schema({
     // ref: "Product" indicates that these ObjectIds in the cart array will reference documents in the "Product" collection. In other words, each ObjectId stored in the cart array should correspond to the _id field of a document in the "Product" collection.
     
     // cart: This field represents the user's shopping cart, storing a list of products the user has added.
-    cart: [{type : Schema.Types.ObjectId, ref : "Product"}]
+    cart: [{
+        quantity : {
+            type : Number,
+            required : true,
+        },
+        product : {type : Schema.Types.ObjectId, ref : "Product"}
+    }]
     // [{type: Schema.Types.ObjectId, ref: "Product"}]: This is an array of objects, where each object has two properties:
     //   type: Schema.Types.ObjectId: This specifies that each element in the array should be an ObjectId, which is MongoDB's unique identifier for documents.
     //   ref: "Product": This creates a reference to the "Product" collection, indicating that each ObjectId in the cart array should point to a document in that collection.
