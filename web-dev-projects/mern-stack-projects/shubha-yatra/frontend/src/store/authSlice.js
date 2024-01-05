@@ -32,18 +32,18 @@ export const { setUser, setStatus, setToken, logOut } = authSlice.actions;
 
 export default authSlice.reducer;
 
-export function registerUser(data) {
-    return async function registerUserThunk(dispatch) {
-        dispatch(setStatus(STATUSES.LOADING));
+export function registerUser(data){
+    return async function registerUserThunk(dispatch){
+        dispatch(setStatus(STATUSES.LOADING))
         try {
-            const response = await API.post("auth/register", data);
+            const response = await API.post("auth/register",data)
             
-            dispatch(setStatus(STATUSES.SUCCESS));
+            dispatch(setStatus(STATUSES.SUCCESS))
         } catch (error) {
-            console.log(error);
-            dispatch(setStatus(STATUSES.ERROR));
+            console.log(error)
+            dispatch(setStatus(STATUSES.ERROR))
         }
-    };
+    }
 }
 
 export function loginUser(data) {
@@ -59,6 +59,7 @@ export function loginUser(data) {
             dispatch(setToken(response.data.token));
             dispatch(setStatus(STATUSES.SUCCESS));
             localStorage.setItem('token', response.data.token);
+            window.location.href = "/"
             const token = localStorage.getItem('token');
                 if (token) {
                 // Token is present in localStorage

@@ -7,7 +7,7 @@ const router = require("express").Router()
 
 
 router.route("/").post(isAuthenticated,catchAsync(initiateKhaltiPayment))
-router.route("/success").get(catchAsync(verifyPidx))
+router.route("/success").post(isAuthenticated, catchAsync(verifyPidx))
 
 
 
