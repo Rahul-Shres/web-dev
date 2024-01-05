@@ -1,4 +1,5 @@
 const Order = require("../../../model/orderSchema")
+const User = require("../../../model/userModel")
 
 exports.createOrder = async(req,res)=>{
     const userId = req.user.id
@@ -17,6 +18,9 @@ exports.createOrder = async(req,res)=>{
            paymentDetails,
            phoneNumber
        })
+       const user = await User.findById(userId)
+        user.cart = []
+        await user.save()
        res.status(200).json({
            message : "Order created successfully",
            data : createdOrder
@@ -90,13 +94,18 @@ exports.createOrder = async(req,res)=>{
                message : "No order with that id"
            })
        }
-       if(order.user !== userId){
+       if(order.user != userId){
           return res.status(400).json({
            message : "You don't have permission to delete this order"
           })
        }
+       if(order.orderStatus !=="pending"){
+        return res.status(400).json({
+            message : "You cannot delete this order as it is not pending"
+        })
+    }
        await Order.findByIdAndDelete(id)
-       res.json(200).json({
+       res.status(200).json({
            message : "Order deleted successfully",
            data : null
        })
@@ -114,7 +123,7 @@ exports.createOrder = async(req,res)=>{
                message : "No order with that id"
            })
        }
-       if(order.user !== userId){
+       if(order.user != userId){
           return res.status(400).json({
            message : "You don't have permission to delete this order"
           })
@@ -131,5 +140,6 @@ exports.createOrder = async(req,res)=>{
            message : "Order cancelled successfully",
            data : updatedOrder
        })
+      
    
    } 

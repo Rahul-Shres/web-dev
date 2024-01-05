@@ -23,7 +23,7 @@ exports.initiateKhaltiPayment = async(req,res)=>{
     const data = {
         return_url : "http://localhost:5173/success", // your frontend url
         purchase_order_id : orderId,
-        amount : amount * 100,
+        amount : amount,
         website_url : "http://localhost:8000/", // your backend url
         purchase_order_name : "orderName_" + orderId
     }
