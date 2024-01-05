@@ -1,5 +1,6 @@
 const { default: axios } = require("axios")
 const Order = require("../../../model/orderSchema")
+const User = require("../../../model/userModel")
 
 exports.initiateKhaltiPayment = async(req,res)=>{
     const {orderId,amount}  = req.body 
@@ -23,7 +24,7 @@ exports.initiateKhaltiPayment = async(req,res)=>{
     const data = {
         return_url : "http://localhost:5173/success", // your frontend url
         purchase_order_id : orderId,
-        amount : amount,
+        amount : amount * 100,
         website_url : "http://localhost:8000/", // your backend url
         purchase_order_name : "orderName_" + orderId
     }

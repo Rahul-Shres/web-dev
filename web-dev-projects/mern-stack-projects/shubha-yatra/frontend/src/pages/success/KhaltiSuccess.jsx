@@ -13,7 +13,7 @@ const KhaltiSuccess = () => {
     const dispatch = useDispatch()
     const verifyPidx = async()=>{
       try {
-        const response = await APIAuthenticated.post("/payment/verifypidx",{pidx})
+        const response = await APIAuthenticated.post("/payment/success",{pidx})
         if(response.status === 200){
             setLoading(false)
             alert(response.data.message)
