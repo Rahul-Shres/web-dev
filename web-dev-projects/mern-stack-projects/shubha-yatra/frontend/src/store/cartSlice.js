@@ -35,6 +35,8 @@ export const {setItems,setStatus,updateItems,deleteItem} = cartSlice.actions
 
 export default cartSlice.reducer 
 
+// yes it worked
+// woohoooo
 export function addToCart(productId){
     return async function addToCartThunk(dispatch){
         dispatch(setStatus(STATUSES.LOADING))

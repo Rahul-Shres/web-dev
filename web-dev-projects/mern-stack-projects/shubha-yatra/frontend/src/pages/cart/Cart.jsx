@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './Cart.css'
-import { updateCartItem } from '../../store/cartSlice'
+import { deleteCartItem, updateCartItem } from '../../store/cartSlice'
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
@@ -67,10 +67,7 @@ const Cart = () => {
             <p className="mb-1 text-lg font-bold">Rs. {totalAmountOfCart}</p>
           </div>
         </div>
-        <button onClick={() => { 
-  console.log('Clicked!'); 
-  navigate('/checkout');
-}} className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button>
+        
         <button onClick={() => navigate('/checkout')} className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button>
 
 
