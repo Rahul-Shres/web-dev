@@ -3,7 +3,6 @@ import { APIAuthenticated } from "../http";
 import { STATUSES } from "../global/misc/statuses";
 
 
-
 const cartSlice = createSlice({
     name : "cart",
     initialState :
@@ -23,16 +22,19 @@ const cartSlice = createSlice({
             if(index !== -1){
                 state.items[index].quantity = action.payload.quantity
             }
+        },
+        deleteItem(state,action){
+            // action.payload.productId
+            const index = state.items.findIndex(item=>item.product._id === action.payload.productId)
+            state.items.splice(index,1)
         }
     }
 })
 
-export const {setItems,setStatus,updateItems} = cartSlice.actions 
+export const {setItems,setStatus,updateItems,deleteItem} = cartSlice.actions 
 
 export default cartSlice.reducer 
 
-// yes it worked
-// woohoooo
 export function addToCart(productId){
     return async function addToCartThunk(dispatch){
         dispatch(setStatus(STATUSES.LOADING))
@@ -62,12 +64,26 @@ export function fetchCartItems(){
     }
 }
 
-export function udpateCartItem(productId,quantity){
+export function updateCartItem(productId,quantity){
     return async function updateCartItemThunk(dispatch){
         dispatch(setStatus(STATUSES.LOADING))
         try {
             const response = await APIAuthenticated.patch(`/cart/${productId}`,{quantity})
             dispatch(updateItems({productId,quantity}))
+            dispatch(setStatus(STATUSES.SUCCESS))
+        } catch (error) {
+            console.log(error)
+            dispatch(setStatus(STATUSES.ERROR))
+        }
+    }
+}
+
+export function deleteCartItem(productId){
+    return async function deleteCartItemThunk(dispatch){
+        dispatch(setStatus(STATUSES.LOADING))
+        try {
+            const response = await APIAuthenticated.delete(`/cart/${productId}`)
+            dispatch(deleteItem({productId}))
             dispatch(setStatus(STATUSES.SUCCESS))
         } catch (error) {
             console.log(error)

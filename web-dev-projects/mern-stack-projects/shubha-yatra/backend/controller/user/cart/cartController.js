@@ -40,6 +40,8 @@ exports.addToCart = async(req,res)=>{
 
 }
 
+
+
 exports.getMyCartItems = async(req,res)=>{
     const userId = req.user.id 
     const userData = await User.findById(userId).populate({
@@ -70,7 +72,7 @@ exports.deleteItemFromCart = async(req,res)=>{
 //   user.cart =   user.cart.filter(pId=>pId != productIdd) // [1,2,3] ==> 2 ==>fiter ==> [1,3] ==> user.cart = [1,3]
 
 //     })
-user.cart =   user.cart.filter(pId=>pId != productId) // [1,2,3] ==> 2 ==>fiter ==> [1,3] ==> user.cart = [1,3]
+user.cart =   user.cart.filter(item=>item.product != productId) // [1,2,3] ==> 2 ==>fiter ==> [1,3] ==> user.cart = [1,3]
 
   await user.save()
   res.status(200).json({
