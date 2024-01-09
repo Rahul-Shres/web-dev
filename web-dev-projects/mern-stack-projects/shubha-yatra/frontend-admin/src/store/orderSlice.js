@@ -53,7 +53,7 @@ export function fetchOrder(){
     return async function fetchOrderThunk(dispatch){
         dispatch(setStatus(STATUSES.LOADING))
         try {
-            const response = await APIAuthenticated.get("/orders")
+            const response = await APIAuthenticated.get("admin/orders")
             dispatch(setOrders(response.data.data.reverse()))
             dispatch(setStatus(STATUSES.SUCCESS))
         } catch (error) {
@@ -68,7 +68,7 @@ export function deleteOrders(orderId){
         dispatch(setStatus(STATUSES.LOADING))
         try {
           
-            const response = await APIAuthenticated.delete(`orders/${orderId}`)
+            const response = await APIAuthenticated.delete(`admin/orders/${orderId}`)
             console.log(response,"Response")
             dispatch(deleteOrderById({orderId}))
             dispatch(setStatus(STATUSES.SUCCESS))
@@ -84,7 +84,7 @@ export function updateOrderStatus(orderId,orderStatus){
         dispatch(setStatus(STATUSES.LOADING))
         try {
             
-            const response = await APIAuthenticated.patch(`/orders/${orderId}`,{orderStatus})
+            const response = await APIAuthenticated.patch(`admin/orders/${orderId}`,{orderStatus})
             console.log(response,"Response")
             dispatch(updateOrderById({orderId,data : response.data.data}))
             
@@ -103,7 +103,7 @@ export function updatePaymentStatus(orderId,paymentStatus){
         dispatch(setStatus(STATUSES.LOADING))
         try {
             
-            const response = await APIAuthenticated.patch(`orders/paymentstatus/${orderId}`,{paymentStatus})
+            const response = await APIAuthenticated.patch(`admin/orders/paymentstatus/${orderId}`,{paymentStatus})
             console.log(response,"Response")
             dispatch(updatePaymentStatusById({orderId,data : response.data.data}))
             

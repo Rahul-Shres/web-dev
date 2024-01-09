@@ -20,11 +20,16 @@ const productSlice = createSlice({
        setProducts(state,action){
         state.products = action.payload
        },
-       deleteProductById(state,action){
-        // action.payload.productId
-        const index = state.products.findIndex(product=>product._id === action.payload.productId)
-        state.products.splice(index,1)
-        },
+       deleteProductById(state, action) {
+        const productIdToDelete = action.payload.productId;
+        state.products = state.products.filter(product => product._id !== productIdToDelete);
+      },
+      
+    //    deleteProductById(state,action){
+    //     // action.payload.productId
+    //     const index = state.products.findIndex(product=>product._id === action.payload.productId)
+    //     state.products.splice(index,1)
+    //     },
         updateProductStatusById(state,action){
             const index = state.products.findIndex(product=>product._id === action.payload.productId)
             if(index !== -1){
@@ -77,22 +82,39 @@ export function fetchProduct(){
     }
 }
 
-
-export function deleteProduct(productId){
-    return async function deleteProductThunk(dispatch){
-        dispatch(setStatus(STATUSES.LOADING))
-        try {
-          
-            const response = await APIAuthenticated.delete(`/products/${productId}`)
-            console.log(response,"Response")
-            dispatch(deleteProductById({productId}))
-            dispatch(setStatus(STATUSES.SUCCESS))
-        } catch (error) {
-            
-            dispatch(setStatus(STATUSES.ERROR))
+export function deleteProduct(productId) {
+    return async function deleteProductThunk(dispatch) {
+      dispatch(setStatus(STATUSES.LOADING));
+      try {
+        const response = await APIAuthenticated.delete(`/products/${productId}`);
+        if (response.status === 200) {
+          dispatch(deleteProductById({ productId }));
+          dispatch(setStatus(STATUSES.SUCCESS));
+        } else {
+          dispatch(setStatus(STATUSES.ERROR));
         }
-    }
-}
+      } catch (error) {
+        dispatch(setStatus(STATUSES.ERROR));
+        console.error("Error deleting product:", error);
+      }
+    };
+  }
+
+// export function deleteProduct(productId){
+//     return async function deleteProductThunk(dispatch){
+//         dispatch(setStatus(STATUSES.LOADING))
+//         try {
+          
+//             const response = await APIAuthenticated.delete(`/products/${productId}`)
+//             console.log(response,"Response")
+//             dispatch(deleteProductById({productId}))
+//             dispatch(setStatus(STATUSES.SUCCESS))
+//         } catch (error) {
+            
+//             dispatch(setStatus(STATUSES.ERROR))
+//         }
+//     }
+// }
 
 
 export function updateProductStatus(productId,productStatus){

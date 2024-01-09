@@ -146,7 +146,7 @@ const MyOrders = () => {
                                         <p onClick={()=>navigate(`/admin/orders/${order._id}`)} className="text-blue-900 whitespace-no-wrap" style={{textDecoration:'underline'}} >{order._id}</p>
                                     </td>
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p className="text-gray-900 whitespace-no-wrap">{order.user.userName}</p>
+                                        {/* <p className="text-gray-900 whitespace-no-wrap">{order.user.userName}</p> */}
                                     </td>
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p className="text-gray-900 whitespace-no-wrap">{order.totalAmount}</p>
