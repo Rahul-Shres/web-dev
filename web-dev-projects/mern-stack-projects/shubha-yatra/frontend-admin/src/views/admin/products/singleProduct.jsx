@@ -45,7 +45,7 @@ const Singleproduct = () => {
 
   const deleteproduct = async()=>{
       try {
-        const response = await APIAuthenticated.delete("/products/" + id)
+        const response = await APIAuthenticated.delete("/admin/products/" + id)
       
         if(response.status == 200){
             navigate("/admin/products")
@@ -55,7 +55,7 @@ const Singleproduct = () => {
       }
     }
     const fetchProductOrders = async()=>{
-      const response = await APIAuthenticated.get(`products/productOrders/${id}`)
+      const response = await APIAuthenticated.get(`/products/productOrders/${id}`)
       if(response.status === 200){
         setOrders(response.data.data)
       }

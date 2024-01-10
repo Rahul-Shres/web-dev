@@ -10,7 +10,7 @@ const OrderDetails = () => {
   const navigate = useNavigate()
   const {orders} = useSelector((state)=>state.checkout)
   const [filteredOrder] = orders.filter((order)=>order._id === id)
-const adminOrderPageUrl = `http://localhost:3001/admin/orders/${id}`
+const adminOrderPageUrl = `http://localhost:3000/admin/orders/${id}`
   const cancelOrder = async()=>{
     try {
       const response = await APIAuthenticated.patch("/orders/cancel",{id})

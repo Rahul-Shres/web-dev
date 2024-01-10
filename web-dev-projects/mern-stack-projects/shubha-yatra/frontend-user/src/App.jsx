@@ -16,7 +16,7 @@ import KhaltiSuccess from './pages/success/KhaltiSuccess';
 import OrderDetails from './pages/orderDetails/OrderDetails';
 import AdminDashboard from './pages/admin/dashboard/AdminDashboard';
 import { ProtectedRoute } from './pages/ProtectRoute';
-
+import MyOrderQrs from './pages/MyOrderQrs/MyOrderQrs'
 
 function App() {
   return (
@@ -39,6 +39,7 @@ function App() {
     <Route path="/success" element={<KhaltiSuccess />} />
     <Route path="/profile" element={<UserProfile />} />
     <Route path="/myorders" element={<MyOrders />} />
+    <Route path="/myorderqrs" element={<MyOrderQrs />} />
     <Route path="/myorders/:id" element={<OrderDetails />} />
      
           </Routes>

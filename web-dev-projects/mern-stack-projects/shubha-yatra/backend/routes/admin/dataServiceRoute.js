@@ -1,8 +1,6 @@
 const DataServices = require("../../controller/admin/misc/dataService");
 const isAuthenticated = require("../../middleware/isAuthenticated");
 const restrictTo = require("../../middleware/restrictTo");
-const express = require('express');
-
 const router = require("express").Router();
 
 // Use router.route() with .get() method
