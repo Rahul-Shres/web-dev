@@ -9,7 +9,7 @@ exports.isAuthenticated = async (req,res,next)=>{
 
     //check if token given or not 
     if(!token){
-        return res.redirect("/login")
+        return res.redirect("/")
     }
     // verify token if it is legit or not
    const decryptedResult =  await decodeToken(token,process.env.SECRET)
@@ -28,7 +28,7 @@ exports.isAuthenticated = async (req,res,next)=>{
     }else{
         req.user =  userExist; // alternative decryptedResult.id
         req.userId = userExist[0].id 
-      
+        req
         next();
     }
 }

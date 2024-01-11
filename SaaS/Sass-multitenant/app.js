@@ -2,15 +2,16 @@
 // REQUIRES START HERE 
 const express = require("express")
 const app = express()
-require("dotenv").config()
+
 const passport = require("passport")
 const token = require("jsonwebtoken")
 const generateToken = require("./services/generateToken")
 const { users } = require("./model/index")
-
 const organizationRoute = require("./routes/organizationRoute")
 const cookieParser = require("cookie-parser")
+const { decodeToken } = require("./services/decodeToken")
 // REQUIRES END HERE 
+require("dotenv").config();
 
 // MIDDLEWARES 
 app.use(cookieParser())
@@ -67,7 +68,16 @@ function(accessToken,refreshToken,profile,done){
 
 }
 ))
-
+app.use(async (req, res, next) => {
+    const token = req.cookies.token;
+    if (token) {
+      const decryptedResult = await decodeToken(token, process.env.SECRET);
+      if (decryptedResult && decryptedResult.id) {
+        res.locals.currentUserRole = decryptedResult.role;
+      }
+    }
+    next();
+  });
 // todo /auth/google: Initiates the Google authentication process.
 // todo /auth/google/callback: Handles the callback from Google after authentication.
 // todo The passport.authenticate method manages the authentication process.

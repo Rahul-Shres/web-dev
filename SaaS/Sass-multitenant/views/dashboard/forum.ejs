@@ -109,7 +109,13 @@
             <i class="mb-0">Asked By : <%- question.username %> </i> <br>
             <i class="mb-0" style="font-size: 12px;">Created at : <%- question.created_at.toString().slice(0,15) %> </i> <br>
             <button style="margin-top: 20px;background-color: skyblue;color: white;padding: 4px;" onclick="window.location.href= '/question/<%- question.id %>'" >See More</button>
+           
+            <% if(question.userId == userId){ %>
+              <a href="/questiondelete/<%- question.id %>">Delete</a>
+            <% } %>
+          
           </div>
+       
         </div>
     <% }) %>
       </div>
