@@ -11,16 +11,16 @@ const userSchema  =  new Schema({
     },
     userPhoneNumber : {
         type : Number,
-        required : [true,"PhoneNumber must be provided"]
+        // required : [true,"PhoneNumber must be provided"]
     },
     userName : {
         type : String,
-        required  : [true,"UserName must be provided"]
+        // required  : [true,"UserName must be provided"]
     },
     userPassword : {
         type : String,
-        required : [true,"Password must be provided"],
-        minlength : 8,
+        // required : [true,"Password must be provided"],
+        // minlength : 8,
         // select : false
     },
     googleId: {
