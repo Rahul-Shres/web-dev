@@ -2,6 +2,8 @@
 // import { set } from 'mongoose';
 import  React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 const SignUp= () => {
     const [formData, setFormData] = useState({});
   const [error, setError] = useState(false);
@@ -10,7 +12,34 @@ const SignUp= () => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
   console.log(formData)
-    return (
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      setError(false);
+
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+   
+
+      const data = await res.json();
+      console.log(data);
+      setLoading(false);
+      if (data.success === false) {
+        setError(true);
+        return;
+      }
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+    }
+  };
+  return (
       <html className="h-full">
         <body className="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16">
           <main className="w-full max-w-md mx-auto p-6">
@@ -40,13 +69,13 @@ const SignUp= () => {
                   <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:me-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ms-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">Or</div>
   
                   {/* Form */}
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <div className="grid gap-y-4">
                       {/* Form Group */}
                       <div>
                         <label htmlFor="email" className="block text-sm mb-2 dark:text-white">Username</label>
                         <div className="relative">
-                          <input type="email" id="username" name="email" className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" required aria-describedby="email-error"  onChange={handleChange}/>
+                          <input type="text" id="username" name="username" className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" required aria-describedby="username-error"  onChange={handleChange}/>
                           <div className="hidden absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
                             <svg className="h-5 w-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
@@ -109,7 +138,8 @@ const SignUp= () => {
         </Link>
                   </p>
   
-                      <button type="submit" className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Sign Up</button>
+                      <button  disabled={loading} type="submit" className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">{loading ? 'Loading...' : 'Sign In'}</button>
+                      <p className='text-red-700 mt-5'>{error && 'Something went wrong!'}</p>
                     </div>
                   </form>
                   {/* End Form */}
