@@ -1,10 +1,11 @@
 
 // import { set } from 'mongoose';
 import  React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const SignUp= () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,7 @@ const SignUp= () => {
         setError(true);
         return;
       }
+      navigate('/sign-in');
     } catch (error) {
       setLoading(false);
       setError(true);
@@ -46,12 +48,12 @@ const SignUp= () => {
             <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <div className="p-4 sm:p-7">
                 <div className="text-center">
-                  <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Sign in</h1>
+                  <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Sign Up</h1>
                   <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                     Don't have an account yet?
-                    <a className="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="../examples/html/signup.html">
+                    <span className="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" >
                       Sign up here
-                    </a>
+                    </span>
                   </p>
                 </div>
   
@@ -138,7 +140,7 @@ const SignUp= () => {
         </Link>
                   </p>
   
-                      <button  disabled={loading} type="submit" className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">{loading ? 'Loading...' : 'Sign In'}</button>
+                      <button  disabled={loading} type="submit" className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">{loading ? 'Loading...' : 'Sign Up'}</button>
                       <p className='text-red-700 mt-5'>{error && 'Something went wrong!'}</p>
                     </div>
                   </form>
