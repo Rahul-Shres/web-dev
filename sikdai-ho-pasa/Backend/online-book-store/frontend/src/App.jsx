@@ -1,21 +1,56 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Register from './components/Auth/Register';
-import Login from './components/Auth/Login';
-import HandleLoginFailure from './components/Auth/HandleLoginFailure'; // Import the component if not imported
-import WelcomePage from './components/Auth/WelcomePage';
+import Navbar from "./components/Navbar";
+import "./app.css";
+import Home from "./pages/Home";
+import Post from "./pages/Post";
+import Login from "./pages/Login";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const App = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUser = () => {
+      fetch("http://localhost:5173/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error("authentication has been failed!");
+        })
+        .then((resObject) => {
+          setUser(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/welcome" component={WelcomePage} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/login-failure" element={<HandleLoginFailure />} />
-        {/* Add other routes as needed */}
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <div>
+        <Navbar user={user} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/post/:id"
+            element={user ? <Post /> : <Navigate to="/login" />}
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
 

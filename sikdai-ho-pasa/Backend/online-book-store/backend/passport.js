@@ -1,74 +1,65 @@
-// google login here
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+require('dotenv').config();
+
+// const GithubStrategy = require("passport-github2").Strategy;
+// const FacebookStrategy = require("passport-facebook").Strategy;
 const passport = require("passport");
-const generateToken = require('./services/generateToken');
-const users = require('./model/userModel');
-const passportSetup = require('./passport');
 
-app.use(passport.initialize());
-app.use(passport.session());
+// const GOOGLE_CLIENT_ID =
+//   "your id";
+// const GOOGLE_CLIENT_SECRET = "your id";
 
+// GITHUB_CLIENT_ID = "your id";
+// GITHUB_CLIENT_SECRET = "your id";
 
-passport.serializeUser(function (user, cb) {
-    cb(null, user);
-  });
-  
-  passport.deserializeUser(function (obj, cb) {
-    cb(null, obj);
-  });
+// FACEBOOK_APP_ID = "your id";
+// FACEBOOK_APP_SECRET = "your id";
 
-
-var userProfile;
-let GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8000/auth/google/callback"
-  },
-  function (accessToken, refreshToken, profile, done) {
-    try {
-        userProfile = profile;
-        return done(null, userProfile);
-    } catch (error) {
-        console.error(error);
-        return done(error, null);
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "/auth/google/callback",
+      scope: ["profile", "email"]
+    },
+    function (accessToken, refreshToken, profile, done) {
+      done(null, profile);
+      
     }
-}
-));
-
-app.get("/auth/google", passport.authenticate("google", { scope: ['profile', 'email'] }));
-
-app.get("/auth/google/callback", passport.authenticate("google", {
-    failureRedirect: "http://localhost:5173/login-failure",
-  }),
-  async function (req, res) {
-    const userGoogleEmail = userProfile.emails[0].value;
-
-    // check if the google email already exists in the table
-    const user = await users.findOne({
-      where: {
-        email: userGoogleEmail
-      }
-    });
-
-    if (user) {
-      // token generate garney
-      const token = generateToken(user);
-      res.cookie('token', token);
-      res.redirect("/");
-    } else {
-      // register the user
-      const newUser = await users.create({
-        email: userGoogleEmail,
-        googleId: userProfile.id,
-        username: userProfile.displayName
-      });
-
-      const token = generateToken(newUser);
-      res.cookie('token', token);
-      res.redirect("/");
-    }
-  }
+  )
 );
 
-// google login ends here
+// passport.use(
+//   new GithubStrategy(
+//     {
+//       clientID: GITHUB_CLIENT_ID,
+//       clientSecret: GITHUB_CLIENT_SECRET,
+//       callbackURL: "/auth/github/callback",
+//     },
+//     function (accessToken, refreshToken, profile, done) {
+//       done(null, profile);
+//     }
+//   )
+// );
+
+// passport.use(
+//   new FacebookStrategy(
+//     {
+//       clientID: FACEBOOK_APP_ID,
+//       clientSecret: FACEBOOK_APP_SECRET,
+//       callbackURL: "/auth/facebook/callback",
+//     },
+//     function (accessToken, refreshToken, profile, done) {
+//       done(null, profile);
+//     }
+//   )
+// );
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
