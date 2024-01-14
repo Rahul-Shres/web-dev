@@ -1,4 +1,3 @@
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
 require('dotenv').config();
 
 // const GithubStrategy = require("passport-github2").Strategy;
@@ -15,6 +14,9 @@ const passport = require("passport");
 // FACEBOOK_APP_ID = "your id";
 // FACEBOOK_APP_SECRET = "your id";
 
+var userProfile ;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+
 passport.use(
   new GoogleStrategy(
     {
@@ -24,7 +26,9 @@ passport.use(
       scope: ["profile", "email"]
     },
     function (accessToken, refreshToken, profile, done) {
-      done(null, profile);
+      console.log(profile);
+      userProfile = profile  
+      return done(null,userProfile)
       
     }
   )
