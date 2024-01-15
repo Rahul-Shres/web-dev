@@ -1,6 +1,9 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Header = () => {
+  const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser, "current user")
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -59,7 +62,7 @@ const Header = () => {
                   href="#"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >
-                  Sign out
+                  Sign In
                 </a>
               </li>
             </ul>
@@ -135,7 +138,20 @@ const Header = () => {
                 Contact
               </a>
             </li>
+            <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <Link to='/profile'>
+          {currentUser && currentUser.profilePicture && (
+            <img
+              className="w-8 h-8 rounded-full"
+              src={currentUser.profilePicture}
+              alt="user profile"
+            />
+          )}
+          </Link>
+          {/* Rest of your code */}
+        </div>
           </ul>
+
         </div>
       </div>
     </nav>
