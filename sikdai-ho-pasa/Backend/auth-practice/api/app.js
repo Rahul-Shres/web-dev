@@ -7,6 +7,7 @@ import { connectToDatabase } from './database/database.js';
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 import errorHandler from './middlewares/errorHandler.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ const app = express();
 app.use(express.json());
 // Middleware
 app.use(bodyParser.json());
+app.use(cookieParser());
+
 //DATABASE CONNECTION
 connectToDatabase()
 
