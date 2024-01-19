@@ -17,6 +17,9 @@ import OrderDetails from './pages/orderDetails/OrderDetails';
 import AdminDashboard from './pages/admin/dashboard/AdminDashboard';
 import { ProtectedRoute } from './pages/ProtectRoute';
 import MyOrderQrs from './pages/MyOrderQrs/MyOrderQrs'
+import ForgotPassword from './pages/auth/forgotPassword/ForgotPassword';
+import VerifyOtp from './pages/auth/verifyOtp/VerifyOtp';
+import ResetPassword from './pages/auth/resetPassword/ResetPassword';
 
 function App() {
   return (
@@ -41,6 +44,9 @@ function App() {
     <Route path="/myorders" element={<MyOrders />} />
     <Route path="/myorderqrs" element={<MyOrderQrs />} />
     <Route path="/myorders/:id" element={<OrderDetails />} />
+    <Route path="/forgotpassword" element={<ForgotPassword />} />
+   <Route path="/verifyotp" element={<VerifyOtp />} />
+   <Route path="/resetpassword" element={<ResetPassword />} />
      
           </Routes>
           <Footer />
