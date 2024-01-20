@@ -10,13 +10,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
+ 
   username: {
     type: String,
-    required: true,
+    required: false,
   },
   currentOrgNumber: {
     type: Number,
@@ -32,10 +29,6 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
   image: {
-    type: String,
-    required: false,
-  },
-  token: {
     type: String,
     required: false,
   },

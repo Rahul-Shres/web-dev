@@ -6,6 +6,7 @@ import Login from './pages/Login.jsx';
 // import Dashboard from './pages/Dashboard';
 import Error from './pages/Error.jsx';
 import Navbar from './components/Navbar.jsx';
+import Google from './pages/Google.jsx';
 
 export default function App() {
   
@@ -18,7 +19,9 @@ export default function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         {/* <Route path='/navbar' element={<Dashboard />} /> */}
+        <Route path="/google/:id" element={<Google />} />
         <Route path='*' element={<Error />} />
+        
       </Routes></BrowserRouter>
       
     </>

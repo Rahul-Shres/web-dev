@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const User = require("../model/userModel");
 
 const isAuthenticated = async (req, res, next) => {
-  const token = req.cookies.token; // Extract token from the cookie
+  const token = req.headers.authorization
 
   console.log(token, "token");
   if (!token) {
@@ -18,7 +18,7 @@ const isAuthenticated = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     console.log('Token Decoded:', decoded);
 
-    const doesUserExist = await User.findOne({ _id: decoded.id });
+    const doesUserExist = await User.findOne({ _id: decoded.user });
     console.log('User does exist:', doesUserExist);
     if (!doesUserExist) {
       return res.status(404).json({
@@ -26,12 +26,7 @@ const isAuthenticated = async (req, res, next) => {
       });
     }
 
-    // Compare the raw tokens
-    if (token !== doesUserExist.token) {
-      return res.status(401).json({
-        message: "Unauthorized: Token mismatch",
-      });
-    }
+    
 
     req.user = doesUserExist;
     console.log("req.user:", req.user);

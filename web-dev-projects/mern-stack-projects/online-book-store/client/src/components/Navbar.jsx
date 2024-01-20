@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
+import { APIAuthenticated } from '../http';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -9,11 +10,12 @@ const Navbar = () => {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/profile", { withCredentials: true });
-
-      if (response.data.user) {
-        setUserdata(response.data.user);
+      const response = await APIAuthenticated.get("profile");
+      console.log(response, "res")
+      if (response.data.data) {
+        setUserdata(response.data.data);
       }
+      
     } catch (error) {
       console.log("error", error)
     }
@@ -29,6 +31,7 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  console.log(userdata, "userdata")
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -37,15 +40,15 @@ const Navbar = () => {
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        {/* {user ? (
+        {userdata ? (
             // Display user name and image if user is logged in
             <>
-              <span className="text-gray-700 dark:text-white mr-2">{user.displayName}</span>
-              <img
+              <span className="text-white dark:text-white mr-2">{userdata.displayName}</span>
+              {/* <img
                 src={user.image}
                 alt="User Avatar"
                 className="h-8 w-8 rounded-full border border-gray-300 dark:border-gray-600"
-              />
+              /> */}
               <button
                 onClick={handleLoginClick}
                 type="button"
@@ -63,10 +66,10 @@ const Navbar = () => {
             >
               Log in
             </button>
-          )} */}
-          <button onClick={handleLoginClick} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          )}
+          {/* <button onClick={handleLoginClick} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
            Log in
-          </button>
+          </button> */}
           <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
             <span className="sr-only">Open main menu</span>
             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">

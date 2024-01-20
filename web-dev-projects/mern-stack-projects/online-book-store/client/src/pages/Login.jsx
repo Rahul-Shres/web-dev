@@ -2,7 +2,7 @@ import React from 'react'
 
 const Login = () => {
   const loginwithgoogle = ()=>{
-    window.open("http://localhost:8000/auth/google/callback","_self")
+    window.open("http://localhost:8000/auth/google/","_self")
 }
   return (
     <html className="h-full">
