@@ -15,11 +15,15 @@ const User = require('./model/userModel');
 
 connectToDB(process.env.MONGO)
 
+const profileRoute = require("./routes/profileRoute")
+app.use("/api/profile", profileRoute);
+
 app.use(
   cors({
     origin: 'http://localhost:5173',
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
+    exposedHeaders: ['Authorization'],
   })
 );
 
@@ -85,12 +89,18 @@ passport.use(
               Math.random().toString(36).slice(-8),
           });
 
-          const token = generateToken({ id: user._id });
+          const token = generateToken({ _id: user._id });
           console.log(token);
-          const expiryDate = new Date(Date.now() + 3600000); // 1 hour
+          await user.save();
 
+        console.log('User saved to database:', user);
           // Send the token as a response to the client
           return done(null, { user, token });
+        }
+
+        else {
+          // If the user already exists, set the token property in the user object
+          user.token = generateToken({ _id: user._id });
         }
 
         // If the user already exists, send the user data without generating a new token
@@ -117,22 +127,65 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'em
 
 
 
+// app.get(
+//   '/auth/google/callback',
+//   passport.authenticate('google', {
+//     failureRedirect: 'http://localhost:5173/login',
+//   }),
+//   async (req, res) => {
+//     const expiryDate = new Date(Date.now() + 3600000); // 1 hour
+
+//     // Access the user and token from the request object
+//     const { user, token } = req.user;
+//      // Save the token in the user document in the database
+//   await User.findByIdAndUpdate(user._id, { $set: { token } });
+
+//   console.log('Token updated in the database');
+//     // Set the token in a cookie named 'token'
+//     res.cookie('token', token, { expires: expiryDate, httpOnly: true });
+
+//     // Redirect to the success URL
+//     res.redirect('http://localhost:5173');
+//   }
+// );
+
 app.get(
   '/auth/google/callback',
   passport.authenticate('google', {
-    failureRedirect: 'http://localhost:5173/login',
+      failureRedirect: 'http://localhost:5173/login',
   }),
-  (req, res) => {
-    // Access the user and token from the request object
-    const { user, token } = req.user;
+  async (req, res) => {
+      const { user } = req;
 
-    // Set the token in a cookie named 'token'
-    res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
+      if (!user) {
+          return res.status(400).json({ message: 'User not authenticated' });
+      }
 
-    // Redirect to the success URL
-    res.redirect('http://localhost:5173');
+      const expiryDate = new Date(Date.now() + 3600000); // 1 hour
+
+      try {
+          // Use findOneAndUpdate to update or create a user document
+          const updatedUser = await User.findOneAndUpdate(
+              { _id: user._id },
+              { $setOnInsert: { token: generateToken(user) } }, // setOnInsert ensures token is set only if creating a new document
+              { upsert: true, new: true }
+          );
+
+          console.log('User Token saved to the database:', updatedUser.token);
+
+          // Set the token in a cookie named 'token'
+          res.cookie('token', updatedUser.token, { expires: expiryDate, httpOnly: true });
+
+          // Redirect to the success URL
+          res.redirect('http://localhost:5173');
+      } catch (error) {
+          console.error('Error saving user token to the database:', error);
+          res.status(500).json({ message: 'Internal Server Error' });
+      }
   }
 );
+
+
 
 
 // app.get("/login/sucess",async(req,res)=>{
@@ -148,15 +201,16 @@ app.get("/login/success", async (req, res) => {
   console.log('Session Data:', req.session);
   console.log('User Data:', req.user);
   if (req.user && req.user.user) {
-    const { displayName, image } = req.user.user;
+    const { displayName, image, _id } = req.user.user;  // Add _id here
     console.log('User Data:', req.user);
 
-    // Sending the user's name and image to the frontend
-    res.status(200).json({ message: "user Login", displayName, image });
+    // Sending the user's name, image, and _id to the frontend
+    res.status(200).json({ message: "user Login", displayName, image, _id });
   } else {
     res.status(400).json({ message: "Not Authorized" });
   }
 });
+ 
 
 
 
@@ -168,8 +222,11 @@ app.get('/logout', (req, res, next) => {
       return next(err);
     }
     res.redirect('http://localhost:5173');
+    
   });
 });
+
+
 
 app.listen(process.env.PORT, () => {
   console.log('listening on port ' + process.env.PORT);

@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:5173/login/success", { withCredentials: true });
+      const response = await axios.get("http://localhost:8000/api/profile", { withCredentials: true });
 
       if (response.data.user) {
         setUserdata(response.data.user);

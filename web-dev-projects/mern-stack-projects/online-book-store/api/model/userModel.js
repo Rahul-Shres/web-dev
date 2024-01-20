@@ -1,3 +1,4 @@
+// userModel.js
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -9,7 +10,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  password:{
+  password: {
     type: String,
     required: true,
   },
@@ -31,6 +32,10 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
   image: {
+    type: String,
+    required: false,
+  },
+  token: {
     type: String,
     required: false,
   },
