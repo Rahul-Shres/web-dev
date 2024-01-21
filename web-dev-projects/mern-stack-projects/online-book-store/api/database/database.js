@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const adminSeeder = require('../adminSeeder');
 
 const connectToDatabase = async (mongoUri) => {
   try {
@@ -7,6 +8,7 @@ const connectToDatabase = async (mongoUri) => {
       useUnifiedTopology: true,
     });
     console.log('Connected to MongoDB');
+    // adminSeeder()
   } catch (error) {
     console.error('Error connecting to MongoDB:', error.message);
   }

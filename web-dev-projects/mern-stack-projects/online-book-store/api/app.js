@@ -11,8 +11,13 @@ const bcryptjs = require('bcryptjs'); // Add this line
 const { decodeToken } = require('./services/decodeToken');
 const generateToken = require('./services/generateToken');
 const User = require('./model/userModel');
-const profileRoute = require('./routes/profileRoute');
+
+
 const isAuthenticated = require('./middleware/isAuthenticated');
+
+//Routes
+const profileRoute = require('./routes/profileRoute');
+// const productRoute = require("./routes/productRoute")
 
 connectToDB(process.env.MONGO)
 app.use(cors({
@@ -40,18 +45,21 @@ passport.deserializeUser((user, done) => {
 
 app.use(cookieParser());
 
-app.get("/profile", isAuthenticated, async(req,res)=>{
+app.use("/profile", profileRoute);
+// app.use("/product", productRoute);
 
-  const userId = req.user._id 
-  console.log(userId, "userId")
-  const myProfile = await User.findById(userId)
-  console.log(userId, "user id")
-  // send response
-  res.status(200).json({
-      data : myProfile,
-      message : "Profile fetched successfully"
-  })
-})
+// app.get("/profile", isAuthenticated, async(req,res)=>{
+
+//   const userId = req.user._id 
+//   console.log(userId, "userId")
+//   const myProfile = await User.findById(userId)
+//   console.log(userId, "user id")
+//   // send response
+//   res.status(200).json({
+//       data : myProfile,
+//       message : "Profile fetched successfully"
+//   })
+// })
 
 
 var userProfile ;
@@ -83,10 +91,13 @@ async function (req, res) {
   if (findUserByEmail) {
     token = generateToken(findUserByEmail.id);
   } else {
+
     const user = await User.create({
+
       displayName: userProfile.displayName,
       email: userProfile.emails[0].value,
       googleId : userProfile.id,
+      image: userProfile.photos[0].value,
       role: "user",
     });
     token = generateToken(user.id);
@@ -100,7 +111,7 @@ async function (req, res) {
 )
 
 
-// app.use("/api", profileRoute);
+
 
 
 
