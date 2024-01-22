@@ -17,6 +17,7 @@ const isAuthenticated = require('./middleware/isAuthenticated');
 
 //Routes
 const profileRoute = require('./routes/profileRoute');
+const adminAuthRoute = require('./routes/admin/adminAuthRoute');
 // const productRoute = require("./routes/productRoute")
 
 connectToDB(process.env.MONGO)
@@ -46,7 +47,7 @@ passport.deserializeUser((user, done) => {
 app.use(cookieParser());
 
 app.use("/profile", profileRoute);
-// app.use("/product", productRoute);
+ app.use("/admin", adminAuthRoute);
 
 // app.get("/profile", isAuthenticated, async(req,res)=>{
 

@@ -8,7 +8,7 @@ const connectToDatabase = async (mongoUri) => {
       useUnifiedTopology: true,
     });
     console.log('Connected to MongoDB');
-    // adminSeeder()
+    adminSeeder()
   } catch (error) {
     console.error('Error connecting to MongoDB:', error.message);
   }
