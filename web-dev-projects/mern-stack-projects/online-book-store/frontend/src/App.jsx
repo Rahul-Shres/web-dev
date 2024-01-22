@@ -1,19 +1,21 @@
 import * as React from "react";
-
-// 1. import `NextUIProvider` component
-import {NextUIProvider} from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 import AppBar from "./components/Navbar/Navbar";
 
 export default function App() {
+  const [darkMode, setDarkMode] = React.useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <>
-     <NextUIProvider>
-    <AppBar />
-    <h1 className="text-3xl font-bold underline">
-      
-      Hello world!
-    </h1>
-    </NextUIProvider>
+      <NextUIProvider>
+      <main className={darkMode ? "dark text-foreground bg-background" : ""}>
+  <AppBar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+</main>
+      </NextUIProvider>
     </>
-  )
+  );
 }

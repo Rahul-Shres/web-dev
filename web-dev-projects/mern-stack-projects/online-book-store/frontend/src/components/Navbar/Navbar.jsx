@@ -3,7 +3,7 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, DropdownItem, Drop
 import CustomButton from "../button/Button";
 // import {AcmeLogo} from "./AcmeLogo.jsx";
 
-export default function AppBar() {
+export default function AppBar({ darkMode, toggleDarkMode }) {
   return (
     <Navbar>
       <NavbarBrand>
@@ -30,7 +30,10 @@ export default function AppBar() {
       </NavbarContent>
 
       <CustomButton buttonText="HEhe me" buttonColor="primary" />
-      
+       {/* Other Navbar content */}
+       <button onClick={toggleDarkMode}>
+        {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      </button>
 
       <NavbarContent as="div" justify="end">
         <Dropdown placement="bottom-end">
