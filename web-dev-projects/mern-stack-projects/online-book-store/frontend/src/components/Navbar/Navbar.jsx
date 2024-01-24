@@ -67,7 +67,7 @@ export default function AppBar({ darkMode, toggleDarkMode }) {
 
 
   return (
-    <Navbar  >
+    <Navbar className="w-full	">
       <NavbarBrand >
       <img src={sacIcon} alt="Sac Icon" width="280"  />
         {/* <p className="text-lg	 font-bold text-inherit">ACME</p> */}
@@ -84,7 +84,7 @@ export default function AppBar({ darkMode, toggleDarkMode }) {
                 className="p-0 bg-transparent data-[hover=true]:bg-transparent text-xl"
                 endContent={icons.chevron}
                 radius="sm"
-                color="primary"
+                color="shadow"
               >
                 Features
               </Button>

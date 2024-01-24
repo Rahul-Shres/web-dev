@@ -24,8 +24,8 @@ module.exports = {
       themes: {
         "custom-theme": {
           colors: {
-            background: "#3a86ff",
-            foreground: "#ffffff",
+            // background: "#3a86ff",
+            // foreground: "#ffffff",
             primary: {
               DEFAULT: "#1022e5",
               foreground: "#ffffff",
