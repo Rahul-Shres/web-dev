@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { forgotPassword, loginUser } from "../../../store/authSlice"
-import { STATUSES } from "../../../globals/misc/statuses"
+import { STATUSES } from "../../../global/misc/statuses"
 import { Link, useNavigate } from "react-router-dom"
 
 const ForgotPassword = () => {

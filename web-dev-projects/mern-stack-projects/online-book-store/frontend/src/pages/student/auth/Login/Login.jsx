@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@nextui-org/react";
-import googleIcon from '../../../assets/google.png';
+import googleIcon from '../../../../assets/google.png';
 
 
 const loginwithgoogle = ()=>{

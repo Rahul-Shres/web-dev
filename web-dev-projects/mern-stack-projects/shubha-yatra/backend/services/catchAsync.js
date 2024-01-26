@@ -1,7 +1,8 @@
 // catch asynchronous error
 module.exports = (fn) => {
     return (req, res, next) => {
-        fn(req, res, next).catch((err) => {
+        // Ensure fn returns a promise
+        Promise.resolve(fn(req, res, next)).catch((err) => {
             console.error("Caught async error:", err);
             // Log statement within the catch block
             console.log("From catch async service");
@@ -12,4 +13,3 @@ module.exports = (fn) => {
         });
     };
 };
-

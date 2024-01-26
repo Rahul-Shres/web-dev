@@ -2,8 +2,8 @@ import React from 'react';
 import Counselor from '../Counselor/Counselor';
 import VerifyOtp from '../verifyOtp/VerifyOtp';
 import UserNumber from '../userPhoneNo/UserNumber';
-import CustomButton from '../../../components/button/Button';
 import {Image} from "@nextui-org/react";
+import CustomButton from '../../../../components/button/Button';
 
 const VerificationForm = () => {
   const handleButtonClick = () => {

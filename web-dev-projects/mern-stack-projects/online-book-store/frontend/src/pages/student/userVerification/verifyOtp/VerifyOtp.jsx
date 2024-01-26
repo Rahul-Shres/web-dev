@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "@nextui-org/react";
 import { Chip } from "@nextui-org/react";
-import CustomButton from "../../../components/button/Button";
+import CustomButton from '../../../../components/button/Button';
 import {Image} from "@nextui-org/react";
 
 export default function VerifyOtp() {

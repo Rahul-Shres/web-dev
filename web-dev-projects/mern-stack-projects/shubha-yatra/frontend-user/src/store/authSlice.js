@@ -1,6 +1,6 @@
 import {  createSlice } from "@reduxjs/toolkit";
 
-import { STATUSES } from "../globals/misc/statuses";
+import { STATUSES } from "../global/misc/statuses";
 import {API, APIAuthenticated} from "../http";
 
 

@@ -2,9 +2,9 @@ import * as React from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import AppBar from "./components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import Login from "./pages/auth/Login/Login";
+import Login from "./pages/student/auth/Login/Login";
+import Home from "./Home";
 import Google from "./Google";
-import Home from "./pages/Home";
 
 export default function App() {
   const [darkMode, setDarkMode] = React.useState(true);

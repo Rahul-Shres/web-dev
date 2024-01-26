@@ -28,7 +28,7 @@ module.exports = {
             // foreground: "#ffffff",
             primary: {
               DEFAULT: "#1022e5",
-              foreground: "#ffffff",
+              foreground: "#E8F9FD",
             },
           },
           layout: {
