@@ -1,0 +1,9 @@
+/* features.css */
+.background-image {
+    position: relative;
+    background-image: url("https://i.pinimg.com/736x/5c/55/5b/5c555bc288a0ac8777b5fa059230b4fc.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+  }
+  

@@ -16,12 +16,16 @@ import AddUniversity from './pages/admin/university/addUniversity/AddUniversity'
 import UpdateUniversity from './pages/admin/university/updateUniversity/UpdateUniversity';
 import UniversityList from './pages/student/university/universityList/UniversityList';
 import SingleUniversity from './pages/student/university/singleUniversity/SingleUniversity';
+import SingleUser from './pages/admin/dashboard/singleUser/singleUser';
+import StudentDashboard from './pages/student/studentDashboard/StudentDashboard';
 
 const Home = () => {
   return (
     <>
       <div className="w-10/12 mx-auto">
-        <SingleUniversity />
+        <StudentDashboard />
+        <SingleUser />
+        {/* <SingleUniversity /> */}
       <UniversityList />
         <UpdateUniversity />
         <AddUniversity />

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   Table,
   TableHeader,
@@ -115,13 +117,24 @@ export default function StudentTable() {
     switch (columnKey) {
       case "name":
         return (
+          // to view single user
           <User
-            avatarProps={{radius: "lg", src: user.avatar}}
-            description={user.counselor}
-            name={cellValue}
-          >
-            {user.email}
-          </User>
+          avatarProps={{ radius: "lg", src: user.avatar }}
+          description={user.counselor}
+          name={
+            <Link
+              to={`/singleuser/${user.id}`}
+              onClick={() => {
+                console.log(`Clicked on user ${user.id}`);
+                // Add logic to open the singleuser page
+              }}
+            >
+              {cellValue}
+            </Link>
+          }
+        >
+          {user.email}
+        </User>
         );
       case "role":
         return (
