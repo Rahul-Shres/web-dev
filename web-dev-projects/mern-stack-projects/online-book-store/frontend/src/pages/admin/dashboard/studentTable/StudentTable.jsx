@@ -298,8 +298,8 @@ export default function StudentTable() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button color="primary" endContent={<PlusIcon />}>
-              Add New
+            <Button color="primary" endContent={<PlusIcon />}> 
+              Add New University
             </Button>
           </div>
         </div>

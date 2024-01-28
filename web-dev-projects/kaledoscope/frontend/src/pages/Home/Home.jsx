@@ -1,8 +1,19 @@
 import React, { useRef } from 'react';
 import Appbar from '../../components/nabvar/Navbar';
-import Features from './features/features';
 import Copy from './copy/Copy';
 import Horizontal from './horizontal/Horizontal';
+import Features from './features/Features';
+import Example from './horizontal/HorizontalScrollCarousel';
+import Footer from './footer/Footer';
+import OurTeams from './ourTeam/OurTeams';
+import OurClients from './ourClients/OurClients';
+import Faq from './faq/Faq';
+import FaqPage from './faq/FaqPage';
+import Testimonial from './Testimonial.jsx/Testimonial';
+import BookDemo from './booking/BookDemo';
+import AboutUs from './about/AboutUs';
+import GuitarClass from './Courses/GuitarClass';
+import GallaryPage from './gallary/GallaryPage';
 
 const Home = () => {
   const iframeRef = useRef(null);
@@ -44,9 +55,20 @@ const Home = () => {
           style={{ position: 'absolute', top: 0, left: 0 }}
         ></iframe>
       </div>
+      <GallaryPage />
+      <GuitarClass />
+      <Testimonial />
       <Features />
       <Copy />
-      <Horizontal />
+      <Example />
+      <OurTeams />
+      <BookDemo />
+      <OurClients />
+      <AboutUs />
+      <Faq />
+      <FaqPage />
+      <Footer />
+
     </>
   );
 };
