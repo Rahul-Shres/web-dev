@@ -23,19 +23,6 @@ const AdminRegister = () => {
     adminName: "", // Add adminName field
   });
 
-  // const createAdmin = async () => {
-  //   try {
-  //     const response = await APIAdminApiAuthentication.post('/admin', userData);
-  //     console.log(response, 'res');
-  //     if (response.data.data) {
-  //       // Additional logic if needed after successful admin creation
-  //       console.log(response.data.data, "response");
-  //     }
-  //   } catch (error) {
-  //     console.log('error', error);
-  //   }
-  // };
-
 
   const handleChange = (e)=>{
     const {name,value} = e.target 

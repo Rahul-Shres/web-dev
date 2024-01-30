@@ -56,6 +56,7 @@ exports.registerAdmin = async (req, res) => {
 
 exports.loginAdmin = async(req,res)=>{
     const {email,password} = req.body
+    console.log(email,"email", password, "password")
     if(!email || !password){
         return res.status(400).json({
             message : "Please provide email,password"
@@ -76,7 +77,7 @@ exports.loginAdmin = async(req,res)=>{
     if(isMatched){
         // generate token using the generateToken function
         const token = generateToken(adminFound[0]);
-
+        console.log(token, "token")
 
         res.status(200).json({
             message : "Admin logged in successfully",

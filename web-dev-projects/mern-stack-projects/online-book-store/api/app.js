@@ -43,6 +43,15 @@ app.use(express.urlencoded({ extended: true }));
 // telling nodejs to give access to uploads folder 
 app.use(express.static("./uploads"))
 
+
+// Use session middleware
+app.use(session({
+  secret: process.env.SESSION_SECRET, // Use a secure secret key
+  resave: true,
+  saveUninitialized: true
+}));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser((user, done) => {

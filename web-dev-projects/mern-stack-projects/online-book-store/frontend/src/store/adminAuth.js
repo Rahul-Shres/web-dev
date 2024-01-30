@@ -5,18 +5,25 @@ import { APIAdminApiAuthentication } from "../http";
 const adminAuth = createSlice({
   name: "adminAuth",
   initialState: {
-    user: null,
+    data: null,
     status: STATUSES.LOADING,
-    error: null,
-  },
+    token: null,
+ },
+ 
   reducers: {
-    setStatus(state,action){
+    setUser(state,action){
+      state.data = action.payload
+     },
+     setStatus(state,action){
       state.status = action.payload
+     },
+     setToken(state,action){
+      state.token = action.payload
      },
   },
 });
 
-export const { setStatus } = adminAuth.actions;
+export const { setUser,setStatus,setToken } = adminAuth.actions;
 
 
 
@@ -38,4 +45,34 @@ export function registerAdmin(data){
           dispatch(setStatus(STATUSES.ERROR))
       }
   }
+}
+
+
+export function loginAdmin(data) {
+  return async function loginUserThunk(dispatch) {
+    dispatch(setStatus(STATUSES.LOADING));
+
+    try {
+      const response =  await APIAdminApiAuthentication.post("/admin/login", data);
+
+      console.log("Login API Response:", response); // Log the entire response for debugging
+
+      if (response.status === 200 && response.data.token) {
+        dispatch(setUser(response.data.data));
+        dispatch(setToken(response.data.token));
+        dispatch(setStatus(STATUSES.SUCCESS));
+
+        localStorage.setItem('token', response.data.token);
+        window.location.href = "/";
+      } else {
+        console.error("Unexpected API response:", response);
+        alert("Unexpected response from the server. Please try again.");
+        dispatch(setStatus(STATUSES.ERROR));
+      }
+    } catch (error) {
+      console.error("Login API Error:", error); // Log the error for debugging
+      alert("Something went wrong. Please try again.");
+      dispatch(setStatus(STATUSES.ERROR));
+    }
+  };
 }
