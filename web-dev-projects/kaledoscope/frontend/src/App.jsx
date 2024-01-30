@@ -9,9 +9,12 @@ export default function App() {
     <>
     <NextUIProvider>
     <BrowserRouter>
+    <main className={"dark text-foreground bg-background" }>
     <Routes>
       <Route path="/" element={<Home />}/>
-      </Routes></BrowserRouter>
+      </Routes>
+      </main>
+      </BrowserRouter>
     </NextUIProvider>
     </>
   )

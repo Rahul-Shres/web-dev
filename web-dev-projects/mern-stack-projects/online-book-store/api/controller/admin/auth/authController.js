@@ -5,37 +5,54 @@ const sendEmail = require("../../../services/sendEmail")
 const Admin = require("../../../model/adminModel")
 const generateToken = require("../../../services/generateToken")
 
-
-exports.registerAdmin = async(req,res)=>{
-    const {email,password,phoneNumber,adminName} = req.body
-    if(!email || !password || !phoneNumber || !adminName){
-       return res.status(400).json({
-            message : "Please provide email,password,phoneNumber"
-        })
+exports.registerAdmin = async (req, res) => {
+    const file = req.file;
+    console.log(file, "file");
+    let filePath;
+    if (!file) {
+      filePath =
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1dQPM88-Vq0f-YM8xILMQdKktXgKBMN6XH9cCBleA&s";
+    } else {
+      filePath = req.file.filename;
     }
-    // check if that email user already exist or not
-   const adminFound =  await Admin.find({adminEmail : email})
-    if(adminFound.length > 0 ){
+    console.log(filePath, "file path");
+  
+    const { email, password, phoneNumber, adminName, department } = req.body;
+    console.log(email, "email", password,"password", phoneNumber, "phone number",adminName, "adminName",department, "department");
+    if (!email || !password || !phoneNumber || !adminName || !department) {
+      return res.status(400).json({
+        message: "Please provide email, password, phoneNumber, and department",
+      });
+    }
+   
+    
+      // Check if the admin with that email already exists
+      const adminFound = await Admin.findOne({ adminEmail: email });
+      if (adminFound) {
         return res.status(400).json({
-            message : "Admin with that email already registered",
-            data : []
-        })
-    }
+          message: "Admin with that email already registered",
+          data: [],
+        });
+      }
+  
+      // Create a new admin
+      const adminData = await Admin.create({
+        adminName: adminName,
+        adminPhoneNumber: phoneNumber,
+        adminEmail: email,
+        adminPassword: bcrypt.hashSync(password, 10),
+        profileImage: process.env.BACKEND_URL + filePath,
+        department: department,
+      });
 
-    // else 
-    const adminData = await Admin.create({
-        adminName : adminName,
-        adminPhoneNumber : phoneNumber,
-        adminEmail : email,
-        adminPassword : bcrypt.hashSync(password,10)
-    })
-
-    res.status(201).json({
-        message : "Admin registered successfully",
-      
-    })
-}
-
+      console.log(adminData, "admin created");
+  
+      res.status(200).json({
+        message: "Admin Created Successfully",
+        data: adminData,
+      });
+    
+  };
 
 exports.loginAdmin = async(req,res)=>{
     const {email,password} = req.body

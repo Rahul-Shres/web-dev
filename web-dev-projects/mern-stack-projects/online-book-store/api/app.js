@@ -13,7 +13,16 @@ const generateToken = require('./services/generateToken');
 const User = require('./model/userModel');
 
 
-const isAuthenticated = require('./middleware/isAuthenticated');
+
+app.use(cors({
+  origin: "*",
+}))
+
+
+app.use(express.json())
+app.use(express.urlencoded({extended : true}))
+
+
 
 //Routes
 const profileRoute = require('./routes/profileRoute');
@@ -31,6 +40,8 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// telling nodejs to give access to uploads folder 
+app.use(express.static("./uploads"))
 
 app.use(passport.initialize());
 app.use(passport.session());

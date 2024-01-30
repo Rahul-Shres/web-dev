@@ -4,9 +4,9 @@ import {Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org
 
 const Example = () => {
   return (
-    <div className="bg-gradient-to-r from-purple-500 to-purple-900">
+    <div className="bg-black">
       <div className="flex h-48 items-center justify-center">
-        <span className="font-semibold uppercase text-neutral-500">
+        <span className="font-semibold uppercase text-white text-5xl">
          Our Courses
         </span>
       </div>
@@ -29,7 +29,7 @@ const HorizontalScrollCarousel = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-gradient-to-r from-green-50 to-purple-50	">
+    <section ref={targetRef} className="relative h-[780vh] bg-black	">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-10 rounded-3xl	">
           {cardData.map((card) => {
@@ -45,7 +45,7 @@ const Cards = ({ card }) => {
   return (
     <div
       key={cardData.id}
-      className="group relative h-[350px] w-[350px] overflow-hidden bg-neutral-200 rounded-3xl"
+      className="group relative h-[500px] w-[500px] overflow-hidden bg-neutral-200 rounded-3xl"
     >
       
       {cardData.map((card) => (
@@ -67,12 +67,23 @@ const Cards = ({ card }) => {
               </>
             )}
           </CardHeader>
+
           <Image
+          removeWrapper
+      isZoomed
+      // width={240}
+      alt="NextUI Fruit Image with Zoom"
+      src={card.imageUrl}
+    />
+
+
+          {/* <Image
+          
             removeWrapper
             alt="Card example background"
             className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
             src={card.imageUrl}
-          />
+          /> */}
           <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
         <div className="flex flex-grow gap-2 items-center">
           <Image
@@ -104,7 +115,7 @@ const cardData = [
     //   id: 1,
     //   isNew: true,
     //   title: 'Your checklist for better sleep',
-    //   imageUrl: 'https://images.unsplash.com/photo-1591365437381-2db81d59f1e0?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    //   imageUrl: 'https://pics.craiyon.com/2023-09-21/e566cdab8f4c49909baff1ab1093bb06.webp',
     //   availability: 'Available soon.',
     //   notifyText: 'Get notified.',
     // },
@@ -112,7 +123,7 @@ const cardData = [
       id: 1,
       isNew: false,
       title: 'Your checklist for better sleep',
-      imageUrl: 'https://images.unsplash.com/photo-1591365437381-2db81d59f1e0?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      imageUrl: 'https://pics.craiyon.com/2023-09-21/e566cdab8f4c49909baff1ab1093bb06.webp',
       availability: 'Available soon.',
       notifyText: 'Get notified.',
     },
@@ -120,7 +131,7 @@ const cardData = [
       id: 2,
       isNew: false,
       title: 'Your checklist for better sleep',
-      imageUrl: 'https://images.unsplash.com/photo-1591365437381-2db81d59f1e0?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      imageUrl: 'https://pics.craiyon.com/2023-09-21/e566cdab8f4c49909baff1ab1093bb06.webp',
       availability: 'Available soon.',
       notifyText: 'Get notified.',
     },
@@ -128,7 +139,7 @@ const cardData = [
       id: 3,
       isNew: false,
       title: 'Your checklist for better sleep',
-      imageUrl: 'https://images.unsplash.com/photo-1591365437381-2db81d59f1e0?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      imageUrl: 'https://pics.craiyon.com/2023-09-21/e566cdab8f4c49909baff1ab1093bb06.webp',
       availability: 'Available soon.',
       notifyText: 'Get notified.',
     },
@@ -136,7 +147,7 @@ const cardData = [
       id: 4,
       isNew: false,
       title: 'Your checklist for better sleep',
-      imageUrl: 'https://images.unsplash.com/photo-1591365437381-2db81d59f1e0?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      imageUrl: 'https://pics.craiyon.com/2023-09-21/e566cdab8f4c49909baff1ab1093bb06.webp',
       availability: 'Available soon.',
       notifyText: 'Get notified.',
     },
@@ -144,7 +155,7 @@ const cardData = [
       id: 5,
       isNew: false,
       title: 'Your checklist for better sleep',
-      imageUrl: 'https://images.unsplash.com/photo-1591365437381-2db81d59f1e0?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      imageUrl: 'https://pics.craiyon.com/2023-09-21/e566cdab8f4c49909baff1ab1093bb06.webp',
       availability: 'Available soon.',
       notifyText: 'Get notified.',
     },

@@ -3,10 +3,10 @@ import {useNavigate } from 'react-router-dom';
 import {User} from "@nextui-org/react";
 import {Navbar, NavbarBrand, NavbarContent, Button, NavbarItem, Link, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar} from "@nextui-org/react";
 import CustomButton from "../button/Button";
-import { APIAuthenticated } from "../../http";
 import { ThemeSwitch } from "../button/ThemeSwitch ";
 import {ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale} from "./Icons.jsx";
 import sacIcon from "../../assets/logo.png";
+import { APIAuthenticated } from "../../http/index.js";
 
 
 

@@ -25,7 +25,7 @@ const Appbar = (props) => {
 
   return (
     <>
-      <Navbar isBordered isBlurred={false}>
+      <Navbar isBordered isBlurred={false} shouldHideOnScroll>
         <NavbarBrand>
           <AcmeLogo />
           <p className="font-bold text-inherit">ACME</p>

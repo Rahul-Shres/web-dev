@@ -1,18 +1,17 @@
 import axios from 'axios'
 
 
+const API = axios.create({
+    baseURL : "https://momobackend.onrender.com/api",
+    headers : {
+        'Content-Type' : 'application/json',
+        Accept : 'application/json',
+        
+    }
+})
+
 const APIAuthenticated = axios.create({
-    baseURL : "http://localhost:8000/",
-    headers : {
-        'Content-Type' : 'application/json',
-        Accept : 'application/json',
-        'Authorization' : `${localStorage.getItem('token')}`
-        
-    }
-})
-
-const APIAdminApiAuthentication = axios.create({
-    baseURL : "http://localhost:8000/",
+    baseURL : "https://momobackend.onrender.com/api",
     headers : {
         'Content-Type' : 'application/json',
         Accept : 'application/json',
@@ -23,4 +22,4 @@ const APIAdminApiAuthentication = axios.create({
 
 
 
-export  {APIAuthenticated, APIAdminApiAuthentication}
+export  {API,APIAuthenticated}

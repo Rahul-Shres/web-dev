@@ -3,13 +3,13 @@ import './Features.css'; // Import the CSS file
 
 const Features = () => {
   return (
-    <div className="h-50 relative">
+    <div className="bg-dark text-foreground  h-50 relative">
       {/* Background */}
       
-      <div className="absolute inset-0 background-image"></div>
+
 
       {/* Features */}
-      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto text-center relative z-10">
+      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto text-center relative z-10 dark" >
         <h1 className='text-6xl'>Nepal’s Leading Music School</h1>
         {/* Grid */}
         <div className="mt-20 grid gap-6 grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-8">

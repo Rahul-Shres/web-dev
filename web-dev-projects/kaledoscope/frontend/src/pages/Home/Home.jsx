@@ -6,14 +6,12 @@ import Features from './features/Features';
 import Example from './horizontal/HorizontalScrollCarousel';
 import Footer from './footer/Footer';
 import OurTeams from './ourTeam/OurTeams';
-import OurClients from './ourClients/OurClients';
 import Faq from './faq/Faq';
-import FaqPage from './faq/FaqPage';
 import Testimonial from './Testimonial.jsx/Testimonial';
 import BookDemo from './booking/BookDemo';
 import AboutUs from './about/AboutUs';
-import GuitarClass from './Courses/GuitarClass';
 import GallaryPage from './gallary/GallaryPage';
+import AdminDashboard from '../admin/dashboard/AdminDashboard';
 
 const Home = () => {
   const iframeRef = useRef(null);
@@ -37,7 +35,7 @@ const Home = () => {
     height: '100%',
     zIndex: 1,
     background: 'rgb(2, 0, 36)',
-    background: 'linear-gradient(180deg,  rgba(255,255,255,0) 10%, rgba(255,255,255,1) 100%)',
+    background: 'linear-gradient(180deg,  rgba(255,255,255,0) 15%, rgba(0,0,0,1) 100%)',
   }}
 ></div>
 
@@ -55,18 +53,20 @@ const Home = () => {
           style={{ position: 'absolute', top: 0, left: 0 }}
         ></iframe>
       </div>
-      <GallaryPage />
-      <GuitarClass />
-      <Testimonial />
+      
+      {/* <GuitarClass /> */}
+      <AdminDashboard />
       <Features />
       <Copy />
       <Example />
       <OurTeams />
+      {/* <OurClients /> */}
+      <GallaryPage />
+      <Testimonial />
+      {/* <AboutUs /> */}
       <BookDemo />
-      <OurClients />
-      <AboutUs />
       <Faq />
-      <FaqPage />
+      {/* <FaqPage /> */}
       <Footer />
 
     </>

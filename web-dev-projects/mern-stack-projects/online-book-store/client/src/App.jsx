@@ -27,7 +27,7 @@ export default function App() {
     {/* <div className='w-screen min-h-screen h-auto flex flex-col items-center justify-center'> */}
       <BrowserRouter>
       {/* <Nav /> */}
-      <AppBar />
+      {/* <AppBar /> */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />

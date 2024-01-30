@@ -55,9 +55,9 @@ const AboutUs = () => {
 
 {/* <!-- ========== FOOTER ========== --> */}
 <footer className="absolute bottom-0 inset-x-0 text-center py-5">
-  <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+  {/* <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
     <p className="text-sm text-white/50">© 2024 Preline. A product of <a className="text-white font-medium hover:text-white/80" href="../index.html">Htmlstream</a></p>
-  </div>
+  </div> */}
 </footer>
 {/* <!-- ========== END FOOTER ========== --> */}
     </div>
