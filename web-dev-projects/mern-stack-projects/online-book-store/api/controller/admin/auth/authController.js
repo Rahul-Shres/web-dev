@@ -121,7 +121,7 @@ exports.forgotPassword = async (req,res)=>{
     await adminExist[0].save()
    await sendEmail({
         email :email,
-        subject : "Your Otp for digitalMOMO forgotPassword",
+        subject : "Your Otp for Self Apply Center Admin forgotPassword",
         message : `Your otp is ${otp} . Dont share with anyone`
     })
     res.status(200).json({
