@@ -8,6 +8,11 @@ const adminAuth = createSlice({
     data: null,
     status: STATUSES.LOADING,
     token: null,
+
+    forgotPasswordData : {
+      email : null, 
+      status : STATUSES.LOADING
+     }
  },
  
   reducers: {
@@ -20,10 +25,16 @@ const adminAuth = createSlice({
      setToken(state,action){
       state.token = action.payload
      },
+     setEmail(state,action){
+      state.forgotPasswordData.email = action.payload
+     },
+     setForgotPasswordDataStatus(state,action){
+      state.forgotPasswordData.status = action.payload
+     }
   },
 });
 
-export const { setUser,setStatus,setToken } = adminAuth.actions;
+export const { setUser,setStatus,setToken, setEmail, setForgotPasswordDataStatus } = adminAuth.actions;
 
 
 
@@ -63,7 +74,7 @@ export function loginAdmin(data) {
         dispatch(setStatus(STATUSES.SUCCESS));
 
         localStorage.setItem('token', response.data.token);
-        window.location.href = "/";
+        window.location.href = "/forgotpassword";
       } else {
         console.error("Unexpected API response:", response);
         alert("Unexpected response from the server. Please try again.");
@@ -76,3 +87,51 @@ export function loginAdmin(data) {
     }
   };
 }
+
+
+
+
+export function forgotPassword(data){
+  return async function forgotPasswordThunk(dispatch){
+      dispatch(setStatus(STATUSES.LOADING))
+      try {
+          const response = await APIAdminApiAuthentication.post("/admin/forgotPassword",data)
+          dispatch(setEmail(response.data.data))
+       
+          dispatch(setStatus(STATUSES.SUCCESS))
+      } catch (error) {
+          console.log(error)
+          dispatch(setStatus(STATUSES.ERROR))
+      }
+  }
+}
+
+export function verifyotp(data){
+  return async function verifyotpThunk(dispatch){
+      dispatch(setStatus(STATUSES.LOADING))
+      try {
+          const response = await APIAdminApiAuthentication.post("/admin/verifyOtp",data)
+          // dispatch(setUser(response.data.data))
+          dispatch(setForgotPasswordDataStatus(STATUSES.SUCCESS))
+          dispatch(setEmail(data.email))
+          
+      } catch (error) {
+          console.log(error)
+          dispatch(setStatus(STATUSES.ERROR))
+      }
+  }
+}
+// export function fetchProfile(){
+//   return async function fetchProfileThunk(dispatch){
+//       dispatch(setStatus(STATUSES.LOADING))
+//       try {
+//           const response = await APIAuthenticated.get("profile/")
+//           dispatch(setUser(response.data.data))
+       
+//           dispatch(setStatus(STATUSES.SUCCESS))
+//       } catch (error) {
+//           console.log(error)
+//           dispatch(setStatus(STATUSES.ERROR))
+//       }
+//   }
+// }

@@ -21,7 +21,7 @@ const Testimonial = () => {
         <div className="flex flex-col rounded-xl dark:bg-black">
           <div className="flex-auto p-4 md:p-6 dark">
             <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-              " With Preline, we're able to easily track our performance in full detail. It's become an essential tool for us to grow and engage with our audience. "
+            "Kaleidoscope Music Academy has been an absolute game-changer for my musical journey. The instructors are not just teachers; they are mentors who genuinely care about your growth. The personalized approach to learning made each session enjoyable and effective. I've seen incredible progress, and my passion for music has soared to new heights!"
             </p>
           </div>
 
@@ -50,7 +50,7 @@ const Testimonial = () => {
         <div className="flex flex-col bg-white rounded-xl dark:bg-black">
           <div className="flex-auto p-4 md:p-6">
             <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-              " In September, I will be using this theme for 2 years. I went through multiple updates and changes and I'm very glad to see the consistency and effort made by the team. "
+              "Enrolling in Kaleidoscope Music Academy was the best decision I made for my musical aspirations. The instructors are not only highly skilled but also incredibly supportive. The atmosphere is welcoming, making it easy for beginners like me to feel comfortable. I've gained confidence in my abilities, and the lessons have become the highlight of my week!"
             </p>
           </div>
 
@@ -79,7 +79,7 @@ const Testimonial = () => {
         <div className="flex flex-col bg-white rounded-xl dark:bg-black">
           <div className="flex-auto p-4 md:p-6">
             <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-              " Refreshing and Thought provoking design and it changes my view about how I design the websites. Great typography, modern clean white design, nice tones of the color. "
+              " Being a part of Kaleidoscope Music Academy has been a transformative experience. The instructors don't just teach music; they ignite a passion for it. The diverse range of classes allowed me to explore different genres, and the friendly community fostered a sense of camaraderie. I can't recommend Kaleidoscope enough for anyone looking to embark on a musical journey."
             </p>
           </div>
 

@@ -55,18 +55,22 @@ const Home = () => {
       </div>
       
       {/* <GuitarClass /> */}
-      <AdminDashboard />
+      {/* <AdminDashboard /> */}
+       {/* <OurClients /> */}
+       {/* <AboutUs /> */}
+       {/* <FaqPage /> */}
       <Features />
       <Copy />
       <Example />
       <OurTeams />
-      {/* <OurClients /> */}
-      <GallaryPage />
+     
       <Testimonial />
-      {/* <AboutUs /> */}
+      <GallaryPage />
+     
+      
       <BookDemo />
       <Faq />
-      {/* <FaqPage /> */}
+      
       <Footer />
 
     </>

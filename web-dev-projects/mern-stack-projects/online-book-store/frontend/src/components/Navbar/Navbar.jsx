@@ -6,7 +6,7 @@ import CustomButton from "../button/Button";
 import { ThemeSwitch } from "../button/ThemeSwitch ";
 import {ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale} from "./Icons.jsx";
 import sacIcon from "../../assets/logo.png";
-import { APIAuthenticated } from "../../http/index.js";
+import { API } from "../../http/index.js";
 
 
 
@@ -19,7 +19,7 @@ export default function AppBar({ darkMode, toggleDarkMode }) {
 
   const getUser = async () => {
     try {
-      const response = await APIAuthenticated.get('profile');
+      const response = await API.get('profile');
       console.log(response, 'res');
       if (response.data.data) {
 

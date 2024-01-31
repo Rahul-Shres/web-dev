@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const APIAuthenticated = axios.create({
+const API = axios.create({
     baseURL : "http://localhost:8000/",
     headers : {
         'Content-Type' : 'application/json',
@@ -23,4 +23,4 @@ const APIAdminApiAuthentication = axios.create({
 
 
 
-export  {APIAuthenticated, APIAdminApiAuthentication}
+export  {API, APIAdminApiAuthentication}

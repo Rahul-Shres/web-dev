@@ -102,6 +102,8 @@ exports.forgotPassword = async (req,res)=>{
         })
     }
 
+    console.log("email: " + email)
+
     // check if that email is registered or not
     const adminExist = await Admin.find({adminEmail : email})
     if(adminExist.length == 0){
@@ -109,10 +111,13 @@ exports.forgotPassword = async (req,res)=>{
             message : "Email is not registered"
         })
     }
+    console.log("adminExist" + adminExist)
 
     // send otp to that email
     const otp = Math.floor(1000 + Math.random() * 9000);
-    adminExist[0].otp = otp 
+    adminExist[0].otp = otp;
+
+    console.log(adminExist[0].otp + "otp" )
     await adminExist[0].save()
    await sendEmail({
         email :email,
@@ -163,43 +168,7 @@ exports.forgotPassword = async (req,res)=>{
 // }
 
 
-// // verify otp 
-// exports.verifyOtp = async (req, res) => {
-//     const { email, otp } = req.body;
-//     if (!email || !otp) {
-//         return res.status(400).json({
-//             message: "Please provide email and otp"
-//         });
-//     }
-
-//     // check if that otp is correct or not for that email
-//     const adminExists = await Admin.findOne({ adminEmail: email }).select('+otp +isOtpVerified');
-//     console.log(adminExists);
-
-//     if (!adminExists) {
-//         return res.status(404).json({
-//             message: "Email is not registered"
-//         });
-//     }
-
-//     console.log(adminExists.otp, otp);
-
-//     if (adminExists.otp !== otp) {
-//         return res.status(400).json({
-//             message: "Invalid otp"
-//         });
-//     } else {
-//         // dispose of the otp so it cannot be used next time with the same otp
-//         adminExists.otp = undefined;
-//         adminExists.isOtpVerified = true;
-//         await adminExists.save();
-
-//         res.status(200).json({
-//             message: "Otp is correct"
-//         });
-//     }
-// };
-
+// verify otp 
 exports.verifyOtp = async (req, res) => {
     const { email, otp } = req.body;
     if (!email || !otp) {
@@ -208,40 +177,124 @@ exports.verifyOtp = async (req, res) => {
         });
     }
 
-    try {
-        // check if that otp is correct or not for that email
-        const adminExists = await Admin.findOne({ adminEmail: email }).select('+otp +isOtpVerified');
+    // check if that otp is correct or not for that email
+    const adminExists = await Admin.findOne({ adminEmail: email }).select('+otp +isOtpVerified');
+    console.log(adminExists);
+
+    if (!adminExists) {
+        return res.status(404).json({
+            message: "Email is not registered"
+        });
+    }
+
+    console.log(adminExists.otp, otp);
+
+    if (adminExists.otp !== otp) {
+        return res.status(400).json({
+            message: "Invalid otp"
+        });
+    } else {
+        // dispose of the otp so it cannot be used next time with the same otp
+        adminExists.otp = undefined;
+        adminExists.isOtpVerified = true;
+        await adminExists.save();
         console.log(adminExists);
 
-        if (!adminExists) {
-            return res.status(404).json({
-                message: "Email is not registered"
-            });
-        }
-
-        console.log(adminExists.otp, otp);
-
-        if (adminExists.otp !== otp) {
-            return res.status(400).json({
-                message: "Invalid otp"
-            });
-        } else {
-            // dispose of the otp so it cannot be used next time with the same otp
-            adminExists.otp = undefined;
-            adminExists.isOtpVerified = true;
-            await adminExists.save();
-
-            res.status(200).json({
-                message: "Otp is correct"
-            });
-        }
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({
-            message: "Internal Server Error"
+        res.status(200).json({
+            message: "Otp is correct"
         });
     }
 };
+
+// exports.verifyOtp = async (req, res) => {
+//     const { email, otp } = req.body;
+//     if (!email || !otp) {
+//       return res.status(400).json({
+//         message: "Please provide email and otp",
+//       });
+//     }
+  
+//     console.log("Email: " + email, "OTP: " + otp); // Log received email and OTP
+  
+//     try {
+//       const adminExists = await Admin.findOne({ adminEmail: email }).select(
+//         '+otp +isOtpVerified'
+//       );
+  
+//       if (!adminExists) {
+//         return res.status(404).json({
+//           message: "Email is not registered",
+//         });
+//       }
+  
+//       console.log("Stored OTP: " + adminExists.otp, "Client OTP: " + otp); // Log stored and client OTP
+  
+//       if (adminExists.otp !== otp) {
+//         return res.status(400).json({
+//           message: "Invalid otp",
+//         });
+//       } else {
+//         // Dispose of the OTP so it cannot be used next time with the same OTP
+//         adminExists.otp = undefined;
+//         adminExists.isOtpVerified = true;
+//         await adminExists.save();
+//         console.log(adminExists, "adminExists");
+//         res.status(200).json({
+//           message: "Otp is correct",
+//         });
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       return res.status(500).json({
+//         message: "Internal Server Error",
+//       });
+//     }
+//   };
+  
+
+// exports.verifyOtp = async (req, res) => {
+//     const { email, otp } = req.body;
+//     if (!email || !otp) {
+//         return res.status(400).json({
+//             message: "Please provide email and otp"
+//         });
+//     }
+
+//     console.log("Email" + email, "otp" + otp)
+//     try {
+//         // check if that otp is correct or not for that email
+//         const adminExists = await Admin.findOne({ adminEmail: email }).select('+otp +isOtpVerified');
+//         console.log(adminExists);
+
+//         if (!adminExists) {
+//             return res.status(404).json({
+//                 message: "Email is not registered"
+//             });
+//         }
+
+//         console.log(adminExists.otp, otp);
+
+//         if (adminExists.otp !== otp) {
+//             return res.status(400).json({
+//                 message: "Invalid otp"
+//             });
+//         } else {
+//             // dispose of the otp so it cannot be used next time with the same otp
+//             adminExists.otp = undefined;
+//             adminExists.isOtpVerified = true;
+//             await adminExists.save();
+//             console.log(adminExists, "adminExists")
+//             res.status(200).json({
+//                 message: "Otp is correct"
+//             });
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({
+//             message: "Internal Server Error"
+//         });
+//     }
+// };
 
 
 

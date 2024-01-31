@@ -6,6 +6,9 @@ import Home from "./Home";
 import Google from "./Google";
 import AdminLogin from "./pages/admin/auth/login/AdminLogin";
 import AppBar from "./components/Navbar/Navbar";
+import ForgotPassword from "./pages/admin/auth/forgotPassword/ForgotPassword";
+import VerifyOtpAdmin from "./pages/admin/auth/verifyOtp/verifyOtp";
+import ResetPassword from "./pages/admin/auth/resetPassword/ResetPassword";
 
 export default function App() {
   const [darkMode, setDarkMode] = React.useState(true);
@@ -24,6 +27,9 @@ export default function App() {
   <Routes>
   <Route path='/' element={<Home />} />
   <Route path='/login' element={<AdminLogin />} />
+  <Route path='/forgotpassword' element={<ForgotPassword />} />
+  <Route path='/verifyotp' element={<VerifyOtpAdmin />} />
+  <Route path='/resetpassword' element={<ResetPassword />} />
   <Route path="/google/:id" element={<Google />} />
   </Routes>
 </main>

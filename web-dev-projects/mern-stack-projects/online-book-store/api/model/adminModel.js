@@ -39,7 +39,7 @@ const adminSchema = new Schema({
     },
     department: {
         type: String,
-        required: [true, "Department must be provided"],
+        // required: [true, "Department must be provided"],
     },
 }, {
     timestamps: true,
