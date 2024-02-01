@@ -12,6 +12,7 @@ import AboutUs from './about/AboutUs';
 import GallaryPage from './gallary/GallaryPage';
 import AdminDashboard from '../admin/dashboard/AdminDashboard';
 import Features from './features/features';
+import YoutubePage from './youtubePage/YoutubePage';
 
 const Home = () => {
   const iframeRef = useRef(null);
@@ -40,18 +41,32 @@ const Home = () => {
 ></div>
 
         {/* YouTube iframe */}
-        <iframe
+        {/* <iframe
           title="YouTube Video"
           width="100%"
           height="100%"
-          src="https://www.youtube.com/embed/jwggNJyI4JI?si=FlQPwtSHHiRvwWwT&autoplay=1&mute=1&loop=1"
+          src="https://www.youtube.com/watch?v=rLB4gZEkBKY"
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen
           ref={iframeRef}
           onEnded={handleVideoEnd}
           style={{ position: 'absolute', top: 0, left: 0 }}
-        ></iframe>
+        ></iframe> */}
+        <iframe 
+        className="mx-auto w-screen h-screen rounded-md mb-16"
+        src="https://www.youtube.com/embed/rLB4gZEkBKY?si=sNRjvo9D9Nl2ieFd&mute=1&autoplay=1" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; 
+        autoplay; 
+        clipboard-write; 
+        encrypted-media; 
+        gyroscope; 
+        picture-in-picture; 
+        web-share" allowfullscreen>
+
+        </iframe>
       </div>
       
       {/* <GuitarClass /> */}
@@ -65,6 +80,7 @@ const Home = () => {
       <OurTeams />
      
       <Testimonial />
+      <YoutubePage />
       <GallaryPage />
      
       

@@ -34,7 +34,7 @@ const Appbar = (props) => {
           {/* <AcmeLogo /> */}
           <img src={logo} alt="Company Logo" className="w-12 h-12" />
           <div className="block pl-3.5	">
-          <p className="font-bold text-sm">Kaleidoscope </p>
+          <p className="font-bold text-sm">Kaleidoscope</p>
           <p className="font-bold text-xs">Music Academy </p>
           </div>
         </NavbarBrand>
