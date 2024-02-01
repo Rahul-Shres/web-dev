@@ -18,10 +18,10 @@ const Faq = () => {
 
         <div>
           <h3 className="md:text-lg font-semibold text-gray-800 dark:text-gray-200">
-            Can I cancel at anytime?
+          What types of music lessons do you offer?
           </h3>
           <p className="mt-1 text-gray-500">
-            Yes, you can cancel anytime no questions are asked while you cancel but we would highly appreciate if you will give us some feedback.
+          A music school may offer a wide range of lessons, such as piano, guitar, voice, drums, and more. It's important to inquire about the types of lessons available to ensure that the school offers the type of instruction you're interested in.
           </p>
         </div>
       </div>
@@ -33,10 +33,11 @@ const Faq = () => {
 
         <div>
           <h3 className="md:text-lg font-semibold text-gray-800 dark:text-gray-200">
-            My team has credits. How do we use them?
+          What is the cost of music lessons?
           </h3>
           <p className="mt-1 text-gray-500">
-            Once your team signs up for a subscription plan. This is where we sit down, grab a cup of coffee and dial in the details.
+          The cost of music lessons can vary depending on the mode and the type of lesson.
+
           </p>
         </div>
       </div>
@@ -48,10 +49,10 @@ const Faq = () => {
 
         <div>
           <h3 className="md:text-lg font-semibold text-gray-800 dark:text-gray-200">
-            How does Preline's pricing work?
+          Can I choose two music courses at the same time?
           </h3>
           <p className="mt-1 text-gray-500">
-            Our subscriptions are tiered. Understanding the task at hand and ironing out the wrinkles is key.
+          Yes, you can opt for two music courses at a time. Both your classes shall be structured in a way they do not clash. Get in touch with us for more information.
           </p>
         </div>
       </div>
@@ -63,10 +64,10 @@ const Faq = () => {
 
         <div>
           <h3 className="md:text-lg font-semibold text-gray-800 dark:text-gray-200">
-            How secure is Preline?
+          Do I need to bring my instrument?
           </h3>
           <p className="mt-1 text-gray-500">
-            Protecting the data you trust to Preline is our first priority. This part is really crucial in keeping the project in line to completion.
+          We offer instruments to practice at our music centers and aid learners in getting the best quality musical instrument at the best rates.
           </p>
         </div>
       </div>
@@ -78,10 +79,10 @@ const Faq = () => {
 
         <div>
           <h3 className="md:text-lg font-semibold text-gray-800 dark:text-gray-200">
-            How do I get access to a theme I purchased?
+          What instruments can I learn at your music school?
           </h3>
           <p className="mt-1 text-gray-500">
-            If you lose the link for a theme you purchased, don't panic! We've got you covered. You can login to your account, tap your avatar in the upper right corner, and tap Purchases. If you didn't create a login or can't remember the information, you can use our handy Redownload page, just remember to use the same email you originally made your purchases with.
+          Our music school offers a range of instruments to learn, including piano, guitar, drums, violin, vocals, and more. Check our website or contact us to learn more.
           </p>
         </div>
       </div>
@@ -93,10 +94,10 @@ const Faq = () => {
 
         <div>
           <h3 className="md:text-lg font-semibold text-gray-800 dark:text-gray-200">
-            Upgrade License Type
+          Do I need any prior music experience to enroll in your classes?
           </h3>
           <p className="mt-1 text-gray-500">
-            There may be times when you need to upgrade your license from the original type you purchased and we have a solution that ensures you can apply your original purchase cost to the new license purchase.
+          No, you do not need any prior experience in music to enroll in our classes. We offer beginner-level courses that are specifically designed for aspirants who are new to music.
           </p>
         </div>
       </div>

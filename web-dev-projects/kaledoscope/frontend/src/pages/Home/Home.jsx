@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import Appbar from '../../components/nabvar/Navbar';
 import Copy from './copy/Copy';
 import Horizontal from './horizontal/Horizontal';
-import Features from './features/Features';
 import Example from './horizontal/HorizontalScrollCarousel';
 import Footer from './footer/Footer';
 import OurTeams from './ourTeam/OurTeams';
@@ -12,6 +11,7 @@ import BookDemo from './booking/BookDemo';
 import AboutUs from './about/AboutUs';
 import GallaryPage from './gallary/GallaryPage';
 import AdminDashboard from '../admin/dashboard/AdminDashboard';
+import Features from './features/features';
 
 const Home = () => {
   const iframeRef = useRef(null);
