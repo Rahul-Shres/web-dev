@@ -1,4 +1,6 @@
 import React from 'react';
+import {Button} from "@nextui-org/react";
+import { Link } from 'react-router-dom';
 
 const YoutubePage = () => {
   return (
@@ -21,12 +23,12 @@ const YoutubePage = () => {
           allowFullScreen
           style={{ borderRadius: '15px' }}
         ></iframe>
-        <h1 className="mx-auto mt-4 text-pretty mb-28  text-2xl">
+        <h1 className="mx-auto mt-4 text-pretty mb-28  text-2xl w-4/5">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br /> Dolore ea, vitae maiores laborum soluta corporis impedit quia itaque illum fugiat?
         </h1>
-        <div className='flex items-center  text-left mx-auto space-x-4 mb-10'>
+        <div className='flex items-center  text-left justify-center items-center space-x-4 mb-10'>
           <iframe
-            className="w-3/5 h-72 rounded-md"
+            className="w-2/5 h-72 rounded-md"
             src="https://www.youtube.com/embed/wcy2NbyToyY?si=eTz85pP59ezdxKew"
             title="YouTube video player"
             frameBorder="0"
@@ -34,19 +36,19 @@ const YoutubePage = () => {
             allowFullScreen
           ></iframe>
           <div className='w-2/5'>
-            <h1 className='text-lgmb-2'>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h1>
-            <h1 className='text-lg  mb-2'>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h1>
-            <p className=''>
-              Suscipit fugiat omnis illo tempore eos sapiente minima dolores quos esse sint!
-            </p>
-            <p className=''>
-              Suscipit fugiat omnis illo tempore eos sapiente minima dolores quos esse sint!
-            </p>
+            
+            <p className='text-xl'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur, excepturi quas explicabo est quis praesentium, facilis natus libero facere dolorem vitae iusto voluptatibus vel voluptatum, laudantium saepe tempora! Praesentium aut, illum, doloribus labore perferendis eum voluptates quia, vero delectus corporis vel animi beatae laudantium ea ducimus. Id dolore animi facere?</p>
+          
           </div>
           </div>
 
-          <div className='min-w-64 mx-auto mb-30 text-center mt-16'>
-            <h1 className='text-center text-xl'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium fuga ducimus odit, illo natus ratione nobis quibusdam labore cupiditate deserunt aliquam voluptatem sit reiciendis, dicta aspernatur officia! Repellendus, quas! Consequuntur nemo, iste veritatis officia voluptatibus perspiciatis velit voluptates doloremque. Rerum, voluptas possimus vero ab molestiae alias suscipit optio amet corrupti.</h1>
+          <div className='min-w-64 mx-auto mb-30 text-center mt-40 mb-40'>
+            <h1 className='text-center text-xl lg:mx-auto lg:w-4/5 leading-10	'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium fuga ducimus odit, illo natus ratione nobis quibusdam labore cupiditate deserunt aliquam voluptatem sit reiciendis, dicta aspernatur officia! Repellendus, quas! Consequuntur nemo, iste veritatis officia voluptatibus perspiciatis velit voluptates doloremque. Rerum, voluptas possimus vero ab molestiae alias suscipit optio amet corrupti.</h1>
+            <Link to="https://www.youtube.com/@kaleidoscopemusicacademy8891" target="_blank" rel="noopener noreferrer">
+  <Button color="primary" variant="shadow" className='mt-10'>
+    Shadow
+  </Button>
+</Link>
             </div>
 
           

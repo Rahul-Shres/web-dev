@@ -27,6 +27,7 @@ app.use(express.urlencoded({extended : true}))
 //Routes
 const profileRoute = require('./routes/profileRoute');
 const adminAuthRoute = require('./routes/admin/adminAuthRoute');
+const userVerificationRoute = require('./routes/userVerificationRoute');
 // const productRoute = require("./routes/productRoute")
 
 connectToDB(process.env.MONGO)
@@ -68,6 +69,7 @@ app.use(cookieParser());
 
 app.use("/profile", profileRoute);
  app.use("/admin", adminAuthRoute);
+ app.use("/userVerification", userVerificationRoute);
 
 // app.get("/profile", isAuthenticated, async(req,res)=>{
 

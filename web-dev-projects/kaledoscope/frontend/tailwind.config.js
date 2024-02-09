@@ -13,6 +13,7 @@ export default {
     extend: {
       fontFamily: {
         'body': ['Unbounded', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif' ]
       },
     },
   },
@@ -26,7 +27,7 @@ export default {
             // background: "#3a86ff",
             // foreground: "#ffffff",
             primary: {
-              DEFAULT: "#1022e5",
+              DEFAULT: "#323539",
               foreground: "#E8F9FD",
             },
           },

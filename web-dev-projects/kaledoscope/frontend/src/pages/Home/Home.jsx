@@ -13,6 +13,7 @@ import GallaryPage from './gallary/GallaryPage';
 import AdminDashboard from '../admin/dashboard/AdminDashboard';
 import Features from './features/features';
 import YoutubePage from './youtubePage/YoutubePage';
+import GuitarClass from './Courses/GuitarClass';
 
 const Home = () => {
   const iframeRef = useRef(null);
@@ -69,7 +70,7 @@ const Home = () => {
         </iframe>
       </div>
       
-      {/* <GuitarClass /> */}
+      <GuitarClass />
       {/* <AdminDashboard /> */}
        {/* <OurClients /> */}
        {/* <AboutUs /> */}

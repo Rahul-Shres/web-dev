@@ -9,6 +9,7 @@ import AppBar from "./components/Navbar/Navbar";
 import ForgotPassword from "./pages/admin/auth/forgotPassword/ForgotPassword";
 import VerifyOtpAdmin from "./pages/admin/auth/verifyOtp/verifyOtp";
 import ResetPassword from "./pages/admin/auth/resetPassword/ResetPassword";
+import Login from "./pages/student/auth/Login/Login";
 
 export default function App() {
   const [darkMode, setDarkMode] = React.useState(true);
@@ -26,7 +27,8 @@ export default function App() {
   <AppBar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
   <Routes>
   <Route path='/' element={<Home />} />
-  <Route path='/login' element={<AdminLogin />} />
+  <Route path='/login' element={<Login />} />
+  {/* <Route path='/login' element={<AdminLogin />} /> */}
   <Route path='/forgotpassword' element={<ForgotPassword />} />
   <Route path='/verifyotp' element={<VerifyOtpAdmin />} />
   <Route path='/resetpassword' element={<ResetPassword />} />

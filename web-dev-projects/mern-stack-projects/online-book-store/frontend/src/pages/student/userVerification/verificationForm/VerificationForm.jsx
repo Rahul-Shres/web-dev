@@ -30,7 +30,7 @@ const VerificationForm = () => {
           {/* Right Column */}
           <div className="relative ms-4 flex flex-col items-center justify-top mt-8">
           
-            <UserNumber />
+            {/* <UserNumber /> */}
             <CustomButton
               buttonText="Next"
               buttonColor="primary" // Replace with your desired color

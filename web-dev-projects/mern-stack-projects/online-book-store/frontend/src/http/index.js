@@ -11,6 +11,16 @@ const API = axios.create({
     }
 })
 
+const APIAuthenticated = axios.create({
+    baseURL : "http://localhost:8000/",
+    headers : {
+        'Content-Type' : 'application/json',
+        Accept : 'application/json',
+        'Authorization' : `${localStorage.getItem('token')}`
+        
+    }
+})
+
 const APIAdminApiAuthentication = axios.create({
     baseURL : "http://localhost:8000/",
     headers : {
@@ -23,4 +33,4 @@ const APIAdminApiAuthentication = axios.create({
 
 
 
-export  {API, APIAdminApiAuthentication}
+export  {API, APIAdminApiAuthentication, APIAuthenticated}
