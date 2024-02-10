@@ -7,6 +7,7 @@ const multer = require('multer');
 const path = require('path');
 const connectToDB = require('./db/database');
 const BlogPost = require('./models/blog'); // Import the BlogPost model
+const Demo = require('./models/demoModel');
 
 const app = express();
 
@@ -58,6 +59,32 @@ app.get('/api/blog', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+
+// Create a demo booking
+app.post('/api/demo', async (req, res) => {
+  try {
+      const { name, email, phoneNumber, location, classType } = req.body;
+      console.log(name, email, phoneNumber, location, classType);
+      const demo = new Demo({ name, email, phoneNumber, location, classType });
+      await demo.save();
+      console.log(demo, 'demo');
+      res.json({ success: true, message: 'Demo booking created successfully' });
+  } catch (error) {
+      res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// Get all demo bookings
+app.get('/api/demo', async (req, res) => {
+  try {
+      const demoBookings = await Demo.find();
+      res.json(demoBookings);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
 
 app.listen(process.env.PORT, () => {
   console.log(`listening on port ${process.env.PORT}`);
