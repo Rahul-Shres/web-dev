@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { API } from '../../../http/index';
+import AdminDemoBookings from '../../admin/dashboard/AdminDemoBookings';
 
 const BookingDemo = () => {
   const [name, setName] = useState('');
@@ -61,6 +62,8 @@ const BookingDemo = () => {
         </div>
         <button type="submit">Book Demo</button>
       </form>
+
+      <AdminDemoBookings />
     </div>
   );
 };
