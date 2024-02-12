@@ -30,6 +30,7 @@ const AdminDemoBookings = () => {
       <table>
         <thead>
           <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone Number</th>
@@ -40,6 +41,7 @@ const AdminDemoBookings = () => {
         <tbody>
           {bookings.map((booking, index) => (
             <tr key={index}>
+              <td>{index + 1}</td> {/* Displaying sequential numbers */}
               <td>{booking.name}</td>
               <td>{booking.email}</td>
               <td>{booking.phoneNumber}</td>

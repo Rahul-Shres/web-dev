@@ -17,9 +17,9 @@ export default function App() {
     <BrowserRouter>
     <main className={"dark text-foreground bg-background" }>
     <Routes>
-      <Route path="/" element={<BookingDemo />}/>
-      {/* <Route path="/" element={<CreateBlogPost />}/> */}
-      {/* <Route path="/" element={<Home />}/> */}
+      {/* <Route path="/" element={<BookingDemo />}/>
+      <Route path="/" element={<CreateBlogPost />}/> */}
+      <Route path="/" element={<Home />}/>
       <Route path="/dashboard" element={<AdminDashboard />}/>
       <Route path="/faq" element={<FaqPage />}/>
       {/* <Route path="auth/*" element={<AuthLayout />} />
