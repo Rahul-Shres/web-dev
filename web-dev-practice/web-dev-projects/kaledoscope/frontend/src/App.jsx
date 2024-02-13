@@ -6,6 +6,7 @@ import AdminDashboard from "./pages/admin/dashboard/AdminDashboard";
 import FaqPage from "./pages/Home/faq/FaqPage";
 import CreateBlogPost from "./pages/blog/CreateBlogPost";
 import BookingDemo from "./pages/Home/booking/BookingDemo";
+import ViewSingleBlogPost from "./pages/blog/ViewSingleBlogPost";
 // import RtlLayout from "./pages/admin/layouts/rtl/index";
 // import AdminLayout from "./pages/admin/layouts/admin/index";
 // import AuthLayout from "./pages/admin/layouts/auth/index";
@@ -17,9 +18,11 @@ export default function App() {
     <BrowserRouter>
     <main className={"dark text-foreground bg-background" }>
     <Routes>
-      {/* <Route path="/" element={<BookingDemo />}/>
-      <Route path="/" element={<CreateBlogPost />}/> */}
-      <Route path="/" element={<Home />}/>
+       {/* <Route path="/" element={<BookingDemo />}/> */}
+      <Route path="/" element={<CreateBlogPost />}/> 
+      <Route path="/blog/:id" element={<ViewSingleBlogPost />} />
+
+      {/* <Route path="/" element={<Home />}/> */}
       <Route path="/dashboard" element={<AdminDashboard />}/>
       <Route path="/faq" element={<FaqPage />}/>
       {/* <Route path="auth/*" element={<AuthLayout />} />

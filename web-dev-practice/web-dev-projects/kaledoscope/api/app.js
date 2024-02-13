@@ -51,6 +51,24 @@ app.post('/api/blog', upload.single('image'), async (req, res) => {
   }
 });
 
+// Update a blog post
+app.put('/api/blog/:id', async (req, res) => {
+  try {
+    const { title, content } = req.body;
+    const { id } = req.params;
+    
+    const updatedPost = await BlogPost.findByIdAndUpdate(id, { title, content }, { new: true });
+
+    if (!updatedPost) {
+      return res.status(404).json({ success: false, message: 'Blog post not found' });
+    }
+
+    res.json({ success: true, message: 'Blog post updated successfully', data: updatedPost });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 app.get('/api/blog', async (req, res) => {
   try {
     const blogPosts = await BlogPost.find();
@@ -60,6 +78,30 @@ app.get('/api/blog', async (req, res) => {
   }
 });
 
+// Get a single blog post by ID
+app.get('/api/blog/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const blogPost = await BlogPost.findById(id);
+    if (!blogPost) {
+      return res.status(404).json({ success: false, message: 'Blog post not found' });
+    }
+    res.json(blogPost);
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+
+// Get three most recent blog posts
+app.get('/api/blog/recent', async (req, res) => {
+  try {
+    const recentBlogs = await BlogPost.find().sort({ createdAt: -1 }).limit(3);
+    res.json(recentBlogs);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 // Create a demo booking
 app.post('/api/demo', async (req, res) => {

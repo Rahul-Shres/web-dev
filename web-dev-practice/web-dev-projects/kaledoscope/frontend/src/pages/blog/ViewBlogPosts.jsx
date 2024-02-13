@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { API } from './http/index';
+import { API } from '../../http/index';
+import { Link } from 'react-router-dom';
 
 const ViewBlogPosts = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -24,7 +25,8 @@ const ViewBlogPosts = () => {
         <div key={blogPost._id}>
           <h3>{blogPost.title}</h3>
           <p>{blogPost.content}</p>
-          <img src={`http://localhost:8000/${blogPost.imageUrl}`} alt={blogPost.title} />
+          <img src={`http://localhost:8000/${blogPost.image}`} alt={blogPost.title} />
+          <Link to={`/blog/${blogPost._id}`}>View Single Blog</Link>
         </div>
       ))}
     </div>

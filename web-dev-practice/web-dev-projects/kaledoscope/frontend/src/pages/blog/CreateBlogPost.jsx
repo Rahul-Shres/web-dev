@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { API } from '../../http/index';
+import RelatedArticles from './RelatedArticles';
+import UpdateBlog from './UpdateBlog';
+import ViewBlogPosts from './ViewBlogPosts';
 
 const CreateBlogPost = () => {
   const [title, setTitle] = useState('');
@@ -44,6 +47,9 @@ const CreateBlogPost = () => {
         </div>
         <button type="submit">Create Post</button>
       </form>
+
+      <RelatedArticles />
+      <ViewBlogPosts />
     </div>
   );
 };
