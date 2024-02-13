@@ -1,0 +1,114 @@
+/* Applying styles to all elements */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif; /* Using Ubuntu Regular as default font */
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased; /* Improve font rendering on WebKit browsers */
+    -moz-osx-font-smoothing: grayscale; /* Improve font rendering on macOS */
+}
+
+/* Setting styles for HTML and body */
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif; /* Change the font-family as desired */
+}
+
+/* Styling the main container */
+#main {
+    height: 100%;
+    width: 100%; /* Adjust the width as needed */
+    background-color: #f0f0f0; /* Light gray background */
+}
+
+#nav{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 40px;
+
+}
+
+#nav h1{
+    font-weight: 500;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+#nav button{
+    padding: 7px 12px;
+    border-radius: 50px;
+    border: 1.5px solid #000000;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#btn-2{
+    border: none !important;
+    color: #fff;
+    
+    background-color: orangered;
+}
+
+#nav-part-1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#nav-part-1 h3,i{
+    font-size : 16px;
+    border: 2px solid #000000;
+    padding: 5px 10px;
+    border-radius: 50px;
+}
+
+
+/* hero section */
+#main>h1{
+    font-size: 125px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* to make the text apper in same line and center, previously it was displaying in 2 lines */
+    width: 100%;
+    text-align: center;
+} 
+
+
+img{
+    height: 420px;
+    width: 360px;
+    object-fit:cover;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+
+
+#img-1{
+    transform: translate(-50%, -50%) rotate(-30deg);
+}
+#img-2{
+    transform: translate(-50%, -50%) rotate(-20deg);
+}
+#img-3{
+    transform: translate(-50%, -50%) rotate(-10deg);
+}
+
+
+
+/* bottom texts */
+#btn-left{
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    font-size: 20px;
+}
