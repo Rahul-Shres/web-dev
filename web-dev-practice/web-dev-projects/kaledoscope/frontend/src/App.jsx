@@ -7,6 +7,7 @@ import FaqPage from "./pages/Home/faq/FaqPage";
 import CreateBlogPost from "./pages/blog/CreateBlogPost";
 import BookingDemo from "./pages/Home/booking/BookingDemo";
 import ViewSingleBlogPost from "./pages/blog/ViewSingleBlogPost";
+import UpdateBlog from "./pages/blog/UpdateBlog";
 // import RtlLayout from "./pages/admin/layouts/rtl/index";
 // import AdminLayout from "./pages/admin/layouts/admin/index";
 // import AuthLayout from "./pages/admin/layouts/auth/index";
@@ -21,6 +22,7 @@ export default function App() {
        {/* <Route path="/" element={<BookingDemo />}/> */}
       <Route path="/" element={<CreateBlogPost />}/> 
       <Route path="/blog/:id" element={<ViewSingleBlogPost />} />
+      <Route path="/update/:id" element={<UpdateBlog  />} /> {/* Add this route for updating a single blog post */}
 
       {/* <Route path="/" element={<Home />}/> */}
       <Route path="/dashboard" element={<AdminDashboard />}/>

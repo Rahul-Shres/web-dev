@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API } from '../../http/index';
-import { useParams } from 'react-router-dom';
+import { useParams, Link  } from 'react-router-dom';
 
 const ViewSingleBlog = () => {
   const { id } = useParams();
@@ -23,11 +23,22 @@ const ViewSingleBlog = () => {
     return <div>Loading...</div>;
   }
 
+  const handleDelete = async () => {
+    try {
+      await API.delete(`/api/blog/${id}`);
+    } catch (error) {
+      console.error('Error deleting blog post:', error);
+    }
+  };
   return (
     <div>
       <h2>{blog.title}</h2>
       <p>{blog.content}</p>
       <img src={`http://localhost:8000/${blog.image}`} alt={blog.title} />
+      <Link to={`/update/${id}`}>Update Blog</Link>
+      <button onClick={handleDelete}>Delete Blog</button>
+
+
     </div>
   );
 };

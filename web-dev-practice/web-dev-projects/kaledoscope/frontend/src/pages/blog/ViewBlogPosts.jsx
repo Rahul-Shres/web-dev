@@ -25,7 +25,7 @@ const ViewBlogPosts = () => {
         <div key={blogPost._id}>
           <h3>{blogPost.title}</h3>
           <p>{blogPost.content}</p>
-          <img src={`http://localhost:8000/${blogPost.image}`} alt={blogPost.title} />
+          <img src={blogPost.image} alt={blogPost.title} />
           <Link to={`/blog/${blogPost._id}`}>View Single Blog</Link>
         </div>
       ))}
