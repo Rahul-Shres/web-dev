@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom'; // Import useParams from react-rou
 const ViewSingleMember = () => {
   // Define state variables to hold the team member data
   const [teamMember, setTeamMember] = useState(null);
+  const [name, setName] = useState('');
+  const [position, setPosition] = useState('');
   const { memberId } = useParams(); // Access memberId from URL parameters
 
   // Use useEffect hook to fetch the team member data from the backend when the component mounts
@@ -14,6 +16,8 @@ const ViewSingleMember = () => {
       try {
         const response = await API.get(`/api/team/${memberId}`);
         setTeamMember(response.data);
+        setName(response.data.name);
+        setPosition(response.data.position);
       } catch (error) {
         console.error('Error fetching team member:', error);
       }
@@ -34,9 +38,27 @@ const ViewSingleMember = () => {
   };
 
   // Function to handle updating the team member
-  const handleUpdateMember = () => {
-    // Redirect to the update page with the member ID as a URL parameter
-    window.location.href = `/team/${memberId}`;
+  const handleUpdateMember = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('position', position);
+
+      // If you need to update the image as well, add the image to the form data
+      // formData.append('image', image);
+
+      await API.put(`/api/team/${memberId}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // Reload the page to see the updated data
+      window.location.reload();
+    } catch (error) {
+      console.error('Error updating team member:', error);
+    }
   };
 
   if (!teamMember) {
@@ -69,9 +91,21 @@ const ViewSingleMember = () => {
             {/* Admin controls: update and delete buttons */}
             <div className="mt-4 flex justify-between">
               {/* Update button */}
-              <Button color="primary" size="small" onClick={handleUpdateMember}>Update</Button>
+              <form onSubmit={handleUpdateMember}>
+                <Button color="primary" size="small" type="submit">Update</Button>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <input
+                  type="text"
+                  value={position}
+                  onChange={(e) => setPosition(e.target.value)}
+                />
+              </form>
               {/* Delete button */}
-              <Button color="error" size="small" onClick={handleDeleteMember}>Delete</Button>
+              <Button color="primary" size="small" type="submit" onClick={handleDeleteMember}>Delete</Button>
             </div>
           </CardBody>
         </Card>

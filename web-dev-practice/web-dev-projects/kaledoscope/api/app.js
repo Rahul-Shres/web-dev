@@ -311,7 +311,7 @@ app.put('/api/team/:id', upload.single('image'), async (req, res) => {
 app.delete('/api/team/:id', async (req, res) => {
   try {
       const { id } = req.params;
-      const deletedTeamMember = await teamMemberModel.findByIdAndDelete(id);
+      const deletedTeamMember = await TeamMember.findByIdAndDelete(id);
 
       if (!deletedTeamMember) {
           return res.status(404).json({ success: false, message: 'Team member not found' });
