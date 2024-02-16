@@ -34,7 +34,7 @@ const ViewSingleBlog = () => {
     <div>
       <h2>{blog.title}</h2>
       <p>{blog.content}</p>
-      <img src={`http://localhost:8000/${blog.image}`} alt={blog.title} />
+      <img src={blog.image} alt={blog.title} />
       <Link to={`/update/${id}`}>Update Blog</Link>
       <button onClick={handleDelete}>Delete Blog</button>
 

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image, Button } from "@nextui-org/react";
 import { API } from '../../../http/index'; // Import your API module
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
-const TeamMembers = () => {
+const ViewAllMembers = () => {
   // Define state variables to hold the team members data
   const [teamMembers, setTeamMembers] = useState([]);
 
@@ -19,6 +20,18 @@ const TeamMembers = () => {
 
     fetchTeamMembers(); // Call the fetchTeamMembers function
   }, []); // Empty dependency array ensures that this effect runs only once when the component mounts
+
+  // Function to handle deletion of a team member
+  const handleDeleteMember = async (id) => {
+    try {
+      await API.delete(`/api/team/${id}`); // Make a DELETE request using your API module
+      // After successful deletion, fetch updated team members data
+      const response = await API.get('/api/team');
+      setTeamMembers(response.data);
+    } catch (error) {
+      console.error('Error deleting team member:', error);
+    }
+  };
 
   return (
     <div className='bg-gray-50 gap-16'>
@@ -49,6 +62,15 @@ const TeamMembers = () => {
                   alt={member.name}
                   src={member.image}
                 />
+                {/* Admin controls: update and delete buttons */}
+                <div className="mt-4 flex justify-between">
+                  {/* Update button wrapped with Link */}
+                  <Link to={`/team/${member._id}`}> {/* Corrected the Link */}
+                    <Button color="primary" size="small">Update</Button>
+                  </Link>
+                  {/* Delete button */}
+                  <Button color="error" size="small" onClick={() => handleDeleteMember(member._id)}>Delete</Button>
+                </div>
               </CardBody>
             </Card>
           ))}
@@ -58,4 +80,4 @@ const TeamMembers = () => {
   );
 }
 
-export default TeamMembers;
+export default ViewAllMembers;

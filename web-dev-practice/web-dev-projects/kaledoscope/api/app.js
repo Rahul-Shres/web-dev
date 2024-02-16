@@ -9,6 +9,7 @@ const connectToDB = require('./db/database');
 const BlogPost = require('./models/blog'); // Import the BlogPost model
 const Demo = require('./models/demoModel');
 const fs = require('fs'); // Import the fs module
+const TeamMember = require('./models/teamMemberModel');
 
 const app = express();
 
@@ -67,12 +68,12 @@ app.post('/api/blog', upload.single('image'), async (req, res) => {
 
 
   // Update a blog post
-
+// Update a blog post
 app.put('/api/blog/:id', upload.single('image'), async (req, res) => {
   try {
     const { title, content } = req.body;
     const { id } = req.params;
-    
+
     let imageUrl;
     // Check if a file is uploaded
     if (req.file) {
@@ -85,7 +86,7 @@ app.put('/api/blog/:id', upload.single('image'), async (req, res) => {
         // Extract the file name from the old image URL
         const oldFileName = oldPost.image.split('/').pop();
         // Construct the path to the old image file
-        const filePath = `storage/${oldFileName}`;
+        const filePath = `uploads/${oldFileName}`;
         
         // Delete the old image file
         fs.unlink(filePath, (err) => {
@@ -110,6 +111,49 @@ app.put('/api/blog/:id', upload.single('image'), async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 });
+
+// app.put('/api/blog/:id', upload.single('image'), async (req, res) => {
+//   try {
+//     const { title, content } = req.body;
+//     const { id } = req.params;
+    
+//     let imageUrl;
+//     // Check if a file is uploaded
+//     if (req.file) {
+//       // If a file is uploaded, construct the new image URL
+//       imageUrl = "http://localhost:8000/" + req.file.filename;
+
+//       // Retrieve the old blog post data to get the previous image path
+//       const oldPost = await BlogPost.findById(id);
+//       if (oldPost && oldPost.image) {
+//         // Extract the file name from the old image URL
+//         const oldFileName = oldPost.image.split('/').pop();
+//         // Construct the path to the old image file
+//         const filePath = `storage/${oldFileName}`;
+        
+//         // Delete the old image file
+//         fs.unlink(filePath, (err) => {
+//           if (err) {
+//             console.log(err);
+//           } else {
+//             console.log("Old image file deleted successfully");
+//           }
+//         });
+//       }
+//     }
+
+//     // Find and update the blog post
+//     const updatedPost = await BlogPost.findByIdAndUpdate(id, { title, content, image: imageUrl }, { new: true });
+
+//     if (!updatedPost) {
+//       return res.status(404).json({ success: false, message: 'Blog post not found' });
+//     }
+    
+//     res.json({ success: true, message: 'Blog post updated successfully', data: updatedPost });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// });
 
 
 
@@ -188,6 +232,97 @@ app.get('/api/demo', async (req, res) => {
       res.status(500).json({ message: error.message });
   }
 });
+
+
+// Routes
+
+// Create a new team member
+app.post('/api/team', upload.single('image'), async (req, res) => {
+  try {
+      const { name, position } = req.body;
+      let image;
+      if (!req.file) {
+          image = "https://cdn.vectorstock.com/i/preview-1x/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg"
+      } else {
+          image = "http://localhost:8000/" + req.file.filename
+      }
+      const teamMember = new TeamMember({ name, position, image });
+      await teamMember.save();
+      res.json({ success: true, message: 'Team member created successfully' });
+  } catch (error) {
+      res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// Retrieve all team members
+app.get('/api/team', async (req, res) => {
+  try {
+      const teamMembers = await TeamMember.find();
+      res.json(teamMembers);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
+// Retrieve a single team member by ID
+app.get('/api/team/:id', async (req, res) => {
+  try {
+      const { id } = req.params;
+      const teamMember = await TeamMember.findById(id);
+
+      if (!teamMember) {
+          return res.status(404).json({ success: false, message: 'Team member not found' });
+      }
+      res.json(teamMember);
+  } catch (error) {
+      res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// Update a team member by ID
+app.put('/api/team/:id', upload.single('image'), async (req, res) => {
+  try {
+      const { name, position } = req.body;
+      const { id } = req.params;
+
+      let imageUrl;
+      if (req.file) {
+          imageUrl = "http://localhost:8000/" + req.file.filename;
+      }
+
+      const updatedFields = {};
+      if (name) updatedFields.name = name;
+      if (position) updatedFields.position = position;
+      if (imageUrl) updatedFields.image = imageUrl;
+
+      const updatedTeamMember = await TeamMember.findByIdAndUpdate(id, updatedFields, { new: true });
+
+      if (!updatedTeamMember) {
+          return res.status(404).json({ success: false, message: 'Team member not found' });
+      }
+
+      res.json({ success: true, message: 'Team member updated successfully', data: updatedTeamMember });
+  } catch (error) {
+      res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// Delete a team member by ID
+app.delete('/api/team/:id', async (req, res) => {
+  try {
+      const { id } = req.params;
+      const deletedTeamMember = await teamMemberModel.findByIdAndDelete(id);
+
+      if (!deletedTeamMember) {
+          return res.status(404).json({ success: false, message: 'Team member not found' });
+      }
+
+      res.json({ success: true, message: 'Team member deleted successfully', data: deletedTeamMember });
+  } catch (error) {
+      res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 
 
 app.use(express.static("./uploads/"))
