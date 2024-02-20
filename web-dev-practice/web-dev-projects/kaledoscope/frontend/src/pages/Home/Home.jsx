@@ -14,6 +14,12 @@ import AdminDashboard from '../admin/dashboard/AdminDashboard';
 import Features from './features/features';
 import YoutubePage from './youtubePage/YoutubePage';
 import GuitarClass from './Courses/GuitarClass';
+import Keyboard from './Courses/Keyboard';
+import Drum from './Courses/Drum';
+import WesternVocal from './Courses/WesternVocal';
+import Violin from './Courses/Violin';
+import Ukulele from './Courses/Ukulele';
+import MusicProduction from './Courses/MusicProduction';
 
 const Home = () => {
   const iframeRef = useRef(null);
@@ -69,8 +75,14 @@ const Home = () => {
 
         </iframe>
       </div>
-      
+      <MusicProduction />
+      <Ukulele  />
+      <Violin />
+      <WesternVocal />
+      <Drum />
+      <Keyboard />
       <GuitarClass />
+      
       {/* <AdminDashboard /> */}
        {/* <OurClients /> */}
        {/* <AboutUs /> */}

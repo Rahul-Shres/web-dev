@@ -7,36 +7,33 @@ const Drum = () => {
       {
         id: "overview",
         label: "OverView",
-        content: "Our guitar classes educate students about guitar parts and the importance of the right posture. The guitar lessons include reading western notations with linked TABS & a variety of open string and fretted note lessons followed by scales. The students shall be trained on music pieces to guide them in performance pieces. Also, basic sight reading and listening skills are a part of our holistic guitar music lessons.",
+        content: "Our beginner drum lessons introduce students to the Drum Set and understanding the parts of the stick, rhythm, basic notes, and note values on drum voices. In our drum classes, students are trained to read percussion clef and note values up to quarter notes. Our comprehensive drum lessons include hand & feet coordination exercises & brief on the basic quarter note grooves.",
         walkthrough: "Course Walk Through",
-        descriptionList: "In our guitar learning classes, students will understand parts of the instrument, right posture, develop skills to learn Treble and Bass clef with tablature and note values, and engage in workshops and composition activities with performance opportunities to build stage confidence.",
+        descriptionList: "Our drum classes introduces drum set and understanding of basic Note Values on drum voices. Students are trained on Simple Quater note and Eighth note grooves using bass snare and hi-hats followed by workshops and performance opportunities to build stage confidence",
         objective: "Objective of the Course",
-        descriptionList1: "In our guitar learning classes, we aim to train students to play guitar in a fun and engaging way, right from the basics.",
-        descriptionList2: "The songs learned from the curriculum will help the student play external repertoire.",
+        descriptionList1: "Introduce drum set and train students on basic Note Values on drum voices",
+        descriptionList2: "Develop the ability to read and understand rhythms/music theory to sharpen sight reading and listening skills",
+        descriptionList3: "Master single strokes, double strokes, and paradiddles",
+        descriptionList4: "Understand Simple Quater note and Eighth note grooves using bass snare and hi-hats",
+        descriptionList5: "Brief understanding of the use of Quaver rests, and fills",
         finalContent: "The above-mentioned details are for beginner levels. We do provide courses for intermediate and advanced levels up to grade 8. All our courses are internationally benchmarked and accredited by the institutes like The Trinity College of London.",
       },
       {
-        id: "music",
-        label: "Music",
-        content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-        walkthrough: "Course Walk Through",
-        descriptionList: "In our guitar learning classes, students will understand parts of the instrument, right posture, develop skills to learn Treble and Bass clef with tablature and note values, and engage in workshops and composition activities with performance opportunities to build stage confidence.",
-        objective: "Objective of the Course",
-        descriptionList1: "In our guitar learning classes, we aim to train students to play guitar in a fun and engaging way, right from the basics.",
-        descriptionList2: "The songs learned from the curriculum will help the student play external repertoire.",
-        finalContent: "The above-mentioned details are for beginner levels. We do provide courses for intermediate and advanced levels up to grade 8. All our courses are internationally benchmarked and accredited by the institutes like The Trinity College of London.",
+        id: "Topics",
+        label: "Topics Covered",
+        content: "Basics of music",
+        descriptionList1: "Our online drum classes curriculum include single strokes, double strokes, and paradiddles in the basic 16-session online drum lessons. Learn to read percussion clef and note values up to quarter notes, including hand & feet coordination exercises & brief on the basic quarter note grooves in the best online drum lessons.",
+        descriptionList2: "The drum lessons in the 48-session structured course train students on the use of Quaver rests, fills, learning simple grooves using bass drum and hi-hat variations",
+        descriptionList3: "Both our online and offline drum classes offer a pre-structured course to train students on listening skills, sight reading, rudimental studies, creating fills on the 4th bar using 8th note grooves, and more.",
+        
       },
       {
-        id: "videos",
-        label: "Videos",
-        content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        walkthrough: "Course Walk Through",
-        descriptionList: "In our guitar learning classes, students will understand parts of the instrument, right posture, develop skills to learn Treble and Bass clef with tablature and note values, and engage in workshops and composition activities with performance opportunities to build stage confidence.",
-        objective: "Objective of the Course",
-        descriptionList1: "In our guitar learning classes, we aim to train students to play guitar in a fun and engaging way, right from the basics.",
-        descriptionList2: "The songs learned from the curriculum will help the student play external repertoire.",
-        finalContent: "The above-mentioned details are for beginner levels. We do provide courses for intermediate and advanced levels up to grade 8. All our courses are internationally benchmarked and accredited by the institutes like The Trinity College of London.",
-      }
+        id: "outcome",
+        label: "Learning Outcomes",
+        content: "Student will be able to perform following topics",
+        descriptionList1: "Students will be introduced to drumming in a very easy manner even if the students do not have a drum kit.",
+        descriptionList2: "They will learn the basic concepts that will help lay the foundation for intermediate training.",
+           }
     ];
 return (
   <div className='max-w-6xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto'>
@@ -45,8 +42,8 @@ return (
 {/* <!-- Grid --> */}
 <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
   <div>
-    <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Learn to Play: Unleash Your Inner <span className="text-blue-600">Guitarist</span></h1>
-    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Hand-picked professionals and expertly crafted components, designed for any kind of entrepreneur.</p>
+    <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Learn the Art of <span className="text-blue-600">Drumming</span></h1>
+    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Bring Out Your Inner Performer & Put On a Show</p>
 
     {/* <!-- Buttons --> */}
     <div className="mt-7 grid gap-3 w-full sm:inline-flex">
@@ -109,17 +106,13 @@ alt="Image Description"
   <br />
   <br />
  
-  <span className='text-lg font-light'>Unleash Your Inner Guitar Maestro at Kaleidoscope Music School
+  <span className='text-lg font-light'>Are you unable to resist the passion of rhythm and beats? Then it's time to enroll in our drum lessons! Our rocking drum class for beginners is perfect for those who want to experience the thrill of drumming. As Keith Moon once said, he was a 'mental drummer' even before he had a proper set!With our drum training, you can take the best seat between the bassist and the lead guitar, becoming the very heartbeat of the show. Our disciplined drum training teaches you how to keep up the tempo and set the cue when the song's mood is shifting. Join us and experience the excitement of drumming!
 
-Ready to set the strings on fire? Kaleidoscope Music School invites you to jump headfirst into the vibrant world of guitar-playing – where the fun never stops! Our courses aren't your typical lessons; they're a journey into the heart of music, transforming you into a guitar wizard in no time. Envision yourself stealing the spotlight, playing your heart out on stage – that's the adventure we're crafting for you!
+Learn at your own pace with our diverse mix of music faculty from India and abroad. The experts come with a wealth of music expertise to train you using modern tools and techniques most effectively. We track your progress, conduct frequent assessments, support you at every level, train you on new-age concepts, and build confidence with performance opportunities at India's leading music events. We offer offline drum courses at our centers across India and online learning options for students of all backgrounds and experience levels to develop their drumming skills at their convenience.
 
-Strum, pluck, and riff your way through our extensive guitar music courses, tailor-made for both beginners and seasoned players. From the basics to advanced fingerstyle, lead guitar, and music theory – we've got the whole spectrum covered. 
+We offer offline drum courses at our centers across India in 40+ cities and online learning options for students of all backgrounds and experience levels to develop their drumming skills at their convenience.
 
-
-At Kaleidoscope Music School, it's not just about learning; it's about creating a groove that resonates with your love for music.
-
-Meet our incredible faculty, a mix of talented individuals from India and beyond, all geared up to make your guitar-learning experience a blast. Whether you crave the energy of our state-of-the-art facilities or the coziness of your own space, our offline and online options cater to all music enthusiasts.
-
+Celebrate your drumming passion at FSM with our experts eager to make world-class learning fun and engaging.
 <br />
 <br />
 <br />
@@ -147,14 +140,17 @@ So, become a part of our rhythmic tribe, and soon you'll be strumming, jamming, 
         <Tab key={item.id} title={item.label}>
           <Card>
             <CardBody>
-           <div className='p-9'>
-              <h1>{item.content}</h1><br />
-              <span className='text-bold'>{item.walkthrough}</span><br /><br />
-              <h>{item.descriptionList}</h><br /><br />
-              <li>{item.objective}</li><br />
-              <h1>{item.descriptionList1}</h1><br />
-              <li>{item.descriptionList2}</li><br />
-              {item.finalContent}
+              <div className='p-9'>
+                <h1>{item.content}</h1><br />
+                {item.walkthrough && <span className='text-bold'>{item.walkthrough}</span>}<br /><br />
+                {item.descriptionList && <h>{item.descriptionList}</h>}<br /><br />
+                {item.objective && <li>{item.objective}</li>}<br />
+                {item.descriptionList1 && <li>{item.descriptionList1}</li>}<br />
+                {item.descriptionList2 && <li>{item.descriptionList2}</li>}<br />
+                {item.descriptionList3 && <li>{item.descriptionList3}</li>}<br />
+                {item.descriptionList4 && <li>{item.descriptionList4}</li>}<br />
+                {item.descriptionList5 && <li>{item.descriptionList5}</li>}<br />
+                {item.finalContent && <div>{item.finalContent}</div>}
               </div>
             </CardBody>
           </Card>  
@@ -166,7 +162,6 @@ So, become a part of our rhythmic tribe, and soon you'll be strumming, jamming, 
 
 <BookDemo />
 {/* <!-- End Hero --> */}
-<Footer />
   </div>
 )
 }

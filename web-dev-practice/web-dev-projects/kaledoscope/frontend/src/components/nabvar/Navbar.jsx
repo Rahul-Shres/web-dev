@@ -59,14 +59,44 @@ const Appbar = (props) => {
           Courses
         </Button>
       </DropdownTrigger>
-      <DropdownMenu aria-label="Static Actions">
-        <DropdownItem key="new">New file</DropdownItem>
-        <DropdownItem key="copy">Copy link</DropdownItem>
-        <DropdownItem key="edit">Edit file</DropdownItem>
-        <DropdownItem key="delete" className="text-danger" color="danger">
-          Delete file
-        </DropdownItem>
-      </DropdownMenu>
+      <DropdownMenu aria-label="Courses">
+  <DropdownItem>
+    <Link href="/guitarclass" className="nav-link">
+      Guitar Class
+    </Link>
+  </DropdownItem>
+  <DropdownItem>
+    <Link href="/drumclass" className="nav-link">
+      Drum Class
+    </Link>
+  </DropdownItem>
+  <DropdownItem>
+    <Link href="/keyboardclass" className="nav-link">
+      Keyboard Class
+    </Link>
+  </DropdownItem>
+  <DropdownItem>
+    <Link href="/musicproductionclass" className="nav-link">
+      Music Production Class
+    </Link>
+  </DropdownItem>
+  <DropdownItem>
+    <Link href="/ukuleleclass" className="nav-link">
+      Ukulele Class
+    </Link>
+  </DropdownItem>
+  <DropdownItem>
+    <Link href="/voilinclass" className="nav-link">
+      Violin Class
+    </Link>
+  </DropdownItem>
+  <DropdownItem>
+    <Link href="/westernvoalclass" className="nav-link">
+      Western Vocal Class
+    </Link>
+  </DropdownItem>
+</DropdownMenu>
+
     </Dropdown>
           </NavbarItem>
 
@@ -83,27 +113,7 @@ const Appbar = (props) => {
               Book A Demo
             </Button>
           </NavbarItem>
-          {/* <NavbarItem>
-          <div className="flex flex-col gap-2">
-        <Component {...getBaseProps()}>
-          <VisuallyHidden>
-            <input {...getInputProps()} />
-          </VisuallyHidden>
-          <div
-            {...getWrapperProps()}
-            className={slots.wrapper({
-              class: [
-                "w-8 h-8",
-                "flex items-center justify-center",
-                "rounded-lg bg-default-100 hover:bg-default-200",
-              ],
-            })}
-          >
-            {isSelected ? <SunIcon /> : <MoonIcon />}
-          </div>
-        </Component>
-      </div>
-          </NavbarItem> */}
+          
         </NavbarContent>
       </Navbar>
 

@@ -12,39 +12,56 @@ import AddTeamMember from "./pages/Home/ourTeam/AddTeamMember";
 import TeamMembers from "./pages/Home/ourTeam/OurTeams";
 import ViewAllMembers from "./pages/Home/ourTeam/ViewAllMembers";
 import ViewSingleMember from "./pages/Home/ourTeam/ViewSingleMember";
-// import RtlLayout from "./pages/admin/layouts/rtl/index";
-// import AdminLayout from "./pages/admin/layouts/admin/index";
-// import AuthLayout from "./pages/admin/layouts/auth/index";
+import GuitarClass from "./pages/Home/Courses/GuitarClass";
+import Drum from "./pages/Home/Courses/Drum";
+import Keyboard from "./pages/Home/Courses/Keyboard";
+import MusicProduction from "./pages/Home/Courses/MusicProduction";
+import Ukulele from "./pages/Home/Courses/Ukulele";
+import Violin from "./pages/Home/Courses/Violin";
+import WesternVocal from "./pages/Home/Courses/WesternVocal";
+
 
 export default function App() {
   return (
     <>
     <NextUIProvider>
-    <BrowserRouter>
-    <main className={"dark text-foreground bg-background" }>
-    <Routes>
-       {/* <Route path="/" element={<BookingDemo />}/> */}
-       <Route path="/" element={<AddTeamMember />} /> {/* Add this route for adding a team member */}
-       <Route path="/teams" element={<TeamMembers />} /> {/* Add this route for adding a team member */}
-       <Route path="/adminteams" element={<ViewAllMembers />} /> {/* Add this route for adding a team member */}
-       <Route path="/team/:memberId" element={<ViewSingleMember />} /> Route to view a single team member
-              {/* End of team members routes */}
+        <BrowserRouter>
+          <main className={"dark text-foreground bg-background"}>
+            <Routes>
+              {/* Home Routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/faq" element={<FaqPage />} />
+              <Route path="/booking" element={<BookingDemo />} />
 
-      {/* <Route path="/" element={<CreateBlogPost />}/>  */}
-      <Route path="/blog/:id" element={<ViewSingleBlogPost />} />
-      <Route path="/update/:id" element={<UpdateBlog  />} /> {/* Add this route for updating a single blog post */}
+              {/* Blog Routes */}
+              <Route path="/createblog" element={<CreateBlogPost />} />
+              <Route path="/blog/:id" element={<ViewSingleBlogPost />} />
+              <Route path="/update/:id" element={<UpdateBlog />} />
 
-      {/* <Route path="/" element={<Home />}/> */}
-      <Route path="/dashboard" element={<AdminDashboard />}/>
-      <Route path="/faq" element={<FaqPage />}/>
-      {/* <Route path="auth/*" element={<AuthLayout />} />
-      <Route path="admin/*" element={<AdminLayout />} />
-      <Route path="rtl/*" element={<RtlLayout />} />
-      <Route path="/admin" element={<Navigate to="/admin" replace />} /> */}
-      </Routes>
-      </main>
-      </BrowserRouter>
-    </NextUIProvider>
+              {/* Team Routes */}
+              <Route path="/addteam" element={<AddTeamMember />} />
+              <Route path="/viewteams" element={<TeamMembers />} />
+              <Route path="/adminteams" element={<ViewAllMembers />} />
+              <Route path="/team/:memberId" element={<ViewSingleMember />} />
+
+              {/* Admin Routes */}
+              <Route path="/dashboard" element={<AdminDashboard />} />
+
+              {/* Courses Routes */}
+
+              <Route path="/guitarclass" element={<GuitarClass />} />
+              <Route path="/drumclass" element={<Drum />} />
+              <Route path="/keyboardclass" element={<Keyboard />} />
+              <Route path="/musicproductionclass" element={<MusicProduction />} />
+              <Route path="/ukuleleclass" element={<Ukulele />} />
+              <Route path="/voilinclass" element={<Violin />} />
+              <Route path="/westernvoalclass" element={<WesternVocal />} />
+
+              
+            </Routes>
+          </main>
+        </BrowserRouter>
+      </NextUIProvider>
     </>
   )
 }
