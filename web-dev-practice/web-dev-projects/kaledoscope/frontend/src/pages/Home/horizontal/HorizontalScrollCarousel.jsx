@@ -1,7 +1,7 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 import {Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org/react";
-import vocal from './images/vocal.jpg';
+import vocal from './images/vocals.jpg';
 import guitar from './images/guitar.jpg';
 import drum from './images/Drum.jpg';
 import jam from './images/JamStudio.jpg';

@@ -66,35 +66,13 @@ return (
   <div className="relative ms-4">
   <img
 className="w-full max-h-400 rounded-md"
-src="https://images.unsplash.com/photo-1431308305062-f218b6fe520a?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/376577394_690452999790677_1908908863654242586_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=3635dc&_nc_ohc=vw3Ddmjmre4AX_hi5H7&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfD6ssQ0cMWKxNJt3WGbEdXLXpGzYogr6rxezQalcfP0tg&oe=65DDE55D"
 alt="Image Description"
 />
 
     <div className="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0"></div>
 
-    {/* <!-- SVG--> */}
-    <div className="absolute bottom-0 start-0">
-      <svg className="w-2/3 ms-auto h-auto text-white dark:text-slate-900" width="630" height="451" viewBox="0 0 630 451" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="531" y="352" width="99" height="99" fill="currentColor"/>
-        <rect x="140" y="352" width="106" height="99" fill="currentColor"/>
-        <rect x="482" y="402" width="64" height="49" fill="currentColor"/>
-        <rect x="433" y="402" width="63" height="49" fill="currentColor"/>
-        <rect x="384" y="352" width="49" height="50" fill="currentColor"/>
-        <rect x="531" y="328" width="50" height="50" fill="currentColor"/>
-        <rect x="99" y="303" width="49" height="58" fill="currentColor"/>
-        <rect x="99" y="352" width="49" height="50" fill="currentColor"/>
-        <rect x="99" y="392" width="49" height="59" fill="currentColor"/>
-        <rect x="44" y="402" width="66" height="49" fill="currentColor"/>
-        <rect x="234" y="402" width="62" height="49" fill="currentColor"/>
-        <rect x="334" y="303" width="50" height="49" fill="currentColor"/>
-        <rect x="581" width="49" height="49" fill="currentColor"/>
-        <rect x="581" width="49" height="64" fill="currentColor"/>
-        <rect x="482" y="123" width="49" height="49" fill="currentColor"/>
-        <rect x="507" y="124" width="49" height="24" fill="currentColor"/>
-        <rect x="531" y="49" width="99" height="99" fill="currentColor"/>
-      </svg>
-    </div>
-    {/* <!-- End SVG--> */}
+   
   </div>
   {/* <!-- End Col --> */}
 </div>
@@ -106,21 +84,13 @@ alt="Image Description"
   <br />
   <br />
  
-  <span className='text-lg font-light'>Are you unable to resist the passion of rhythm and beats? Then it's time to enroll in our drum lessons! Our rocking drum class for beginners is perfect for those who want to experience the thrill of drumming. As Keith Moon once said, he was a 'mental drummer' even before he had a proper set!With our drum training, you can take the best seat between the bassist and the lead guitar, becoming the very heartbeat of the show. Our disciplined drum training teaches you how to keep up the tempo and set the cue when the song's mood is shifting. Join us and experience the excitement of drumming!
-
-Learn at your own pace with our diverse mix of music faculty from India and abroad. The experts come with a wealth of music expertise to train you using modern tools and techniques most effectively. We track your progress, conduct frequent assessments, support you at every level, train you on new-age concepts, and build confidence with performance opportunities at India's leading music events. We offer offline drum courses at our centers across India and online learning options for students of all backgrounds and experience levels to develop their drumming skills at their convenience.
-
-We offer offline drum courses at our centers across India in 40+ cities and online learning options for students of all backgrounds and experience levels to develop their drumming skills at their convenience.
-
-Celebrate your drumming passion at FSM with our experts eager to make world-class learning fun and engaging.
-<br />
+  <span className='text-lg font-light'>Feel the rhythm of your heart at Kaleidoscope Music Academy’s drum program! Our passionate instructors will guide you through the pulse of percussion, whether you’re a beginner or a seasoned drummer. <br /><br /> Experience the thrill of mastering beats and fills in our dynamic classes, tailored to your individual pace and style. With top-notch equipment and a vibrant atmosphere, you’ll find yourself immersed in the world of rhythm. Join our community and connect with fellow drum enthusiasts. Let your creativity soar as you learn to express yourself on the drum set. Enroll now and start your journey to becoming the heartbeat of the band. 
+  <br /> <br /> Make some noise, unleash your inner drummer, and march to your own beat with us! <br />
 <br />
 <br />
 <figure>
-      <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1670272498380-eb330b61f3cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description" />
-      <figcaption class="mt-3 text-sm text-center text-gray-500">
-        A man and a woman looking at a cell phone.
-      </figcaption>
+      <img class="w-full object-cover rounded-xl" src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/319022793_518887780280534_5860846789461572503_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=GOIP__yGxYoAX_aJcH1&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfAicY0rsseFII-09ggoDCDEpH1-BH_mUC_p-52YzBvndg&oe=65DCA15C" alt="Image Description" />
+      
     </figure>
 <br />
 

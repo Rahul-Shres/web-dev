@@ -47,7 +47,7 @@ return (
 <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
   <div>
     <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Learn Music Production:   <span className="text-blue-600">The Art of Mixing and Crafting</span></h1>
-    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Hand-picked professionals and expertly crafted components, designed for any kind of entrepreneur.</p>
+    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Tailored expertise and finely-tuned instruments, crafted for every aspiring musician at Kaleidoscope Music Academy.</p>
 
     {/* <!-- Buttons --> */}
     <div className="mt-7 grid gap-3 w-full sm:inline-flex">
@@ -116,10 +116,8 @@ Receive personalized career guidance, laying the groundwork for a successful jou
 <br />
 <br />
 <figure>
-      <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1510279410431-2d0808d69bf8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image Description" />
-      <figcaption class="mt-3 text-sm text-center text-gray-500">
-        A man and a woman looking at a cell phone.
-      </figcaption>
+      <img class="w-full object-cover rounded-xl" src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/316419356_508909341278378_4840668746136443013_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=3635dc&_nc_ohc=B_kyCGp2FmIAX_2yMqz&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfAtNE15G4AvQoDxj7fWEPlypCorbsMJrgMECaSY98k5Nw&oe=65DE3487" alt="Image Description" />
+      
     </figure>
 <br />
 
@@ -141,12 +139,12 @@ So, become a part of our rhythmic tribe, and soon you'll be strumming, jamming, 
             <CardBody>
             <div className='p-9'>
                 <h1>{item.content}</h1><br />
-                {item.walkthrough && <span className='text-bold'>{item.walkthrough}</span>}<br /><br />
-                {item.walkthroughList1 && <h>{item.walkthroughList1}</h>}<br /><br />
-                {item.walkthroughList2 && <h>{item.walkthroughList2}</h>}<br /><br />
-                {item.walkthroughList3 && <h>{item.walkthroughList3}</h>}<br /><br />
-                {item.walkthroughList4 && <h>{item.walkthroughList4}</h>}<br /><br />
-                {item.objective && <li>{item.objective}</li>}<br />
+                {item.walkthrough && <span className='text-bold text-lg' >{item.walkthrough}</span>}<br /><br />
+                {item.walkthroughList1 && <li>{item.walkthroughList1}</li>}<br /><br />
+                {item.walkthroughList2 && <li>{item.walkthroughList2}</li>}<br /><br />
+                {item.walkthroughList3 && <li>{item.walkthroughList3}</li>}<br /><br />
+                {item.walkthroughList4 && <li>{item.walkthroughList4}</li>}<br /><br />
+                {item.objective && <span className=' text-bold text-lg'>{item.objective}</span>}<br />
                 {item.descriptionList1 && <li>{item.descriptionList1}</li>}<br />
                 {item.descriptionList2 && <li>{item.descriptionList2}</li>}<br />
                 {item.descriptionList3 && <li>{item.descriptionList3}</li>}<br />

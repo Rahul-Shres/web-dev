@@ -38,8 +38,8 @@ return (
 {/* <!-- Grid --> */}
 <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
   <div>
-    <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Experience the Joy of Ukulele:  <span className="text-blue-600">Playing at FSM</span></h1>
-    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Hand-picked professionals and expertly crafted components, designed for any kind of entrepreneur.</p>
+    <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Experience the   <span className="text-blue-600">Joy of Ukulele</span></h1>
+    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Tailored expertise and finely-tuned instruments, crafted for every aspiring musician at Kaleidoscope Music Academy.</p>
 
     {/* <!-- Buttons --> */}
     <div className="mt-7 grid gap-3 w-full sm:inline-flex">
@@ -62,35 +62,12 @@ return (
   <div className="relative ms-4">
   <img
 className="w-full max-h-400 rounded-md"
-src="https://images.unsplash.com/photo-1431308305062-f218b6fe520a?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+src="https://images.unsplash.com/photo-1607513272385-b4f42e08fb16?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 alt="Image Description"
 />
 
     <div className="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0"></div>
 
-    {/* <!-- SVG--> */}
-    <div className="absolute bottom-0 start-0">
-      <svg className="w-2/3 ms-auto h-auto text-white dark:text-slate-900" width="630" height="451" viewBox="0 0 630 451" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="531" y="352" width="99" height="99" fill="currentColor"/>
-        <rect x="140" y="352" width="106" height="99" fill="currentColor"/>
-        <rect x="482" y="402" width="64" height="49" fill="currentColor"/>
-        <rect x="433" y="402" width="63" height="49" fill="currentColor"/>
-        <rect x="384" y="352" width="49" height="50" fill="currentColor"/>
-        <rect x="531" y="328" width="50" height="50" fill="currentColor"/>
-        <rect x="99" y="303" width="49" height="58" fill="currentColor"/>
-        <rect x="99" y="352" width="49" height="50" fill="currentColor"/>
-        <rect x="99" y="392" width="49" height="59" fill="currentColor"/>
-        <rect x="44" y="402" width="66" height="49" fill="currentColor"/>
-        <rect x="234" y="402" width="62" height="49" fill="currentColor"/>
-        <rect x="334" y="303" width="50" height="49" fill="currentColor"/>
-        <rect x="581" width="49" height="49" fill="currentColor"/>
-        <rect x="581" width="49" height="64" fill="currentColor"/>
-        <rect x="482" y="123" width="49" height="49" fill="currentColor"/>
-        <rect x="507" y="124" width="49" height="24" fill="currentColor"/>
-        <rect x="531" y="49" width="99" height="99" fill="currentColor"/>
-      </svg>
-    </div>
-    {/* <!-- End SVG--> */}
   </div>
   {/* <!-- End Col --> */}
 </div>
@@ -102,19 +79,19 @@ alt="Image Description"
   <br />
   <br />
  
-  <span className='text-lg font-light'>Master one of the most versatile and easy-to-ace instruments that hold paramount love in the heart of every music player. Why? You may ask. Allow us to show you at our excellent state-of-art music centers boasting world-class maestros to thrill you with an enticing symphony of the four-stringed instrument.
-
-Discover the joy of plucking strings and creating beautiful tunes in our comprehensive ukulele music course. The lessons are carefully curated by experts to help you learn the instrument in classical, folk, pop, and other styles of Ukulele playing, among others. Our courses are structured to help students develop their skills in technique, music theory, and performance while also encouraging them to find their own voice.
-
-To make your learning fun and super engaging, our team of qualified musicians from India and abroad creates an engaging and interactive setting where you can ask questions, seek bits of advice, measure progress and learn new-age tools and techniques at every level. To create a pool of self-assured and confident ukulele players, we offer workshops by renowned maestros & performance opportunities at India's leading music events.
-
-Whether you're just starting out or already have years of experience under your belt, you'll find our offline music centers and accessible online learning options to be a welcoming and encouraging space for your development.
-
-Join us at FSM and experience the joy of Ukulele playing with our expert instruction and comprehensive curriculum.<br />
-<br />
+  <span className='text-lg font-light'>Discover the joy of music with Kaleidoscope Music Academy’s ukulele program! Our friendly, expert instructors welcome strummers of all ages and skill levels. 
+  Dive into the world of ukulele, an instrument beloved for its cheerful sound and portability. 
+  With personalized lessons, you’ll quickly master chords and melodies, playing songs you love in no time.
+   Our vibrant community and cozy learning environment make practice a pleasure. 
+   <br />
+  <br />
+   Whether you dream of serenading under the stars or jamming with friends, your musical adventure starts here. 
+   Embrace the ukulele’s charm and unleash your creativity. 
+  <br />
+  <br />Enroll now and strum your way to happiness with us!<br />
 <br />
 <figure>
-      <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1670272498380-eb330b61f3cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description" />
+      <img class="w-full object-cover rounded-xl" src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/423777964_778401154329194_2354213044495754628_n.jpg?stp=cp6_dst-jpg_fr_q85&_nc_cat=106&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=v39xZve-eKIAX_V9EyQ&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfCMsylfsceC-3ARRsqQ6gj58AAaEHfW11X7zvp3Hmj1Ow&oe=65DCFF3F" alt="Image Description" />
       <figcaption class="mt-3 text-sm text-center text-gray-500">
         A man and a woman looking at a cell phone.
       </figcaption>

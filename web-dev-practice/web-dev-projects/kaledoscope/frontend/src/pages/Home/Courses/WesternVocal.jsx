@@ -1,6 +1,8 @@
 import React from 'react'
 import BookDemo from '../booking/BookDemo'
 import {Tabs, Tab, Card, CardBody, CardHeader} from "@nextui-org/react";
+import Footer from '../footer/Footer';
+import Appbar from '../../../components/nabvar/Navbar';
 
 const WesternVocal = () => {
   let tabs = [
@@ -38,6 +40,9 @@ const WesternVocal = () => {
             }
     ];
 return (
+  <>
+  <div>
+    <Appbar />
   <div className='max-w-6xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto'>
       {/* <!-- Hero --> */}
 <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +50,7 @@ return (
 <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
   <div>
     <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Unleash Your Inner Star:  <span className="text-blue-600">Learn Western Vocals</span></h1>
-    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Hand-picked professionals and expertly crafted components, designed for any kind of entrepreneur.</p>
+    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Tailored expertise and finely-tuned instruments, crafted for every aspiring musician at Kaleidoscope Music Academy.</p>
 
     {/* <!-- Buttons --> */}
     <div className="mt-7 grid gap-3 w-full sm:inline-flex">
@@ -68,35 +73,14 @@ return (
   <div className="relative ms-4">
   <img
 className="w-full max-h-400 rounded-md"
-src="https://images.unsplash.com/photo-1431308305062-f218b6fe520a?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/376696088_690453476457296_7165662508262059741_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=3635dc&_nc_ohc=VrET999hhMQAX-HZNhk&_nc_oc=AQmAh3KxTV-KHwlv58hhocTmcvVL5ITO_XSsrHnJk2duQ9TRRpYeazpP02vgsPDuW7jU6AJphJGQeY9bhhZmG8iv&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfBxy11FV0HCtm254RBAu3P3Htt5Jj7ol68iQYGC1wnrmw&oe=65DCE925"
 alt="Image Description"
 />
 
     <div className="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0"></div>
 
-    {/* <!-- SVG--> */}
-    <div className="absolute bottom-0 start-0">
-      <svg className="w-2/3 ms-auto h-auto text-white dark:text-slate-900" width="630" height="451" viewBox="0 0 630 451" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="531" y="352" width="99" height="99" fill="currentColor"/>
-        <rect x="140" y="352" width="106" height="99" fill="currentColor"/>
-        <rect x="482" y="402" width="64" height="49" fill="currentColor"/>
-        <rect x="433" y="402" width="63" height="49" fill="currentColor"/>
-        <rect x="384" y="352" width="49" height="50" fill="currentColor"/>
-        <rect x="531" y="328" width="50" height="50" fill="currentColor"/>
-        <rect x="99" y="303" width="49" height="58" fill="currentColor"/>
-        <rect x="99" y="352" width="49" height="50" fill="currentColor"/>
-        <rect x="99" y="392" width="49" height="59" fill="currentColor"/>
-        <rect x="44" y="402" width="66" height="49" fill="currentColor"/>
-        <rect x="234" y="402" width="62" height="49" fill="currentColor"/>
-        <rect x="334" y="303" width="50" height="49" fill="currentColor"/>
-        <rect x="581" width="49" height="49" fill="currentColor"/>
-        <rect x="581" width="49" height="64" fill="currentColor"/>
-        <rect x="482" y="123" width="49" height="49" fill="currentColor"/>
-        <rect x="507" y="124" width="49" height="24" fill="currentColor"/>
-        <rect x="531" y="49" width="99" height="99" fill="currentColor"/>
-      </svg>
-    </div>
-    {/* <!-- End SVG--> */}
+    
+   
   </div>
   {/* <!-- End Col --> */}
 </div>
@@ -108,23 +92,32 @@ alt="Image Description"
   <br />
   <br />
  
-  <span className='text-lg font-light'>Sing your heart out loud with FSM's musical tribe, known to develop a pool of creatively agile aspirants following an internationally benchmarked music curriculum. For your growing passion to learn western vocals, we've our new-age pedagogy backed by tools, techniques, and interactive aides to help you learn more, sing more.
-
-At FSM, we provide a well-organized and exciting curriculum that explores the vocal styles of Western music, including pop, rock, jazz, and more. While helping students improve their vocal technique, musical ability, and stage presence, our classes also encourage them to develop their own personal musical identities.
-
-Our team of qualified maestros from India and abroad come with a wealth of knowledge and expertise to create a conducive setting for learners. The faculty supports you at every stage of the course, tracks your progress, and constantly curates novel ways to make your western vocal lessons engaging and super fun. Each student receives individual attention aimed at expanding their vocal capabilities (in terms of range, tone, and style) and providing direction in the areas of songwriting and recording.
-
-To make comprehensive music education accessible to you, we offer offline western vocal music courses at our centers located across India in 40+ cities with online learning options for students of all backgrounds and experience levels to develop their vocal skills at their convenience.
-
-Come, join us to explore the magic of music with a team of supremely talented experts.
+  <span className='text-lg font-light'>Unleash your vocal prowess at Kaleidoscope Music Academy in Nepal! Embark on a journey where your passion for Western vocals meets a dynamic curriculum tailored to nurture your talent. Our innovative approach, enriched with cutting-edge pedagogy and interactive resources, is designed to ignite your musical journey like never before.
+<br />
+<br />
+Delve into the rich tapestry of Western vocal styles, from pop to rock, jazz, and beyond, under the guidance of seasoned mentors hailing from India and beyond. Our faculty, renowned for their expertise and dedication, foster an environment where creativity thrives and individuality is celebrated.
+<br />
+<br />
+Experience personalized attention at every step, as our instructors meticulously track your progress and tailor lessons to enhance your vocal range, tone, and stylistic versatility. Whether you aspire to refine your technique, explore songwriting, or master the art of stage performance, our comprehensive curriculum is crafted to empower you on your musical odyssey.
+<br />
+<br />
+Join our vibrant community of music enthusiasts and unlock the full potential of your voice. With both offline classes at our state-of-the-art facilities and online learning options accessible to students of all backgrounds and skill levels, discovering the magic of music has never been more convenient.
+<br />
+<br />
+Come, be a part of Kaleidoscope Music Academy, where passion meets expertise, and every note resonates with possibility.
 <br />
 <br />
 <br />
 <figure>
-      <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1670272498380-eb330b61f3cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description" />
-      <figcaption class="mt-3 text-sm text-center text-gray-500">
-        A man and a woman looking at a cell phone.
-      </figcaption>
+<iframe 
+          className="mx-auto w-full h-screen rounded-md mb-16"
+          style={{ borderRadius: '15px' }}
+
+width="960"
+ height="715" 
+ src="https://www.youtube.com/embed/lDFAkuLgDXI?si=WUeR8dHdVd_0axHo" 
+ title="YouTube video player" frameborder="0" 
+ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      
     </figure>
 <br />
 
@@ -169,7 +162,11 @@ So, become a part of our rhythmic tribe, and soon you'll be strumming, jamming, 
 
 <BookDemo />
 {/* <!-- End Hero --> */}
+<Footer />
+
   </div>
+  </div>
+  </>
 )
 }
 

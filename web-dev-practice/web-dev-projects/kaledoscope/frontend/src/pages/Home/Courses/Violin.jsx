@@ -43,8 +43,8 @@ return (
 {/* <!-- Grid --> */}
 <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
   <div>
-    <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Learn Violin at FSM :   <span className="text-blue-600">The Art of Bowing and Plucking</span></h1>
-    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Hand-picked professionals and expertly crafted components, designed for any kind of entrepreneur.</p>
+    <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Learn Violin:   <span className="text-blue-600">The Art of Bowing and Plucking</span></h1>
+    <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Tailored expertise and finely-tuned instruments, crafted for every aspiring musician at Kaleidoscope Music Academy.</p>
 
     {/* <!-- Buttons --> */}
     <div className="mt-7 grid gap-3 w-full sm:inline-flex">
@@ -67,35 +67,11 @@ return (
   <div className="relative ms-4">
   <img
 className="w-full max-h-400 rounded-md"
-src="https://images.unsplash.com/photo-1431308305062-f218b6fe520a?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+src="https://images.unsplash.com/photo-1585263547501-7e5a0c222010?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 alt="Image Description"
 />
 
     <div className="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0"></div>
-
-    {/* <!-- SVG--> */}
-    <div className="absolute bottom-0 start-0">
-      <svg className="w-2/3 ms-auto h-auto text-white dark:text-slate-900" width="630" height="451" viewBox="0 0 630 451" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="531" y="352" width="99" height="99" fill="currentColor"/>
-        <rect x="140" y="352" width="106" height="99" fill="currentColor"/>
-        <rect x="482" y="402" width="64" height="49" fill="currentColor"/>
-        <rect x="433" y="402" width="63" height="49" fill="currentColor"/>
-        <rect x="384" y="352" width="49" height="50" fill="currentColor"/>
-        <rect x="531" y="328" width="50" height="50" fill="currentColor"/>
-        <rect x="99" y="303" width="49" height="58" fill="currentColor"/>
-        <rect x="99" y="352" width="49" height="50" fill="currentColor"/>
-        <rect x="99" y="392" width="49" height="59" fill="currentColor"/>
-        <rect x="44" y="402" width="66" height="49" fill="currentColor"/>
-        <rect x="234" y="402" width="62" height="49" fill="currentColor"/>
-        <rect x="334" y="303" width="50" height="49" fill="currentColor"/>
-        <rect x="581" width="49" height="49" fill="currentColor"/>
-        <rect x="581" width="49" height="64" fill="currentColor"/>
-        <rect x="482" y="123" width="49" height="49" fill="currentColor"/>
-        <rect x="507" y="124" width="49" height="24" fill="currentColor"/>
-        <rect x="531" y="49" width="99" height="99" fill="currentColor"/>
-      </svg>
-    </div>
-    {/* <!-- End SVG--> */}
   </div>
   {/* <!-- End Col --> */}
 </div>
@@ -103,25 +79,23 @@ alt="Image Description"
 {/* <!-- End Grid --> */}
 <div>
   <p className=' text-2xl font-bold md:text-3xl'>
-  Jam into the Melody: 
+  Unleash the sweet melodies within you
   <br />
   <br />
  
-  <span className='text-lg font-light'>At FSM, we cover the basics and advanced violin course lessons, including note reading, music theory, complex techniques, challenging repertoire, the Suzuki method, chamber music course, and more. Whether you're just starting out or are already an accomplished violinist, you'll find our facilities and online learning options to be a welcoming and encouraging space for your development. Your growth as a violinist will be regularly evaluated, and you'll have aplenty to perform for audiences and in workshops.
-
-Learn extensive curriculum and world-class experts who follow an internationally benchmarked curriculum to hone your musical skills.
-
-The intricate and captivating melodies that emanate from a taut fabric piece rubbing against strings is a fascinating phenomenon. Allow us to guide us and help you with this wonderful musical journey through our methodical violin mastery course led by a diverse mix of music experts from India and abroad.
-
-Come, express your passion for playing violin with our extensive curriculum and world-class experts. At FSM, you'll have plenty to learn to become the finest violin player through the course.
+  <span className='text-lg font-light'>Unleash the sweet melodies within you at Kaleidoscope Music Academy! Our expert violin program is tailored for aspiring musicians of all levels. 
+  Whether you’re picking up the bow for the first time or refining your virtuoso skills, our dedicated instructors guide you through every note. 
+  Immerse yourself in the rich tradition of violin playing, enhanced by state-of-the-art facilities and a supportive community. <br />
 <br />
+   Experience personalized lessons that cater to your unique style and pace. 
+   Join us and let your musical journey take flight. Embrace the elegance of the violin and let your passion resonate. <br />
+<br />
+   Enroll at Kaleidoscope Music Academy today – where music meets mastery!<br />
 <br />
 <br />
 <figure>
-      <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1670272498380-eb330b61f3cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description" />
-      <figcaption class="mt-3 text-sm text-center text-gray-500">
-        A man and a woman looking at a cell phone.
-      </figcaption>
+      <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?q=80&w=1598&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image Description" />
+      
     </figure>
 <br />
 

@@ -49,7 +49,7 @@ const GuitarClass = () => {
   <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
     <div>
       <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Learn to Play: Unleash Your Inner <span className="text-blue-600">Guitarist</span></h1>
-      <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Hand-picked professionals and expertly crafted components, designed for any kind of entrepreneur.</p>
+      <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">Tailored expertise and finely-tuned instruments, crafted for every aspiring musician at Kaleidoscope Music Academy.</p>
 
       {/* <!-- Buttons --> */}
       <div className="mt-7 grid gap-3 w-full sm:inline-flex">
@@ -72,7 +72,7 @@ const GuitarClass = () => {
     <div className="relative ms-4">
     <img
   className="w-full max-h-400 rounded-md"
-  src={uguitar}
+  src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/376679010_690453659790611_4100068708570479203_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=3635dc&_nc_ohc=KVofKauB2CkAX9Y_Gyc&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfBuca6aGAsFLO0Sd6S7ukMGlefqE95cofNT2IkIn634LQ&oe=65DDEF10"
   alt="Image Description"
 />
 
@@ -106,10 +106,8 @@ Meet our incredible faculty, a mix of talented individuals from India and beyond
 <br />
 <br />
 <figure>
-        <img class="w-full object-cover rounded-xl" src={guitarlass} alt="Image Description" />
-        <figcaption class="mt-3 text-sm text-center text-gray-500">
-          A man and a woman looking at a cell phone.
-        </figcaption>
+        <img class="w-full object-cover rounded-xl" src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/321112078_421446910107926_57384703997619699_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=3635dc&_nc_ohc=MxOdowynxWYAX8a8Ayk&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfBzkKjwdG_GrnLMUwPoBZo_C0p4_RnGrU6sGOyE-C4YGQ&oe=65DD6593" alt="Image Description" />
+        
       </figure>
 <br />
 
