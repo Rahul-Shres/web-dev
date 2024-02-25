@@ -29,9 +29,6 @@ const Hero = () => {
     </div>
     <div className='bg-red-500 w-1/3 rounded h-48'>auto</div>  
   </div>
- 
-
-
     </>
     
   )
