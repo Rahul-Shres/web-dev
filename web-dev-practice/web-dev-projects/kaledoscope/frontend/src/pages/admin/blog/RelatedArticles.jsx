@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { API } from '../../http/index';
+import { API } from '../../../http/index';
 
 const RelatedArticles = () => {
   const [relatedArticles, setRelatedArticles] = useState([]);

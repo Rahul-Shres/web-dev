@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { API } from '../../http/index';
+import { API } from '../../../http/index';
 import RelatedArticles from './RelatedArticles';
 import UpdateBlog from './UpdateBlog';
 import ViewBlogPosts from './ViewBlogPosts';

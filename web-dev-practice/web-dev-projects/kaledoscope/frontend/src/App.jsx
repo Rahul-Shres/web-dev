@@ -4,14 +4,8 @@ import { BrowserRouter, Routes,Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import AdminDashboard from "./pages/admin/dashboard/AdminDashboard";
 import FaqPage from "./pages/Home/faq/FaqPage";
-import CreateBlogPost from "./pages/blog/CreateBlogPost";
 import BookingDemo from "./pages/Home/booking/BookingDemo";
-import ViewSingleBlogPost from "./pages/blog/ViewSingleBlogPost";
-import UpdateBlog from "./pages/blog/UpdateBlog";
-import AddTeamMember from "./pages/Home/ourTeam/AddTeamMember";
-import TeamMembers from "./pages/Home/ourTeam/OurTeams";
-import ViewAllMembers from "./pages/Home/ourTeam/ViewAllMembers";
-import ViewSingleMember from "./pages/Home/ourTeam/ViewSingleMember";
+
 import GuitarClass from "./pages/Home/Courses/GuitarClass";
 import Drum from "./pages/Home/Courses/Drum";
 import Keyboard from "./pages/Home/Courses/Keyboard";
@@ -19,6 +13,19 @@ import MusicProduction from "./pages/Home/Courses/MusicProduction";
 import Ukulele from "./pages/Home/Courses/Ukulele";
 import Violin from "./pages/Home/Courses/Violin";
 import WesternVocal from "./pages/Home/Courses/WesternVocal";
+
+import CreateBlogPost from "./pages/admin/blog/CreateBlogPost";
+import UpdateBlog from "./pages/admin/blog/UpdateBlog";
+import ViewSingleBlogPost from "./pages/admin/blog/ViewSingleBlogPost";
+
+
+import TeamMembers from "./pages/Home/ourTeam/OurTeams";
+import ViewAllMembers from "./pages/admin/teams/ViewAllMembers";
+import ViewSingleMember from "./pages/admin/teams/ViewSingleMember";
+import AddTeamMember from "./pages/admin/teams/AddTeamMember";
+import WriteBlog from "./pages/admin/blog/WriteBlog";
+
+
 
 
 export default function App() {
@@ -35,6 +42,7 @@ export default function App() {
 
               {/* Blog Routes */}
               <Route path="/createblog" element={<CreateBlogPost />} />
+              <Route path="/writeblog" element={<WriteBlog />} />
               <Route path="/blog/:id" element={<ViewSingleBlogPost />} />
               <Route path="/update/:id" element={<UpdateBlog />} />
 
@@ -56,6 +64,8 @@ export default function App() {
               <Route path="/ukuleleclass" element={<Ukulele />} />
               <Route path="/voilinclass" element={<Violin />} />
               <Route path="/westernvoalclass" element={<WesternVocal />} />
+              {/* Courses Routes */}
+
 
               
             </Routes>

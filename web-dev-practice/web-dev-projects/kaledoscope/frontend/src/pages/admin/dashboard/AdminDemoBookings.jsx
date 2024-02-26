@@ -26,7 +26,6 @@ const AdminDemoBookings = () => {
 
   return (
     <div>
-      <h2>Admin Demo Bookings</h2>
       <table>
         <thead>
           <tr>
@@ -38,15 +37,15 @@ const AdminDemoBookings = () => {
             <th>Class Type</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
           {bookings.map((booking, index) => (
             <tr key={index}>
-              <td>{index + 1}</td> {/* Displaying sequential numbers */}
-              <td>{booking.name}</td>
-              <td>{booking.email}</td>
-              <td>{booking.phoneNumber}</td>
-              <td>{booking.location}</td>
-              <td>{booking.classType}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{index + 1}</td> {/* Displaying sequential numbers */}
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{booking.name}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{booking.email}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{booking.phoneNumber}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{booking.location}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{booking.classType}</td>
             </tr>
           ))}
         </tbody>
