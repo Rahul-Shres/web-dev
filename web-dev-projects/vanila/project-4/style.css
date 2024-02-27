@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+}
+
+#container{
+    margin: 1%;
+    /* height: 96vh; */
+    background-color: #B4B4B8;
+    border-radius: 30px;
+    /* display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
+    padding: 8px 20px;
+}
+
+.box{
+    width: 635px;
+    height: 317.5px;
+    background-color: #C7C8CC;
+    border-radius: 15px;
+    margin: 5px 0px;
+}
+
+#three , #eight {
+    grid-column: 1 / span 2;
+    width: 100%; /* This allows #three to expand its width within the grid */
+
+}
