@@ -75,40 +75,43 @@ const ViewSingleMember = () => {
             </h1>
           </div>
         </div>
-
-        <Card className="py-4 bg-gray-100">
-          <CardHeader className="pb-0 pt-2 px-4 flex-col items-start text-black">
-            <p className="text-tiny uppercase font-bold">{teamMember.position}</p>
+      
+        <div className="py-8 bg-gray-100 mx-48 flex flex-col items-center justify-center">
+          <div className="pb-0 pt-2 px-4 flex-col items-start text-black">
+            <p className="text-tiny uppercase font-bold text text-center">{teamMember.position}</p>
             <h4 className="font-bold text-large">{teamMember.name}</h4>
-          </CardHeader>
-          <CardBody className="overflow-visible py-2">
+          </div>
+          <div className="overflow-visible py-2 flex flex-col items-center justify-center">
             <Image
               isZoomed
               width={240}
               alt={teamMember.name}
               src={teamMember.image}
             />
-            {/* Admin controls: update and delete buttons */}
-            <div className="mt-4 flex justify-between">
-              {/* Update button */}
-              <form onSubmit={handleUpdateMember}>
-                <Button color="primary" size="small" type="submit">Update</Button>
+            
+             {/* Admin controls: update and delete buttons */}
+             <div className="mt-4 flex flex-col items-center">
+              <form onSubmit={handleUpdateMember} className='block'>
                 <input
                   type="text"
                   value={name}
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-white-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   onChange={(e) => setName(e.target.value)}
                 />
                 <input
                   type="text"
                   value={position}
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-white-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   onChange={(e) => setPosition(e.target.value)}
                 />
               </form>
-              {/* Delete button */}
-              <Button color="primary" size="small" type="submit" onClick={handleDeleteMember}>Delete</Button>
+              <div className='flex justify-center space-x-5'>
+              <Button color="primary" size="small" type="submit" className="mt-2">Update</Button>
+              <Button color="primary" size="small" type="submit" onClick={handleDeleteMember} className="mt-2">Delete</Button>
+              </div>
             </div>
-          </CardBody>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );

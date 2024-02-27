@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from "@nextui-org/react";
 import { API } from '../../../http/index';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const AddTeamMember = () => {
   const [name, setName] = useState('');
@@ -56,7 +57,10 @@ const AddTeamMember = () => {
           <label>Image:</label>
           <input type="file" accept="image/*" onChange={handleImageChange} />
         </div>
+        <Link to='/adminteams'>
         <Button type="submit" color="primary">Add Member</Button>
+                  </Link>
+        
       </form>
     </div>
   );
