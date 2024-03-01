@@ -99,8 +99,8 @@ const Home = () => {
       
       <BookDemo />
       <Faq />
-      
-      <Footer />
+        <Footer />
+
 
     </>
   );
