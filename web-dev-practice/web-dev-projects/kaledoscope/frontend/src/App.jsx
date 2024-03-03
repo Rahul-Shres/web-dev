@@ -24,6 +24,7 @@ import ViewAllMembers from "./pages/admin/teams/ViewAllMembers";
 import ViewSingleMember from "./pages/admin/teams/ViewSingleMember";
 import AddTeamMember from "./pages/admin/teams/AddTeamMember";
 import WriteBlog from "./pages/admin/blog/WriteBlog";
+import ViewAllBlogPost from "./pages/admin/blog/ViewAllBlogPost";
 
 
 
@@ -44,6 +45,8 @@ export default function App() {
               <Route path="/createblog" element={<CreateBlogPost />} />
               <Route path="/writeblog" element={<WriteBlog />} />
               <Route path="/blog/:id" element={<ViewSingleBlogPost />} />
+              <Route path="/blogs" element={<ViewAllBlogPost/>} />
+              {/* <Route path="/blogs" element={<ViewBlogPosts/>} /> */}
               <Route path="/update/:id" element={<UpdateBlog />} />
 
               {/* Team Routes */}

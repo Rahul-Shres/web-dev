@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { API } from '../../../http/index';
 import RelatedArticles from './RelatedArticles';
 import UpdateBlog from './UpdateBlog';
 import ViewBlogPosts from './ViewBlogPosts';
+import JoditEditor from 'jodit-react';
 
 const CreateBlogPost = () => {
+  const editor = useRef(null);
+  
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
@@ -29,6 +32,15 @@ const CreateBlogPost = () => {
     }
   };
 
+
+	const config = useMemo(
+		{
+			readonly: false, // all options from https://xdsoft.net/jodit/docs/,
+			placeholder: placeholder || 'Start typings...'
+		},
+		[placeholder]
+	);
+
   return (
     <div>
       <h2>Create Blog Post</h2>
@@ -39,7 +51,13 @@ const CreateBlogPost = () => {
         </div>
         <div>
           <label>Content:</label>
-          <textarea value={content} onChange={(e) => setContent(e.target.value)} />
+          <JoditEditor 
+          ref={editor}
+          value={content}
+          onChange={newContent => setContent(newContent)}
+
+          />
+          {/* <textarea value={content} onChange={(e) => setContent(e.target.value)} /> */}
         </div>
         <div>
           <label>Image:</label>
