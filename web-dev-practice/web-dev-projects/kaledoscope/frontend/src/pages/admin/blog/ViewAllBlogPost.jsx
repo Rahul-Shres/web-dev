@@ -28,7 +28,9 @@ const ViewAllBlogPost = () => {
   <div class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
     {/* <!-- Card --> */}
     <Card blogPosts={blogPosts} />
+  
       
+          {/* <!-- End Cards --> */}
     {/* <!-- End Card --> */}
   </div>
   {/* <!-- End Grid --> */}

@@ -3,6 +3,7 @@ const Blog = require("../models/blog");
 exports.createBlog = (req, res, next) => {
     const blog = new Blog({
         title: req.body.title,
+        subtitle : req.body.subtitle,
         content: req.body.content,
     });
     blog.save()
@@ -45,6 +46,7 @@ exports.updateBlog = (req, res, next) => {
     const blog = new Blog({
         _id: req.body.id,
         title: req.body.title,
+        subtitle : req.body.subtitle,
         content: req.body.content,
     });
     Blog.updateOne({ _id: req.params.id }, blog)

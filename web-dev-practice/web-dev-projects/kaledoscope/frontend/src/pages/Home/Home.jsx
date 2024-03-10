@@ -75,28 +75,16 @@ const Home = () => {
 
         </iframe>
       </div>
-      <MusicProduction />
-      <Ukulele  />
-      <Violin />
-      <WesternVocal />
-      <Drum />
-      <Keyboard />
-      <GuitarClass />
       
-      {/* <AdminDashboard /> */}
-       {/* <OurClients /> */}
-       {/* <AboutUs /> */}
-       {/* <FaqPage /> */}
+  
       <Features />
       <Copy />
+
       <Example />
-      <OurTeams />
-     
-      <Testimonial />
       <YoutubePage />
+      <OurTeams />
+      <Testimonial />
       <GallaryPage />
-     
-      
       <BookDemo />
       <Faq />
         <Footer />

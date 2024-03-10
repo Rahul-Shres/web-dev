@@ -47,8 +47,8 @@ const upload = multer({ storage: storage });
 app.post('/api/blog', upload.single('image'), async (req, res) => {
   
   try {
-    const { title, content } = req.body;
-    console.log(title,"title", content, "content")
+    const { title, subtitle, content } = req.body;
+    console.log(title,"title", subtitle, "subtitle", content, "content")
     let image ;
     if(!req.file){
       image = "https://cdn.vectorstock.com/i/preview-1x/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg"
@@ -56,7 +56,7 @@ app.post('/api/blog', upload.single('image'), async (req, res) => {
       image = "http://localhost:8000/" + req.file.filename
     }
     console.log(image, 'image path');
-    const blogPost = new BlogPost({ title, content, image });
+    const blogPost = new BlogPost({ title, subtitle, content, image });
     await blogPost.save();
     console.log(blogPost, 'blog post');
     res.json({ success: true, message: 'Blog post created successfully' });
@@ -71,7 +71,7 @@ app.post('/api/blog', upload.single('image'), async (req, res) => {
 // Update a blog post
 app.put('/api/blog/:id', upload.single('image'), async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, subtitle, content } = req.body;
     const { id } = req.params;
 
     let imageUrl;
@@ -100,7 +100,7 @@ app.put('/api/blog/:id', upload.single('image'), async (req, res) => {
     }
 
     // Find and update the blog post
-    const updatedPost = await BlogPost.findByIdAndUpdate(id, { title, content, image: imageUrl }, { new: true });
+    const updatedPost = await BlogPost.findByIdAndUpdate(id, { title, subtitle, content, image: imageUrl }, { new: true });
 
     if (!updatedPost) {
       return res.status(404).json({ success: false, message: 'Blog post not found' });
@@ -112,48 +112,7 @@ app.put('/api/blog/:id', upload.single('image'), async (req, res) => {
   }
 });
 
-// app.put('/api/blog/:id', upload.single('image'), async (req, res) => {
-//   try {
-//     const { title, content } = req.body;
-//     const { id } = req.params;
-    
-//     let imageUrl;
-//     // Check if a file is uploaded
-//     if (req.file) {
-//       // If a file is uploaded, construct the new image URL
-//       imageUrl = "http://localhost:8000/" + req.file.filename;
 
-//       // Retrieve the old blog post data to get the previous image path
-//       const oldPost = await BlogPost.findById(id);
-//       if (oldPost && oldPost.image) {
-//         // Extract the file name from the old image URL
-//         const oldFileName = oldPost.image.split('/').pop();
-//         // Construct the path to the old image file
-//         const filePath = `storage/${oldFileName}`;
-        
-//         // Delete the old image file
-//         fs.unlink(filePath, (err) => {
-//           if (err) {
-//             console.log(err);
-//           } else {
-//             console.log("Old image file deleted successfully");
-//           }
-//         });
-//       }
-//     }
-
-//     // Find and update the blog post
-//     const updatedPost = await BlogPost.findByIdAndUpdate(id, { title, content, image: imageUrl }, { new: true });
-
-//     if (!updatedPost) {
-//       return res.status(404).json({ success: false, message: 'Blog post not found' });
-//     }
-    
-//     res.json({ success: true, message: 'Blog post updated successfully', data: updatedPost });
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// });
 
 
 

@@ -9,6 +9,7 @@ export default function WriteBlog() {
   const editor = useRef(null);
 
   const [title, setTitle] = useState('');
+  const [subtitle, setSubtitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
 
@@ -17,6 +18,7 @@ export default function WriteBlog() {
 
     const formData = new FormData();
     formData.append('title', title);
+    formData.append('subtitle', subtitle);
     formData.append('content', content);
     formData.append('image', image);
 
@@ -75,7 +77,7 @@ export default function WriteBlog() {
                 <div className="grow p-5 md:px-16 md:py-12">
                 <form className="space-y-6" onSubmit={handleSubmit} encType="multipart/form-data" method="post">
                     <div className="space-y-1">
-                      <label htmlFor="email" className="text-sm font-medium">
+                      <label htmlFor="title" className="text-sm font-medium">
                         Title:
                       </label>
                       <input
@@ -84,6 +86,17 @@ export default function WriteBlog() {
                         placeholder="Title of the blog"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        className="block w-full rounded-lg border border-gray-200 px-5 py-3 leading-6 placeholder-gray-500 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:placeholder-gray-400 dark:focus:border-blue-500"
+                      />
+                      <label htmlFor="subtitle" className="text-sm font-medium">
+                        Subtitle:
+                      </label>
+                      <input
+                        type="text"
+                        name="subtitle"
+                        placeholder="subtitle of the blog"
+                        value={subtitle}
+                        onChange={(e) => setSubtitle(e.target.value)}
                         className="block w-full rounded-lg border border-gray-200 px-5 py-3 leading-6 placeholder-gray-500 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:placeholder-gray-400 dark:focus:border-blue-500"
                       />
                       <label htmlFor="image" className="text-sm font-medium">
