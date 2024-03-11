@@ -145,6 +145,7 @@ app.get('/api/blog/:id', async (req, res) => {
 app.delete('/api/blog/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(id, "blog id")
     const deletedPost = await BlogPost.findByIdAndDelete(id);
 
     if (!deletedPost) {
