@@ -44,11 +44,7 @@ const GallaryPage = () => {
         <div className="aspect-w-12 aspect-h-7 sm:aspect-none rounded-xl overflow-hidden">
           <img className="group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl w-full object-cover" src={history} alt="Image Description" />
         </div>
-        <div className="absolute bottom-0 start-0 end-0 p-2 sm:p-4">
-          <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
-            Data at Preline
-          </div>
-        </div>
+        
       </a>
       {/* <!-- End Card --> */}
     </div>
@@ -76,11 +72,7 @@ const GallaryPage = () => {
         <div className="aspect-w-12 aspect-h-7 sm:aspect-none rounded-xl overflow-hidden">
           <img className="group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl w-full object-cover" src={jam} alt="Image Description" />
         </div>
-        <div className="absolute bottom-0 start-0 end-0 p-2 sm:p-4">
-          <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
-            Pride 2021
-          </div>
-        </div>
+        
       </a>
       {/* <!-- End Card --> */}
     </div>
@@ -91,11 +83,7 @@ const GallaryPage = () => {
         <div className="aspect-w-12 aspect-h-7 sm:aspect-none rounded-xl overflow-hidden">
           <img className="group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl w-full object-cover" src={team} alt="Image Description" />
         </div>
-        <div className="absolute bottom-0 start-0 end-0 p-2 sm:p-4">
-          <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
-            Pride 2021
-          </div>
-        </div>
+        
       </a>
       {/* <!-- End Card --> */}
     </div>
@@ -106,11 +94,7 @@ const GallaryPage = () => {
         <div className="aspect-w-12 aspect-h-7 sm:aspect-none rounded-xl overflow-hidden">
           <img className="group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl w-full object-cover" src={hero} alt="Image Description" />
         </div>
-        <div className="absolute bottom-0 start-0 end-0 p-2 sm:p-4">
-          <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
-            Pride 2021
-          </div>
-        </div>
+        
       </a>
       {/* <!-- End Card --> */}
     </div>
@@ -122,11 +106,7 @@ const GallaryPage = () => {
         <div className="aspect-w-12 aspect-h-7 sm:aspect-none rounded-xl overflow-hidden">
           <img className="group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl w-full object-cover" src={guitar} alt="Image Description" />
         </div>
-        <div className="absolute bottom-0 start-0 end-0 p-2 sm:p-4">
-          <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
-            Pride 2021
-          </div>
-        </div>
+       
       </a>
       {/* <!-- End Card --> */}
     </div>
@@ -137,11 +117,7 @@ const GallaryPage = () => {
         <div className="aspect-w-12 aspect-h-7 sm:aspect-none rounded-xl overflow-hidden">
           <img className="group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl w-full object-cover" src={nabin} alt="Image Description" />
         </div>
-        <div className="absolute bottom-0 start-0 end-0 p-2 sm:p-4">
-          <div className="text-sm font-bold text-gray-800 rounded-lg bg-white p-4 md:text-xl dark:bg-gray-800 dark:text-gray-200">
-            Pride 2021
-          </div>
-        </div>
+        
       </a>
       {/* <!-- End Card --> */}
     </div>   
