@@ -8,7 +8,6 @@ import {
   Button,
 } from "@nextui-org/react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react";
-
 import { MoonIcon } from "./MoonIcon";
 import { SunIcon } from "./SunIcon";
 import { AcmeLogo } from "./AcmeLogo.jsx";
@@ -102,16 +101,19 @@ const Appbar = (props) => {
 
 
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" href="/gallery">
               Gallery
             </Link>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem>
-            <Button as={Link}color="primary" variant="bordered" href="#">
-              Book A Demo
-            </Button>
+          <Link color="foreground" href="/booking">
+  <Button color="primary" variant="bordered">
+    Book Demo Class
+  </Button>
+</Link>
+
           </NavbarItem>
           
         </NavbarContent>

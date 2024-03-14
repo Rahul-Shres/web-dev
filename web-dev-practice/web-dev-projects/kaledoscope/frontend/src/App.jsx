@@ -25,6 +25,9 @@ import ViewSingleMember from "./pages/admin/teams/ViewSingleMember";
 import AddTeamMember from "./pages/admin/teams/AddTeamMember";
 import WriteBlog from "./pages/admin/blog/WriteBlog";
 import ViewAllBlogPost from "./pages/admin/blog/ViewAllBlogPost";
+import GallaryPage from "./pages/Home/gallary/GallaryPage";
+import Gallery from "./pages/Home/gallary/Gallery";
+import UserBlog from "./pages/Home/blog/UserBlog";
 
 
 
@@ -40,6 +43,8 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/faq" element={<FaqPage />} />
               <Route path="/booking" element={<BookingDemo />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/blogpost" element={<UserBlog />} />
 
               {/* Blog Routes */}
               <Route path="/createblog" element={<CreateBlogPost />} />

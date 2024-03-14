@@ -12,7 +12,7 @@ const GallaryPage = () => {
   return (
     <>
     {/* <!-- Masonry Cards --> */}
-<div className="w-screen px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto mb-56 bg-slate-50">
+<div className="w-screen px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto  bg-slate-50">
 <div className='text-center mb-8 mx-auto pt-14'>
     <h1 className="text-3xl text-gray-800 font-bold sm:text-5xl lg:text-6xl lg:leading-tight dark:text-gray-200">
     Peek Into 

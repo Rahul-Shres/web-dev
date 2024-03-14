@@ -1,8 +1,8 @@
 import React , {useState, useEffect}from 'react'
 import { API } from '../../../http/index';
-import { Link } from 'react-router-dom';
 
 import { Card } from './Card'
+
 
 const ViewAllBlogPost = () => {
     const [blogPosts, setBlogPosts] = useState([]);
@@ -22,6 +22,7 @@ const ViewAllBlogPost = () => {
 
   return (
     <>
+      
    {/* <!-- Card Blog --> */}
    <div className="mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
                 {/* <!-- Grid --> */}
@@ -34,6 +35,8 @@ const ViewAllBlogPost = () => {
   {/* <!-- End Grid --> */}
 </div>
 {/* <!-- End Card Blog --> */}
+
+
     </>
   )
 }

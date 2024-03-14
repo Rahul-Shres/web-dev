@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base{
+    :root{
+        --color-text-base: #ffffff;
+        --color-text-muted: #c7d2fe;
+        --color-text-blue: #01a0fe;
+        --color-text-darblue: #0186ff;
+        --color-text-hover: #0070d7;
+
+
+    }
+}

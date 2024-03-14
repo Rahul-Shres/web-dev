@@ -1,25 +1,31 @@
 import React, { useState } from 'react';
 import { API } from '../../../http/index';
 import AdminDemoBookings from '../../admin/dashboard/AdminDemoBookings';
+import './BookingDemo.css'; // Import your custom CSS file for styling
+import Appbar from '../../../components/nabvar/Navbar';
+import Footer from '../footer/Footer';
+import Faq from '../faq/Faq';
 
 const BookingDemo = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [location, setLocation] = useState('');
-  const [classType, setClassType] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+    location: '',
+    classType: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const formData = {
-      name,
-      email,
-      phoneNumber,
-      location,
-      classType
-    };
-
     try {
       await API.post('/api/demo', formData);
       // Redirect to a thank you page or do something else after successful submission
@@ -29,28 +35,30 @@ const BookingDemo = () => {
   };
 
   return (
-    <div>
+    <>
+    <Appbar />
+    <div className="booking-demo-container">
       <h2>Book a Demo Class</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
         </div>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
         </div>
-        <div>
-          <label>Phone Number:</label>
-          <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+        <div className="form-group">
+          <label htmlFor="phoneNumber">Phone Number:</label>
+          <input type="text" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
         </div>
-        <div>
-          <label>Location:</label>
-          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+        <div className="form-group">
+          <label htmlFor="location">Location:</label>
+          <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} />
         </div>
-        <div>
-          <label>Class Type:</label>
-          <select value={classType} onChange={(e) => setClassType(e.target.value)}>
+        <div className="form-group">
+          <label htmlFor="classType">Class Type:</label>
+          <select id="classType" name="classType" value={formData.classType} onChange={handleChange}>
             <option value="">Select Class Type</option>
             <option value="guitar">Guitar</option>
             <option value="drum">Drum</option>
@@ -60,11 +68,12 @@ const BookingDemo = () => {
             <option value="keyboard">Keyboard</option>
           </select>
         </div>
-        <button type="submit">Book Demo</button>
+        <button type="submit" className="btn-submit">Book Demo</button>
       </form>
-
-      <AdminDemoBookings />
     </div>
+    <Faq />
+    <Footer />
+    </>
   );
 };
 
