@@ -18,13 +18,8 @@ app.use(express.urlencoded({extended:true}))
 // Connect to database
 connectDatabase(process.env.MONGO_URI);
 
-app.use('/', (req,res)=>{
-    res.status(200).json({
-        message : "Running Live"
-    })
-})
 
-app.post('/createblog',async(req,res)=> {
+app.post('/createBlog', async(req,res) => {
 
     console.log("Reached /createblog route handler");
     const {title, subtitle, description} = req.body;
@@ -42,6 +37,40 @@ app.post('/createblog',async(req,res)=> {
     })
 })
 
+// Get All Blogs
+app.get('/blog', async(req,res)=>{
+    const blog = await Blog.find();
+    if(blog.length == 0){
+        res.json({
+            status: 200,
+            message : "Empty Blogs",
+        })
+    }else{
+        res.json({
+            status: 200,
+            message: "Blogs fetched successfully",
+            data : blog,
+        })
+    }
+})
+
+
+// Get Single Blog
+app.get('/blog/:id', async(req,res)=>{
+    const {id} = req.params;
+    const blog = await Blog.find({_id:id});
+    if(blog.length ==0){
+        res.json({
+            status: 400,
+            message: "Blog not found"
+        })
+    }else{
+        res.status(200).json({
+            message: "Single Blog fetched successfully",
+            data:blog
+        })
+    }
+})
 
 const PORT = process.env.PORT;
 
@@ -49,4 +78,4 @@ app.listen(PORT, ()=>{
     console.log(`listening on port number ${PORT}`)
 })
 
-// continue from 1:00:00 - day 6
+// continue from day 8 mern
