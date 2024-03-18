@@ -14,7 +14,7 @@
     /* 4. Manage color scheme */
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87); /* Default text color */
-    background-color: #242424; /* Default background color */
+    background-color: #f1ffff; /* Default background color */
 
     /* 5. Apply font rendering adjustments */
     font-synthesis: none;
