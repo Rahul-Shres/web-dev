@@ -1,9 +1,13 @@
 import React from 'react'
 import Faq from './Faq'
+import Footer from '../footer/Footer'
+import Appbar from '../../../components/nabvar/Navbar'
 
 const FaqPage = () => {
   return (
+    <>
     <div>
+      <Appbar />
         {/* Header */}
         {/* <!-- Features --> */}
 <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -92,7 +96,10 @@ const FaqPage = () => {
 {/* <!-- End Features --> */}
         {/* Header */}
         <Faq />
+        <Footer />
     </div>
+
+    </>
   )
 }
 

@@ -28,6 +28,7 @@ import ViewAllBlogPost from "./pages/admin/blog/ViewAllBlogPost";
 import GallaryPage from "./pages/Home/gallary/GallaryPage";
 import Gallery from "./pages/Home/gallary/Gallery";
 import UserBlog from "./pages/Home/blog/UserBlog";
+import AboutUs from "./pages/Home/about/AboutUs";
 
 
 
@@ -45,6 +46,7 @@ export default function App() {
               <Route path="/booking" element={<BookingDemo />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/blogpost" element={<UserBlog />} />
+              <Route path="/aboutus" element={<AboutUs />} />
 
               {/* Blog Routes */}
               <Route path="/createblog" element={<CreateBlogPost />} />
