@@ -52,6 +52,29 @@ app.get("/delete/:id", async(req,res)=>{
         
     })
 })
+
+
+app.get("/edit/:id", async (req,res)=>{
+    const {id} = req.params;
+    const {title,subtitle, description} = req.body;
+
+    const updatedBlog = await blogs.update({
+        title,
+        subtitle,
+        description
+    },{
+        where : {
+            id : id
+        }
+    })
+
+    res.status(200).json({
+        message: "blog updated successfully",
+        data : updatedBlog
+    })
+
+})
+
 app.listen(3000, ()=>{
     console.log("I am live")
 })
