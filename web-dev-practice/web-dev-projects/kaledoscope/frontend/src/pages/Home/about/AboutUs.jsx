@@ -35,24 +35,7 @@ const AboutUs = () => {
           <p className="text-lg text-gray-600 dark:text-gray-400">Kaleidoscope Music Academy was established in 1985 with a vision to serve all music lovers and help them develop their skills in music. Located in Lazimpat, Kathmandu, Nepal, our academy provides comprehensive music education, emphasizing both theory and practical aspects.</p>
         </div>
 
-        {/* <!-- Buttons --> */}
-        <div className="mt-8 gap-3 flex justify-center">
-          <a className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-            Get started
-            <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
-          <a className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-            <svg className="flex-shrink-0 size-4" width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6.875 18C8.531 18 9.875 16.656 9.875 15V12H6.875C5.219 12 3.875 13.344 3.875 15C3.875 16.656 5.219 18 6.875 18Z" fill="#0ACF83"></path>
-              <path d="M3.875 9C3.875 7.344 5.219 6 6.875 6H9.875V12H6.875C5.219 12 3.875 10.656 3.875 9Z" fill="#A259FF"></path>
-              <path d="M3.875 3C3.875 1.344 5.219 0 6.875 0H9.875V6H6.875C5.219 6 3.875 4.656 3.875 3Z" fill="#F24E1E"></path>
-              <path d="M9.87501 0H12.875C14.531 0 15.875 1.344 15.875 3C15.875 4.656 14.531 6 12.875 6H9.87501V0Z" fill="#FF7262"></path>
-              <path d="M15.875 9C15.875 10.656 14.531 12 12.875 12C11.219 12 9.87501 10.656 9.87501 9C9.87501 7.344 11.219 6 12.875 6C14.531 6 15.875 7.344 15.875 9Z" fill="#1ABCFE"></path>
-            </svg>
-            Preline Figma
-          </a>
-        </div>
-        {/* <!-- End Buttons --> */}
+        
       </div>
     </div>
   </div>
@@ -66,15 +49,18 @@ const AboutUs = () => {
   <div class="grid lg:grid-cols-7 lg:gap-x-8 xl:gap-x-12 lg:items-center">
     <div class="lg:col-span-3">
       <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">Join us at </h1>
-      <p class="mt-3 text-lg text-gray-800 dark:text-gray-400"> Kaleidoscope Music Academy and let’s create harmonious melodies together!</p>
+      <p class="mt-3 text-lg text-gray-800 dark:text-gray-400 "> Kaleidoscope Music Academy and let’s create harmonious melodies together!</p>
+      <h1 class="block mt-3 text-lg font-bold text-gray-800 sm:text-4xl md:text-4xl lg:text-4xl dark:text-white">Contact Us </h1>
 
       <div class="mt-5 lg:mt-8 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-        <div class="w-full sm:w-auto">
-          <label for="hero-input" class="sr-only">Search</label>
-          <input type="text" id="hero-input" name="hero-input" class="py-3 px-4 block w-full xl:min-w-72 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" placeholder="Enter work email" />
-        </div>
+        
         <a class="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-          Request demo
+        01-4524444,  01-4528428
+        9851073966, 9841273562
+
+        </a>
+        <a class="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+        Opposite to Star Mall, Putalisadak
         </a>
       </div>
 
@@ -85,7 +71,7 @@ const AboutUs = () => {
     {/* <!-- End Col --> */}
 
     <div class="lg:col-span-4 mt-10 lg:mt-0">
-      <img class="w-full rounded-xl" src="https://images.unsplash.com/photo-1665686376173-ada7a0031a85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=900&h=700&q=80" alt="Image Description" />
+      <img class="w-full rounded-xl" src="https://scontent.fktm16-1.fna.fbcdn.net/v/t1.6435-9/67580528_2439437626117158_5053347156266582016_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=bR3AaL5lo3QAX9G2-IE&_nc_ht=scontent.fktm16-1.fna&oh=00_AfCopDw8He_K83mG61C4E8EFGopBGYBn8ijMhqT-LZ-6ig&oe=6620EF25" alt="Image Description" />
     </div>
     {/* <!-- End Col --> */}
   </div>

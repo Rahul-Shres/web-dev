@@ -13,7 +13,10 @@ app.post('/createBlog', async(req,res)=>{
         description
     })
 
-    res.send("form submitted successfully")
+    res.status(200).json({
+        message : "Blogs created successfully",
+        data : newBlog
+    })
 })
 
 app.get('/blog', async(req,res)=>{
