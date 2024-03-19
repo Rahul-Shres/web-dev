@@ -30,14 +30,26 @@ app.get('/single/:id', async(req,res)=>{
     const singleBlog = await blogs.findAll({
         where :{
             id: id
-        }
-
-       
+        }    
     })
     console.log(singleBlog)
     res.status(200).json({
         message : "Single Blog Fetched Successfully",
         data : singleBlog
+    })
+})
+
+
+app.get("/delete/:id", async(req,res)=>{
+    const {id} = req.params
+    await blogs.destroy({
+        where: {
+            id: id
+        }
+    })
+    res.status(200).json({
+        message: "Blog Deleted Successfully",
+        
     })
 })
 app.listen(3000, ()=>{
