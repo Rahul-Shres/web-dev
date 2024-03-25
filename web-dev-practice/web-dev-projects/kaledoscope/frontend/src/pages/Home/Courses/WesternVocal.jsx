@@ -54,7 +54,7 @@ return (
 
     {/* <!-- Buttons --> */}
     <div className="mt-7 grid gap-3 w-full sm:inline-flex">
-      <a className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+      <a className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/booking">
         Book A Demo
         <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
       </a>
@@ -73,7 +73,7 @@ return (
   <div className="relative ms-4">
   <img
 className="w-full max-h-400 rounded-md"
-src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/376696088_690453476457296_7165662508262059741_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=3635dc&_nc_ohc=VrET999hhMQAX-HZNhk&_nc_oc=AQmAh3KxTV-KHwlv58hhocTmcvVL5ITO_XSsrHnJk2duQ9TRRpYeazpP02vgsPDuW7jU6AJphJGQeY9bhhZmG8iv&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfBxy11FV0HCtm254RBAu3P3Htt5Jj7ol68iQYGC1wnrmw&oe=65DCE925"
+src="https://scontent.fktm16-1.fna.fbcdn.net/v/t39.30808-6/376044411_690454006457243_6156840673666284745_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xRsMXcOIkScAX8oboja&_nc_ht=scontent.fktm16-1.fna&oh=00_AfDHtm88Ak-DacW8n76nPVpjHPs4zwDiCRixToKY1DR7nA&oe=66031859"
 alt="Image Description"
 />
 
@@ -162,10 +162,11 @@ So, become a part of our rhythmic tribe, and soon you'll be strumming, jamming, 
 
 <BookDemo />
 {/* <!-- End Hero --> */}
-<Footer />
 
   </div>
   </div>
+  <Footer />
+
   </>
 )
 }

@@ -31,15 +31,19 @@ const Appbar = (props) => {
       <Navbar isBordered isBlurred={false} shouldHideOnScroll>
         <NavbarBrand>
           {/* <AcmeLogo /> */}
+          <Link color="foreground" href="/">
+              
+            
           <img src={logo} alt="Company Logo" className="w-12 h-12" />
-          <div className="block pl-3.5	">
+          <div className="block pl-3.5">
           <p className="font-bold text-sm">Kaleidoscope</p>
           <p className="font-bold text-xs">Music Academy </p>
           </div>
+          </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" href="/">
               Home
             </Link>
           </NavbarItem>

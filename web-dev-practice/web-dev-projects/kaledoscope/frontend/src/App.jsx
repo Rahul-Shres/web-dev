@@ -29,6 +29,7 @@ import GallaryPage from "./pages/Home/gallary/GallaryPage";
 import Gallery from "./pages/Home/gallary/Gallery";
 import UserBlog from "./pages/Home/blog/UserBlog";
 import AboutUs from "./pages/Home/about/AboutUs";
+import AdminRegister from "./pages/admin/auth/AdminREgister";
 
 
 
@@ -64,6 +65,7 @@ export default function App() {
 
               {/* Admin Routes */}
               <Route path="/dashboard" element={<AdminDashboard />} />
+              <Route path="/adminRegister" element={<AdminRegister />} />
 
               {/* Courses Routes */}
 

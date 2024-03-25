@@ -40,10 +40,10 @@ const FaqPage = () => {
         {/* <!-- Title --> */}
         <div className="space-y-2 md:space-y-4">
           <h2 className="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-            Collaborative tools to design user experience
+          Premium Instruments tailored for music classes to enhance user experience
           </h2>
           <p className="text-gray-500">
-            Use our tools to explore your ideas and make your vision come true. Then share your work easily.
+          Explore your musical ideas and bring your vision to life with our specialized tools. Easily share your work with classmates and instructors
           </p>
         </div>
         {/* <!-- End Title --> */}
@@ -58,7 +58,7 @@ const FaqPage = () => {
             {/* <!-- End Solid Check --> */}
 
             <span className="text-sm sm:text-base text-gray-500">
-              <span className="font-bold">Less routine</span> – more creativity
+              Embrace creativity in music classes with reduced emphasis on routine tasks
             </span>
           </li>
 
@@ -70,7 +70,8 @@ const FaqPage = () => {
             {/* <!-- End Solid Check --> */}
 
             <span className="text-sm sm:text-base text-gray-500">
-              Hundreds of thousands saved
+            Save valuable time and resources with our platform, benefiting countless music students
+
             </span>
           </li>
 
@@ -82,7 +83,7 @@ const FaqPage = () => {
             {/* <!-- End Solid Check --> */}
 
             <span className="text-sm sm:text-base text-gray-500">
-              Scale budgets <span className="font-bold">efficiently</span>
+            Efficiently manage time to optimize your learning experience
             </span>
           </li>
         </ul>

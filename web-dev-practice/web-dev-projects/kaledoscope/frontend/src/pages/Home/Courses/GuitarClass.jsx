@@ -4,6 +4,7 @@ import {Tabs, Tab, Card, CardBody, CardHeader} from "@nextui-org/react";
 import Footer from '../footer/Footer';
 import uguitar from '../../../assets/uguitar.jpg'
 import guitarlass from '../../../assets/guitar-class.jpg'
+import Appbar from '../../../components/nabvar/Navbar';
 
 const GuitarClass = () => {
     let tabs = [
@@ -42,6 +43,8 @@ const GuitarClass = () => {
         }
       ];
   return (
+    <>
+    <Appbar />
     <div className='max-w-6xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto'>
         {/* <!-- Hero --> */}
 <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +56,7 @@ const GuitarClass = () => {
 
       {/* <!-- Buttons --> */}
       <div className="mt-7 grid gap-3 w-full sm:inline-flex">
-        <a className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+        <a className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/booking">
           Book A Demo
           <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </a>
@@ -72,7 +75,7 @@ const GuitarClass = () => {
     <div className="relative ms-4">
     <img
   className="w-full max-h-400 rounded-md"
-  src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/376679010_690453659790611_4100068708570479203_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=3635dc&_nc_ohc=KVofKauB2CkAX9Y_Gyc&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfBuca6aGAsFLO0Sd6S7ukMGlefqE95cofNT2IkIn634LQ&oe=65DDEF10"
+  src={guitarlass}
   alt="Image Description"
 />
 
@@ -148,6 +151,7 @@ So, become a part of our rhythmic tribe, and soon you'll be strumming, jamming, 
 {/* <!-- End Hero --> */}
 <Footer />
     </div>
+    </>
   )
 }
 

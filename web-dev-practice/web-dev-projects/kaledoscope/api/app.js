@@ -10,6 +10,8 @@ const BlogPost = require('./models/blog'); // Import the BlogPost model
 const Demo = require('./models/demoModel');
 const fs = require('fs'); // Import the fs module
 const TeamMember = require('./models/teamMemberModel');
+const Admin = require('./models/adminModel');
+const bcrypt = require('bcrypt');
 
 const app = express();
 
@@ -280,6 +282,44 @@ app.delete('/api/team/:id', async (req, res) => {
       res.json({ success: true, message: 'Team member deleted successfully', data: deletedTeamMember });
   } catch (error) {
       res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+
+// Admin Registration
+app.post('/admin/register', async (req, res) => {
+  try {
+    const { email, username, password } = req.body;
+    console.log(email, username, password)
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const admin = new Admin.create({ 
+      email, 
+      username, 
+      password: hashedPassword });
+    await admin.save();
+    res.status(201).send("Admin created successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Failed to register admin");
+  }
+});
+
+// Admin Login
+app.post('/admin/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const admin = await Admin.findOne({ username });
+    if (!admin) {
+      return res.status(404).send("Admin not found");
+    }
+    const validPassword = await bcrypt.compare(password, admin.password);
+    if (!validPassword) {
+      return res.status(401).send("Invalid password");
+    }
+    res.status(200).send("Login successful");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Failed to login");
   }
 });
 
