@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { API } from '../../../http/index';
 
-const AdminRegister = () => {
+const AdminLogin = () => {
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
@@ -11,11 +10,10 @@ const AdminRegister = () => {
     
     const formData = new FormData();
     formData.append('email', email);
-    formData.append('username', username);
     formData.append('password', password);
 
     try {
-      await API.post('/admin/register', formData, {
+      await API.post('/admin/login', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -33,7 +31,7 @@ const AdminRegister = () => {
       <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <div class="p-4 sm:p-7">
           <div class="text-center">
-            <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Admin Register</h1>
+            <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Admin Login</h1>
             
           </div>
 
@@ -62,20 +60,7 @@ const AdminRegister = () => {
                 </div>
                 {/* <!-- End Form Group --> */}
 
-                {/* <!-- Form Group --> */}
-                <div>
-                  <label for="username" class="block text-sm mb-2 dark:text-white">Username</label>
-                  <div class="relative">
-                    <input type="text" id="username" name="username" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" required aria-describedby="username-error"  onChange={(e) => setUsername(e.target.value)}/>
-                    <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
-                      <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <p class="hidden text-xs text-red-600 mt-2" id="password-error">8+ characters required</p>
-                </div>
-                {/* <!-- End Form Group --> */}
+               
 
                 {/* <!-- Form Group --> */}
                 <div>
@@ -94,7 +79,7 @@ const AdminRegister = () => {
 
                
 
-                <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Register</button>
+                <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Login</button>
               </div>
             </form>
             {/* <!-- End Form --> */}
@@ -108,4 +93,4 @@ const AdminRegister = () => {
   )
 }
 
-export default AdminRegister
+export default AdminLogin
