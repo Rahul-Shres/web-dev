@@ -23,7 +23,7 @@ const Features = () => {
             {/* <!-- Stats --> */}
             <div>
               <h4 className="text-lg sm:text-xl font-semibold text-white">Courses Offered</h4>
-              <p className="mt-2 sm:mt-3 text-4xl sm:text-6xl font-bold text-white">50+</p>
+              <p className="mt-2 sm:mt-3 text-4xl sm:text-6xl font-bold text-white">10+</p>
             </div>
             {/* <!-- End Stats --> */}
 

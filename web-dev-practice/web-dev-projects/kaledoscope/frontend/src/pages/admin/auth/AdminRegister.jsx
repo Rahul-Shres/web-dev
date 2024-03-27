@@ -15,7 +15,7 @@ const AdminRegister = () => {
     formData.append('password', password);
 
     try {
-      await API.post('/admin/register', formData, {
+      await API.post('/adminRegister', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

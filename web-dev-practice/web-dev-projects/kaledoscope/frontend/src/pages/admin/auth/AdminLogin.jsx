@@ -13,7 +13,7 @@ const AdminLogin = () => {
     formData.append('password', password);
 
     try {
-      await API.post('/admin/login', formData, {
+      await API.post('/adminLogin', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
